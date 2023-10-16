@@ -25,3 +25,15 @@ body {
     )
     rgb(var(--background-start-rgb));
 } */
+
+button {
+  background-color: #5a8d5b;
+  color: white;
+  padding: 15px 28px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 30px;
+  cursor: pointer;
+  border-radius: 15px;
+}
