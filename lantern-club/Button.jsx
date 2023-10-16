@@ -8,7 +8,7 @@ const Button = ({ label }) => {
   const buttonStyles = { // color for button when hovering
     border: '1px solid #ccc',
     padding: '10px 20px',
-    backgroundColor: isHovered ? '#ff5722' : '#ff9800',
+    backgroundColor: isHovered ? '#FF0000' : '#0000FF',
     color: '#fff',
     cursor: 'pointer',
     transition: 'background-color 0.3s',
@@ -26,7 +26,7 @@ const Button = ({ label }) => {
     fetch('https://api.weather.gov/gridpoints/BOX/69,92/forecast')
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Error: Network response');
         }
         return response.json();
       })
@@ -37,7 +37,7 @@ const Button = ({ label }) => {
         setWeather(weather);
       })
       .catch((error) => {
-        console.error('There was a problem with the fetch operation:', error);
+        console.error('Error: Unable to fetch:', error);
       });
   };
 
