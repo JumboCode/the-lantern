@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node your-script.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -28,5 +28,8 @@
     "prisma": "^5.3.1",
     "tailwindcss": "latest",
     "typescript": "latest"
+    
   }
+  
 }
+
