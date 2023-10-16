@@ -25,3 +25,17 @@ body {
     )
     rgb(var(--background-start-rgb));
 } */
+
+.weatherButton {
+  background-color: white;
+  color: black;
+  border: 3px solid #6888ff;
+  transition-duration: 0.3s;
+  border-radius: 3px;
+  padding: 10px 20px;
+}
+.weatherButton:hover {
+  background-color: #6888ff;
+  color: white;
+  border: 3px solid #6888ff;
+}
