@@ -6,7 +6,7 @@ export default function Home() {
       <header className="flex flex-col h-screen justify-center items-center">
           <p>Hi Lantern Club!! This is the default page aka homepage of the website</p>
           <NavBar/>
-          <Button/>
+          <Button label="Click for weather!"/>
       </header>
     </div>
   )
