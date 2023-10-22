@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Button({ label }) {
+export default function Button({ label }: { label: string }) {
 	const [loading, setLoading] = useState(false);
 	const [result, setResult] = useState("");
 	
