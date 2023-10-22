@@ -6,6 +6,7 @@ export default function NavBar() {
             <ul className="flex space-x-8">
                 <li><Link href="/" className="hover:underline">Home</Link></li>
                 <li><Link href="/auth" className="hover:underline">Auth</Link></li>
+                
             </ul>
         </div>
     )
