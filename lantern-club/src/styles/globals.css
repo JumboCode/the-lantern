@@ -25,3 +25,28 @@ body {
     )
     rgb(var(--background-start-rgb));
 } */
+
+.navbar {
+  color:aliceblue;
+  background: rgb(192, 42, 42);
+  font-family: Garamond, serif;
+  font-size: large;
+  padding: 8px;
+  text-align: center;
+  width:100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  
+  position: fixed;
+  display: inline-block;
+  justify-content: center;
+}
+
+/* ul.navbar li {
+  position: fixed;
+  background-color: dodgerblue;
+} */
+
+#resetSpace {
+  padding-top: 50px;
+}
