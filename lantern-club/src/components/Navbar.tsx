@@ -4,7 +4,8 @@ export default function NavBar() {
   return (
     <div class="navbar">
       <center>
-        <ul className="flex space-x-24">
+        <ul className="flex space-x-24 text-blue-50 bg-red-700 font-serif text-lg
+         text-center w-screen relative py-3 pl-8">
           <li>
             <Link href="/Home" className="hover:underline">
               Home

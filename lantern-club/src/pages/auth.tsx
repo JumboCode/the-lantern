@@ -27,7 +27,8 @@ export default function Profile() {
   return (
     <div className="flex flex-col h-screen items-center">
       <NavBar />
-      <div id="resetSpace">
+      <div className="flex flex-col h-screen justify-center items-center">
+        {/* pt-50 */}
         {status === "loading" ? (
           <p>Hang on there...</p>
         ) : status === "authenticated" && isAdmin ? (
