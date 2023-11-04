@@ -32,12 +32,7 @@ export default function Footer({
     <div className="flex grid grid-cols-3 w-full">
       {/* image column div */}
       <div className="ml-10 text-left inline-flex">
-        <Image
-          src={Logo} // Route of the image file
-          height={197} // Desired size with correct aspect ratio
-          width={192} // Desired size with correct aspect ratio
-          alt="Lantern Club Logo"
-        />
+        <Image src={Logo} height={197} width={192} alt="Lantern Club Logo" />
         <div className="self-center ml-20">
           <p className="py-1">Magazine</p>
           <p className="py-1">Events</p>
@@ -46,7 +41,7 @@ export default function Footer({
           <p className="py-1">Resources</p>
         </div>
       </div>
-      {/* empty column div */}
+      {/* other pages div */}
       <div className="text-left justify-self-left self-center"></div>
       {/* contact/button column div */}
       <div className="text-left justify-self-end self-center mr-10">
@@ -78,6 +73,6 @@ export default function Footer({
           )}
         </div>
       </div>
-    </div> // return div
+    </div>
   );
 }
