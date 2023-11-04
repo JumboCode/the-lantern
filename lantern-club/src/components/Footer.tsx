@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import Logo from "../images/lanternicon1.png";
 import Email from "../images/email.png";
@@ -12,6 +13,21 @@ export default function Footer({
 }: {
   showAdminLogin: boolean;
 }) {
+  const button_style: React.CSSProperties = {
+    backgroundColor: "#F79838",
+    color: "black",
+    padding: "10px",
+    fontSize: "15px",
+    borderRadius: "35px",
+    width: "170px",
+    height: "45px",
+    marginLeft: "5px",
+    justifyContent: "center",
+    position: "absolute",
+    right: "30px",
+    bottom: "15px",
+  };
+
   return (
     <div className="flex grid grid-cols-3 w-full">
       {/* image column div */}
@@ -55,7 +71,7 @@ export default function Footer({
         </div>
         <div>
           {showAdminLogin && (
-            <button className="inline-flex items-center hover:underline">
+            <button style={button_style} className="hover:underline">
               {" "}
               Admin Login{" "}
             </button>

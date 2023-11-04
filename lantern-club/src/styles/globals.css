@@ -37,19 +37,3 @@ footer {
   color: #4279BC;
   vertical-align: middle;
 }
-
-button {
-  background-color: #F79838;
-  color: black;
-  padding: 10px;
-  display: inline-block;
-  font-size: 15px;
-  border-radius: 35px;
-  width: 170px;
-  height: 45px;
-  margin-left: 5px;
-  justify-content: center;
-  position: absolute;
-  right: 30px;
-  bottom: 15px;
-}
