@@ -33,7 +33,7 @@ model Session {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   sessionToken String   @unique
   userId       String   @db.ObjectId
-  expires      DateTime
+  expires      DateTime 
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
@@ -56,3 +56,31 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Event {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  description  String
+  date         DateTime // TODO: extract date vs time out of datetime
+  time         DateTime
+  location     String
+  host         String 
+}
+
+model Magazine {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  Name         String 
+  author       String
+  cloudURL     String
+  publishdate  DateTime
+}
+
+model Profile {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  name         String 
+  email        String @unique
+  role         String?
+  pictureURL   String?
+}
+
+
