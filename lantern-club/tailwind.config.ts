@@ -7,7 +7,16 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    colors: {
+      'lantern-blue': '#D5E1F3',
+    },
+    // fontFamily: {
+    //   'Kiona': ['Kiona', 'sans-serif'],
+    // },
     extend: {
+      fontFamily: {
+        Kiona:["Kiona"]
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
