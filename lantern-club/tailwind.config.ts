@@ -21,7 +21,9 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily:{
-        'kiona':['KIONA','sans-serif']
+        'kiona':['KIONA','sans-serif'],
+        'nunito': ['NUNITO', 'sans-serif'],
+        'nunito-reg': ['NUNITOREG', 'sans-serif'],
       },
       colors: { 
         transparent: 'transparent', 

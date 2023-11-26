@@ -13,6 +13,17 @@
   src: url('../fonts/Kiona-Regular.ttf');
 }
 
+@font-face {
+  font-family: 'NUNITO';
+  src: url('../fonts/NunitoSans_10pt_Condensed-Regular.ttf');
+}
+
+
+@font-face {
+  font-family: 'NUNITOREG';
+  src: url('../fonts/NunitoSans_7pt-Regular.ttf');
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
