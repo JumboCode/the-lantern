@@ -30,6 +30,7 @@ export default function Footer({
 
   return (
     <div className="flex grid grid-cols-3 w-full">
+        <footer className="flex items-center">
       {/* image column div */}
       <div className="ml-10 text-left inline-flex">
         <Image src={Logo} height={197} width={192} alt="Lantern Club Logo" />
@@ -41,6 +42,7 @@ export default function Footer({
           <p className="py-1">Resources</p>
         </div>
       </div>
+
       {/* other pages div */}
       <div className="text-left justify-self-left self-center"></div>
       {/* contact/button column div */}
@@ -73,6 +75,7 @@ export default function Footer({
           )}
         </div>
       </div>
+      </footer>
     </div>
-  );
+      );
 }

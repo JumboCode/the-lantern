@@ -22,12 +22,12 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "autoprefixer": "latest",
+    "autoprefixer": "^10.4.16",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "postcss": "latest",
+    "postcss": "^8.4.31",
     "prisma": "^5.3.1",
-    "tailwindcss": "latest",
+    "tailwindcss": "^3.3.5",
     "typescript": "latest"
   }
 }

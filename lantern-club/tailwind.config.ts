@@ -15,6 +15,11 @@ const config: Config = {
       }
     },
     extend: {
+      spacing:{
+        '13': '500px',
+        '2': '8px',
+
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -38,6 +43,8 @@ const config: Config = {
         slate: colors.blueGray, 
         lime: colors.lime, 
         rose: colors.rose, 
+       lanternblue: '#4E78C8',
+        lanternyellow:'#E3B54C',
     }, 
     },
   },
