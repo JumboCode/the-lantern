@@ -8,13 +8,21 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors:{
+    colors: {
+      'lantern-blue': '#D5E1F3',
       'blue': "#86c76a",
       'sky':{
         '400':"color: rgb(56 189 248)"
       }
     },
+    // fontFamily: {
+    //   'Kiona': ['Kiona', 'sans-serif'],
+    // },
+ 
     extend: {
+      fontFamily: {
+        Kiona:["Kiona"]
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
