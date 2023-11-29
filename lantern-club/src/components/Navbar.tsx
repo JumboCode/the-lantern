@@ -1,14 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../images/thelantern1.png";
-                
 
 export default function NavBar() {
   return (
-    <div class="navbar" >
+    <div class="navbar">
       <center>
-        <ul className="flex space-x-16 text-blue-50 bg-lantern-blue text-xl
-          w-screen pb-14 font-Kiona">
+        <ul
+          className="flex space-x-16 text-blue-50 bg-lantern-blue text-xl
+          w-screen pb-14 font-kiona"
+        >
           <li className="pl-20 pr-40">
             <Link href="/" className="hover:underline">
               <Image src={Logo} height={250} width={250} alt="lantern logo" />
