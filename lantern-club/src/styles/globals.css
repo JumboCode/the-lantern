@@ -1,9 +1,7 @@
-@font-face {
-  font-family: 'Kiona';
-  src: url('../images/Kiona-Regular.ttf') format('truetype');
-}
-
-
+/* @font-face {
+  font-family: "Kiona";
+  src: url("../images/Kiona-Regular.ttf") format("truetype");
+} */
 
 @tailwind base;
 @tailwind components;
@@ -16,19 +14,18 @@
 }
 
 @font-face {
-  font-family: 'KIONA';
-  src: url('../fonts/Kiona-Regular.ttf');
+  font-family: "KIONA";
+  src: url("../fonts/Kiona-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'NUNITO';
-  src: url('../fonts/NunitoSans_10pt_Condensed-Regular.ttf');
+  font-family: "NUNITO";
+  src: url("../fonts/NunitoSans_10pt_Condensed-Regular.ttf");
 }
 
-
 @font-face {
-  font-family: 'NUNITOREG';
-  src: url('../fonts/NunitoSans_7pt-Regular.ttf');
+  font-family: "NUNITOREG";
+  src: url("../fonts/NunitoSans_7pt-Regular.ttf");
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -49,14 +46,13 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
-
 footer {
-  background-color: #D5E1F3;
+  background-color: #d5e1f3;
   padding: 5px;
   position: absolute;
   bottom: 0px;
   width: 100%;
   height: 272px;
-  color: #4279BC;
+  color: #4279bc;
   vertical-align: middle;
 }

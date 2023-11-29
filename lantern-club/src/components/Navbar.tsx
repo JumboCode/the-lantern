@@ -8,7 +8,7 @@ export default function NavBar() {
       <center>
         <ul
           className="flex space-x-16 text-blue-50 bg-lantern-blue text-xl
-          w-screen pb-14 font-Kiona"
+          w-screen pb-14 font-kiona"
         >
           <li className="pl-20 pr-40">
             <Link href="/" className="hover:underline">
