@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import FetchButton from './FetchButton';
 
 export default function EventsButton ( { label } ) {
     const buttonStyle = 
@@ -31,16 +30,8 @@ export default function EventsButton ( { label } ) {
     };
 
   return (
-//     <div>
-//       <h1>Data Fetching Component</h1>
-//       <FetchButton fetchData={fetchData} />
-//     </div>
         <div style={divStyle}>
-                <button fetchData={fetchData} style={buttonStyle}>{label}</button>
-                result && <div>{result}</div>
+                <button onClick={fetchData} style={buttonStyle}>{label}</button>
         </div>
-        // <div className="flex flex-col h-screen items-center">
-        //         <button onClick={fetchData}>EventsButton</button>
-        // </div>
   );
 };

@@ -10,7 +10,7 @@ export default function Home() {
     <div>
       <header className="flex flex-col h-screen items-center">
         <NavBar />{" "}
-        <events-button label="EVENTS"/>
+        <EventsButton label="EVENTS"/>
         {/* <MyButton label="Button"/> */}
         <p className="flex flex-col h-screen justify-center items-center">
           Hi Lantern Club!! This is the default page aka homepage of the website
