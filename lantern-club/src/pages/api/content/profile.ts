@@ -5,9 +5,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     // Process a GET request
     const responseData = { message: 'profile: GET requested received' };
     res.status(200).json(responseData);
-    console.log('profile: GET requested received');
   } else {
     // Handle any other HTTP method
     res.status(405).json({ error: 'Method Not Allowed' });
   }
-}
