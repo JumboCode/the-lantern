@@ -4,7 +4,7 @@ import Logo from "../images/thelantern1.png";
 
 export default function NavBar() {
   return (
-    <div class="navbar">
+    <div className="navbar">
       <center>
         <ul
           className="flex space-x-16 text-blue-50 bg-lantern-blue text-xl

@@ -24,7 +24,8 @@ const config: Config = {
       fontFamily: {
         kiona: ["KIONA", "sans-serif"],
         nunito: ["NUNITO", "sans-serif"],
-        "nunito-reg": ["NUNITOREG", "sans-serif"],
+        nunitobold: ["NUNITOBOLD", "sans-serif"],
+        coolvetica: ["COOLVETICA", "sans-serif"],
       },
       colors: {
         transparent: "transparent",
