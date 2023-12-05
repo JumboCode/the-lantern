@@ -81,7 +81,7 @@ export default function Footer({
       </div>
       {/* login/submit column div */}
       <div>
-        <div className="absolute inset-y-6 right-40 mr-10">
+        <div className="absolute inset-y-6 right-40 mr-5">
           {showAdminLogin && (
             <button
               style={button_login}
@@ -92,7 +92,7 @@ export default function Footer({
             </button>
           )}
         </div>
-        <div className="absolute inset-y-20 right-40 mr-10">
+        <div className="absolute inset-y-20 right-40 mr-5">
           <button
             style={button_submit}
             className="hover:underline flex items-center justify-center"
@@ -102,8 +102,8 @@ export default function Footer({
         </div>
       </div>
       {/* icon column div */}
-      <div className="justify-self-end self-center">
-        <div className="inline-flex fixed bottom-9 right-20">
+      <div className="justify-self-end self-end">
+        <div className="inline-flex bottom-4 right-20 mr-10">
           <div className="mr-2">
             <a href="mailto:ststhinkthank@gmail.com">
               <Image src={Email} height={45} width={45} alt="email icon" />
