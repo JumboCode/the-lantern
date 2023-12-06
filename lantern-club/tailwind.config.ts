@@ -1,18 +1,21 @@
-import type { Config } from 'tailwindcss'
-const colors = require('tailwindcss/colors') 
+import type { Config } from "tailwindcss";
+const colors = require("tailwindcss/colors");
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors:{
-      'blue': "#86c76a",
-      'sky':{
-        '400':"color: rgb(56 189 248)"
-      }
+    colors: {
+      "lantern-blue": "#D5E1F3",
+      blue: "#86c76a",
+      "button-blue": "#4279BC",
+      "borderblue": "#94BBE3",
+      sky: {
+        "400": "color: rgb(56 189 248)",
+      },
     },
     extend: {
       spacing:{
@@ -21,14 +24,19 @@ const config: Config = {
 
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-      fontFamily:{
-        'kiona':['KIONA','sans-serif']
+      fontFamily: {
+        kiona: ["KIONA", "sans-serif"],
+        nunito: ["NUNITO", "sans-serif"],
+        nunitoreg: ["NUNITO-REG", "sans-serif"],
+        nunitolight: ["NUNITO-LIGHT", "sans-serif"],
+        nunitobold: ["NUNITOBOLD", "sans-serif"],
+        coolvetica: ["COOLVETICA", "sans-serif"],
       },
-      colors: { 
+      colors: {
         transparent: 'transparent', 
         current: 'currentColor', 
         black: colors.black, 
@@ -45,9 +53,15 @@ const config: Config = {
         rose: colors.rose, 
        lanternblue: '#4E78C8',
         lanternyellow:'#E3B54C',
-    }, 
+        gc1:'#6180B8',
+        gc2:'#4E78C8',
+        gc3:'#9A9789',
+        gc4:'#BBA56D',
+        gc5:'#E3B54C',
+
+      },
     },
   },
   plugins: [],
-}
+};
 export default config;

@@ -12,14 +12,24 @@
 
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Header from '../components/Header'
+import Header from "../components/Header";
+import HomepageII from "../components/HomepageII";
+import HomepageIV from "../components/HomepageIV";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <div>
         <Header title="The Lantern"/>
+      <header className="flex flex-col items-center">
+      </header>
+
+      <HomepageII />
+      <HomepageIV />
+
+      <footer className="flex items-center">
         <Footer showAdminLogin={true} />
+        </footer>
     </div>
   );
 }

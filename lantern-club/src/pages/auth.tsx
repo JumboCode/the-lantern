@@ -1,6 +1,8 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useEffect } from "react";
 import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 export default function Profile() {
   const { data: session, status } = useSession();
   const userEmail = session?.user?.email;
@@ -50,6 +52,10 @@ export default function Profile() {
           </>
         )}
       </div>
+
+      <footer className="flex items-center">
+        <Footer showAdminLogin={false} />
+      </footer>
     </div>
   );
 }

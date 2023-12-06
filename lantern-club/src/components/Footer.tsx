@@ -4,6 +4,9 @@ import Logo from "../images/lanternicon1.png";
 import Email from "../images/email.png";
 import Insta from "../images/insta.png";
 
+import { signIn } from "next-auth/react";
+import Link from "next/link";
+
 export interface showAdminLogin {
   state: boolean;
 }
@@ -13,69 +16,104 @@ export default function Footer({
 }: {
   showAdminLogin: boolean;
 }) {
-  const button_style: React.CSSProperties = {
-    backgroundColor: "#F79838",
-    color: "black",
-    padding: "10px",
-    fontSize: "15px",
+  const button_login: React.CSSProperties = {
+    backgroundColor: "#4279BC",
+    borderColor: "#94BBE3",
+    borderWidth: "2px",
+    color: "white",
+    fontSize: "19px",
     borderRadius: "35px",
-    width: "170px",
+    width: "150px",
     height: "45px",
-    marginLeft: "5px",
-    justifyContent: "center",
     position: "absolute",
     right: "30px",
     bottom: "15px",
+    fontFamily: "nunito",
+  };
+
+  const button_submit: React.CSSProperties = {
+    backgroundColor: "#F79838",
+    borderColor: "#FECB66",
+    borderWidth: "2px",
+    color: "black",
+    fontSize: "19px",
+    borderRadius: "35px",
+    width: "150px",
+    height: "45px",
+    position: "absolute",
+    right: "30px",
+    bottom: "15px",
+    fontFamily: "nunito",
   };
 
   return (
     <div className="flex grid grid-cols-3 w-full">
-        <footer className="flex items-center">
       {/* image column div */}
-      <div className="ml-10 text-left inline-flex">
+      <div className="ml-20 text-left inline-flex">
         <Image src={Logo} height={197} width={192} alt="Lantern Club Logo" />
-        <div className="self-center ml-20">
-          <p className="py-1">Magazine</p>
-          <p className="py-1">Events</p>
-          <p className="py-1">About Us</p>
-          <p className="py-1">Contact Us</p>
-          <p className="py-1">Resources</p>
+        <div className="self-center ml-8">
+          <p className="py-1 font-nunito text-xl">
+            <Link href="/Magazine" className="hover:underline">
+              Magazine
+            </Link>
+          </p>
+          <p className="py-1 font-nunito text-xl">
+            <Link href="/Events" className="hover:underline">
+              Events
+            </Link>
+          </p>
+          <p className="py-1 font-nunito text-xl">
+            <Link href="/AboutUs" className="hover:underline">
+              About Us
+            </Link>
+          </p>
+          <p className="py-1 font-nunito text-xl">
+            <Link href="/ContactUs" className="hover:underline">
+              Contact Us
+            </Link>
+          </p>
+          <p className="py-1 font-nunito text-xl">
+            <Link href="/ContactUs" className="hover:underline">
+              Resources
+            </Link>
+          </p>
         </div>
       </div>
-
-      {/* other pages div */}
-      <div className="text-left justify-self-left self-center"></div>
-      {/* contact/button column div */}
-      <div className="text-left justify-self-end self-center mr-10">
-        <div>
-          <div className="inline-flex indent-2">
-            <a href="mailto:ststhinkthank@gmail.com">
-              <Image src={Email} height={48} width={48} alt="email icon" />
-            </a>
-            <p className="py-3">ststhinktank@gmail.com</p>
-          </div>
-        </div>
-        <div>
-          <div className="ml-1 inline-flex indent-3">
-            <a
-              href="https://www.instagram.com/thelanterntufts/"
-              target="_blank"
-            >
-              <Image src={Insta} height={40} width={41} alt="instagram icon" />
-            </a>
-            <p className="py-2"> thelanterntufts</p>
-          </div>
-        </div>
-        <div>
+      {/* login/submit column div */}
+      <div>
+        <div className="absolute inset-y-6 right-40 mr-5">
           {showAdminLogin && (
-            <button style={button_style} className="hover:underline">
-              {" "}
-              Admin Login{" "}
+            <button
+              style={button_login}
+              className="hover:underline flex items-center justify-center"
+              onClick={() => signIn("google")}
+            >
+              Login
             </button>
           )}
         </div>
+        <div className="absolute inset-y-20 right-40 mr-5">
+          <button
+            style={button_submit}
+            className="hover:underline flex items-center justify-center"
+          >
+            Submit
+          </button>
+        </div>
       </div>
-      </footer>
+      {/* icon column div */}
+      <div className="justify-self-end self-end">
+        <div className="inline-flex bottom-4 right-20 mr-10">
+          <div className="mr-2">
+            <a href="mailto:ststhinkthank@gmail.com">
+              <Image src={Email} height={45} width={45} alt="email icon" />
+            </a>
+          </div>
+          <a href="https://www.instagram.com/thelanterntufts/" target="_blank">
+            <Image src={Insta} height={45} width={45} alt="instagram icon" />
+          </a>
+        </div>
+      </div>
     </div>
-      );
+  );
 }
