@@ -14,6 +14,7 @@ import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HomepageII from "../components/HomepageII";
+import HomepageIV from "../components/HomepageIV";
 import Link from "next/link";
 
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
       </header>
 
       <HomepageII />
+      <HomepageIV />
 
       <footer className="flex items-center">
         <Footer showAdminLogin={true} />

@@ -11,6 +11,8 @@ const config: Config = {
     colors: {
       "lantern-blue": "#D5E1F3",
       blue: "#86c76a",
+      "button-blue": "#4279BC",
+      "borderblue": "#94BBE3",
       sky: {
         "400": "color: rgb(56 189 248)",
       },
