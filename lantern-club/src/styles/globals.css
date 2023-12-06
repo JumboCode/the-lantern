@@ -69,3 +69,11 @@ footer {
   clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
 
 }
+
+.blue2-gradient {
+  background-image: linear-gradient(to bottom, #D5E1F3, #94BBE3);
+}
+
+.button-blue {
+  color: #4279BC; 
+}
