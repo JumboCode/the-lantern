@@ -25,7 +25,7 @@ export default function HomepageII() {
   return (
     <div>
       <div
-        className="-mt-20 w-full yellow-gradient flex flex-row grid grid-cols-2"
+        className="h-13 -mt-8 w-full yellow-gradient flex flex-row grid grid-cols-2"
         style={background}
       >
         {/* image column div */}

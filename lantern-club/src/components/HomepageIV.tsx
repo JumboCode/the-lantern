@@ -10,7 +10,7 @@ export default function HomepageIV() {
   };
   
   const background: React.CSSProperties = {
-    height: "500px",
+    height: "600px",
   };
   
   const image: React.CSSProperties = {
@@ -20,11 +20,11 @@ export default function HomepageIV() {
   
   return (
     <div
-    className="-mt-20 py-20 max-h-full w-full blue2-gradient flex flex-row grid grid-cols-2"
-    style={background}
+        className="-mt-20 w-full blue2-gradient flex flex-row grid grid-cols-2"
+        style={background}
       >
         {/* image column div */}
-        <div className="relative pl-44 px-20 pt-16">
+        <div className="relative pl-44 px-20 pt-32">
           <div className="mt-6">
           <Image
             src={LanternHead}
@@ -36,7 +36,7 @@ export default function HomepageIV() {
           </div>
         </div>
         {/* text column div */}
-        <div className="relative mt-16 ml-10">
+        <div className="relative mt-32 ml-10">
             <div className="mt-5">
             <p style={header_font}>Who are we?</p>
                 <div className="pt-5 font-nunito text-xl">

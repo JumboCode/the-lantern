@@ -10,6 +10,7 @@ export default function Header({title}:{title:string}){
     return(
         <div>
             <NavBar/>
+
             <header className="flex h-13 bg-gradient-to-r from-gc1 via-gc2 via-gc3 via-gc4 to-gc5 grid grid-rows-3">
                 {/* <div className="flex flex-row m-14"> */}
                     <img className="justify-self-end mr-20" src={lantern.src}/>
