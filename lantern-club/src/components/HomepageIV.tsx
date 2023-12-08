@@ -20,8 +20,8 @@ export default function HomepageIV() {
   
   return (
     <div
-        className="h-48 w-full blue2-gradient flex flex-row grid grid-cols-2"
-        style={background}
+    className="-mt-20 py-20 max-h-full w-full blue2-gradient flex flex-row grid grid-cols-2"
+    style={background}
       >
         {/* image column div */}
         <div className="relative pl-44 px-20 pt-16">

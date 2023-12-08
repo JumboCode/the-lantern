@@ -73,6 +73,10 @@ footer {
   background-image: linear-gradient(to bottom, #FAEBBE, #FECB66);
 }
 
+.orange-gradient {
+  background-image: linear-gradient(to bottom, #F79838, #FECb66);
+}
+
 #triangle {
   clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
 }
@@ -97,3 +101,11 @@ footer {
  #triangle{
   clip-path: polygon(50%,100%,0%,0%,100%,0%);
  }
+
+.button-blue {
+  color: #4279BC; 
+}
+
+.mellow-yellow {
+  background-color: #FECb66;
+}
