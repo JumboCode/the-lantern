@@ -20,7 +20,7 @@ export default function Button({ label }) {
 
   return (
     <div>
-      <button onClick={onClick}>{loading ? "Loading..." : label}</button>
+      <button onClick={onClick}>{loading ? "Testtt Loading..." : label}</button>
 
       {result && <div>{result}</div>}
     </div>
