@@ -10,9 +10,13 @@ const config: Config = {
   theme: {
     colors: {
       "lantern-blue": "#D5E1F3",
-      blue: "#86c76a",
       "button-blue": "#4279BC",
-      "borderblue": "#94BBE3",
+      "button-outline-blue": "#94BBE3",
+      'contact-g1':'#F79838',
+      'contact-g2':'#FECB66',
+      'blue-g1':'#D5E1F3',
+      'blue-g2':'#94BBE3',
+      
       sky: {
         "400": "color: rgb(56 189 248)",
       },
@@ -20,6 +24,7 @@ const config: Config = {
     extend: {
       spacing:{
         '13': '500px',
+        'contact':'470px',
         '2': '8px',
 
       },
