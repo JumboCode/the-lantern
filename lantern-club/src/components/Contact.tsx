@@ -6,20 +6,20 @@ export default function Contact() {
         <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2">
             <h1 className="mt-20 font-coolvetica text-7xl ml-5">Get in touch!</h1>
         
-              <div className="flex flex-col mx-16 mb-16 mt-10 px-7 h-contact bg-gradient-to-b from-contact-g1 to-contact-g2 rounded-3xl">
+              <div className="flex flex-col border-contact-g1 border-4 mx-16 mb-16 mt-10 px-7 h-contact bg-gradient-to-b from-contact-g1 to-contact-g2 rounded-3xl">
                 <div>
                 <h2 className="mt-5 text-nunito text-lg">Name</h2>
-                <input className="mt-2 border-contact-g1 border-2 rounded-full outline-gc2 h-7 contact-input" type="text"></input>
+                <input className="mt-2 border-contact-g1 border-4 rounded-full outline-gc2 h-8 contact-input" type="text"></input>
                 </div>
 
                 <div> 
                 <h2 className="mt-5 text-nunito text-lg">Email</h2>
-                <input className="mt-2 border-contact-g1 border-2 rounded-full outline-gc2 h-7 contact-input" type="text"></input>
+                <input className="mt-2 border-contact-g1 border-4 rounded-full outline-gc2 h-8 contact-input" type="text"></input>
                 </div>
 
                 <div>
                 <h2 className="mt-5 text-nunito text-lg">Message</h2>
-                <input className="mt-2 w-full border-contact-g1 border-2 mr-7 contact-input-height rounded-3xl" type="text"></input>
+                <input className="mt-2 w-full border-contact-g1 border-4 mr-7 contact-input-height rounded-3xl" type="text"></input>
                 <br></br>
                 </div>
                 
