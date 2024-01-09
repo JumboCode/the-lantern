@@ -73,7 +73,7 @@ export default function HomepageIII() {
 
         <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"> 
 
-                whathelome
+                
         
         </div> 
     </div> 
