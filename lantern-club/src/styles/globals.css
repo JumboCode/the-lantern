@@ -106,6 +106,29 @@ footer {
   color: #4279BC; 
 }
 
+.blue {
+  background-color: #4279BC; 
+}
+
+.pale-yellow {
+  background-color: #FAEBBE;
+}
+.pale-yellow-border {
+  border-color: #FAEBBE;
+}
+
 .mellow-yellow {
   background-color: #FECb66;
+}
+
+.mellow-yellow-border {
+  border-color: #FECb66;
+}
+
+.orange {
+  background-color: #F79838;
+}
+
+.orange-border {
+  border-color: #F79838;
 }
