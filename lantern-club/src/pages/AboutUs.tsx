@@ -8,17 +8,14 @@ export default function AboutUs() {
   return (
     <div>
       <header className="flex flex-col items-center">
-        <NavBar />{" "}
-        <p className="flex flex-col justify-center items-center">
-          ABOUT US PAGE!{" "}
-        </p>
+        <NavBar />
       </header>
       <AboutUsII />
       <AboutUsIII />
       <AboutUsIV />
 
       <footer className="flex items-center">
-        <Footer showAdminLogin={false} />
+        <Footer showAdminLogin={false} /> /
       </footer>
     </div>
   );
