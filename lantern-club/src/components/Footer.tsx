@@ -47,6 +47,7 @@ export default function Footer({
   };
 
   return (
+    <div className="bg-[#d5e1f3] p-5 relative bottom-0 w-full h-[272px] text-[#4279bc] flex items-center justify-center">
     <div className="flex grid grid-cols-3 w-full">
       {/* image column div */}
       <div className="ml-20 text-left inline-flex">
@@ -114,6 +115,7 @@ export default function Footer({
           </a>
         </div>
       </div>
+    </div>
     </div>
   );
 }

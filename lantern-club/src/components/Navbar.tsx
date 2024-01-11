@@ -4,18 +4,18 @@ import Logo from "../images/thelantern1.png";
 
 export default function NavBar() {
   return (
-    <div className="navbar">
+    <div className="flex flex-col items-center">
       <center>
         <ul
-          className="flex space-x-16 text-blue-50 bg-lantern-blue text-xl
-          w-screen pb-14 font-kiona"
+          className="flex flex-col md:flex-row space-x-16 text-blue-50 bg-lantern-blue text-xl
+          w-screen w-full pb-14 font-kiona"
         >
           <li className="pl-20 pr-40">
             <Link href="/" className="hover:underline">
               <Image src={Logo} height={250} width={250} alt="lantern logo" />
             </Link>
           </li>
-          <li className="pl-20 pt-14">
+          <li className="pt-14">
             <Link href="/Magazine" className="hover:underline">
               Magazine
             </Link>
