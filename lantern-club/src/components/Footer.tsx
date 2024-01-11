@@ -74,7 +74,7 @@ export default function Footer({
             </Link>
           </p>
           <p className="py-1 font-nunito text-xl">
-            <Link href="/ContactUs" className="hover:underline">
+            <Link href="/Resources" className="hover:underline">
               Resources
             </Link>
           </p>
