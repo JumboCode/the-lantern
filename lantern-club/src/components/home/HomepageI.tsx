@@ -9,7 +9,7 @@ export default function HomepageI({title}:{title:string}){
       }; 
     return(
         <div>
-            <div className="flex h-13 bg-[url('../images/background.png')] grid grid-rows-3">
+            <div className="flex h-13 bg-center bg-cover bg-no-repeat bg-[url('../images/background.png')] grid grid-rows-3">
                 {/* <div className="flex flex-row m-14"> */}
                     <img className="justify-self-end mr-20" src={lantern.src}/>
                     <h1 className="ml-20 justify-self-start text-8xl font-kiona text-right">The Lantern</h1>
