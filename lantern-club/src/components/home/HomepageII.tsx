@@ -1,60 +1,51 @@
-import React from "react";
-import Image from "next/image";
-import Background2 from "../images/background2.png";
-import Define from "../../images/define.png";
-import Arrow from "../../images/arrow.png";
+import React from 'react';
+import Image from 'next/image';
+import Define from '../../images/define.png';
+import Arrow from '../../images/arrow.png';
 
 export default function HomepageII() {
-  const header_font: React.CSSProperties = {
-    fontFamily: "coolvetica",
-    fontSize: "90px",
-    lineHeight: "1",
-  };
-  const background: React.CSSProperties = {
-    height: "500px",
-  };
-  const triangle: React.CSSProperties = {
-    backgroundColor: "#FECB66",
+  const headerFont = {
+    fontFamily: 'coolvetica',
+    fontSize: '90px',
+    lineHeight: '1',
   };
 
-  const image: React.CSSProperties = {
-    minHeight: "300px",
-    minWidth: "300px",
+  const imageStyle = {
+    minHeight: '300px',
+    minWidth: '300px',
+  };
+
+  const triangleStyle = {
+    backgroundColor: '#FECB66',
   };
 
   return (
     <div>
-      <div
-        className="h-13 -mt-8 w-full yellow-gradient flex flex-row grid grid-cols-2"
-        style={background}
-      >
-        {/* image column div */}
-        <div className="relative ml-20 px-20 mt-20">
+      <div className="-mt-20 pt-20 w-full yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2" style={{ height: '500px' }}>
+        {/* Image column */}
+        <div className="flex justify-center items-center px-5">
           <Image
             src={Define}
             height={300}
             width={300}
-            style={image}
+            style={imageStyle}
             alt="Define picture"
           />
         </div>
-        {/* text column div */}
-        <div className="relative mt-20 ml-10 py-20">
-          <p style={header_font}>Check out our latest</p>
-          <p style={header_font}>issue!</p>
-          <div className="flex grid grid-cols-2">
-            <div className="mt-5">
-              <p className="font-nunito text-xl mt-8">Issue No 1 Spring 2023</p>
-            </div>
-            <div className="justify-self-center mr-20">
-              <a href="/Magazine">
-                <Image src={Arrow} height={120} width={120} alt="arrow icon" />
-              </a>
-            </div>
+
+        {/* Text column */}
+        <div className="flex flex-col justify-center items-start px-5">
+          <p style={headerFont}>Check out our latest</p>
+          <p style={headerFont}>issue!</p>
+          <div className="flex flex-row justify-between items-center w-full mt-5">
+            <p className="font-nunito text-xl">Issue No 1 Spring 2023</p>
+            <a href="/Magazine">
+              <Image className='mr-20' src={Arrow} height={120} width={120} alt="arrow icon" />
+            </a>
           </div>
         </div>
       </div>
-      <div className="h-20 w-full" style={triangle} id="triangle"></div>
+      <div className="h-20 w-full" style={triangleStyle} id="triangle"></div>
     </div>
   );
 }
