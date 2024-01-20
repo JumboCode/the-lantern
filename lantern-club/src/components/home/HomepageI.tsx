@@ -8,7 +8,7 @@ export default function HomepageI({title}:{title:string}){
         backgroundColor: "#FECB66",
       }; 
     return(
-        <div className="wrapper">
+        <div className="wrapper drop-shadow-md">
             <div className="flex h-13 bg-center bg-cover bg-no-repeat bg-[url('../images/background.png')] grid grid-rows-3">
                 {/* <div className="flex flex-row m-14"> */}
                     <img className="justify-self-end mr-20" src={lantern.src}/>
