@@ -8,7 +8,7 @@ export default function HomepageI({title}:{title:string}){
         backgroundColor: "#FECB66",
       }; 
     return(
-        <div>
+        <div className="wrapper drop-shadow-md">
             <div className="flex h-13 bg-center bg-cover bg-no-repeat bg-[url('../images/background.png')] grid grid-rows-3">
                 {/* <div className="flex flex-row m-14"> */}
                     <img className="justify-self-end mr-20" src={lantern.src}/>
@@ -17,7 +17,7 @@ export default function HomepageI({title}:{title:string}){
                     <br></br> technology use and production</h1>
                     <img src={logo.src} height={200} width={200} className="flex inline-flex rotate-6 opacity-40 self-end"/>
             </div>            
-            <div className="h-20 w-full bg-center bg-cover bg-no-repeat bg-[url('../images/background.png')]" id="triangle"></div>
+            <div className="h-20 w-full bg-bottom bg-cover bg-no-repeat bg-[url('../images/background.png')]" id="triangle"></div>
         </div>
      )
 }
