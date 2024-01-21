@@ -9,8 +9,6 @@ export default function HomepageIV() {
     lineHeight: "1",
   };
   
-
-  
   const image: React.CSSProperties = {
     minHeight: "280px",
     minWidth: "280px",
