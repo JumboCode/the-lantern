@@ -4,44 +4,44 @@ import Logo from "../images/thelantern1.png";
 
 export default function NavBar() {
   return (
-    <div className="flex flex-col items-center">
-      <center>
-        <ul
-          className="flex flex-col md:flex-row space-x-16 text-blue-50 bg-lantern-blue text-xl
-          w-screen w-full pb-14 font-kiona"
+    <div className="w-screen">
+        <nav
+          className="flex justify-between items-center text-xl pb-14 font-kiona"
         >
-          <li className="pl-20 pr-40">
+          <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0">
             <Link href="/" className="hover:underline">
-              <Image src={Logo} height={250} width={250} alt="lantern logo" />
+              <Image src={Logo} height={250} width={250} alt="lantern logo"layout="intrinsic"/>
             </Link>
-          </li>
-          <li className="pt-14">
+          </div>
+          <ul className="flex flex-row justify-center space-x-8 md:space-x-16 md:pr-20 pt-14 overflow-x-auto">
+          <li>
             <Link href="/Magazine" className="hover:underline">
               Magazine
             </Link>
           </li>
-          <li className="pt-14">
+          <li>
             <Link href="/Events" className="hover:underline">
               Events
             </Link>
           </li>
-          <li className="pt-14">
+          <li>
             <Link href="/AboutUs" className="hover:underline">
               About Us
             </Link>
           </li>
-          <li className="pt-14">
+          <li>
             <Link href="/ContactUs" className="hover:underline">
               Contact Us
             </Link>
           </li>
-          <li className="pt-14">
+          <li>
             <Link href="/Resources" className="hover:underline">
               Resources
             </Link>
           </li>
-        </ul>
-     </center>
+          </ul>
+
+        </nav>
     </div>
   );
 }

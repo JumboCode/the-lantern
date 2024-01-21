@@ -21,7 +21,7 @@ export default function HomepageII() {
 
   return (
     <div>
-      <div className="-mt-20 pt-20 w-full yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2" style={{ height: '500px' }}>
+      <div className="-mt-20 pt-20 w-full yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2">
         {/* Image column */}
         <div className="flex justify-center items-center px-5">
           <Image
