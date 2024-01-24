@@ -1,22 +1,19 @@
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
-import HomepageII from "../components/HomepageII";
-import HomepageIII from "../components/HomepageIII";
-import HomepageIV from "../components/HomepageIV";
-import Link from "next/link";
+import HomepageI from "../components/home/HomepageI";
+import HomepageII from "../components/home/HomepageII";
+import HomepageIII from "../components/home/HomepageIII";
+import HomepageIV from "../components/home/HomepageIV";
 
 export default function Home() {
   return (
-    <div>
-      <Header title="The Lantern"/>
+    <div className="">
+      <NavBar />
+      <HomepageI title="The Lantern"/>
       <HomepageII />
       <HomepageIII />
       <HomepageIV />
-      
-      <footer className="flex items-center">
-        <Footer showAdminLogin={true} />
-      </footer>
+      <Footer showAdminLogin={true} />
     </div>
   );
 }

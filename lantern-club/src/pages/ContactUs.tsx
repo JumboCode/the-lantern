@@ -5,16 +5,11 @@ import MeetTheEBoard from "../components/MeetTheEboard";
 
 export default function ContactUs() {
   return (
-    <div>
-      <header className="flex flex-col">
-        <NavBar />{" "}
-      </header>
+    <>
+      <NavBar />
       <MeetTheEBoard/>
-      <Contact/>
-
-      <footer className="flex items-center">
-        <Footer showAdminLogin={false} />
-      </footer>
-    </div>
+      <Contact/>      
+      <Footer showAdminLogin={false} />
+    </>
   );
 }
