@@ -5,7 +5,7 @@ import Arrow from '../../images/arrow.png';
 
 export default function ResourcesI() {
   const background: React.CSSProperties = {
-    height: "auto",
+    height: "850px",
   };
   
   const headerFontStyle = {
@@ -24,6 +24,9 @@ export default function ResourcesI() {
     width: "150px",
     height: "45px",
     fontFamily: "nunito",
+    margin: "auto",
+    display: "block",
+    marginTop: "20px",
 };
 
   const imageStyle = {
@@ -50,9 +53,9 @@ export default function ResourcesI() {
   return (
     <div>
       <div 
-        className="-mt-10 py-40 px-20 yellow-gradient p-10" style={background}> 
+        className="-mt-20 py-40 px-20 yellow-gradient" style={background}> 
         {/* text side */}
-        <div className="px-4 md:px-0 md:ml-10">
+        <div className="py-20 px-4 md:px-0 md:ml-10">
             <p className="mb-20" style={headerFontStyle}>
                 Our e-List
             </p>
@@ -65,14 +68,14 @@ export default function ResourcesI() {
               </p>
             </div>
         </div>
-        {/* <div className="mb-20"> */}
+        <div className="mt-40">
         <button
                 style={buttonStyle}
                 className="font-nunitosans tracking-wide hover:underline flex items-center justify-center font-bold"
             >
                    Join our e-list!
             </button>
-        {/* </div> */}
+        </div>
         </div>
 
         {/* image side */}

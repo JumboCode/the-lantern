@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import stsresources from '../../images/sts-resources.png';
 import Poster from "../../images/submit-poster.png";
 
 export default function HomepageIII() {
@@ -52,29 +53,36 @@ export default function HomepageIII() {
                 </div>
 
                 {/* Ending box */}
-                <div className="flex-col pale-yellow mellow-yellow-border font-nunito text-xl" style={round_box}>
-                    <p className="font-bold">What is the STS department? </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        <br></br> sed do eiusmod tempor incididunt ut labore et dolore 
-                        <br></br> magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        <br></br> exercitation ullamco laboris nisi ut aliquip ex ea 
-                        <br></br> commodo consequat. Duis aute irure dolor in 
-                        <br></br> reprehenderit in voluptate velit esse cillum dolore eu 
-                        <br></br> fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        <br></br> non proident, sunt in culpa qui offici. Duis aute irure 
-                        <br></br> dolor in reprehenderit in voluptate velit esse cillum
-                        <br></br> dolore eu fugiat nulla pariatur.
-                    </p>
-                    <button
-                        style={buttonStyle}
-                        className="hover:underline flex items-center justify-center" >
-                        Learn More
-                    </button>
+                { /* Text column */ }
+                <div className="flex-col md:flex-row md:grid md:grid-cols-2 pale-yellow mellow-yellow-border font-nunito text-xl" style={round_box}>
+                    <div className="flex flex-col justify-center items-start px-5">
+                        <b className="font-nunitosans font-bold tracking-wide">What is the STS department? </b>
+                        <br></br>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                            sed do eiusmod tempor incididunt ut labore et dolore 
+                            magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea 
+                            commodo consequat. Duis aute irure dolor in 
+                            reprehenderit in voluptate velit esse cillum dolore eu 
+                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui offici. Duis aute irure 
+                            dolor in reprehenderit in voluptate velit esse cillum
+                            dolore eu fugiat nulla pariatur.
+                        </p>
+                    </div>
+                    <div className="flex justify-center items-center px-5">
+                        <Image
+                            src={stsresources.src}
+                            height={2624}
+                            width={4328}
+                            // style={imageStyle}
+                        />
+                        </div>
+                            {/* <img className="justify-self-end mr-20" src={stsresources.src}/> */}
                 </div>
 
             </div>
 
-            
         </div>
     );
 }
