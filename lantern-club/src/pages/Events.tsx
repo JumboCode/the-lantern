@@ -1,5 +1,6 @@
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
+import handler from "/api/content/Events";
 
 export default function Events() {
   return (
@@ -8,6 +9,14 @@ export default function Events() {
       <p>
       EVENT PAGE!
       </p>
+
+      try {
+            await fetch('/api/events', {
+            method: 'GET'
+        })
+      } catch (Error) {
+        console.error(Error)
+      }
       <Footer showAdminLogin={false} />
     </>
   );
