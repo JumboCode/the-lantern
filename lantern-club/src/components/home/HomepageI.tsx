@@ -1,6 +1,5 @@
 import React  from 'react'
 import logo from '../../images/logo.png';
-import NavBar from '../Navbar';
 import lantern from '../../images/lantern.png';
 
 export default function HomepageI({title}:{title:string}){
@@ -8,9 +7,8 @@ export default function HomepageI({title}:{title:string}){
         backgroundColor: "#FECB66",
       }; 
     return(
-        <div className="wrapper drop-shadow-md">
+        <div className="drop-shadow-md">
             <div className="flex h-13 bg-center bg-cover bg-no-repeat bg-[url('../images/background.png')] grid grid-rows-3">
-                {/* <div className="flex flex-row m-14"> */}
                     <img className="justify-self-end mr-20" src={lantern.src}/>
                     <h1 className="ml-20 justify-self-start text-8xl font-kiona text-right">The Lantern</h1>
                     <h1 className="justify-self-end mr-20 mt-40 text-4xl font-nunitolight text-center tracking-wide">A think-tank advocating socially responsible
