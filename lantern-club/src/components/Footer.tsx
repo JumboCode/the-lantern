@@ -14,7 +14,9 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
         {/* Image column */}
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="w-24 h-24 md:w-48 md:h-48 relative">
-            <Image src={Logo} layout="fill" objectFit="contain" alt="Lantern Club Logo" />
+            <Link href="/"> 
+              <Image src={Logo} layout="fill" objectFit="contain" alt="Lantern Club Logo" />
+            </Link>
           </div>
           <div className="mt-4 md:mt-0 md:ml-8 flex flex-col">
             {/* Links here */}
