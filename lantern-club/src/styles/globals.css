@@ -88,7 +88,7 @@ body {
 }
 
  #triangle{
-  clip-path: polygon(50%,100%,0%,0%,100%,0%);
+  clip-path: polygon(50% 100%,0% 0%,100% 0%);
  }
 
 .button-blue {
@@ -108,6 +108,12 @@ body {
 
 .mellow-yellow {
   background-color: #FECb66;
+}
+.contact-input{
+width: 300px;
+}
+.contact-input-height{
+  height:130px;
 }
 
 .mellow-yellow-border {
