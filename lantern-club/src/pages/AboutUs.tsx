@@ -11,7 +11,7 @@ export default function AboutUs() {
       <AboutUsII />
       <AboutUsIII />
       <AboutUsIV />
-      <Footer showAdminLogin={false} /> /
+      <Footer showAdminLogin={false} />
     </div>
   );
 }

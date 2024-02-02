@@ -7,13 +7,13 @@ import HomepageIV from "../components/home/HomepageIV";
 
 export default function Home() {
   return (
-    <>
+    <div className="">
       <NavBar />
       <HomepageI title="The Lantern"/>
       <HomepageII />
       <HomepageIII />
       <HomepageIV />
       <Footer showAdminLogin={true} />
-    </>
+    </div>
   );
 }
