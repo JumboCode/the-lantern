@@ -15,7 +15,7 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="w-24 h-24 md:w-48 md:h-48 relative">
             <Link href="/"> 
-              <Image src={Logo} layout="fill" objectFit="contain" alt="Lantern Club Logo" />
+              <Image src={Logo} alt="Lantern Club Logo" />
             </Link>
           </div>
           <div className="mt-4 md:mt-0 md:ml-8 flex flex-col">
@@ -65,12 +65,12 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
           <div className="flex">
             <a href="mailto:ststhinkthank@gmail.com" className="flex mr-2">
               <div className="w-11 h-10 md:w-12 md:h-12 relative">
-                <Image src={Email} layout="fill" objectFit="contain" alt="email icon" />
+                <Image src={Email} alt="email icon" />
               </div>
             </a>
             <a href="https://www.instagram.com/thelanterntufts/" target="_blank" rel="noopener noreferrer">
               <div className="w-11 h-10 md:w-12 md:h-12 relative">
-                <Image src={Insta} layout="fill" objectFit="contain" alt="instagram icon" />
+                <Image src={Insta} alt="instagram icon" />
               </div>
             </a>
           </div>      
