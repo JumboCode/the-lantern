@@ -33,10 +33,11 @@ async function fetchEventbyID(eventId) {
 
 async function handleFetchEvents(req: NextApiRequest, res: NextApiResponse) {
     try {
-        await fetchAllEvents()
+      const responseData = await fetchAllEvents()
 
-      const responseData = { message: 'events: GET requested received' };
+    //   responseData = { message: 'events: GET requested received' };
       res.status(200).json(responseData);
+      console.log("HERE")
     } catch (error) {
       console.error('Error handling GET request:', error);
       res.status(500).json({ error: 'Internal Server Error' });

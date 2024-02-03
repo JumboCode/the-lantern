@@ -3,14 +3,16 @@ import {handlePostEvent, insertEvent, insertProfile} from '../../../../prisma/in
 import { fetchAllEvents, fetchEventbyID, handleFetchEvents } from '../../../../prisma/read-data';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
+    // res.status(200).json("test")
+    // res.status(200).json(handleFetchEvents(req, res))
   if (req.method === 'GET') {
     // Process a GET request
     
-    handleFetchEvents(req, res)
-    console.log("SUCCESS")
+    res.status(200).json(handleFetchEvents(req, res))
+    // console.log("SUCCESS")
     // display json data for events 
-    const responseData = { message: 'events: GET requested received' };
-    res.status(200).json(responseData);
+    
+
   } else if (req.method === 'POST') {
     // Process a POST request
     handlePostEvent(req, res)
