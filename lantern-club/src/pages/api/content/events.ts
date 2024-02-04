@@ -1,17 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import {handlePostEvent, insertEvent, insertProfile} from '../../../../prisma/insert-data';
-import { fetchAllEvents, fetchEventbyID, handleFetchEvents } from '../../../../prisma/read-data';
+import { handleFetchEvents } from '../../../../prisma/read-data';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-    // res.status(200).json("test")
-    // res.status(200).json(handleFetchEvents(req, res))
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     // Process a GET request
-    
-    res.status(200).json(handleFetchEvents(req, res))
-    // console.log("SUCCESS")
-    // display json data for events 
-    
+    const responseData = await handleFetchEvents()
+    res.status(200).json(responseData);
 
   } else if (req.method === 'POST') {
     // Process a POST request

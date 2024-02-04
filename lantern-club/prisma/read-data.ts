@@ -14,10 +14,8 @@ const prisma = new PrismaClient();
 // gets all events from the events model in mongodb
 
 async function fetchAllEvents() {
-    // try {
-        const events = await prisma.event.findMany()
-        console.log(events)
-    // }
+  const events = await prisma.event.findMany()
+  return events
 }
 
 // gets a specific event from the events model by ID
@@ -28,20 +26,12 @@ async function fetchEventbyID(eventId) {
           id: eventId,
         },
       });
-      console.log(event);
+      // console.log(event);
 }
 
-async function handleFetchEvents(req: NextApiRequest, res: NextApiResponse) {
-    try {
-      const responseData = await fetchAllEvents()
-
-    //   responseData = { message: 'events: GET requested received' };
-      res.status(200).json(responseData);
-      console.log("HERE")
-    } catch (error) {
-      console.error('Error handling GET request:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
+async function handleFetchEvents() {
+    const responseData = await fetchAllEvents()
+    return responseData
 }
 
 export {fetchAllEvents, fetchEventbyID, handleFetchEvents}; 
