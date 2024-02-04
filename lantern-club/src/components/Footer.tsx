@@ -4,10 +4,12 @@ import Image from "next/image";
 import Logo from "../images/lanternicon1.png";
 import Email from "../images/email.png";
 import Insta from "../images/insta.png";
-import { signIn } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react"; 
 import Link from "next/link";
 
 export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) {
+  const { data: session } = useSession(); // Use useSession to check the authentication state
+
   return (
     <div className="font-nunito bg-[#d5e1f3] p-10 w-full text-[#4279bc] flex items-center justify-center">
       <div className="grid w-full max-w-screen-xl grid-cols-1 md:grid-cols-3">
@@ -47,14 +49,23 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
         <div className="flex flex-col md:flex-row items-center md:items-end justify-end p-4">
           {/* Login and Submit buttons here */}
           <div className="flex flex-col pr-10 space-y-4 items-start justify-start">
-            {showAdminLogin && (
+              {!session ? ( // Check if the user is not signed in
+              showAdminLogin && (
+                <button
+                  className="border-[#94BBE3] bg-[#4279BC] border-2 text-white text-lg rounded-full w-36 h-11 hover:underline flex items-center justify-center"
+                  onClick={() => signIn("google")}
+                >
+                  Login
+                </button>
+              )
+            ) : (
               <button
-                className=" border-[#94BBE3] bg-[#4279BC] border-2 text-white text-lg rounded-full w-36 h-11 hover:underline flex items-center justify-center"
-                onClick={() => signIn("google")}
+                className="border-[#94BBE3] bg-[#4279BC] border-2 text-white text-lg rounded-full w-36 h-11 hover:underline flex items-center justify-center"
+                onClick={() => signOut()} // Add signOut onClick event
               >
-                Login
+                Sign Out
               </button>
-            )}
+              )}
             <button
               className="bg-[#F79838] border-[#FECB66] border-2 text-black text-lg rounded-full w-36 h-11 hover:underline flex items-center justify-center"
             >
