@@ -12,20 +12,23 @@ const FileUpload = () => {
     if (!selectedFile) return;
     const formData = new FormData();
     formData.append('file', selectedFile);
-    try {
-      setUploading(true);
-      const response = await axios.post('/api/cloud', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      setFileUrl(response.data.url);
-    } catch (error) {
-      console.error('Error uploading file:', error);
-    } finally {
-      setUploading(false);
-    }
-  };
+      try {
+        setUploading(true);
+        const response = await axios.post('/api/cloud', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        setFileUrl(response.data.url);
+    
+        // Trigger the file listing API after a successful upload
+        await axios.get('/api/listFiles');
+      } catch (error) {
+        console.error('Error uploading file:', error);
+      } finally {
+        setUploading(false);
+      }
+    };
   return (
     <div>
       <input type="file" onChange={handleFileChange} />
