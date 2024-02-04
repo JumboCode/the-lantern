@@ -1,121 +1,81 @@
+
 import React from "react";
 import Image from "next/image";
 import Logo from "../images/lanternicon1.png";
 import Email from "../images/email.png";
 import Insta from "../images/insta.png";
-
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 
-export interface showAdminLogin {
-  state: boolean;
-}
-
-export default function Footer({
-  showAdminLogin,
-}: {
-  showAdminLogin: boolean;
-}) {
-  const button_login: React.CSSProperties = {
-    backgroundColor: "#4279BC",
-    borderColor: "#94BBE3",
-    borderWidth: "2px",
-    color: "white",
-    fontSize: "19px",
-    borderRadius: "35px",
-    width: "150px",
-    height: "45px",
-    position: "absolute",
-    right: "30px",
-    bottom: "15px",
-    fontFamily: "nunito",
-  };
-
-  const button_submit: React.CSSProperties = {
-    backgroundColor: "#F79838",
-    borderColor: "#FECB66",
-    borderWidth: "2px",
-    color: "black",
-    fontSize: "19px",
-    borderRadius: "35px",
-    width: "150px",
-    height: "45px",
-    position: "absolute",
-    right: "30px",
-    bottom: "15px",
-    fontFamily: "nunito",
-  };
-
+export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) {
   return (
-    <div className="bg-[#d5e1f3] p-5 relative bottom-0 w-full h-[272px] text-[#4279bc] flex items-center justify-center">
-    <div className="flex grid grid-cols-3 w-full">
-      {/* image column div */}
-      <div className="ml-20 text-left inline-flex">
-        <Image src={Logo} height={197} width={192} alt="Lantern Club Logo" />
-        <div className="self-center ml-8">
-          <p className="py-1 font-nunito text-xl">
-            <Link href="/Magazine" className="hover:underline">
+    <div className="font-nunito bg-[#d5e1f3] p-10 w-full text-[#4279bc] flex items-center justify-center">
+      <div className="grid w-full max-w-screen-xl grid-cols-1 md:grid-cols-3">
+        {/* Image column */}
+        <div className="flex flex-col md:flex-row items-center md:items-start">
+          <div className="w-24 h-24 md:w-48 md:h-48 relative">
+            <Link href="/"> 
+              <Image src={Logo} alt="Lantern Club Logo" />
+            </Link>
+          </div>
+          <div className="mt-4 md:mt-0 md:ml-8 flex flex-col">
+            {/* Links here */}
+            <Link href="/Magazine" className="py-1 text-xl hover:underline">
               Magazine
             </Link>
-          </p>
-          <p className="py-1 font-nunito text-xl">
-            <Link href="/Events" className="hover:underline">
+            <Link href="/Events" className="py-1 text-xl hover:underline">
               Events
             </Link>
-          </p>
-          <p className="py-1 font-nunito text-xl">
-            <Link href="/AboutUs" className="hover:underline">
+            <Link href="/AboutUs" className="py-1 text-xl hover:underline">
               About Us
             </Link>
-          </p>
-          <p className="py-1 font-nunito text-xl">
-            <Link href="/ContactUs" className="hover:underline">
+            <Link href="/ContactUs" className="py-1 text-xl hover:underline">
               Contact Us
             </Link>
-          </p>
-          <p className="py-1 font-nunito text-xl">
-            <Link href="/Resources" className="hover:underline">
+            <Link href="/Resources" className="py-1 text-xl hover:underline">
               Resources
             </Link>
-          </p>
-        </div>
-      </div>
-      {/* login/submit column div */}
-      <div>
-        <div className="absolute inset-y-6 right-40 mr-5">
-          {showAdminLogin && (
-            <button
-              style={button_login}
-              className="hover:underline flex items-center justify-center"
-              onClick={() => signIn("google")}
-            >
-              Login
-            </button>
-          )}
-        </div>
-        <div className="absolute inset-y-20 right-40 mr-5">
-          <button
-            style={button_submit}
-            className="hover:underline flex items-center justify-center"
-          >
-            Submit
-          </button>
-        </div>
-      </div>
-      {/* icon column div */}
-      <div className="justify-self-end self-end">
-        <div className="inline-flex bottom-4 right-20 mr-10">
-          <div className="mr-2">
-            <a href="mailto:ststhinkthank@gmail.com">
-              <Image src={Email} height={45} width={45} alt="email icon" />
-            </a>
           </div>
-          <a href="https://www.instagram.com/thelanterntufts/" target="_blank">
-            <Image src={Insta} height={45} width={45} alt="instagram icon" />
-          </a>
+        </div>
+
+        {/* Empty column for spacing or additional content */}
+        <div>
+        </div>
+        
+        
+        {/* Login/Submit column */}
+        <div className="flex flex-col md:flex-row items-center md:items-end justify-end p-4">
+          {/* Login and Submit buttons here */}
+          <div className="flex flex-col pr-10 space-y-4 items-start justify-start">
+            {showAdminLogin && (
+              <button
+                className=" border-[#94BBE3] bg-[#4279BC] border-2 text-white text-lg rounded-full w-36 h-11 hover:underline flex items-center justify-center"
+                onClick={() => signIn("google")}
+              >
+                Login
+              </button>
+            )}
+            <button
+              className="bg-[#F79838] border-[#FECB66] border-2 text-black text-lg rounded-full w-36 h-11 hover:underline flex items-center justify-center"
+            >
+              Submit
+            </button>
+          </div>
+
+          <div className="flex">
+            <a href="mailto:ststhinkthank@gmail.com" className="flex mr-2">
+              <div className="w-11 h-10 md:w-12 md:h-12 relative">
+                <Image src={Email} alt="email icon" />
+              </div>
+            </a>
+            <a href="https://www.instagram.com/thelanterntufts/" target="_blank" rel="noopener noreferrer">
+              <div className="w-11 h-10 md:w-12 md:h-12 relative">
+                <Image src={Insta} alt="instagram icon" />
+              </div>
+            </a>
+          </div>      
         </div>
       </div>
-    </div>
     </div>
   );
 }
