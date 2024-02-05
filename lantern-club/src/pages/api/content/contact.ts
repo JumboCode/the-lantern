@@ -7,6 +7,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     // Process a POST request
     // handlePostProfile(req, res);
     const responseData = { message: 'profile: POST requested received' };
+    // Nodemailer
     res.status(200).json(responseData);
   } else {
     // Handle any other HTTP method
