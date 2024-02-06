@@ -27,7 +27,7 @@ export default function HomepageIII() {
 
     const headerFontStyle = {
         fontFamily: "coolvetica",
-        fontSize: "90px",
+        // fontSize: "90px",
         lineHeight: "1",
     };
 
@@ -46,8 +46,8 @@ export default function HomepageIII() {
         <div>
             <div className="-mt-20 py-20 px-20 blue2-gradient" style={background}>
                 {/* text side */}
-                <div className="py-10 px-4 md:px-0 md:ml-10 pb-14">
-                    <p style={headerFontStyle}>
+                <div className="py-10 px-4 md:px-0 pb-14">
+                    <p className="md:text-8xl text-6xl" style={headerFontStyle}>
                         What is the STS Department?
                     </p>
                 </div>
