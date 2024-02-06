@@ -46,43 +46,116 @@ export default function HomepageIII() {
         <div>
             <div className="-mt-20 py-20 px-20 blue2-gradient" style={background}>
                 {/* text side */}
-                <div className="px-4 md:px-0 md:ml-10 pb-14">
+                <div className="py-10 px-4 md:px-0 md:ml-10 pb-14">
                     <p style={headerFontStyle}>
-                        STS Department
+                        What is the STS Department?
                     </p>
                 </div>
 
                 {/* Ending box */}
-                { /* Text column */ }
-                <div className="flex-col md:flex-row md:grid md:grid-cols-2 pale-yellow mellow-yellow-border font-nunito text-xl" style={round_box}>
-                    <div className="flex flex-col justify-center items-start px-5">
-                        <b className="font-nunitosans font-bold tracking-wide">What is the STS department? </b>
-                        <br></br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                            sed do eiusmod tempor incididunt ut labore et dolore 
-                            magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea 
-                            commodo consequat. Duis aute irure dolor in 
-                            reprehenderit in voluptate velit esse cillum dolore eu 
-                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                            non proident, sunt in culpa qui offici. Duis aute irure 
-                            dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla pariatur.
-                        </p>
-                    </div>
-                    <div className="flex justify-center items-center px-5">
-                        <Image
-                            src={stsresources.src}
-                            height={2624}
-                            width={4328}
-                            // style={imageStyle}
-                        />
+
+                <div className="flex-col pale-yellow mellow-yellow-border font-nunito text-xl" style={round_box}>
+                    <div className="flex-col md:flex-row" >
+                        {/* Row 1 */}
+                        <div className="flex flex-row justify-center items-start px-5">
+                            <div className="pr-10 pb-10">
+                                <p>From the <u>Tufts University School of Arts & Sciences STS 
+                                    Department website</u>: Science, Technology, and Society 
+                                    draws on humanities and social sciences approaches to 
+                                    study science and technology in their social context. We 
+                                    have more than 40 faculty affiliates across Tufts 
+                                    University - from anthropology, biology, classics, 
+                                    education, engineering, history, mathematics, music, 
+                                    philosophy, physics, political science, urban and 
+                                    environmental policy and planning, and many more. This 
+                                    makes the STS program a site for rich cross-pollination 
+                                    of ideas and expertise. An interdisciplinary major and 
+                                    minor have been available since Spring 2016. (Tufts 
+                                    University)
+                                </p>
+                            </div>
+                            
+                            <br></br>
+                            <br></br>
+                            {/* <div className="pl-8" > */}
+                                {/* Placeholder image while we wait for the real images from the google drive */}
+                                <Image
+                                    src={stsresources.src}
+                                    height={1968}
+                                    width={3246}
+                                    // style={imageStyle}
+                                />
+                            {/* </div> */}
+                            
                         </div>
+                        <br></br>
+                            <p></p>
+                    </div>
+                    
+                    {/* Row 2  */}
+                    <div className="flex-col md:flex-row" >
+                        <div className="flex flex-row justify-center items-start px-5">
+                            
+                            <Image
+                                src={stsresources.src}
+                                height= {1968}
+                                width={3246}
+                                // style={imageStyle}
+                            />
+                            <br></br>
+                            <br></br>
+                            <div className="pl-10 py-10">
+                            <p> The 10-course <u><a href="https://as.tufts.edu/science-technology-and-society/requirements/babs-science-technology-and-society-co-major">co-major</a></u> must be declared in conjunction 
+                                with another major, and pairs very well with pairs well 
+                                with science, humanities, social science, or visual and 
+                                performing arts majors (Tufts University). The 6-
+                                course <u><a href="https://as.tufts.edu/science-technology-and-society/requirements/minor-science-technology-and-society">minor</a></u> may be of particular interest to students 
+                                majoring in the natural sciences or enrolled in the School 
+                                of Engineering as a complement to their major technical 
+                                fields (Tufts University).
+                            </p>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    {/* Row 3 */}
+                    <div className="flex-col md:flex-row" >
+                        <div className="flex flex-row justify-center items-start px-5">
+                        <div className="pr-12 py-10">
+                            <p> Exciting and interdisciplinary courses are offered in the 
+                                STS department---and cross-listed across multiple 
+                                disciplines---each semester. Some recently offered 
+                                examples include STS 32/ANTH 32 Introduction to the 
+                                Anthropology of Science & Technology; STS 50-01 STS 
+                                Lunch Seminar Series; STS 148/ANTH 148 Medical 
+                                Anthropology; STS 12/HIST 12 History of Science, 
+                                Technology, and Medicine; PHIL 0057/STS 0057/ENP 
+                                0028 Philosophy of Technology; CS 0028 Cyber-Security 
+                                & Cyber-Warfare; ENG 0160 Environmental Justice and 
+                                World Literature; SOC 0108 Epidemics: Plagues, People, 
+                                and Politics. </p>
+                         </div>                       
+                        <br></br>
+
+                            <Image
+                                src={stsresources.src}
+                                height={1968}
+                                width={3246}
+                                // style={imageStyle}
+                            />
+                        </div>
+
+                    </div>
+                        
+                    
                             {/* <img className="justify-self-end mr-20" src={stsresources.src}/> */}
                 </div>
-
+                    
             </div>
 
         </div>
+        
     );
 }
