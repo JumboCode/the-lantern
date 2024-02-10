@@ -1,5 +1,6 @@
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import { useEffect, useState } from 'react';
 
 type event = {
@@ -38,7 +39,7 @@ export default function Events() {
   return (
     <>
       <NavBar />
-      <p>EVENT PAGE!</p>
+      <Header title="Events"/>
         {/* <div> */}
 
        {AllEvents && AllEvents.map((oneEvent: event) => {
