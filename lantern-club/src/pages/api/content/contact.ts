@@ -1,47 +1,36 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import {handlePostProfile, insertEvent, insertProfile} from '../../../../prisma/insert-data';
-import { send } from 'process';
 import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
 import { Email } from './email';
-import Contact from "../../../components/Contact";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     // Process a POST request
     // handlePostProfile(req, res);
-    const responseData = { message: 'profile: POST requested received' };
-    const data = req.body;
+    const {name, email, message} = req.body
     
-
     // from nodemailer website WE DONT K NOW WHAT THIS DO
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,
         auth: {
-          user: 'lanternthinktank@gmail.com',
-          pass: 'Password123!!',
+          user: process.env.EMAIL_USER, 
+          pass: process.env.EMAIL_PASS, 
         },
-      });
+    });
       
-      const emailHtml = render(Email("hi!"));
-      
-      const options = {
-        from: 'lanternthinktank@gmail.com',
-        to: 'halle.hau@tufts.edu',
-        subject: 'lantern email test :D',
-        html: data,
-      };
-      
-        transporter.sendMail(options, function(err, info){
-          if(err){
-            console.log(err)
-            return;
-          }
-         });
-    // Nodemailer stuff
+    const emailHtml = render(Email("hi!"));
     
+    const options = {
+      from: 'lanternthinktank@gmail.com',
+      to: 'lanternthinktank@gmail.com',
+      subject: 'lantern email test :D',
+      text: `${name}, ${email}, ${message}`
+      // html: data,
+    };
+    
+    const responseData = await transporter.sendMail(options)    
     res.status(200).json(responseData);
   } else {
     // Handle any other HTTP method

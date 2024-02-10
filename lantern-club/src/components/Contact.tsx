@@ -1,23 +1,28 @@
 import React, { useState, FormEvent } from "react"
-import { render } from '@react-email/render';
-import nodemailer from 'nodemailer';
-// import { Email } from './email';
 
 export default function Contact() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
- 
-    const formData = new FormData(event.currentTarget)
-    const response = await fetch('/api/content/contact', {
-      method: 'POST',
-      body: formData,
-    })
+        event.preventDefault()
+        setIsLoading(true);
 
-    // Handle response if necessary
-    const data = await response.json()
-    // console.log("Submit button pressed!")
-}
+        // formData ~ an object with string keys and string values
+        const formData: { [key: string]: string } = {};
+        new FormData(event.currentTarget).forEach((value, key) => {
+            formData[key] = value.toString();
+        });
+
+        fetch('/api/content/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+
+        setIsLoading(false);
+    }
+
     return (
  <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2">
  <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"> 
