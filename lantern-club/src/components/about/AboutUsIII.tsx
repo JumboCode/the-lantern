@@ -30,7 +30,7 @@ export default function AboutUsIII() {
   return (
     <div>
       <div
-        className="-mt-20 py-40 px-20 orange-gradient"
+        className="-mt-20 py-60 px-20 orange-gradient"
         style={background}
       > 
         <p style={header_font}>Who is STS?</p>
