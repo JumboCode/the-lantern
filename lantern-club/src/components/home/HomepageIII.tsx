@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Poster from "../../images/submit-poster.png";
+import Buttonv2 from "../Buttonv2";
 
 export default function HomepageIII() {
     const buttonStyle = {
@@ -25,6 +26,10 @@ export default function HomepageIII() {
         fontSize: "90px",
         lineHeight: "1",
     };
+    const handleButtonClick = () => {
+        // TODO
+        console.log('Button clicked!');
+      };
 
     return (
         <div>
@@ -37,12 +42,13 @@ export default function HomepageIII() {
                     <p className="py-5 font-nunito text-xl">
                         Did you write a paper for an STS course that you’re passionate about? Or do you have an idea that you’re excited to share? Submit your work to The Lantern Magazine and join the conversation! We invite essays, opinion pieces, book reviews, and research.
                     </p>
-                    <button
+                    {/* <button
                         style={buttonStyle}
                         className="hover:underline flex items-center justify-center"
                     >
                         Submit
-                    </button>
+                    </button> */}
+                    <Buttonv2 text="Submit" action={handleButtonClick} color="blue" width="w-40" />
                 </div>
 
                 {/* image side */}
