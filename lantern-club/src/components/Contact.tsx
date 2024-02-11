@@ -3,8 +3,8 @@ import React from "react"
 export default function Contact() {
 
     return (
-        <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2">
-            <h1 className="mt-20 font-coolvetica text-7xl ml-12">Get in touch!</h1>
+        <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2 -mt-20">
+            <h1 className="mt-40 font-coolvetica text-7xl ml-12">Get in touch!</h1>
         
               <div className="flex flex-col border-contact-g1 border-4 mx-16 mb-16 mt-10 px-7 h-contact bg-gradient-to-b from-contact-g1 to-contact-g2 rounded-3xl">
                 <div>
