@@ -6,10 +6,8 @@ import { Email } from './email';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     // Process a POST request
-    // handlePostProfile(req, res);
     const {name, email, message} = req.body
     
-    // from nodemailer website WE DONT K NOW WHAT THIS DO
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -19,15 +17,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           pass: process.env.EMAIL_PASS, 
         },
     });
-      
-    const emailHtml = render(Email("hi!"));
-    
+
+    // Email format
     const options = {
       from: 'lanternthinktank@gmail.com',
-      to: 'lanternthinktank@gmail.com',
-      subject: 'lantern email test :D',
-      text: `${name}, ${email}, ${message}`
-      // html: data,
+      to: 'halle.hau@tufts.edu',
+      subject: `Lantern Contact Form Response from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     };
     
     const responseData = await transporter.sendMail(options)    
