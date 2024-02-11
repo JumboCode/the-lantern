@@ -38,7 +38,7 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width }) => {
 
   return (
     <button
-      className={`py-1.5 ${width} font-nunitosans items-center tracking-wide rounded-full border-2 font-bold ${defaultBackgroundColor} ${borderColor} ${defaultTextColor} ${hoverBackgroundColor} ${hoverBorderColor} ${hoverTextColor} shadow-md`}
+      className={`py-2 ${width} font-nunitosans items-center tracking-wide text-lg rounded-full border-2 font-bold ${defaultBackgroundColor} ${borderColor} ${defaultTextColor} ${hoverBackgroundColor} ${hoverBorderColor} ${hoverTextColor} shadow-md`}
       onClick={action}
     >
       {text}

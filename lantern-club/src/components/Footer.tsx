@@ -6,8 +6,14 @@ import Email from "../images/email.png";
 import Insta from "../images/insta.png";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
+import Buttonv2 from "./Buttonv2";
 
 export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) {
+        const handleButtonClick = () => {
+                // TODO
+                console.log('Button clicked!');
+              };
+
   return (
     <div className="font-nunito bg-[#d5e1f3] p-10 w-full text-[#4279bc] flex items-center justify-center">
       <div className="grid w-full max-w-screen-xl grid-cols-1 md:grid-cols-3">
@@ -46,20 +52,24 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
         {/* Login/Submit column */}
         <div className="flex flex-col md:flex-row items-center md:items-end justify-end p-4">
           {/* Login and Submit buttons here */}
-          <div className="flex flex-col pr-10 space-y-4 items-start justify-start">
+          <div className="font-nunitosans flex flex-col pr-10 space-y-4 items-start justify-start">
             {showAdminLogin && (
-              <button
-                className=" border-[#94BBE3] bg-[#4279BC] border-2 text-white text-lg rounded-full w-36 h-11 hover:underline flex items-center justify-center"
-                onClick={() => signIn("google")}
-              >
-                Login
-              </button>
+        //       <button
+        //         className=" border-[#94BBE3] bg-[#4279BC] border-2 text-white text-lg rounded-full w-36 h-11 hover:underline flex items-center justify-center"
+        //         onClick={() => signIn("google")}
+        //       >
+        //         Login
+        //       </button>
+              <Buttonv2 text="Admin Login" action={() => signIn("google")} color="blue" width="w-40" />
+
             )}
-            <button
+            {/* <button
               className="bg-[#F79838] border-[#FECB66] border-2 text-black text-lg rounded-full w-36 h-11 hover:underline flex items-center justify-center"
             >
               Submit
-            </button>
+            </button> */}
+            <Buttonv2 text="Submit Work" action={handleButtonClick} color="orange" width="w-40" />
+
           </div>
 
           <div className="flex">
