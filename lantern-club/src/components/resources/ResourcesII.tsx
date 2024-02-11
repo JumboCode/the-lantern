@@ -80,7 +80,7 @@ export default function ResourcesI() {
         </svg> */}
         </div>
         {/* Button */}
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScoIJSqdbxqKcswFmnCiFj65L2_P7dqogSpGLegc0EaORK9MA/viewform">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScoIJSqdbxqKcswFmnCiFj65L2_P7dqogSpGLegc0EaORK9MA/viewform" target="_blank">
         <div className="flex flex-col justify-around items-center max-w-screen-md mx-auto">
         <button
           style={buttonStyle}
