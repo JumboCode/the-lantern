@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FileUpload from "../components/FileUpload";
+import FileUpload from "../components/magazine/FileUpload";
 import Header from "../components/Header";
 
 export default function Magazine() {
