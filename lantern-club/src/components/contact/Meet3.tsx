@@ -12,12 +12,6 @@ export default function MeetTheEBoard(){
     const carouselRef = useRef<HTMLDivElement>(null);
 
     // Function to scroll the carousel by a specified number of items
-    const scrollCarousel = (itemCount: number) => {
-        if (carouselRef.current) {
-            const scrollAmount = carouselRef.current.offsetWidth * (itemCount / 3); 
-            carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-    };
 
     const cardStyle = {
         height: '500px',

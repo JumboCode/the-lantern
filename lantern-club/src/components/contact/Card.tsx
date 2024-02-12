@@ -20,8 +20,16 @@ export default function Card(props: any) {
         lineHeight: '1.4',
     };
 
+    const cardStyle = {
+        height: '500px',
+        width: '350px',
+        borderWidth: '3px',
+        borderRadius: "30px",
+        justifyContent: "center",
+    }; 
+
     return(
-        <div>
+        <div className={`${props.color} p-3 shadow-xl justify-center items-center text-center`} style={cardStyle}>
             <p style={nameFont}>{props.name}</p>
             <p style={proFont}>{props.pronouns}</p><br />
             <p style={textFont}><b>{props.title}</b></p>
