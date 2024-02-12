@@ -4,6 +4,7 @@ import axios from 'axios';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FileUpload from "../components/FileUpload";
+import Header from "../components/Header";
 
 export default function Magazine() {
   const [fileList, setFileList] = useState([]);
@@ -22,7 +23,7 @@ export default function Magazine() {
   }, []);
 
   return (
-    <>
+    <div>
       <NavBar />
       <FileUpload />
 
@@ -41,6 +42,6 @@ export default function Magazine() {
       </ul>
       <Footer showAdminLogin={true} />
 
-    </>
+    </div>
   );
 }

@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: "NUNITO";
-  src: url("../fonts/NunitoSans_10pt_Condensed-Regular.ttf");
+  src: url("../fonts/NunitoSans_10pt-Light.ttf");
 }
 @font-face {
   font-family: "NUNITO-REG";
@@ -74,6 +74,10 @@ body {
   background-image: linear-gradient(to bottom, #D5E1F3, #94BBE3);
 }
 
+.true-blue-gradient {
+  background-image: linear-gradient(to bottom, #4279BC, #94BBE3);
+}
+
 /* .blue-gradient {
   background-image: linear-gradient(to right, #4E78C8, #E3B54C);
 
@@ -87,9 +91,9 @@ body {
   color: #4279BC; 
 }
 
- #triangle{
-  clip-path: polygon(50% 100%,0% 0%,100% 0%);
- }
+#triangle {
+clip-path: polygon(50% 100%,0% 0%,100% 0%);
+}
 
 .button-blue {
   color: #4279BC; 
@@ -97,6 +101,10 @@ body {
 
 .blue {
   background-color: #4279BC; 
+}
+
+.blue-border {
+  border-color: #94BBE3; 
 }
 
 .pale-yellow {
@@ -126,4 +134,17 @@ width: 300px;
 
 .orange-border {
   border-color: #F79838;
+}
+
+.carousel {
+  display: flex;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 100%;
 }

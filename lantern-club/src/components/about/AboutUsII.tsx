@@ -32,7 +32,7 @@ export default function AboutUsII() {
   return (
     <div>
       <div
-        className="pt-20 yellow-gradient p-20"
+        className="-mt-20 pt-20 yellow-gradient p-20"
         style={background}
       > 
         <p className="mb-20" style={header_font}>Who are we?</p>
