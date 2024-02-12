@@ -25,6 +25,7 @@ export default function Magazine() {
   return (
     <div>
       <NavBar />
+      <Header title='Magazine'/>
       <FileUpload />
 
 
