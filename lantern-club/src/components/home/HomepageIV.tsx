@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import LanternHead from "../../images/lantern-head.png";
+import Buttonv2 from "../Buttonv2";
 
 export default function HomepageIV() {
   const headerFontStyle = {
@@ -8,6 +9,10 @@ export default function HomepageIV() {
     fontSize: "4rem",
     lineHeight: "1.2", 
   };
+  const handleButtonClick = () => {
+        // TODO
+        console.log('Button clicked!');
+      };
 
   return (
     <div className="w-full blue2-gradient flex flex-col md:grid md:grid-cols-2 -mt-20 pb-20 pt-20 md:pt-0">
@@ -32,8 +37,9 @@ export default function HomepageIV() {
           </div>
           <div className="mt-5">
             <a href="/AboutUs">
-              <button className="font-nunitosans tracking-wide bg-button-blue text-white font-bold py-2 px-9 rounded-full border-2 border-borderblue"> 
-              Learn More</button>
+              {/* <button className="font-nunitosans tracking-wide bg-button-blue text-white font-bold py-2 px-9 rounded-full border-2 border-borderblue"> 
+              Learn More</button> */}
+              <Buttonv2 text="Learn More" action={handleButtonClick} color="blue" width="w-40" />
             </a>
           </div>
         </div>

@@ -17,7 +17,7 @@ async function insertEvent() {
     const createEvent = await prisma.event.create({ data: eventsData });
 }
 
-//create a separate insert function so that everything isn't inserted at the same time
+// create a separate insert function so that everything isn't inserted at the same time
 
 async function insertProfile() {
 

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Define from '../../images/define.png';
 import Arrow from '../../images/arrow.png';
 
-export default function HomepageII() {
+export default function ResourcesI() {
   const headerFont = {
     fontFamily: 'coolvetica',
     fontSize: '90px',

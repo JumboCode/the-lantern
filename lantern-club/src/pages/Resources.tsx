@@ -1,14 +1,19 @@
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ResourcesII from "../components/resources/ResourcesII";
+import ResourcesIII from "../components/resources/ResourcesIII";
+
+import Header from "../components/Header";
 
 export default function Resources() {
   return (
     <>
       <NavBar />
-      <p> RESOURCES PAGE! </p>
-      <footer className="flex items-center">
-        <Footer showAdminLogin={true} />
-      </footer>
+      <Header title="Resources"/>
+      <ResourcesII />
+      <ResourcesIII />
+      <Footer showAdminLogin={true} />
     </>
   );
 }
+

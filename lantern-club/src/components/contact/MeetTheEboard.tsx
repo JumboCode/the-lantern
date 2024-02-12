@@ -31,7 +31,7 @@ export default function MeetTheEBoard() {
     
     return(
         <div>
-            <div className="pt-20 w-full yellow-gradient">
+            <div className="-mt-20 pt-32 w-full yellow-gradient">
                 <div className="ml-5">
                     <h1 className="font-coolvetica text-7xl ml-12">Meet the E-Board
                     <a href="/ContactUs" className="font-nunito underline text-2xl ml-7">edit</a>
