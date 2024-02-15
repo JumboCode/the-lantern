@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Nika Lea Tomicic",
+        "pronouns": "she/her",
+        "title": "Editor-in-Chief",
+        "email": "nika_lea.tomicic@tufts.edu",
+        "major": "Sociology + STS",
+        "image": "ava1.jpg"
+    },
+    {
+        "name": "Kayla Fang",
+        "pronouns": "she/her",
+        "title": "Outreach & Partnerships",
+        "email": "kfang1226@gmail.com",
+        "major": "Applied Math + STS",
+        "image": "hannah1.jpeg"
+    },
+    {
+        "name": "Maddie Cortesi",
+        "pronouns": "she/her",
+        "title": "Graphic Design & Marketing",
+        "email": "madeline.cortesi@tufts.edu",
+        "major": "Sociology + STS",
+        "image": "ava2.jpg"
+    },
+    {
+        "name": "Fourth Member",
+        "pronouns": "their/pronouns",
+        "title": "Fourth Title",
+        "email": "fourth.email@example.com",
+        "major": "Fourth Major",
+        "image": "hannah2.jpg"
+    },
+    {
+        "name": "Fifth Member",
+        "pronouns": "their/pronouns",
+        "title": "Fifth Title",
+        "email": "fifth.email@example.com",
+        "major": "Fifth Major",
+        "image": "ava3.jpg"
+    },
+    {
+        "name": "Sixth Member",
+        "pronouns": "their/pronouns",
+        "title": "Sixth Title",
+        "email": "sixth.email@example.com",
+        "major": "Sixth Major",
+        "image": "hannah3.jpg"
+    }
+]
