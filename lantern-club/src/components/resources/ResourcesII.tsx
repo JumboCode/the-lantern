@@ -54,11 +54,11 @@ export default function ResourcesI() {
         {/* text side */}
         <div className="py-20 px-4 md:px-0 md:ml-10">
             <p className="py-5 mb-10 md:text-8xl text-6xl" style={headerFontStyle}>
-                Our e-List
+                Our E-List
             </p>
             <div className="flex-col md:flex-row md:grid md:grid-cols-2 orange mellow-yellow-border font-nunito text-xl" style={round_box}>
             <div className="flex flex-col justify-center items-start px-10">
-              <p> Our E-list is the most direct way for members to stay updated 
+              <p> Our E-List is the most direct way for members to stay updated 
                 with announcements about club events like discussion groups and
                 movie screenings, our magazine publishing timeline and meetings, 
                 submission opportunities, professor talks, local STS 

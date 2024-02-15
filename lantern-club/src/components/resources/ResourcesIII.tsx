@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import stsresources from '../../images/sts-resources.png';
+import r1 from '../../images/r1.png';
+import r2 from '../../images/r2.png';
+import r3 from '../../images/r3.png';
 import Poster from "../../images/submit-poster.png";
 
 export default function HomepageIII() {
@@ -80,7 +83,7 @@ export default function HomepageIII() {
                             {/* <div className="pl-8" > */}
                                 {/* Placeholder image while we wait for the real images from the google drive */}
                                 <Image
-                                    src={stsresources.src}
+                                    src={r1}
                                     height={1968}
                                     width={3246}
                                     // style={imageStyle}
@@ -89,7 +92,7 @@ export default function HomepageIII() {
                             
                         </div>
                         <br></br>
-                            <p></p>
+                        <p></p>
                     </div>
                     
                     {/* Row 2  */}
@@ -97,7 +100,7 @@ export default function HomepageIII() {
                         <div className="flex flex-row justify-center items-start px-5">
                             
                             <Image
-                                src={stsresources.src}
+                                src={r2}
                                 height= {1968}
                                 width={3246}
                                 // style={imageStyle}
@@ -117,6 +120,8 @@ export default function HomepageIII() {
                             </div>
 
                         </div>
+                        <br></br>
+                        <p></p>
                         
                     </div>
 
@@ -138,9 +143,10 @@ export default function HomepageIII() {
                                 and Politics. </p>
                          </div>                       
                         <br></br>
+                        <br></br>
 
                             <Image
-                                src={stsresources.src}
+                                src={r3}
                                 height={1968}
                                 width={3246}
                                 // style={imageStyle}
@@ -148,9 +154,6 @@ export default function HomepageIII() {
                         </div>
 
                     </div>
-                        
-                    
-                            {/* <img className="justify-self-end mr-20" src={stsresources.src}/> */}
                 </div>
                     
             </div>
