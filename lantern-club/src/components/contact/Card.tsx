@@ -13,8 +13,8 @@ interface CardProps {
     title: string;
     email: string;
     major: string;
-    color?: string;
-    image: string; 
+    pictureURL: string; 
+    color?: string; 
 }
 
 interface ImageMap {
@@ -30,7 +30,7 @@ const imageMap: ImageMap = {
     "hannah3.jpg": Image6,
 };
 
-const Card = ({ name, pronouns, title, email, major, image, color }: CardProps): JSX.Element => {
+const Card = ({ name, pronouns, title, email, major, pictureURL, color }: CardProps): JSX.Element => {
     const nameFont = {
         fontFamily: 'coolvetica',
         fontSize: '40px',
@@ -65,7 +65,7 @@ const Card = ({ name, pronouns, title, email, major, image, color }: CardProps):
             <p style={textFont}>{email}</p>
             <p style={textFont}>{major}</p>
             <div className="pt-7 flex justify-center">
-                <Image src={imageMap[image]} height={225} width={225} className="rounded-3xl" alt="Officer image"/>
+                <Image src={imageMap[pictureURL]} height={225} width={225} className="rounded-3xl" alt="Officer image"/>
             </div>
         </div>
     );
