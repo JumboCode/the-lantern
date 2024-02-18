@@ -3,7 +3,6 @@ import React from "react"
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import Image from "next/image"
 import Image1 from "../../images/ava1.jpg"
 import Image2 from "../../images/hannah1.jpeg"
 import Image3 from "../../images/ava2.jpg"

@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
 
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FileUpload from "../components/magazine/FileUpload";
 import Header from "../components/Header";
+import EventOverlay from "../components/EventOverlay";
 
 export default function Magazine() {
   const [fileList, setFileList] = useState([]);
@@ -21,6 +22,8 @@ export default function Magazine() {
 
     fetchFileList();
   }, []);
+
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div>
@@ -41,6 +44,14 @@ export default function Magazine() {
           );
         })}
       </ul>
+
+      <Fragment>
+        <button onClick={() => setShowModal(true)}>
+          CLICK CLICK
+        </button>
+        <EventOverlay isVisible={showModal} onClose={() => {setShowModal(false)}} />
+      </Fragment>
+
       <Footer showAdminLogin={true} />
 
     </div>
