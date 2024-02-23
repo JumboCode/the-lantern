@@ -4,9 +4,22 @@ import axios from 'axios';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FileUpload from "../components/magazine/FileUpload";
+import FileDrop from "../components/magazine/FileDrop";
 import Header from "../components/Header";
+import Buttonv2 from "../components/Buttonv2";
 
 export default function Magazine() {
+  const headerFont = {
+    fontFamily: 'coolvetica',
+    fontSize: '90px',
+    lineHeight: '1',
+  };
+  const subheaderFont = {
+    fontFamily: 'nunito',
+    fontSize: '30px',
+    lineHeight: '1',
+  };
+
   const [fileList, setFileList] = useState([]);
 
   useEffect(() => {
@@ -26,7 +39,11 @@ export default function Magazine() {
     <div>
       <NavBar />
       <Header title='Magazine'/>
-      <FileUpload />
+      <p style={headerFont}>Edit magazine issues</p>
+      <p style={subheaderFont}>Featured issue</p>
+      <FileDrop />
+      <p style={subheaderFont}>Past issues</p>
+      
 
 
       <ul>
@@ -35,13 +52,19 @@ export default function Magazine() {
           const fileName = url.substring(url.lastIndexOf('/') + 1);
 
           return (
-            <li key={index}>
-              {fileName}
+            <li key={index} >
+              <a href={url} target="_blank">{fileName.replace(/\.[^/.]+$/, "")}</a>
+            
             </li>
           );
         })}
       </ul>
+
+
+      <FileUpload />
+      <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" />
       <Footer showAdminLogin={true} />
+a
 
     </div>
   );
