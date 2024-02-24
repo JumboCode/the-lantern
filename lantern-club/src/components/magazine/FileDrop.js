@@ -20,17 +20,12 @@ const FileDrop = () => {
 
         return (
             <div class="dropdown">
-                {/* <select id="cars" name="cars">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                </select> */}
                 <select>
                         {fileList.map((url, index) => {
                         // Extract file name from the URL
-                        const fileName = url.substring(url.lastIndexOf('/') + 1);
-
+                        let fileName = url.substring(url.lastIndexOf('/') + 1);
+                        fileName = fileName.substring(fileName.indexOf('_') + 1);
+                        
                         return (
                         <option key={index} >
                         <a href={url} target="_blank">{fileName.replace(/\.[^/.]+$/, "")}</a>
