@@ -61,7 +61,9 @@ export default function HomepageIII() {
                     <div className="flex-col md:flex-row" >
                         {/* Row 1 */}
                         <div className="flex flex-row justify-center items-start px-5">
-                            <div className="pr-10 pb-10">
+                        {/* <br></br>
+                            <br></br> */}
+                            <div className="pr-12 py-10">
                                 <p>From the <u>Tufts University School of Arts & Sciences STS 
                                     Department website</u>: Science, Technology, and Society 
                                     draws on humanities and social sciences approaches to 
@@ -78,8 +80,8 @@ export default function HomepageIII() {
                                 </p>
                             </div>
                             
-                            <br></br>
-                            <br></br>
+                            {/* <br></br>
+                            <br></br> */}
                             {/* <div className="pl-8" > */}
                                 {/* Placeholder image while we wait for the real images from the google drive */}
                                 <Image
@@ -92,10 +94,11 @@ export default function HomepageIII() {
                             {/* </div> */}
                             
                         </div>
-                        <br></br>
+                        {/* <br></br>
                         <p></p>
+                        <br></br> */}
                     </div>
-                    
+                    <br></br>
                     {/* Row 2  */}
                     <div className="flex-col md:flex-row" >
                         <div className="flex flex-row justify-center items-start px-5">
@@ -107,8 +110,8 @@ export default function HomepageIII() {
                                 style={{ borderRadius: '30px' }}
                                 // style={imageStyle}
                             />
-                            <br></br>
-                            <br></br>
+                            {/* <br></br>
+                            <br></br> */}
                             <div className="pl-10 py-10">
                             <p> The 10-course <u><a href="https://as.tufts.edu/science-technology-and-society/requirements/babs-science-technology-and-society-co-major">co-major</a></u> must be declared in conjunction 
                                 with another major, and pairs very well with pairs well 
@@ -122,12 +125,12 @@ export default function HomepageIII() {
                             </div>
 
                         </div>
-                        <br></br>
+                        {/* <br></br>
                         <p></p>
                         <br></br>
-                        
+                         */}
                     </div>
-
+                         <br></br>
                     {/* Row 3 */}
                     <div className="flex-col md:flex-row" >
                         <div className="flex flex-row justify-center items-start px-5">
