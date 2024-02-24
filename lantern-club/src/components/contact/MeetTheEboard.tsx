@@ -9,7 +9,7 @@ interface CardType {
     title: string;
     email: string;
     major: string;
-    image: string; 
+    pictureURL: string; 
     color?: string; 
 }
 
@@ -68,7 +68,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                                 title={card.title}
                                 email={card.email}
                                 major={card.major}
-                                image={card.image} // Use the imageMap to get the correct image
+                                pictureURL={card.pictureURL} // Use the imageMap to get the correct image
                             />
                         </div>
                     ))}
