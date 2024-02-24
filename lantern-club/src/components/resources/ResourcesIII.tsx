@@ -58,12 +58,12 @@ export default function HomepageIII() {
                 {/* Ending box */}
 
                 <div className="flex-col pale-yellow mellow-yellow-border font-nunito text-xl" style={round_box}>
-                    <div className="flex-col md:flex-row" >
+                    <div className="flex flex-col md:flex-row" >
                         {/* Row 1 */}
                         <div className="flex flex-row justify-center items-start px-5">
                         {/* <br></br>
                             <br></br> */}
-                            <div className="pr-12 py-10">
+                            <div className="pr-12 py-10 w-1/2 h-full">
                                 <p>From the <u>Tufts University School of Arts & Sciences STS 
                                     Department website</u>: Science, Technology, and Society 
                                     draws on humanities and social sciences approaches to 
@@ -82,17 +82,16 @@ export default function HomepageIII() {
                             
                             {/* <br></br>
                             <br></br> */}
-                            {/* <div className="pl-8" > */}
+                            <div className="w-1/2 h-full relative" >
                                 {/* Placeholder image while we wait for the real images from the google drive */}
                                 <Image
                                     src={r1}
-                                    height={1968}
-                                    width={3246}
+                                    layout="fill"
                                     style={{ borderRadius: '30px' }}
+                                    alt=" "
                                     // style={imageStyle}
                                 />
-                            {/* </div> */}
-                            
+                            </div>
                         </div>
                         {/* <br></br>
                         <p></p>
@@ -103,16 +102,17 @@ export default function HomepageIII() {
                     <div className="flex-col md:flex-row" >
                         <div className="flex flex-row justify-center items-start px-5">
                             
-                            <Image
-                                src={r2}
-                                height= {1968}
-                                width={3246}
-                                style={{ borderRadius: '30px' }}
-                                // style={imageStyle}
-                            />
+                            <div className="w-1/2 h-full">
+                                <Image
+                                    src={r2}
+                                    style={{ borderRadius: '30px' }}
+                                    alt=" "
+
+                                />
+                            </div>
                             {/* <br></br>
                             <br></br> */}
-                            <div className="pl-10 py-10">
+                            <div className="pl-10 py-10 w-1/2 h-full">
                             <p> The 10-course <u><a href="https://as.tufts.edu/science-technology-and-society/requirements/babs-science-technology-and-society-co-major">co-major</a></u> must be declared in conjunction 
                                 with another major, and pairs very well with pairs well 
                                 with science, humanities, social science, or visual and 
@@ -132,9 +132,9 @@ export default function HomepageIII() {
                     </div>
                          <br></br>
                     {/* Row 3 */}
-                    <div className="flex-col md:flex-row" >
+                    <div className="flex flex-col md:flex-row" >
                         <div className="flex flex-row justify-center items-start px-5">
-                        <div className="pr-12 py-10">
+                        <div className="pr-12 py-10 w-1/2 h-full">
                             <p> Exciting and interdisciplinary courses are offered in the 
                                 STS department---and cross-listed across multiple 
                                 disciplines---each semester. Some recently offered 
@@ -149,14 +149,15 @@ export default function HomepageIII() {
                                 and Politics. </p>
                          </div>                       
                         <br></br>
-
-                            <Image
-                                src={r3}
-                                height={1968}
-                                width={3246}
-                                style={{ borderRadius: '30px' }}
-                                // style={imageStyle}
-                            />
+                            <div className="w-1/2 h-full relative">
+                                <Image
+                                    layout="fill"
+                                    src={r3}
+                                    style={{ borderRadius: '30px' }}
+                                    alt=" "
+                                    // style={imageStyle}
+                                />
+                            </div>
                         </div>
 
                     </div>
