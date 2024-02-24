@@ -86,6 +86,7 @@ export default function HomepageIII() {
                                     src={r1}
                                     height={1968}
                                     width={3246}
+                                    style={{ borderRadius: '30px' }}
                                     // style={imageStyle}
                                 />
                             {/* </div> */}
@@ -103,6 +104,7 @@ export default function HomepageIII() {
                                 src={r2}
                                 height= {1968}
                                 width={3246}
+                                style={{ borderRadius: '30px' }}
                                 // style={imageStyle}
                             />
                             <br></br>
@@ -122,6 +124,7 @@ export default function HomepageIII() {
                         </div>
                         <br></br>
                         <p></p>
+                        <br></br>
                         
                     </div>
 
@@ -143,12 +146,12 @@ export default function HomepageIII() {
                                 and Politics. </p>
                          </div>                       
                         <br></br>
-                        <br></br>
 
                             <Image
                                 src={r3}
                                 height={1968}
                                 width={3246}
+                                style={{ borderRadius: '30px' }}
                                 // style={imageStyle}
                             />
                         </div>

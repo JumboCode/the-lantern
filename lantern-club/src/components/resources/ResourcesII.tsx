@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Define from '../../images/define.png';
 import Arrow from '../../images/arrow.png';
+import Buttonv2 from "../Buttonv2";
 
 export default function ResourcesI() {
   const background: React.CSSProperties = {
@@ -53,7 +54,7 @@ export default function ResourcesI() {
         className="-mt-20 overflow-hidden py-30 px-4 md:px-0 md:px-10 yellow-gradient" style={background}> 
         {/* text side */}
         <div className="py-20 px-4 md:px-0 md:ml-10">
-            <p className="py-5 mb-10 md:text-8xl text-6xl" style={headerFontStyle}>
+            <p className="py-5 mb-10 mt-10 md:text-8xl text-6xl" style={headerFontStyle}>
                 Our E-List
             </p>
             <div className="flex-col md:flex-row md:grid md:grid-cols-2 orange mellow-yellow-border font-nunito text-xl" style={round_box}>
@@ -67,7 +68,7 @@ export default function ResourcesI() {
             </div>
         </div>
         {/* Arrow */}
-        <div className="flex flex-col justify-around items-center max-w-screen-md mx-auto">
+        <div className="flex flex-col justify-around items-center max-w-screen-md mx-auto mt-6">
         <div className="py-4">
           <div className="w-[46px] h-[96px] sm:w-[92px] sm:h-[192px]">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 216" fill="none">
@@ -80,15 +81,8 @@ export default function ResourcesI() {
         </svg> */}
         </div>
         {/* Button */}
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScoIJSqdbxqKcswFmnCiFj65L2_P7dqogSpGLegc0EaORK9MA/viewform" target="_blank">
-        <div className="flex flex-col justify-around items-center max-w-screen-md mx-auto">
-        <button
-          style={buttonStyle}
-          className="font-nunitosans tracking-wide hover:underline flex items-center justify-center max-w-screen-md mx-auto font-bold mt-4">
-            Join our e-list!
-        </button>
-        </div>
-        </a>
+        <Buttonv2 text="Join our e-list!" action={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScoIJSqdbxqKcswFmnCiFj65L2_P7dqogSpGLegc0EaORK9MA/viewform')} color="blue" width="w-48" />
+
         </div>
         </div>
       </div>
