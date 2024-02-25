@@ -78,9 +78,11 @@ model Magazine {
 model Profile {
   id           String @id @default(auto()) @map("_id") @db.ObjectId
   name         String 
+  pronouns     String
+  title        String
   email        String @unique
-  role         String?
-  pictureURL   String?
+  major        String
+  pictureURL   String
 }
 
 

@@ -1,15 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import {handlePostProfile, insertEvent, insertProfile} from '../../../../prisma/insert-data';
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+import { handleFetchProfiles } from '../../../../prisma/read-data';
+import {handlePostProfile} from '../../../../prisma/insert-data';
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     // Process a GET request
-    insertProfile()
-    const responseData = { message: 'profile: GET requested received' };
+    const responseData = await handleFetchProfiles()
     res.status(200).json(responseData);
   } else if (req.method === 'POST') {
     // Process a POST request
-    handlePostProfile(req, res)
-    const responseData = { message: 'profile: POST requested received' };
+    const responseData = await handlePostProfile();
     res.status(200).json(responseData);
   } else {
     // Handle any other HTTP method

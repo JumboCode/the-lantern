@@ -1,5 +1,6 @@
 import React, { useState, FormEvent } from "react"
 import { useRef } from "react";
+import Buttonv2 from "../Buttonv2";
 
 export default function Contact() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -38,7 +39,7 @@ export default function Contact() {
     }
 
     return (
- <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2">
+ <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2 -mt-20">
  <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"> 
 
 </div>
@@ -62,9 +63,10 @@ export default function Contact() {
                     <br></br>
                 </div>
 
-                <div className="flex justify-center items-center">
-                    <button type="submit" id="contactBtn" disabled={isLoading} className="bg-button-blue border-button-outline-blue border-2 mt-9 text-white font-bold py-2 px-10 mb-8 rounded-3xl">{isLoading ? 'Loading...' : 'Submit'}</button>
+                <div className="flex justify-center items-center m-10">
+                    <Buttonv2 type="submit" text="Submit" color="blue" width="w-40" isLoading={isLoading} />
                 </div>
+
             </div>
         </form>
         </div>
