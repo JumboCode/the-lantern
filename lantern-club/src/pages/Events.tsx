@@ -12,6 +12,7 @@ type event = {
     time: Date;
 	location: string;
 	host: string;
+    imageURL: string;
 };
 // new code w/ useState and useEffect
 
@@ -59,8 +60,8 @@ export default function Events() {
         return (
             <div key={oneEvent.id}>
              {oneEvent.id} {oneEvent.name} {oneEvent.description}
-              {oneEvent.location} {oneEvent.host}
-              {/* {oneEvent.time}  {oneEvent.date} */}
+              {oneEvent.location} {oneEvent.host} {oneEvent.imageURL}
+              {oneEvent.time.toString()}  {oneEvent.date.toString()}
              </div>
         );
        })}

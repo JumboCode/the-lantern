@@ -11,6 +11,8 @@ async function insertEvent() {
             time: new Date('2023-11-13T11:01:00'),        
             location: 'Sample Location',    
             host: 'Sample Host', 
+            imageURL: 'https://placehold.co/400'
+            
         }
    })
     const event = await prisma.event.create({ data: eventsData });
@@ -25,8 +27,10 @@ async function insertProfile() {
         data : {
                 name: 'Sample Name', 
                 email: 'Sample Email',
-                role: 'Sample Role',
+                pronouns: 'Sample Pronouns',
+                title: 'Sample Role',
                 pictureURL: 'Sample Picture URL',
+                major: 'Sample Major'
             }   
     })
     const profile = await prisma.profile.create({ data: profilesData});
