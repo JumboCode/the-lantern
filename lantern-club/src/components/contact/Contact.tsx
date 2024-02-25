@@ -43,7 +43,7 @@ export default function Contact() {
  <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"> 
 
 </div>
-    <h1 className="mt-20 font-coolvetica text-7xl ml-12">Get in touch!</h1>
+    <h1 className="mt-20 font-coolvetica text-7xl ml-12 pt-20">Get in touch!</h1>
 
         <form onSubmit={onSubmit} ref={formRef}>
             <div className="flex flex-col border-contact-g1 border-4 mx-16 mb-16 mt-10 px-7 h-contact bg-gradient-to-b from-contact-g1 to-contact-g2 rounded-3xl">
