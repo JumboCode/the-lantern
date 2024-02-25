@@ -45,7 +45,7 @@ const FileDrop = () => {
                 </select>
                 {currentImage && (
                 <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                    <Link href={currentImage}><img src={currentImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '400px', objectFit: 'contain' }} /></Link>
+                    <Link href={currentImage}><iframe src={currentImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '400px', objectFit: 'contain' }} /></Link>
                 </div>
                 )}
           </div> 
