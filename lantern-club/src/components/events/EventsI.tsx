@@ -77,14 +77,15 @@ export default function EventsI({ title }: { title: string }) {
         </div>
         <div className="h-20 w-full flex mellow-yellow" id="triangle"></div>
         
-        {allEvents &&
+        {/* Integrate events data LATER */}
+        {/* {allEvents &&
             allEvents.map((oneEvent: Event) => (
             <div key={oneEvent.id}>
                 {oneEvent.id} {oneEvent.name} {oneEvent.description}
                 {oneEvent.location} {oneEvent.host}
                 {/* {oneEvent.time}  {oneEvent.date} */}
-            </div>
-            ))}
+            {/* </div> */}
+            {/* /*))} */} 
 
         </>
     ); 
