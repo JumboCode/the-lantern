@@ -30,7 +30,7 @@ export default function EventsI({ title }: { title: string }) {
         lineHeight: "1",
     };
 
-  const numEvents = 0;
+  const numEvents = 1;
   const [allEvents, setEvents] = useState<Event[]>([]);
 
   const fetchEvents = async () => {
@@ -98,41 +98,25 @@ export default function EventsI({ title }: { title: string }) {
             className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1"
             style={background}
         > 
-            <p style={header_font} className="mb-20 md:text-8xl text-7xl ml-12">Upcoming Events</p>
+            <p style={header_font} className="mb-20 md:text-8xl text-7xl">Upcoming Events</p>
 
             {/* Two boxes */}
-            <div className="flex gap-10"
-            >
-            {/* Event Box 1 */}
-            <div
-            className="w-1/3 flex-col object-fill ml-3" /*style={round_box}*/>
-                <Image
-                src={OrangePoster}
-                style={imageStyle}
-                alt="Orange Poster picture"
-                />
-            </div>
-            
-            {/* Event Box 2 */}
-            <div
-            className="w-1/3 flex-col object-cover" /*style={round_box}*/>
-                <Image
-                src={BluePoster}
-                style={imageStyle}
-                alt="Blue Poster picture"
-                />
-            </div>
+        <div className="flex flex-col gap-10 md:flex-row">
+          {/* Event Box 1 */}
+          <div className="flex-1">
+            <Image src={OrangePoster} style={imageStyle} alt="Orange Poster picture" />
+          </div>
 
-            {/* Event Box 3 */}
-            <div
-            className="w-1/3 flex-col object fill" /*style={round_box}*/>
-                <Image
-                src={TanPoster}
-                style={imageStyle}
-                alt="Tan Poster picture"
-                />
-            </div>
-            </div>
+          {/* Event Box 2 */}
+          <div className="flex-1">
+            <Image src={BluePoster} style={imageStyle} alt="Blue Poster picture" />
+          </div>
+
+          {/* Event Box 3 */}
+          <div className="flex-1">
+            <Image src={TanPoster} style={imageStyle} alt="Tan Poster picture" />
+          </div>
+        </div>
 
         </div>
         <div className="h-20 w-full flex mellow-yellow" id="triangle"></div>
