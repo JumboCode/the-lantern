@@ -38,11 +38,14 @@ export default function Events() {
   //     ))}
   //   </ul>
   // );
-  const idToDelete = "6556de53ec79914b39997b84";
+  const idToDelete = "65b41b284e42855c4f81d262";
 
   const handleOnPress = async (idToDelete: string) => {
     const response = await fetch("/api/content/events", {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ id: idToDelete }),
     });
   };
