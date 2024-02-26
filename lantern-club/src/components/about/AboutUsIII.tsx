@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Background2 from "../images/background2.png";
+import AboutImage from "../../images/hannah1.jpeg";
 import Define from "../images/define.png";
 import Arrow from "../images/arrow.png";
 
@@ -38,9 +38,15 @@ export default function AboutUsIII() {
         className="pale-yellow mellow-yellow-border"
         style={round_box}
         >
-          <div className="w-1/2 py-5 font-nunito text-xl"
+          <div className="w-1/2 py-5 font-nunito text-xl flex"
            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui offici. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
-          <div className="bg-gray-100 w-1/2 rounded-3xl"></div>
+          <div className="bg-gray-100 w-1/2 rounded-3xl relative">
+            <Image
+              src={AboutImage} // The image you want to use
+              alt="Background"
+              layout="fill" // This makes the image fill the container
+            />
+          </div>
         </div>
       </div>
 

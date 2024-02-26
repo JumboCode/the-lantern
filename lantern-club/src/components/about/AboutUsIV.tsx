@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Background2 from "../images/background2.png";
+import AboutImage from "../../images/hannah1.jpeg";
 import Define from "../images/define.png";
 import Arrow from "../images/arrow.png";
 

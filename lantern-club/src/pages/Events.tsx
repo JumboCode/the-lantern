@@ -14,6 +14,7 @@ type event = {
     time: Date;
 	location: string;
 	host: string;
+    imageURL: string;
 };
 // new code w/ useState and useEffect
 

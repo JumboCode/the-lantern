@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Background2 from "../images/background2.png";
+import AboutImage from "../../images/hannah1.jpeg";
 import Define from "../images/define.png";
 import Arrow from "../images/arrow.png";
 
@@ -47,7 +47,13 @@ export default function AboutUsII() {
             The Lantern is a <span className="font-bold">student-run, interdisciplinary think tank</span> that investigates the <span className="font-bold">social impact of science and technology</span> to advocate for responsible innovation. Our goal is to <span className="font-bold">educate the public</span> on issues like artificial intelligence, climate change tech, algorithms, ethical technology, <span className="font-bold">and more.</span>
             <span className="font-bold"></span>
           </span>
-          <div className="bg-gray-100 w-1/3 rounded-3xl"></div>
+          <div className="bg-gray-100 w-1/3 rounded-3xl relative">
+            <Image
+                src={AboutImage} // The image you want to use
+                alt="Background"
+                layout="fill" // This makes the image fill the container
+              />
+          </div>
         </div>
         {/* Dotted line */}
 
@@ -58,7 +64,13 @@ export default function AboutUsII() {
           className="blue border-blue-100"
           style={round_box}
          >
-          <div className="bg-gray-100 w-1/3 rounded-3xl"></div>
+          <div className="bg-gray-100 w-1/3 rounded-3xl relative">
+            <Image
+                src={AboutImage} // The image you want to use
+                alt="Background"
+                layout="fill" // This makes the image fill the container
+              />
+          </div>
           <span className="text-white w-2/3 py-5 font-nunito text-xl"> 
             One of the primary objectives of The Lantern is to design and publish an <span className="font-bold">eponymous magazine</span> each academic year. Our <span className="font-bold">first issue</span> of The Lantern magazine was <span className="font-bold">published on May 11, 2023</span>, with written submissions <span className="font-bold">centering around science, technology, and society (STS) topics</span> from the Tufts University student body. We are excited to grow our community and <span className="font-bold">work towards publishing future issues.</span>
             <br /><br />
