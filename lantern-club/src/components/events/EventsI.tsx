@@ -30,7 +30,7 @@ export default function EventsI({ title }: { title: string }) {
         lineHeight: "1",
     };
 
-  const numEvents = 1;
+  const numEvents = 0;
   const [allEvents, setEvents] = useState<Event[]>([]);
 
   const fetchEvents = async () => {
@@ -98,7 +98,7 @@ export default function EventsI({ title }: { title: string }) {
             className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1"
             style={background}
         > 
-            <p style={header_font} className="mb-20">Upcoming Events</p>
+            <p style={header_font} className="mb-20 md:text-8xl text-7xl ml-12">Upcoming Events</p>
 
             {/* Two boxes */}
             <div className="flex gap-10"
