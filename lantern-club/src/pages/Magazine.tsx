@@ -5,8 +5,7 @@ import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FileUpload from "../components/magazine/FileUpload";
 import Header from "../components/Header";
-import EventOverlay from "../components/EventOverlay";
-import Buttonv2 from '@/components/Buttonv2';
+
 
 export default function Magazine() {
   const [fileList, setFileList] = useState([]);
@@ -23,8 +22,6 @@ export default function Magazine() {
 
     fetchFileList();
   }, []);
-
-  const [showModal, setShowModal] = useState(false);
 
   return (
     <div>
@@ -45,11 +42,6 @@ export default function Magazine() {
           );
         })}
       </ul>
-
-      <Fragment>
-        <Buttonv2 text="Add Event" action={() => setShowModal(true)} color="orange" width="w-48" />
-        <EventOverlay isVisible={showModal} onClose={() => {setShowModal(false)}} type="Edit Event" name="ava's half bday bash" date="2/29/2024" time="8:29pm" location="milla 4th floor" description="fun times with ava" />
-      </Fragment>
       
 
       <Footer showAdminLogin={true} />
