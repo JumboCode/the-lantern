@@ -65,6 +65,7 @@ model Event {
   time         DateTime
   location     String
   host         String 
+  imageURL     String
 }
 
 model Magazine {
