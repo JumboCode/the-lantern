@@ -5,7 +5,6 @@ const s3 = new AWS.S3(s3Config);
 
 export default async function handler(req, res) {
     if (req.method !== 'GET') {
-        console.log("here I am");
         return res.status(405).end(`Method ${req.method} Not Allowed`);
     }
     
