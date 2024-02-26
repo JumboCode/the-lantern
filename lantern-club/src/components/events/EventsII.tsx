@@ -26,7 +26,7 @@ export default function EventsII() {
         className="-mt-20 py-20 px-20 blue2-gradient"
         style={background}
       > 
-        <p style={header_font} className="mb-20 md:text-8xl text-7xl ml-12">Past Events</p>
+        <p style={header_font} className="mb-20 md:text-8xl text-7xl">Past Events</p>
 
         {/* Two boxes */}
         <div className="flex gap-10"
