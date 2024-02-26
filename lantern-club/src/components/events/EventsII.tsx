@@ -23,7 +23,7 @@ export default function EventsII() {
   return (
     <div>
       <div className="-mt-20 py-20 px-20 blue2-gradient" style={background}>
-        <p style={header_font} className="mb-20 md:text-8xl text-7xl">Past Events</p>
+        <h1 className="mb-20 font-coolvetica md:text-8xl text-7xl">Past Events</h1>
 
         {/* Two boxes */}
         <div className="flex flex-col gap-10 md:flex-row">
