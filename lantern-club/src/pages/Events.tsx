@@ -27,7 +27,7 @@ export default function Events() {
   //     ))}
   //   </ul>
   // );
-  const sampleID = "65de0998c41d7cb07ff7ca8b";
+  const sampleID = "65de09db7d4bfed85a2567fc";
 
   const handleDelete = async (idToDelete: string) => {
     const response = await fetch("/api/content/events", {
@@ -53,7 +53,7 @@ export default function Events() {
       },
       body: JSON.stringify({
         id: idToUpdate,
-        name: "updated event",
+        name: undefined,
         description: "updated description",
         date: new Date("2024-2-27"),
         time: new Date("2024-2-28"),

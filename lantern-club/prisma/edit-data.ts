@@ -8,13 +8,13 @@ async function handleUpdateUser(props: event) {
       id: props.id,
     },
     data: {
-      name: props.name,
-      description: props.description,
-      date: props.date,
-      time: props.time,
-      location: props.location,
-      host: props.host,
-      imageURL: props.imageURL,
+      name: props.name || undefined,
+      description: props.description || undefined,
+      date: props.date || undefined,
+      time: props.time || undefined,
+      location: props.location || undefined,
+      host: props.host || undefined,
+      imageURL: props.imageURL || undefined,
     },
   });
 
