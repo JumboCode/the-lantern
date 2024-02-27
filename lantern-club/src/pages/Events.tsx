@@ -3,19 +3,8 @@ import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
+import { event } from "../types/event";
 
-type event = {
-  id: string;
-  name: string;
-  description: string;
-  date: Date;
-  time: Date;
-  location: string;
-  host: string;
-  imageURL: string;
-};
-
-type id = string;
 // new code w/ useState and useEffect
 
 export default function Events() {
@@ -38,15 +27,40 @@ export default function Events() {
   //     ))}
   //   </ul>
   // );
-  const idToDelete = "65b41b284e42855c4f81d262";
+  const sampleID = "65de0998c41d7cb07ff7ca8b";
 
-  const handleOnPress = async (idToDelete: string) => {
+  const handleDelete = async (idToDelete: string) => {
     const response = await fetch("/api/content/events", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id: idToDelete }),
+    });
+  };
+
+  const handleAdd = async () => {
+    const response = await fetch("api/content/events", {
+      method: "POST",
+    });
+  };
+
+  const handleUpdate = async (idToUpdate: string) => {
+    const response = await fetch("api/content/events", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: idToUpdate,
+        name: "updated event",
+        description: "updated description",
+        date: new Date("2024-2-27"),
+        time: new Date("2024-2-28"),
+        location: "change of location!",
+        host: "new host",
+        imageURL: "new image",
+      }),
     });
   };
 
@@ -68,7 +82,13 @@ export default function Events() {
       <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2"></div>
       <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"></div>
       <div>
-        <button onClick={() => handleOnPress(idToDelete)}>Delete event</button>
+        <button onClick={() => handleDelete(sampleID)}>Delete event</button>
+      </div>
+      <div>
+        <button onClick={() => handleAdd()}>Add sample event</button>
+      </div>
+      <div>
+        <button onClick={() => handleUpdate(sampleID)}>Update event</button>
       </div>
 
       {AllEvents &&
