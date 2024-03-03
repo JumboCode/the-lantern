@@ -2,8 +2,8 @@ import React from 'react';
 
 interface ButtonProps {
   text: string;
-  color: 'orange' | 'blue' | 'red';
   action?: () => void;
+  color: 'orange' | 'blue';
   width?: string; // Optional 
   type?: 'button' | 'submit'; // Optional
   isLoading?: boolean; // Optional
@@ -26,14 +26,6 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isL
       defaultTextColor: 'text-[#FFFFFF]',
       hoverBorderColor: 'hover:border-[#94BBE3]',
       hoverTextColor: 'hover:text-[#4279BC]', 
-    },
-    red: {
-      defaultBackgroundColor: 'bg-[#d00000]',
-      hoverBackgroundColor: 'hover:bg-[#FFFFFF]',
-      borderColor: 'border-[#e67777]',
-      defaultTextColor: 'text-[#FFFFFF]',
-      hoverBorderColor: 'hover:border-[#e67777]',
-      hoverTextColor: 'hover:text-[#d00000]', 
     },
   };
 
