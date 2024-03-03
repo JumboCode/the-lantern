@@ -57,7 +57,7 @@ export default function HomepageIII() {
                         <Image
                             src={Poster.src}
                             height={280}
-                            width={280}
+                            width={280} 
                             style={imageStyle}
                             alt="submission poster"
                         />
@@ -70,4 +70,5 @@ export default function HomepageIII() {
             </div>
         </div>
     );
+    //
 }
