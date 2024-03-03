@@ -1,3 +1,4 @@
+import { IntegerType } from 'mongodb';
 import React from 'react';
 
 interface ButtonProps {
@@ -9,7 +10,7 @@ interface ButtonProps {
   isLoading?: boolean; // Optional
 }
 
-const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isLoading}) => {
+const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isLoading }) => {
   const buttonStyles = {
     orange: {
       defaultBackgroundColor: 'bg-[#F79838]',
