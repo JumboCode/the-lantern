@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Logo from "../images/lanternicon1.png";
 import Email from "../images/email.png";
+import LinkedIn from "../images/LinkedIn.png";
 import Insta from "../images/insta.png";
 import { signIn, signOut, useSession } from "next-auth/react"; 
 import Link from "next/link";
@@ -67,13 +68,13 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
           </div>
 
           <div className="flex">
-            <a href="mailto:ststhinkthank@gmail.com" className="flex mr-2">
+            <a href="https://www.linkedin.com/company/the-lantern-at-tufts-university/about/" className="flex mr-2 hover:bg-[#faac4b]">
               <div className="w-11 h-10 md:w-12 md:h-12 relative">
-                <Image src={Email} alt="email icon" />
+                <Image src={LinkedIn} alt="linkedin icon"/>
               </div>
             </a>
             <a href="https://www.instagram.com/thelanterntufts/" target="_blank" rel="noopener noreferrer">
-              <div className="w-11 h-10 md:w-12 md:h-12 relative">
+              <div className="w-11 h-10 md:w-12 md:h-12 relative hover:bg-[#faac4b]">
                 <Image src={Insta} alt="instagram icon" />
               </div>
             </a>

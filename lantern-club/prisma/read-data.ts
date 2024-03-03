@@ -18,6 +18,13 @@ async function fetchAllEvents() {
   return events
 }
 
+// gets all profiles from the profiles model in mongodb
+
+async function handleFetchProfiles() {
+  const profiles = await prisma.profile.findMany()
+  return profiles
+}
+
 // gets a specific event from the events model by ID
 
 async function fetchEventbyID(eventId) {
@@ -34,4 +41,5 @@ async function handleFetchEvents() {
     return responseData
 }
 
-export {fetchAllEvents, fetchEventbyID, handleFetchEvents}; 
+
+export {fetchAllEvents, fetchEventbyID, handleFetchEvents, handleFetchProfiles}; 

@@ -28,6 +28,7 @@ export default function handler(req, res) {
     try {
       const file = req.file; 
       const key = `uploads/${uuidv4()}_${file.originalname}`;
+      
       const params = {
         Bucket: process.env.AWS_BUCKET_NAME,
         Key: key,

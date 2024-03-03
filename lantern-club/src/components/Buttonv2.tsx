@@ -2,12 +2,14 @@ import React from 'react';
 
 interface ButtonProps {
   text: string;
-  action: () => void;
   color: 'orange' | 'blue' | 'red';
-  width?: string; // Optional width prop
+  action?: () => void;
+  width?: string; // Optional 
+  type?: 'button' | 'submit'; // Optional
+  isLoading?: boolean; // Optional
 }
 
-const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width }) => {
+const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isLoading}) => {
   const buttonStyles = {
     orange: {
       defaultBackgroundColor: 'bg-[#F79838]',
@@ -46,10 +48,12 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width }) => {
 
   return (
     <button
+      type={type} 
       className={`py-2 ${width} font-nunitosans items-center tracking-wide text-lg rounded-full border-2 font-bold ${defaultBackgroundColor} ${borderColor} ${defaultTextColor} ${hoverBackgroundColor} ${hoverBorderColor} ${hoverTextColor} shadow-md`}
       onClick={action}
+      disabled={isLoading} // Disable button when isLoading is true
     >
-      {text}
+      {isLoading ? 'Loading...' : text} 
     </button>
   );
 };

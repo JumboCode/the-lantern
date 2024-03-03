@@ -1,5 +1,4 @@
 import { PrismaClient, Prisma } from '@prisma/client';
-import type { NextApiRequest, NextApiResponse } from 'next';
 const prisma = new PrismaClient();
 
 
@@ -12,9 +11,12 @@ async function insertEvent() {
             time: new Date('2023-11-13T11:01:00'),        
             location: 'Sample Location',    
             host: 'Sample Host', 
+            imageURL: 'https://placehold.co/400'
+            
         }
    })
-    const createEvent = await prisma.event.create({ data: eventsData });
+    const event = await prisma.event.create({ data: eventsData });
+    return event
 }
 
 // create a separate insert function so that everything isn't inserted at the same time
@@ -25,13 +27,14 @@ async function insertProfile() {
         data : {
                 name: 'Sample Name', 
                 email: 'Sample Email',
-                role: 'Sample Role',
+                pronouns: 'Sample Pronouns',
+                title: 'Sample Role',
                 pictureURL: 'Sample Picture URL',
+                major: 'Sample Major'
             }   
     })
-
-
-    const createEvent = await prisma.profile.create({ data: profilesData});
+    const profile = await prisma.profile.create({ data: profilesData});
+    return profile
 }
 
 /*
@@ -69,30 +72,23 @@ app.post(`/post`, async (req, res) => {
 
 // }
 
-async function handlePostEvent(req: NextApiRequest, res: NextApiResponse) {
+async function handlePostEvent() {
     try {
       // Common logic for handling POST requests
-      await insertEvent();
-      
-      const responseData = { message: 'events: POST requested received' };
-      res.status(200).json(responseData);
-      
+      const responseData = await insertEvent();
+      return responseData;
     } catch (error) {
       console.error('Error handling POST request:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
     }
   }
   
-  async function handlePostProfile(req: NextApiRequest, res: NextApiResponse) {
+  async function handlePostProfile() {
     try {
       // Common logic for handling POST requests
-      await insertProfile();
-      
-      const responseData = { message: 'events: POST requested received' };
-      res.status(200).json(responseData);
+      const responseData = await insertProfile();
+      return responseData;
     } catch (error) {
       console.error('Error handling POST request:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
     }
   }
   
