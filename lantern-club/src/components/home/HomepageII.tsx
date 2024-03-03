@@ -51,7 +51,7 @@ export default function ResourcesI() {
         </div>
 
         {/* Text column */}
-        <div className="flex flex-col justify-center items-start px-5">
+        <div className="flex flex-col justify-center items-start px-5 md:text-left">
           <p style={headerFont}>Check out our latest</p>
           <div className="h-20 w-full">
           <h1 style={headerFont}>issue!</h1>
@@ -61,7 +61,9 @@ export default function ResourcesI() {
           </div>
           <div className="flex flex-row justify-between items-center w-full mt-5">
             <p className="font-nunito text-xl">Issue No 1 Spring 2023</p>
-            <Buttonv2 text="Read it here!" action={handleButtonClick} color="blue" width="w-60"/>
+            <div>
+                <Buttonv2 text="Read it here!" action={handleButtonClick} color="blue" width="w-60"/>
+            </div>
             <a href="/Magazine" className="position: relative; top: -30px;">
           </a>
           </div>
