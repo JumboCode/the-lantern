@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
 
 import NavBar from "../components/Navbar";
@@ -8,6 +8,7 @@ import FileUpload from "../components/magazine/FileUpload";
 import FileDrop from "../components/magazine/FileDrop";
 import Header from "../components/Header";
 import Buttonv2 from "../components/Buttonv2";
+
 
 export default function Magazine() {
   const headerFont = {
@@ -40,7 +41,23 @@ export default function Magazine() {
     <div>
       <NavBar />
       <Header title='Magazine'/>
-      <MagazineAdmin />
+      <FileUpload />
+
+
+      <ul>
+        {fileList.map((url, index) => {
+          // Extract file name from the URL
+          const fileName = url.substring(url.lastIndexOf('/') + 1);
+
+          return (
+            <li key={index}>
+              {fileName}
+            </li>
+          );
+        })}
+      </ul>
+      
+
       <Footer showAdminLogin={true} />
 
 
