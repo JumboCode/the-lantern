@@ -47,7 +47,8 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
         </div>
 
         {/* Empty column for spacing or additional content */}
-        <div></div>
+        <div>
+        </div>
         
         
         {/* Login/Submit column */}
