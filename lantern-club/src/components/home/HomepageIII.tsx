@@ -70,5 +70,4 @@ export default function HomepageIII() {
             </div>
         </div>
     );
-    //
 }
