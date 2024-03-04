@@ -28,6 +28,15 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isL
       hoverTextColor: 'hover:text-[#4279BC]', 
     },
   };
+  
+  const fallbackStyle = {
+    defaultBackgroundColor: '',
+    hoverBackgroundColor: '',
+    borderColor: '',
+    defaultTextColor: '',
+    hoverBorderColor: '',
+    hoverTextColor: '',
+  };
 
   const {
     defaultBackgroundColor,
@@ -36,7 +45,7 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isL
     borderColor,
     hoverBorderColor,
     hoverTextColor,
-  } = buttonStyles[color];
+  } = buttonStyles[color] || fallbackStyle; // Use fallbackStyle if buttonStyles[color] is undefined
 
   return (
     <button
