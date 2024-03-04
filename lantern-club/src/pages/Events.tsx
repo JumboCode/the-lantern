@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import { useEffect, useState, Fragment } from 'react';
 import EventOverlay from "../components/EventOverlay";
 import Buttonv2 from '@/components/Buttonv2';
-
+//
 type event = {
 	id: string;
     name: string;
