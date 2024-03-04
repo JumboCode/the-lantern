@@ -4,7 +4,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { event } from "../types/event";
-import { handleUpdate } from "/api/events/updateEvent";
+import { handleUpdate } from "../pages/api/events/updateEvent";
+import { handleDelete } from "../pages/api/events/deleteEvent";
 
 // new code w/ useState and useEffect
 
@@ -64,9 +65,6 @@ export default function Events() {
       <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2"></div>
       <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"></div>
       <div>
-        <button onClick={() => handleDelete(sampleID)}>Delete event</button>
-      </div>
-      <div>
         <button onClick={() => handleAdd()}>Add sample event</button>
       </div>
 
@@ -79,6 +77,9 @@ export default function Events() {
               {oneEvent.time.toString()} {oneEvent.date.toString()}
               <button onClick={() => handleUpdate(oneEvent.id)}>
                 Update event
+              </button>
+              <button onClick={() => handleDelete(oneEvent.id)}>
+                Delete event
               </button>
             </div>
           );
