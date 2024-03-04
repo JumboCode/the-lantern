@@ -1,17 +1,23 @@
 import React from "react"
-
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
-import Image1 from "../../images/ava1.jpg"
-import Image2 from "../../images/hannah1.jpeg"
-import Image3 from "../../images/ava2.jpg"
-import Image4 from "../../images/hannah2.jpg"
-import Image5 from "../../images/ava3.jpg"
-import Image6 from "../../images/hannah3.jpg"
 import Card from "./Card"
 
-export default function MeetTheEBoard() {
+interface CardType {
+    name: string;
+    pronouns: string;
+    title: string;
+    email: string;
+    major: string;
+    pictureURL: string; 
+    color?: string; 
+}
+
+interface MeetTheEBoardProps {
+    data: CardType[]; 
+}
+
+const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
 
     const responsive = {
         desktop: {
@@ -27,6 +33,11 @@ export default function MeetTheEBoard() {
             items: 1
         },
     };
+
+    const colors = [
+        "orange-gradient orange-border", // For odd-indexed cards
+        "true-blue-gradient text-white" // For even-indexed cards
+    ];
     
     return(
         <div>
@@ -48,63 +59,22 @@ export default function MeetTheEBoard() {
                     dotListClass="custom-dot-list-style"
                     arrows={true} renderButtonGroupOutside={true}
                 >
-                        <div className="-ml-5">
-                            <Card name="Nika Lea Tomicic"
-                                color="orange-gradient orange-border"
-                                pronouns="she/her"
-                                title="Editor-in-Chief"
-                                email="nika_lea.tomicic@tufts.edu"
-                                major="Sociology + STS"
-                                image={Image1} />
+                    {data.map((card, index) => (
+                        <div key={index} className="-ml-5">
+                            <Card
+                                name={card.name}
+                                color={colors[index % 2]}
+                                pronouns={card.pronouns}
+                                title={card.title}
+                                email={card.email}
+                                major={card.major}
+                                pictureURL={card.pictureURL} // Use the imageMap to get the correct image
+                            />
                         </div>
-                        <div className="-ml-5">
-                                <Card name="Kayla Fang"
-                                    color="true-blue-gradient text-white"
-                                    pronouns="she/her"
-                                    title="Outreach & Partnerships"
-                                    email="kfang1226@gmail.com"
-                                    major="Applied Math + STS"
-                                    image={Image2} />
-                        </div>
-                        <div className="-ml-5">
-                            <Card name="Maddie Cortesi"
-                                color="orange-gradient orange-border"
-                                pronouns="she/her"
-                                title="Graphic Design & Marketing"
-                                email="madeline.cortesi@tufts.edu"
-                                major="Sociology + STS"
-                                image={Image3} />
-                        </div>
-                        <div className="-ml-5">
-                            <Card name="fourth"
-                                color="true-blue-gradient text-white"
-                                pronouns="pronouns"
-                                title="title"
-                                email="email"
-                                major="major"
-                                image={Image4} />
-                        </div>
-                        <div className="-ml-5">
-                            <Card name="fifth"
-                                    color="orange-gradient orange-border"
-                                    pronouns="pronouns"
-                                    title="title"
-                                    email="email"
-                                    major="major"
-                                    image={Image5} />
-                        </div> 
-                        <div className="-ml-5">   
-                            <Card name="sixth"
-                                color="true-blue-gradient text-white"
-                                pronouns="pronouns"
-                                title="title"
-                                email="email"
-                                major="major"
-                                image={Image6} />
-                        </div>
+                    ))}
                 </Carousel>
             </div>
             <div className="h-20 w-full mellow-yellow" id="triangle"></div>
         </div>
     )
-}
+}; export default MeetTheEBoard;

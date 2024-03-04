@@ -2,12 +2,14 @@ import React from 'react';
 
 interface ButtonProps {
   text: string;
-  action: () => void;
-  color: 'orange' | 'blue' | 'red';
-  width?: string; // Optional width prop
+  action?: () => void;
+  color: 'orange' | 'blue';
+  width?: string; // Optional 
+  type?: 'button' | 'submit'; // Optional
+  isLoading?: boolean; // Optional
 }
 
-const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width }) => {
+const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isLoading}) => {
   const buttonStyles = {
     orange: {
       defaultBackgroundColor: 'bg-[#F79838]',
@@ -25,14 +27,15 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width }) => {
       hoverBorderColor: 'hover:border-[#94BBE3]',
       hoverTextColor: 'hover:text-[#4279BC]', 
     },
-    red: {
-      defaultBackgroundColor: 'bg-[#d00000]',
-      hoverBackgroundColor: 'hover:bg-[#FFFFFF]',
-      borderColor: 'border-[#e67777]',
-      defaultTextColor: 'text-[#FFFFFF]',
-      hoverBorderColor: 'hover:border-[#e67777]',
-      hoverTextColor: 'hover:text-[#d00000]', 
-    },
+  };
+  
+  const fallbackStyle = {
+    defaultBackgroundColor: '',
+    hoverBackgroundColor: '',
+    borderColor: '',
+    defaultTextColor: '',
+    hoverBorderColor: '',
+    hoverTextColor: '',
   };
 
   const {
@@ -42,14 +45,16 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width }) => {
     borderColor,
     hoverBorderColor,
     hoverTextColor,
-  } = buttonStyles[color];
+  } = buttonStyles[color] || fallbackStyle; // Use fallbackStyle if buttonStyles[color] is undefined
 
   return (
     <button
+      type={type} 
       className={`py-2 ${width} font-nunitosans items-center tracking-wide text-lg rounded-full border-2 font-bold ${defaultBackgroundColor} ${borderColor} ${defaultTextColor} ${hoverBackgroundColor} ${hoverBorderColor} ${hoverTextColor} shadow-md`}
       onClick={action}
+      disabled={isLoading} // Disable button when isLoading is true
     >
-      {text}
+      {isLoading ? 'Loading...' : text} 
     </button>
   );
 };

@@ -1,7 +1,6 @@
-
 import { useState } from 'react';
 import React from 'react';
-import Buttonv2 from "./Buttonv2";
+import Buttonv2 from "../Buttonv2";
 
 interface OverlayProps {
     isVisible: boolean,
@@ -123,9 +122,7 @@ const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, de
         return null;
     }
 
-    
+
 }
 
 export default EventOverlay;
-
-
