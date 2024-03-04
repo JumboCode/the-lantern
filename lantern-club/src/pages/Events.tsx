@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { event } from "../types/event";
+import { handleUpdate } from "/api/events/updateEvent";
 
 // new code w/ useState and useEffect
 
@@ -45,25 +46,6 @@ export default function Events() {
     });
   };
 
-  const handleUpdate = async (idToUpdate: string) => {
-    const response = await fetch("api/content/events", {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: idToUpdate,
-        name: undefined,
-        description: "updated description",
-        date: new Date("2024-2-27"),
-        time: new Date("2024-2-28"),
-        location: "change of location!",
-        host: "new host",
-        imageURL: "new image",
-      }),
-    });
-  };
-
   return (
     <>
       <NavBar />
@@ -87,9 +69,6 @@ export default function Events() {
       <div>
         <button onClick={() => handleAdd()}>Add sample event</button>
       </div>
-      <div>
-        <button onClick={() => handleUpdate(sampleID)}>Update event</button>
-      </div>
 
       {AllEvents &&
         AllEvents.map((oneEvent: event) => {
@@ -98,6 +77,9 @@ export default function Events() {
               {oneEvent.id} {oneEvent.name} {oneEvent.description}
               {oneEvent.location} {oneEvent.host} {oneEvent.imageURL}
               {oneEvent.time.toString()} {oneEvent.date.toString()}
+              <button onClick={() => handleUpdate(oneEvent.id)}>
+                Update event
+              </button>
             </div>
           );
         })}
