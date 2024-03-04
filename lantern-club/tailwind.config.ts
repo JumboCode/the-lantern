@@ -17,6 +17,7 @@ const config: Config = {
       'g-yellow1':"#FAEBBE",
       'blue-g1':'#D5E1F3',
       'blue-g2':'#94BBE3',
+      'nav-bg':'#D5E1F3',
       
       sky: {
         "400": "color: rgb(56 189 248)",
