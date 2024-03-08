@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { event } from "../types/event";
 import { handleUpdate } from "../pages/api/events/updateEvent";
 import { handleDelete } from "../pages/api/events/deleteEvent";
+import { handleAdd } from "../pages/api/events/addEvent";
 import EventsI from "@/components/events/EventsI";
 import EventsII from "@/components/events/EventsII";
 import Buttonv2 from "@/components/Buttonv2";
@@ -35,22 +36,6 @@ export default function Events() {
   //   </ul>
   // );
   const sampleID = "65de09db7d4bfed85a2567fc";
-
-  const handleDelete = async (idToDelete: string) => {
-    const response = await fetch("/api/content/events", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: idToDelete }),
-    });
-  };
-
-  const handleAdd = async () => {
-    const response = await fetch("api/content/events", {
-      method: "POST",
-    });
-  };
 
   return (
     <>
