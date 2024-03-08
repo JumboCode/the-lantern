@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import Image from "next/image";
 import OrangePoster from '../../images/orangeposter.png';
 import BluePoster from '../../images/blueposter.png';
 import TanPoster from '../../images/tanposter.png';
 import Buttonv2 from "../Buttonv2";
+import RSVPOverlay from "./RSVPOverlay";
 
 type Event = {
   id: string;
@@ -53,6 +54,8 @@ export default function EventsI({ title }: { title: string }) {
     fetchEvents();
   }, []);
 
+  const [showModal, setShowModal] = useState(false);
+
   if (numEvents == 0) {
     return (
         <>
@@ -81,7 +84,7 @@ export default function EventsI({ title }: { title: string }) {
             </div>
         </div>
         </div>
-        <div className="h-20 w-full flex mellow-yellow" id="triangle"></div>
+        <div className="h-20 w-full flex mellow-yellow z-0" id="triangle"></div>
         
         {/* Integrate events data LATER */}
         {/* {allEvents &&
@@ -112,7 +115,15 @@ export default function EventsI({ title }: { title: string }) {
           <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Image src={OrangePoster} style={imageStyle} alt="Orange Poster picture" />
           <div style={{ paddingTop: '20px' }}>
-            <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" />
+          <div className="z-999">
+                <Fragment>
+                <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-48" />
+                <div className="z-999">
+                <RSVPOverlay isVisible={showModal} onClose={() => {setShowModal(false)}} eventName="Interest Meeting" date={new Date()} location="miller" description="something something" />
+                </div>
+                </Fragment>
+          </div>
+            {/* <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" /> */}
             </div>
           </div>
 
@@ -120,7 +131,10 @@ export default function EventsI({ title }: { title: string }) {
           <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Image src={BluePoster} style={imageStyle} alt="Orange Poster picture" />
           <div style={{ paddingTop: '20px' }}>
-            <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" />
+          <Fragment>
+            <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-48" />
+            <RSVPOverlay isVisible={showModal} onClose={() => {setShowModal(false)}} eventName="Interest Meeting" date={new Date()} location="miller" description="something something" />
+          </Fragment>
             </div>
           </div>
 
@@ -128,13 +142,16 @@ export default function EventsI({ title }: { title: string }) {
           <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Image src={TanPoster} style={imageStyle} alt="Orange Poster picture" />
           <div style={{ paddingTop: '20px' }}>
-            <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" />
+          <Fragment>
+            <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-48" />
+            <RSVPOverlay isVisible={showModal} onClose={() => {setShowModal(false)}} eventName="Interest Meeting" date={new Date()} location="miller" description="something something" />
+          </Fragment>
             </div>
           </div>
           </div>
 
         </div>
-        <div className="h-20 w-full flex mellow-yellow" id="triangle"></div>
+        <div className="h-20 w-full flex mellow-yellow z-0" id="triangle"></div>
         </div>
         
     );

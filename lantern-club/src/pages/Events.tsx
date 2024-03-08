@@ -7,7 +7,7 @@ import EventsI from '@/components/events/EventsI';
 import EventsII from '@/components/events/EventsII';
 import Buttonv2 from '@/components/Buttonv2';
 import EventOverlay from "../components/events/EventOverlay";
-
+import EboardOverlay from "../components/events/EboardOverlay";
 
 type event = {
 	id: string;
@@ -47,7 +47,7 @@ export default function Events() {
     <>
       <NavBar />
       <Header title="Events"/>
-      <EventsI/>
+      <EventsI />
       <EventsII/>
         
        {AllEvents && AllEvents.map((oneEvent: event) => {
@@ -64,6 +64,10 @@ export default function Events() {
         <Buttonv2 text="Edit Event" action={() => setShowModal(true)} color="orange" width="w-48" />
         <EventOverlay isVisible={showModal} onClose={() => {setShowModal(false)}} type="Edit Event" name="ava's half bday bash" date="2/29/2024" time="8:29pm" location="milla 4th floor" description="fun times with ava" />
       </Fragment>
+      {/* <Fragment>
+        <Buttonv2 text="Add Profile Card" action={() => setShowModal(true)} color="orange" width="w-48" />
+        {/* <EboardOverlay isVisible={showModal} onClose={() => {setShowModal(false)}} /> I never finished
+      </Fragment> */}
       <Footer showAdminLogin={false} />
     </>
   );

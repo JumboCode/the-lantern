@@ -48,6 +48,7 @@ const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, de
                         </div>
                         <div>
                             <h2 className="mt-5 font-nunito text-md">Date</h2>
+
                             <input className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input" type="text" id="date" name="date" onChange={handleChange}></input>
                         </div>
                         <div>
