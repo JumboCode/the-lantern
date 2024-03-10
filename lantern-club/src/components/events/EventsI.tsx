@@ -141,7 +141,7 @@ export default function EventsI({ title }: { title: string }) {
           {/* Event Box 3 */}
           <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Image src={TanPoster} style={imageStyle} alt="Orange Poster picture" />
-          <div style={{ paddingTop: '20px' }}>
+          <div style={{ paddingTop: '20px', position: 'relative' }}>
           <Fragment>
             <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-48" />
             <RSVPOverlay isVisible={showModal} onClose={() => {setShowModal(false)}} eventName="Interest Meeting" date={new Date()} location="miller" description="something something" />
@@ -151,7 +151,7 @@ export default function EventsI({ title }: { title: string }) {
           </div>
 
         </div>
-        <div className="h-20 w-full flex mellow-yellow z-0" id="triangle"></div>
+        <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
         </div>
         
     );
