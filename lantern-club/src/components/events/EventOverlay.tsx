@@ -16,7 +16,7 @@ interface OverlayProps {
 const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, description}: OverlayProps ) => {
     if (!isVisible) return null; 
 
-    const handleButtonClick = () => {
+    const handleDelete = () => {
         onClose()
         console.log('Button clicked!')
     };
@@ -69,8 +69,7 @@ const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, de
                         </div>
                         <div className="flex justify-center text-md space-x-7 py-5">
                             <Buttonv2 text="Save" action={() => handleSubmit} color="blue" width="w-40"/>
-                            {/* <button type="submit">Submit</button> */}
-                            <Buttonv2 text="Cancel" action={handleButtonClick} color="red" width="w-40" />
+                            <Buttonv2 text="Cancel" action={onClose} color="red" width="w-40" />
                         </div>
                     </div>
                 </div>
@@ -112,7 +111,7 @@ const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, de
                         </div>
                         <div className="flex justify-center text-md space-x-7 py-5">
                             <Buttonv2 text="Save" action={() => handleSubmit} color="blue" width="w-40"/>
-                            <Buttonv2 text="Delete" action={handleButtonClick} color="red" width="w-40" />
+                            <Buttonv2 text="Delete" action={handleDelete} color="red" width="w-40" />
                         </div>
                     </div>
                 </div>
