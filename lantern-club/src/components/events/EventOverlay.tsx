@@ -21,7 +21,7 @@ const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, de
         console.log('Button clicked!')
     };
 
-    const [formData, setFormData] = useState({name: "",date: "",time: "",location: "",description: ""});
+    const [formData, setFormData] = useState({ name: name, date: date, time: time, location: location, description: description });
 
     const handleChange = (event: any) => {
         const { name, value } = event.target;
