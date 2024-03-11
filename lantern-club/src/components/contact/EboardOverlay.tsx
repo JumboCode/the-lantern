@@ -40,26 +40,26 @@ const EboardOverlay = ( {isVisible, onClose, type, name, pronouns, title, email,
                 <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                     <button className="text-gray text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
                     <div className="px-5 flex flex-col overflow-y-scroll">
-                        <h2 className="text-4xl font-coolvetica underline decoration-sky-500">{type}</h2>       
+                        <h2 className="mb-5 text-4xl font-coolvetica underline decoration-sky-500">{type}</h2>       
                         <div>
-                            <h1 className="pt-2 -mb-5 font-nunito text-xl">Name</h1>
-                            <input className="p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="name" name="name" onChange={handleChange}></input>
+                            <h1 className="pt-2 font-nunito text-xl">Name</h1>
+                            <input className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="name" name="name" onChange={handleChange}></input>
                         </div>
                         <div>
-                            <h2 className="mt-5 -mb-5 font-nunito text-lg">Pronouns</h2>
-                            <input className="p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="pronouns" name="pronouns" onChange={handleChange}></input>
+                            <h2 className="mt-5 font-nunito text-lg">Pronouns</h2>
+                            <input className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="pronouns" name="pronouns" onChange={handleChange}></input>
                         </div>
                         <div>
-                            <h2 className="mt-5 -mb-5 font-nunito text-lg">Title</h2>
-                            <input className="p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="title" name="title" onChange={handleChange}></input>
+                            <h2 className="mt-5 font-nunito text-lg">Title</h2>
+                            <input className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="title" name="title" onChange={handleChange}></input>
                         </div>
                         <div>
-                            <h2 className="mt-5 -mb-5 font-nunito text-lg">Email</h2>
-                            <input className="p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="email" name="email" onChange={handleChange}></input>
+                            <h2 className="mt-5 font-nunito text-lg">Email</h2>
+                            <input className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="email" name="email" onChange={handleChange}></input>
                         </div>
                         <div>
                         <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
-                            <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2 text-5xl">+</button> 
+                            <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
                         </div> 
                         <div className="flex justify-center text-md space-x-7 py-5">
                             <Buttonv2 text="Save" action={() => handleSubmit} color="blue" width="w-40"/>
