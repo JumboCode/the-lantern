@@ -3,11 +3,18 @@ import Image from "next/image";
 import OrangePoster from "../../images/orangeposter.png";
 import BluePoster from "../../images/blueposter.png";
 import TanPoster from "../../images/tanposter.png";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import EventOverlay from "../events/EventOverlay";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
-const EventBox = (image: string, isAdmin: boolean) => {
-  // console.log(image.image);
+interface props {
+  image: string;
+  isAdmin: boolean;
+}
+
+const EventBox = ({ image, isAdmin }: props) => {
+  console.log(isAdmin);
   const handleButtonClick = () => {
     // TODO
     console.log("Button clicked!");
@@ -28,16 +35,12 @@ const EventBox = (image: string, isAdmin: boolean) => {
   //   }
   // };
 
-  const showButton = (isAdmin: boolean) => {
+  const handleClick = (isAdmin: boolean) => {
     if (isAdmin) {
+      setShowModal(true);
+      console.log("handleClick");
       return (
-        <div>
-          <Buttonv2
-            text="Edit Event"
-            action={() => setShowModal(true)}
-            color="orange"
-            width="w-48"
-          />
+        <Fragment>
           <EventOverlay
             isVisible={showModal}
             onClose={() => {
@@ -50,18 +53,7 @@ const EventBox = (image: string, isAdmin: boolean) => {
             location="milla 4th floor"
             description="fun times with ava"
           />
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Buttonv2
-            text="RSVP"
-            action={handleButtonClick}
-            color="blue"
-            width="w-40"
-          />
-        </div>
+        </Fragment>
       );
     }
   };
@@ -77,13 +69,40 @@ const EventBox = (image: string, isAdmin: boolean) => {
     >
       <div>
         <Image
-          src={image.image}
+          src={image}
           width={100}
           height={100}
           alt="Orange Poster picture"
         />
       </div>
-      <div style={{ paddingTop: "20px" }}>showButton(isAdmin)</div>
+      <div style={{ paddingTop: "20px" }}></div>
+      {/* {showButton(isAdmin)} */}
+
+      {isAdmin ? (
+        <FontAwesomeIcon
+          icon={faPen}
+          alt="Edit Button"
+          size="2x"
+          onClick={() => setShowModal(true)}
+        />
+      ) : (
+        <Buttonv2 text="RSVP" action={handleClick} color="blue" width="w-40" />
+      )}
+
+      <Fragment>
+        <EventOverlay
+          isVisible={showModal}
+          onClose={() => {
+            setShowModal(false);
+          }}
+          type="Edit Event"
+          name="ava's half bday bash"
+          date="2/29/2024"
+          time="8:29pm"
+          location="milla 4th floor"
+          description="fun times with ava"
+        />
+      </Fragment>
     </div>
   );
 };

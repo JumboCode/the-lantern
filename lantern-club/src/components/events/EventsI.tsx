@@ -30,6 +30,7 @@ export default function EventsI({ title }: { title: string }) {
 
   const numEvents = 1;
   const [allEvents, setEvents] = useState([]);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const fetchEvents = async () => {
     try {
@@ -43,6 +44,8 @@ export default function EventsI({ title }: { title: string }) {
 
   useEffect(() => {
     fetchEvents();
+    // Set isAdmin to true for demonstration purposes
+    setIsAdmin(true);
   }, []);
 
   if (numEvents == 0) {
@@ -123,7 +126,6 @@ export default function EventsI({ title }: { title: string }) {
                 return (
                   <div key={oneEvent.id}>
                     <EventBox image={oneEvent.imageURL} isAdmin={true} />
-                    console.log({oneEvent.imageURL})
                   </div>
                 );
               })}
