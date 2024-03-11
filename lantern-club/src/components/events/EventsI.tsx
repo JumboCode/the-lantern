@@ -123,6 +123,7 @@ export default function EventsI({ title }: { title: string }) {
                 return (
                   <div key={oneEvent.id}>
                     <EventBox image={oneEvent.imageURL} isAdmin={true} />
+                    console.log({oneEvent.imageURL})
                   </div>
                 );
               })}
