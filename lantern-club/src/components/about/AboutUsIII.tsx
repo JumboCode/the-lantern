@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import AboutImage from "../../images/hannah1.jpeg";
 import Define from "../images/define.png";
 import Arrow from "../images/arrow.png";
+import Image3 from "../../images/sts-resources.png";
+
 
 export default function AboutUsIII() {
   const header_font: React.CSSProperties = {
@@ -19,12 +20,12 @@ export default function AboutUsIII() {
   const round_box: React.CSSProperties = {
     display: "flex",
     gap: "20px",
-    borderWidth: "2px",
+    borderWidth: "4px",
     marginTop: "2.5rem",
     marginBottom: "2.5rem",
     borderRadius: "1.5rem",
     padding: "5rem",
-    filter: "drop-shadow(5px 10px 3px rgb(0 0 0 / 0.2)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08))",
+    filter: "drop-shadow(5px 10px 3px rgba(0, 0, 0, 0.5)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.5));",
   };
 
   return (
@@ -38,11 +39,11 @@ export default function AboutUsIII() {
         className="pale-yellow mellow-yellow-border"
         style={round_box}
         >
-          <div className="w-1/2 py-5 font-nunito text-xl flex"
-           >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui offici. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
-          <div className="bg-gray-100 w-1/2 rounded-3xl relative">
+          <div className="w-1/2 py-5 font-nunito text-2xl flex ml-4"
+           ><p>Science, Technology & Society (STS) is an interdisciplinary field of study that seeks to explore and understand the many ways that modern science and technology shape modern culture, values, and institutions, and how modern values shape science and technology. STS examines how science and technology emerge, how they enter society, how they change through social processes, and how society changes in response to science and technology. (<a href="https://majorsandminors.dasa.ncsu.edu/science-technology-society/#:~:text=Science%2C%20Technology%20%26%20Society%20(STS,values%20shape%20science%20and%20technology." className="text-blue-600 underline">NC State University.</a>)</p></div>
+          <div className="bg-gray-100 w-1/2 rounded-3xl relative ml-10 mr-4">
             <Image
-              src={AboutImage} // The image you want to use
+              src={Image3} // The image you want to use
               alt="Background"
               layout="fill" // This makes the image fill the container
             />
