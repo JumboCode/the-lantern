@@ -1,71 +1,104 @@
-import React from 'react';
+import React, { Fragment } from "react";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import { event } from "../types/event";
+import { handleUpdate } from "../pages/api/events/updateEvent";
+import { handleDelete } from "../pages/api/events/deleteEvent";
+import EventsI from "@/components/events/EventsI";
+import EventsII from "@/components/events/EventsII";
+import Buttonv2 from "@/components/Buttonv2";
+import EventOverlay from "../components/events/EventOverlay";
 
-type event = {
-	id: string;
-    name: string;
-	description: string;
-	date: Date;
-    time: Date;
-	location: string;
-	host: string;
-    imageURL: string;
-};
 // new code w/ useState and useEffect
 
 export default function Events() {
-    const [AllEvents, setEvents] = useState([])
+  const [AllEvents, setEvents] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
-    const fetchEvents = async () => {
-        const response = await fetch('/api/content/events', {method: 'GET'})
-        const data = await response.json()
-        setEvents(data)
-    }
+  const fetchEvents = async () => {
+    const response = await fetch("/api/content/events", { method: "GET" });
+    const data = await response.json();
+    setEvents(data);
+  };
 
-    useEffect(() => {
-        fetchEvents();
-    }, [])
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
-// const displayEvents = () => (
-//   <ul>
-//     {AllEvents.map((event, index) => (
-//       <li key={index}>{event.id} - {event.name} - {event.date}</li>
-//     ))}
-//   </ul>
-// );
-  
+  // const displayEvents = () => (
+  //   <ul>
+  //     {AllEvents.map((event, index) => (
+  //       <li key={index}>{event.id} - {event.name} - {event.date}</li>
+  //     ))}
+  //   </ul>
+  // );
+  const sampleID = "65de09db7d4bfed85a2567fc";
+
+  const handleDelete = async (idToDelete: string) => {
+    const response = await fetch("/api/content/events", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: idToDelete }),
+    });
+  };
+
+  const handleAdd = async () => {
+    const response = await fetch("api/content/events", {
+      method: "POST",
+    });
+  };
 
   return (
     <>
       <NavBar />
-      <Header title="Events"/>
-        {/* <div> */}
-        <div className="-mt-20 flex flex-col h-contact bg-gradient-to-t from-contact-g2 to-g-yellow1">
-            <h1 className="mt-20 font-coolvetica text-7xl ml-12">Upcomming Events</h1>
-            <div className="flex flex-row">
-                {/* <div className="px-eboardx py-eboardy bg-lanternblue">
+      <Header title="Events" />
+      <EventsI />
+      <EventsII />
 
-                </div> */}
+      <div>
+        <button onClick={() => handleAdd()}>Add sample event</button>
+      </div>
 
-            </div>
-
-        </div>
-        <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2"></div>
-        <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"></div>
-
-       {AllEvents && AllEvents.map((oneEvent: event) => {
-        return (
+      {AllEvents &&
+        AllEvents.map((oneEvent: event) => {
+          return (
             <div key={oneEvent.id}>
-             {oneEvent.id} {oneEvent.name} {oneEvent.description}
+              {oneEvent.id} {oneEvent.name} {oneEvent.description}
               {oneEvent.location} {oneEvent.host} {oneEvent.imageURL}
-              {oneEvent.time.toString()}  {oneEvent.date.toString()}
-             </div>
-        );
-       })}
-       {/* </div> */}
+              {oneEvent.time.toString()} {oneEvent.date.toString()}
+              <button onClick={() => handleUpdate(oneEvent.id)}>
+                Update event
+              </button>
+              <button onClick={() => handleDelete(oneEvent.id)}>
+                Delete event
+              </button>
+            </div>
+          );
+        })}
+      <Fragment>
+        <Buttonv2
+          text="Edit Event"
+          action={() => setShowModal(true)}
+          color="orange"
+          width="w-48"
+        />
+        <EventOverlay
+          isVisible={showModal}
+          onClose={() => {
+            setShowModal(false);
+          }}
+          type="Edit Event"
+          name="ava's half bday bash"
+          date="2/29/2024"
+          time="8:29pm"
+          location="milla 4th floor"
+          description="fun times with ava"
+        />
+      </Fragment>
       <Footer showAdminLogin={false} />
     </>
   );

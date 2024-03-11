@@ -1,6 +1,6 @@
 import React from "react"
-// import Carousel from 'react-multi-carousel';
-// import 'react-multi-carousel/lib/styles.css';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import Card from "./Card"
 
 interface CardType {
@@ -47,7 +47,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                     <a href="/ContactUs" className="font-nunito underline text-2xl ml-7">edit</a>
                     </h1>
                 </div>
-                {/* <Carousel
+                <Carousel
                     swipeable={true}
                     draggable={true}
                     showDots={true}
@@ -72,7 +72,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                             />
                         </div>
                     ))}
-                </Carousel> */}
+                </Carousel>
             </div>
             <div className="h-20 w-full mellow-yellow" id="triangle"></div>
         </div>
