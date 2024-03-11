@@ -30,6 +30,8 @@ const config: Config = {
         '2': '8px',
         'eboardx':'325px',
         'eboardy':'400px',
+        'line-space': '13rem',
+        'triangle-top': '150px',
 
       },
       backgroundImage: {
