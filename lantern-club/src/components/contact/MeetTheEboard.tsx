@@ -49,13 +49,16 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
             <div className="-mt-20 pt-32 w-full yellow-gradient">
                 <div className="ml-5">
                     <h1 className="font-coolvetica text-7xl ml-12">Meet the E-Board
-                    <Fragment>
                         <text className="font-nunito underline text-2xl ml-7" onClick={() => setShowModal(true)}>edit</text>
+                    </h1>
+                    <div className="z-999" style={{ position: 'relative' }}>
+                    <Fragment>
                         <EboardOverlay type="Add" isVisible={showModal} onClose={() => {setShowModal(false)}} name="Nika Lea Tomicic" pronouns="she/her" title="Editor-in-Chief" email="nika_lea.tomicic@tufts.edu" major="Sociology + STS" />
                     </Fragment>
-                    </h1>
+                    </div>
                 </div>
-                    <Carousel
+                <div className="z-100" style={{ position: 'relative' }} >
+                <Carousel
                     swipeable={true}
                     draggable={true}
                     showDots={false}
@@ -80,9 +83,9 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                         </div>
                     ))}
                 </Carousel>
-                
+            </div>  
             </div>
-            <div className="h-20 w-full mellow-yellow" id="triangle"></div>
+            <div className="h-20 w-full mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
         </div>
     )
 }; export default MeetTheEBoard;
