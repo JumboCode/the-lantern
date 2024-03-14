@@ -5,7 +5,7 @@ import BluePoster from "../../images/blueposter.png";
 import TanPoster from "../../images/tanposter.png";
 import Buttonv2 from "../Buttonv2";
 import { EventBox } from "../events/EventBox";
-import { event } from "../../types/event";
+import { EventType } from "../../types/event";
 
 const handleButtonClick = () => {
   // TODO
@@ -112,10 +112,10 @@ export default function EventsI({ title }: { title: string }) {
           {/* Two boxes */}
           <div className="flex flex-col gap-10 md:flex-row">
             {allEvents &&
-              allEvents.slice(0,3).map((oneEvent: event) => {
+              allEvents.slice(0,3).map((oneEvent: EventType) => {
                 return (
                   <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <EventBox image={oneEvent.imageURL} isAdmin={true} />
+                    <EventBox event={oneEvent} isAdmin={true} />
                   </div>
                 );
               })}

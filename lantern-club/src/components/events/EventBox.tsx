@@ -5,13 +5,10 @@ import { Fragment, useState } from "react";
 import EventOverlay from "../events/EventOverlay";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { EventBoxProps } from "../../types/event"
 
-interface props {
-  image: string;
-  isAdmin: boolean;
-}
 
-const EventBox = ({ image, isAdmin }: props) => {
+const EventBox = ({event, isAdmin}: EventBoxProps) => {
   console.log(isAdmin);
   const handleButtonClick = () => {
     // TODO
@@ -19,39 +16,35 @@ const EventBox = ({ image, isAdmin }: props) => {
   };
 
   const imageStyle: React.CSSProperties = {
-    width: "100%", // Ensure image takes up the entire width
-    height: "100%", // Ensure image takes up the entire height
+    width: "100%", 
+    height: "100%", 
   };
 
   const [showModal, setShowModal] = useState(false);
-
-  // const setModal = (status: boolean) => {
-  //   if (status) {
-  //     setShowModal(true);
-  //   } else {
-  //     setShowModal(false);
-  //   }
-  // };
 
   const handleClick = (isAdmin: boolean) => {
     if (isAdmin) {
       setShowModal(true);
       console.log("handleClick");
       return (
-        <Fragment>
-          <EventOverlay
-            isVisible={showModal}
-            onClose={() => {
-              setShowModal(false);
-            }}
-            type="Edit Event"
-            name="ava's half bday bash"
-            date="2/29/2024"
-            time="8:29pm"
-            location="milla 4th floor"
-            description="fun times with ava"
-          />
-        </Fragment>
+        <EventOverlay
+          isVisible={showModal}
+          onClose={() => {
+            setShowModal(false);
+          }}
+          type="Edit Event"
+          name={event.name}
+          date={event.date.toString()}
+          time={event.date.toString()}
+          location={event.location}
+          description={event.description}
+          // type="Edit Event"commit 
+          // name="ava's half bday bash"
+          // date="2/29/2024"
+          // time="8:29pm"
+          // location="milla 4th floor"
+          // description="fun times with ava"
+        />
       );
     }
   };
@@ -59,7 +52,7 @@ const EventBox = ({ image, isAdmin }: props) => {
   return (
     <>
       <Image
-          src={image}
+          src={event.imageURL}
           style={imageStyle}
           width={100}
           height={100}
@@ -79,11 +72,17 @@ const EventBox = ({ image, isAdmin }: props) => {
             setShowModal(false);
           }}
           type="Edit Event"
-          name="ava's half bday bash"
-          date="2/29/2024"
-          time="8:29pm"
-          location="milla 4th floor"
-          description="fun times with ava"
+          name={event.name}
+          date={event.date.toString()}
+          time={event.date.toString()}
+          location={event.location}
+          description={event.description}
+          // type="Edit Event"
+          // name="ava's half bday bash"
+          // date="2/29/2024"
+          // time="8:29pm"
+          // location="milla 4th floor"
+          // description="fun times with ava"
         />
       </Fragment>
     </>
