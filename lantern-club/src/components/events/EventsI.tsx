@@ -19,7 +19,6 @@ type Event = {
 };
 
 const handleButtonClick = () => {
-  // TODO
   console.log('Button clicked!');
 };
 
@@ -29,8 +28,8 @@ export default function EventsI({ title }: { title: string }) {
   };
 
   const imageStyle: React.CSSProperties = {
-    width: "100%", // Ensure the image takes up the entire width
-    height: "100%", // Ensure the image takes up the entire height
+    width: "100%",
+    height: "100%",
   };
 
   const header_font: React.CSSProperties = {
@@ -63,16 +62,16 @@ export default function EventsI({ title }: { title: string }) {
     return (
       <>
         <div className="-mt-20 flex flex-col h-contact bg-gradient-to-t from-contact-g2 to-g-yellow1" style={{ minHeight: "700px" }}>
-          {/* ... (same as your existing code) */}
         </div>
-        {/* ... (same as your existing code) */}
       </>
     );
   } else {
     return (
       <div>
         <div className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
-          <h1 className="mb-20 font-coolvetica md:text-8xl text-7xl">Upcoming Events</h1>
+          <h1 className={`mb-20 font-coolvetica md:text-8xl text-7xl ${isAdmin ? 'text-red-500' : ''}`}>
+            {isAdmin ? 'Edit Upcoming Events' : 'Upcoming Events'}
+          </h1>
 
           {/* Two boxes */}
           <div className="flex flex-col gap-10 md:flex-row">
