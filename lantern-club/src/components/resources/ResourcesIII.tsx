@@ -1,9 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import stsresources from '../../images/sts-resources.png';
-import r1 from '../../images/r1.png';
-import r2 from '../../images/r2.png';
-import r3 from '../../images/r3.png';
+// import r1 from '../../images/r1.png';
+// import r2 from '../../images/r2.png';
+// import r3 from '../../images/r3.png';
+import r1 from '../../images/ava1.jpg';
+import r2 from '../../images/ava1.jpg';
+import r3 from '../../images/ava1.jpg';
+
+
 import Poster from "../../images/submit-poster.png";
 
 export default function HomepageIII() {
