@@ -17,7 +17,7 @@ export default function AboutUsIV() {
   const round_box: React.CSSProperties = {
     display: "flex",
     gap: "20px",
-    borderWidth: "2px",
+    borderWidth: "4px",
     // marginTop: "2.5rem",
     // marginBottom: "2.5rem",
     borderRadius: "1.5rem",

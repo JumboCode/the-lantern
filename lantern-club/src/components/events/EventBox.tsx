@@ -1,8 +1,6 @@
 import Buttonv2 from "../Buttonv2";
 import Image from "next/image";
-import OrangePoster from "../../images/orangeposter.png";
-import BluePoster from "../../images/blueposter.png";
-import TanPoster from "../../images/tanposter.png";
+
 import { Fragment, useState } from "react";
 import EventOverlay from "../events/EventOverlay";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -59,35 +57,20 @@ const EventBox = ({ image, isAdmin }: props) => {
   };
 
   return (
-    <div
-      className="flex-1"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <div>
-        <Image
+    <>
+      <Image
           src={image}
+          style={imageStyle}
           width={100}
           height={100}
-          alt="Orange Poster picture"
-        />
-      </div>
-      <div style={{ paddingTop: "20px" }}></div>
-      {/* {showButton(isAdmin)} */}
-
-      {isAdmin ? (
-        <FontAwesomeIcon
-          icon={faPen}
-          alt="Edit Button"
-          size="2x"
-          onClick={() => setShowModal(true)}
-        />
-      ) : (
-        <Buttonv2 text="RSVP" action={handleClick} color="blue" width="w-40" />
-      )}
+          alt="Orange Poster picture"/>
+      <div style={{ paddingTop: '20px' }}>
+                {isAdmin ? (
+                  <FontAwesomeIcon icon={faPen} alt="Edit Button" size="2x" onClick={() => setShowModal(true)}/>
+                ) : (
+                  <Buttonv2 text="RSVP" action={handleClick} color="blue" width="w-40" />
+                )}
+      </div>      {/* {showButton(isAdmin)} */}
 
       <Fragment>
         <EventOverlay
@@ -103,7 +86,7 @@ const EventBox = ({ image, isAdmin }: props) => {
           description="fun times with ava"
         />
       </Fragment>
-    </div>
+    </>
   );
 };
 

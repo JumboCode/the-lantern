@@ -18,8 +18,8 @@ export default function EventsI({ title }: { title: string }) {
   };
 
   const imageStyle: React.CSSProperties = {
-    width: "100%", // Ensure image takes up the entire width
-    height: "100%", // Ensure image takes up the entire height
+    width: "100%",
+    height: "100%",
   };
 
   const header_font: React.CSSProperties = {
@@ -48,7 +48,7 @@ export default function EventsI({ title }: { title: string }) {
     setIsAdmin(true);
   }, []);
 
-  if (numEvents == 0) {
+  if (numEvents === 0) {
     return (
       <>
         <div
@@ -96,16 +96,6 @@ export default function EventsI({ title }: { title: string }) {
           </div>
         </div>
         <div className="h-20 w-full flex mellow-yellow" id="triangle"></div>
-
-        {/* Integrate events data LATER */}
-        {/* {allEvents &&
-            allEvents.map((oneEvent: Event) => (
-            <div key={oneEvent.id}>
-                {oneEvent.id} {oneEvent.name} {oneEvent.description}
-                {oneEvent.location} {oneEvent.host}
-                {/* {oneEvent.time}  {oneEvent.date} */}
-        {/* </div> */}
-        {/* /*))} */}
       </>
     );
   } else {
@@ -115,16 +105,16 @@ export default function EventsI({ title }: { title: string }) {
           className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1"
           style={background}
         >
-          <h1 className="mb-20 font-coolvetica md:text-8xl text-7xl">
-            Upcoming Events
+          <h1 className={`mb-20 font-coolvetica md:text-8xl text-7xl ${isAdmin ? 'text-red-500' : ''}`}>
+            {isAdmin ? 'Edit Upcoming Events' : 'Upcoming Events'}
           </h1>
 
           {/* Two boxes */}
           <div className="flex flex-col gap-10 md:flex-row">
             {allEvents &&
-              allEvents.map((oneEvent: event) => {
+              allEvents.slice(0,3).map((oneEvent: event) => {
                 return (
-                  <div key={oneEvent.id}>
+                  <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <EventBox image={oneEvent.imageURL} isAdmin={true} />
                   </div>
                 );
