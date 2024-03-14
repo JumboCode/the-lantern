@@ -25,7 +25,7 @@ export default function Magazine() {
 
   const [fileList, setFileList] = useState([]);
   //const [isLoggedIn, setLoggedIn] = useState(false); 
-  const isLoggedIn = false; 
+  const isLoggedIn = true; 
   useEffect(() => {
     // const checkLogin = async() => {
     //   const userLoggedIn = await(isLoggedIn); 
