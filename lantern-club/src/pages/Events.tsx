@@ -3,7 +3,7 @@ import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
-import { event } from "../types/event";
+import { EventType } from "../types/event";
 import { handleUpdate } from "../pages/api/events/updateEvent";
 import { handleDelete } from "../pages/api/events/deleteEvent";
 import { handleAdd } from "../pages/api/events/addEvent";
@@ -49,13 +49,13 @@ export default function Events() {
       </div>
 
       {AllEvents &&
-        AllEvents.map((oneEvent: event) => {
+        AllEvents.map((oneEvent: EventType) => {
           return (
             <div key={oneEvent.id}>
               {oneEvent.id} {oneEvent.name} {oneEvent.description}
               {oneEvent.location} {oneEvent.host} {oneEvent.imageURL}
               {oneEvent.time.toString()} {oneEvent.date.toString()}
-              <button onClick={() => handleUpdate(oneEvent.id)}>
+              <button onClick={() => handleUpdate(oneEvent.id, oneEvent)}>
                 Update event
               </button>
               <button onClick={() => handleDelete(oneEvent.id)}>

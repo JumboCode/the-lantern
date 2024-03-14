@@ -1,28 +1,24 @@
 import { useState } from "react";
+
+import { handleUpdate } from "../../pages/api/events/updateEvent";
 import React from "react";
 import Buttonv2 from "../Buttonv2";
+import { EventType } from "../../types/event";
 
 interface OverlayProps {
   isVisible: boolean;
   onClose: () => void;
   type: "Add Event" | "Edit Event";
-  name?: string;
-  date?: string;
-  time?: string;
-  location?: string;
-  description?: string;
+  currEvent: EventType;
 }
 
 const EventOverlay = ({
   isVisible,
   onClose,
   type,
-  name,
-  date,
-  time,
-  location,
-  description,
+  currEvent,
 }: OverlayProps) => {
+  console.log(currEvent);
   if (!isVisible) return null;
 
   const handleButtonClick = () => {
@@ -30,17 +26,24 @@ const EventOverlay = ({
     console.log("Button clicked!");
   };
 
+  // Need to make state of type <EventType> so that handleUpdate can be called
+  // using formData
   const [formData, setFormData] = useState({
-    name: "",
-    date: "",
-    time: "",
-    location: "",
-    description: "",
+    // currEvent,
+    id: currEvent.id,
+    name: currEvent.name,
+    description: currEvent.description,
+    date: currEvent.date,
+    time: currEvent.time,
+    location: currEvent.location,
+    host: currEvent.host,
+    imageURL: currEvent.imageURL,
   });
 
   const handleChange = (event: any) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    console.log(formData);
   };
 
   const handleSubmit = (event: any) => {
@@ -48,6 +51,7 @@ const EventOverlay = ({
     alert(
       `Name: ${formData.name}, Date: ${formData.date}, Time: ${formData.time}, Location: ${formData.location}, Description: ${formData.description}`
     );
+    handleUpdate(event.id, event);
   };
 
   if (type == "Add Event") {
@@ -72,7 +76,7 @@ const EventOverlay = ({
                   type="text"
                   id="name"
                   name="name"
-                  onChange={handleChange}
+                  onChange={() => handleChange(formData)}
                 ></input>
               </div>
               <div>
@@ -82,7 +86,7 @@ const EventOverlay = ({
                   type="text"
                   id="date"
                   name="date"
-                  onChange={handleChange}
+                  onChange={() => handleChange(formData)}
                 ></input>
               </div>
               <div>
@@ -92,7 +96,7 @@ const EventOverlay = ({
                   type="text"
                   id="time"
                   name="time"
-                  onChange={handleChange}
+                  onChange={() => handleChange(formData)}
                 ></input>
               </div>
               <div>
@@ -102,7 +106,7 @@ const EventOverlay = ({
                   type="text"
                   id="location"
                   name="location"
-                  onChange={handleChange}
+                  onChange={() => handleChange(formData)}
                 ></input>
               </div>
               <div>
@@ -111,7 +115,7 @@ const EventOverlay = ({
                   className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-12 contact-input-height"
                   id="description"
                   name="description"
-                  onChange={handleChange}
+                  onChange={() => handleChange(formData)}
                 ></textarea>
               </div>
               <div>
@@ -123,7 +127,7 @@ const EventOverlay = ({
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
                   text="Save"
-                  action={() => handleSubmit}
+                  action={() => handleSubmit(formData)}
                   color="blue"
                   width="w-40"
                 />

@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-// import { event } from "../types/event";
+import { EventType } from "../../../types/event";
 
-const handleUpdate = async (idToUpdate: string) => {
+const handleUpdate = async (idToUpdate: string, Event: EventType) => {
   const response = await fetch("api/content/events", {
     method: "PATCH",
     headers: {
@@ -10,13 +10,13 @@ const handleUpdate = async (idToUpdate: string) => {
     },
     body: JSON.stringify({
       id: idToUpdate,
-      name: undefined,
-      description: "updated description",
-      date: new Date("2024-2-27"),
-      time: new Date("2024-2-28"),
-      location: "change of location!",
-      host: "new host",
-      imageURL: "new image",
+      name: Event.name,
+      description: Event.description,
+      date: Event.date,
+      time: Event.time,
+      location: Event.location,
+      host: Event.host,
+      imageURL: Event.imageURL,
     }),
   });
 };
