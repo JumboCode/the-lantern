@@ -3,7 +3,7 @@ import React from 'react';
 interface ButtonProps {
   text: string;
   action?: () => void;
-  color: 'orange' | 'blue';
+  color: 'orange' | 'blue' | 'red';
   width?: string; // Optional 
   type?: 'button' | 'submit'; // Optional
   isLoading?: boolean; // Optional
@@ -27,6 +27,23 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isL
       hoverBorderColor: 'hover:border-[#94BBE3]',
       hoverTextColor: 'hover:text-[#4279BC]', 
     },
+    red: {
+      defaultBackgroundColor: 'bg-[#ed1313]',
+      hoverBackgroundColor: 'hover:bg-[#FFFFFF]',
+      borderColor: 'border-[#f58e8e]',
+      defaultTextColor: 'text-[#FFFFFF]',
+      hoverBorderColor: 'hover:border-[#94BBE3]',
+      hoverTextColor: 'hover:text-[#4279BC]', 
+    },
+  };
+  
+  const fallbackStyle = {
+    defaultBackgroundColor: '',
+    hoverBackgroundColor: '',
+    borderColor: '',
+    defaultTextColor: '',
+    hoverBorderColor: '',
+    hoverTextColor: '',
   };
 
   const {
@@ -36,7 +53,7 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isL
     borderColor,
     hoverBorderColor,
     hoverTextColor,
-  } = buttonStyles[color];
+  } = buttonStyles[color] || fallbackStyle; // Use fallbackStyle if buttonStyles[color] is undefined
 
   return (
     <button
