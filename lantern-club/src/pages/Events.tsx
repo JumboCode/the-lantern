@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { event } from "../types/event";
 import { handleUpdate } from "../pages/api/events/updateEvent";
 import { handleDelete } from "../pages/api/events/deleteEvent";
+import { handleAdd } from "../pages/api/events/addEvent";
 import EventsI from "@/components/events/EventsI";
 import EventsII from "@/components/events/EventsII";
 import Buttonv2 from "@/components/Buttonv2";
@@ -35,22 +36,6 @@ export default function Events() {
   // );
   const sampleID = "65de09db7d4bfed85a2567fc";
 
-  const handleDelete = async (idToDelete: string) => {
-    const response = await fetch("/api/content/events", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: idToDelete }),
-    });
-  };
-
-  const handleAdd = async () => {
-    const response = await fetch("api/content/events", {
-      method: "POST",
-    });
-  };
-
   return (
     <>
       <NavBar />
@@ -58,11 +43,11 @@ export default function Events() {
       <EventsI />
       <EventsII />
 
-      <div>
+      {/* <div>
         <button onClick={() => handleAdd()}>Add sample event</button>
-      </div>
+      </div> */}
 
-      {AllEvents &&
+      {/* {AllEvents &&
         AllEvents.map((oneEvent: event) => {
           return (
             <div key={oneEvent.id}>
@@ -77,27 +62,7 @@ export default function Events() {
               </button>
             </div>
           );
-        })}
-      <Fragment>
-        <Buttonv2
-          text="Edit Event"
-          action={() => setShowModal(true)}
-          color="orange"
-          width="w-48"
-        />
-        <EventOverlay
-          isVisible={showModal}
-          onClose={() => {
-            setShowModal(false);
-          }}
-          type="Edit Event"
-          name="ava's half bday bash"
-          date="2/29/2024"
-          time="8:29pm"
-          location="milla 4th floor"
-          description="fun times with ava"
-        />
-      </Fragment>
+        })} */}
       <Footer showAdminLogin={false} />
     </>
   );

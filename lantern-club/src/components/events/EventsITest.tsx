@@ -75,15 +75,6 @@ export default function EventsI({ title }: { title: string }) {
         <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2"></div>
         <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"></div>
 
-        {allEvents &&
-            allEvents.map((oneEvent: Event) => (
-            <div key={oneEvent.id}>
-                {oneEvent.id} {oneEvent.name} {oneEvent.description}
-                {oneEvent.location} {oneEvent.host}
-                {/* {oneEvent.time}  {oneEvent.date} */}
-            </div>
-            ))}
-
         </>
     ); 
     }
