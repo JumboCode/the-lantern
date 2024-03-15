@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { EventBoxProps } from "../../types/event"
 import BluePoster from "../../images/blueposter.png";
+import RSVPOverlay from "./RSVPOverlay";
 
 
 const EventBox = ({event, isAdmin}: EventBoxProps) => {
@@ -23,19 +24,6 @@ const EventBox = ({event, isAdmin}: EventBoxProps) => {
 
   const [showModal, setShowModal] = useState(false);
 
-  <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Image src={BluePoster} style={imageStyle} alt="Blue Poster picture" />
-              <div style={{ paddingTop: '20px' }}>
-                {isAdmin ? (
-                   <FontAwesomeIcon icon={faPen} size="2x" onClick={handleButtonClick}/>
-                ) : (
-                  <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-40" />
-                )}
-              </div>
-              <div className="z-999">
-              <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-40" />
-              </div>
-            </div>
   return (
     <>
       <Image
@@ -46,31 +34,54 @@ const EventBox = ({event, isAdmin}: EventBoxProps) => {
           alt="Orange Poster picture"/>
       <div style={{ paddingTop: '20px' }}>
                 {isAdmin ? (
+                  <>
                   <FontAwesomeIcon icon={faPen} alt="Edit Button" size="2x" onClick={() => setShowModal(true)}/>
+                  <div className="z-999">
+                    <EventOverlay
+                        isVisible={showModal}
+                        onClose={() => {
+                          setShowModal(false);
+                        }}
+                        type="Edit Event"
+                        name={event.name}
+                        date={event.date.toString()}
+                        time={event.date.toString()}
+                        location={event.location}
+                        description={event.description}
+                        // type="Edit Event"
+                        // name="ava's half bday bash"
+                        // date="2/29/2024"
+                        // time="8:29pm"
+                        // location="milla 4th floor"
+                        // description="fun times with ava"
+                      />      
+                  </div>
+                  </>
                 ) : (
+                  <>
                   <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-40" />
+                  <div className="z-999">
+                    <RSVPOverlay
+                        isVisible={showModal}
+                        onClose={() => {
+                          setShowModal(false);
+                        }}
+                        name={event.name}
+                        date={event.date.toString()}
+                        time={event.time.toString()}
+                        location={event.location}
+                        description={event.description}
+                        // type="Edit Event"
+                        // name="ava's half bday bash"
+                        // date="2/29/2024"
+                        // time="8:29pm"
+                        // location="milla 4th floor"
+                        // description="fun times with ava"
+                      />      
+                  </div>
+                  </>
                 )}
       </div>      
-      <div className="z-999">
-        <EventOverlay
-            isVisible={showModal}
-            onClose={() => {
-              setShowModal(false);
-            }}
-            type="Edit Event"
-            name={event.name}
-            date={event.date.toString()}
-            time={event.date.toString()}
-            location={event.location}
-            description={event.description}
-            // type="Edit Event"
-            // name="ava's half bday bash"
-            // date="2/29/2024"
-            // time="8:29pm"
-            // location="milla 4th floor"
-            // description="fun times with ava"
-          />      
-        </div>
     </>
   );
 };
