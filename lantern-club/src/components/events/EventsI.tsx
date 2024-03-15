@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import OrangePoster from "../../images/orangeposter.png";
-import BluePoster from "../../images/blueposter.png";
-import TanPoster from "../../images/tanposter.png";
-import Buttonv2 from "../Buttonv2";
+import React, { useEffect, useState, Fragment } from 'react';
+// import Image from "next/image";
+// import OrangePoster from "../../images/orangeposter.png";
+// import BluePoster from "../../images/blueposter.png";
+// import TanPoster from "../../images/tanposter.png";
+// import Buttonv2 from "../Buttonv2";
 import { EventBox } from "../events/EventBox";
 import { EventType } from "../../types/event";
+// import RSVPOverlay from "./RSVPOverlay";
+// import ReactDOM from 'react-dom';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPen } from '@fortawesome/free-solid-svg-icons'
 
 const handleButtonClick = () => {
   // TODO
@@ -45,10 +49,12 @@ export default function EventsI({ title }: { title: string }) {
   useEffect(() => {
     fetchEvents();
     // Set isAdmin to true for demonstration purposes
-    setIsAdmin(true);
+    setIsAdmin(false);
   }, []);
 
-  if (numEvents === 0) {
+  const [showModal, setShowModal] = useState(false);
+
+  if (numEvents == 0) {
     return (
       <>
         <div
@@ -121,7 +127,7 @@ export default function EventsI({ title }: { title: string }) {
               })}
           </div>
         </div>
-        <div className="h-20 w-full flex mellow-yellow" id="triangle"></div>
+        <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
       </div>
     );
   }
