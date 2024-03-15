@@ -48,7 +48,7 @@ export default function HomepageIII() {
                     >
                         Submit
                     </button> */}
-                    <Buttonv2 text="Submit" action={handleButtonClick} color="blue" width="w-40" />
+                    {/* <Buttonv2 text="Submit" action={handleButtonClick} color="blue" width="w-40" /> */}
                 </div>
 
                 {/* image side */}
