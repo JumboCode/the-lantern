@@ -1,5 +1,4 @@
-import { PrismaClient, Prisma } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../prisma/prisma";
 
 async function insertEvent() {
   const eventsData = await prisma.event.create({

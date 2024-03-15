@@ -3,21 +3,17 @@ import { useState, Fragment } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Card from "./Card"
+import ProfileType from "@/types/profile";
 import EboardOverlay from "./EboardOverlay";
 
 interface CardType {
-    name: string;
-    pronouns: string;
-    title: string;
-    email: string;
-    major: string;
-    pictureURL: string; 
+    profile: ProfileType
     color?: string; 
-    action?: () => void
+    action?: () => void,
 }
 
 interface MeetTheEBoardProps {
-    data: CardType[]; 
+    data: ProfileType[]; 
 }
 
 const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
@@ -43,9 +39,9 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
     ];
 
     const [showModal, setShowModal] = useState(false);
-    const [currentCardData, setCurrentCardData] = useState<CardType>();
+    const [currentCardData, setCurrentCardData] = useState<ProfileType>();
 
-    const handleCardClick = (cardData: CardType) => {
+    const handleCardClick = (cardData: ProfileType) => {
         setCurrentCardData(cardData);
         setShowModal(true);
     };
@@ -70,17 +66,12 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                     containerClass="carousel-container pt-12 pb-20 mx-auto px-20"
                     arrows={true}
                 >
-                    {data.map((card, index) => (
+                    {data.map((profileData, index) => (
                         <div key={index} className="-ml-5">
                             <Card
-                                name={card.name}
                                 color={colors[index % 2]}
-                                pronouns={card.pronouns}
-                                title={card.title}
-                                email={card.email}
-                                major={card.major}
-                                pictureURL={card.pictureURL} // Use the imageMap to get the correct image
-                                action={() => handleCardClick(card)}
+                                profile={profileData} // Use the imageMap to get the correct image
+                                action={() => handleCardClick(profileData)}
                             />
                         </div>
                     ))}
@@ -90,11 +81,8 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                         type="Edit" 
                         isVisible={showModal} 
                         onClose={() => {setShowModal(false)}} 
-                        name={currentCardData.name} 
-                        pronouns={currentCardData.pronouns}
-                        title={currentCardData.title}
-                        email={currentCardData.email}
-                        major={currentCardData.major} />
+                        profile={currentCardData}
+                        />
                 )}
             </div>  
             </div>
