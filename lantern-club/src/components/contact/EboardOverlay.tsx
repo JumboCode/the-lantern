@@ -29,11 +29,10 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
 
     
     const handleSubmit = async () => {
-        const url = `/api/profiles/${formData.id}`;
-        
-    
+        const url = `/api/content/profiles/${formData.id}`;    
         try {
             const response = await fetch(url, {
+                
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,6 +45,8 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                     major: formData.major,
                 }),
             });
+            alert(response.status)
+
     
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
@@ -97,7 +98,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
         );
     } else if (type == "Edit") {
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={()=>handleSubmit}>
             <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-0">
                 <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                     <button className="text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
@@ -127,7 +128,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                         </div> 
                         <div className="flex justify-center text-md space-x-7 py-5">
                             <Buttonv2 text="Save" action={() => handleSubmit()} color="blue" width="w-40"/>
-                            <Buttonv2 text="Delete" action={handleDelete} color="red" width="w-40" />
+                            <Buttonv2 text="Delete" action={()=>handleDelete} color="red" width="w-40" />
                         </div>
                     </div>
                 </div>

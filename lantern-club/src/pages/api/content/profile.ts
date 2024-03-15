@@ -16,7 +16,9 @@ export default async function handler(
     const responseData = await handlePostProfile();
     res.status(200).json(responseData);
   } else if (req.method === 'PATCH') {
+
     const { id } = req.query;
+    
     try {
       const updatedProfile = await handleUpdateProfile(id, req.body);
       return res.status(200).json(updatedProfile);
