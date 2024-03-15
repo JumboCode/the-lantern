@@ -1,8 +1,9 @@
-import { PrismaClient, Prisma } from "@prisma/client";
-const prisma = new PrismaClient();
-import { event } from "../src/types/event";
+import prisma from "../prisma/prisma";
 
-async function handleUpdateUser(props: event) {
+import { EventType } from "../src/types/event";
+
+// Function to update a event by id
+async function handleUpdateUser(props: EventType) {
   const response = await prisma.event.update({
     where: {
       id: props.id,
@@ -21,4 +22,20 @@ async function handleUpdateUser(props: event) {
   return response;
 }
 
-export { handleUpdateUser };
+// Function to update a profile by id
+async function handleUpdateProfile(profileID: any, updateData: any) {
+  try {
+    const updatedProfile = await prisma.profile.update({
+      where: {
+        id: profileID, 
+      },
+      data: updateData,
+    });
+    return updatedProfile;
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    throw error; 
+  }
+}
+
+export { handleUpdateProfile, handleUpdateUser };

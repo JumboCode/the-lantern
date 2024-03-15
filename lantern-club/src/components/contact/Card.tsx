@@ -9,14 +9,18 @@ import Image6 from "../../images/hannah3.jpg"
 import Pencil from "../../images/pencil.png"
 
 interface CardProps {
-    name: string;
-    pronouns: string;
-    title: string;
-    email: string;
-    major: string;
-    pictureURL: string; 
-    color?: string; 
-    action?: () => void;
+    color?: string,
+    action?: () => void,
+    profile: ProfileType
+}
+
+type ProfileType = {
+    name: string,
+    pronouns: string,
+    title: string,
+    email: string,
+    major: string,
+    pictureURL: string
 }
 
 interface ImageMap {
@@ -32,7 +36,8 @@ const imageMap: ImageMap = {
     "hannah3.jpg": Image6,
 };
 
-const Card = ({ name, pronouns, title, email, major, pictureURL, color, action }: CardProps): JSX.Element => {
+const Card = ({ profile, color, action }: CardProps) => {
+    
     const nameFont = {
         fontFamily: 'coolvetica',
         fontSize: '40px',
@@ -66,13 +71,13 @@ const Card = ({ name, pronouns, title, email, major, pictureURL, color, action }
                     <Image src={Pencil} height={20} width={20} className="justify-end" alt="pencil edit icon" />
                 </button>
             </div>
-            <p style={nameFont}>{name}</p>
-            <p style={proFont}>{pronouns}</p><br />
-            <p style={textFont}><b>{title}</b></p>
-            <p style={textFont}>{email}</p>
-            <p style={textFont}>{major}</p>
+            <p style={nameFont}>{profile.name}</p>
+            <p style={proFont}>{profile.pronouns}</p><br />
+            <p style={textFont}><b>{profile.title}</b></p>
+            <p style={textFont}>{profile.email}</p>
+            <p style={textFont}>{profile.major}</p>
             <div className="pt-7 flex justify-center">
-                <Image src={imageMap[pictureURL]} height={225} width={225} className="rounded-3xl" alt="Officer image"/>
+                <Image src={imageMap[profile.pictureURL]} height={225} width={225} className="rounded-3xl" alt="Officer image"/>
             </div>
         </div>
     );

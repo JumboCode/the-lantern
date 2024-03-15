@@ -3,22 +3,17 @@ import { useState, Fragment } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Card from "./Card"
-import Buttonv2 from "../Buttonv2";
+import ProfileType from "@/types/profile";
 import EboardOverlay from "./EboardOverlay";
 
 interface CardType {
-    name: string;
-    pronouns: string;
-    title: string;
-    email: string;
-    major: string;
-    pictureURL: string; 
+    profile: ProfileType
     color?: string; 
-    action?: () => void
+    action?: () => void,
 }
 
 interface MeetTheEBoardProps {
-    data: CardType[]; 
+    data: ProfileType[]; 
 }
 
 const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
@@ -44,7 +39,13 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
     ];
 
     const [showModal, setShowModal] = useState(false);
-    
+    const [currentCardData, setCurrentCardData] = useState<ProfileType>();
+
+    const handleCardClick = (cardData: ProfileType) => {
+        setCurrentCardData(cardData);
+        setShowModal(true);
+    };
+
     return(
         <div>
             <div className="-mt-20 pt-32 w-full yellow-gradient">
@@ -65,26 +66,24 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                     containerClass="carousel-container pt-12 pb-20 mx-auto px-20"
                     arrows={true}
                 >
-                    {data.map((card, index) => (
+                    {data.map((profileData, index) => (
                         <div key={index} className="-ml-5">
                             <Card
-                                name={card.name}
                                 color={colors[index % 2]}
-                                pronouns={card.pronouns}
-                                title={card.title}
-                                email={card.email}
-                                major={card.major}
-                                pictureURL={card.pictureURL} // Use the imageMap to get the correct image
-                                action={() => setShowModal(true)}
+                                profile={profileData} // Use the imageMap to get the correct image
+                                action={() => handleCardClick(profileData)}
                             />
                         </div>
                     ))}
                 </Carousel>
-                <div style={{ position: 'relative', zIndex: 999 }}>
-                    <Fragment>
-                        <EboardOverlay type="Edit" isVisible={showModal} onClose={() => {setShowModal(false)}} name="Nika Lea Tomicic" pronouns="she/her" title="Editor-in-Chief" email="nika_lea.tomicic@tufts.edu" major="Sociology + STS" />
-                    </Fragment>
-                </div>
+                {showModal && currentCardData && (
+                    <EboardOverlay 
+                        type="Edit" 
+                        isVisible={showModal} 
+                        onClose={() => {setShowModal(false)}} 
+                        profile={currentCardData}
+                        />
+                )}
             </div>  
             </div>
             <div className="h-20 w-full mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>

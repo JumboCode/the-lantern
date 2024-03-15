@@ -1,19 +1,18 @@
 import { useState } from 'react';
 import React from 'react';
 import Buttonv2 from "../Buttonv2";
+import { ProfileType } from '@/types/profile';
 
 interface OverlayProps {
     isVisible: boolean,
     type: "Add" | "Edit",
     onClose: () => void,
-    name: string,
-    pronouns: string,
-    title: string,
-    email: string
-    major: string,
+    profile: ProfileType
+    
 }
 
-const EboardOverlay = ( {isVisible, onClose, type, name, pronouns, title, email, major}: OverlayProps ) => {
+
+const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     if (!isVisible) return null; 
 
     const handleDelete = () => {
@@ -21,21 +20,48 @@ const EboardOverlay = ( {isVisible, onClose, type, name, pronouns, title, email,
         console.log('Button clicked!')
     };
 
-    const [formData, setFormData] = useState({name: name, pronouns: pronouns, title: title, email: email, major: major});
+    const [formData, setFormData] = useState({id: profile.id, name: profile.name, pronouns: profile.pronouns, title: profile.title, email: profile.email, major: profile.major});
 
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
 
-    const handleSubmit = (event: any) => {
-        event.preventDefault();
-        alert(`Name: ${formData.name}, Pronouns: ${formData.pronouns}, Title: ${formData.title}, Email: ${formData.email}, Major: ${formData.major}`
-        );
+    
+    const handleSubmit = async () => {
+        const url = `/api/content/profiles/${formData.id}`;    
+        try {
+            const response = await fetch(url, {
+                
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    pronouns: formData.pronouns,
+                    title: formData.title,
+                    email: formData.email,
+                    major: formData.major,
+                }),
+            });
+            alert(response.status)
+
+    
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+            const updatedProfile = await response.json();
+            alert(updatedProfile)
+            console.log('Updated profile:', updatedProfile);
+        } catch (error) {
+            console.error('Failed to update profile:', error);
+        }
     };
+
     if (type == "Add") {
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={()=>handleSubmit}>
             <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-0">
                 <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                     <button className="text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
@@ -72,7 +98,7 @@ const EboardOverlay = ( {isVisible, onClose, type, name, pronouns, title, email,
         );
     } else if (type == "Edit") {
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={()=>handleSubmit}>
             <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-0">
                 <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                     <button className="text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
@@ -101,8 +127,8 @@ const EboardOverlay = ( {isVisible, onClose, type, name, pronouns, title, email,
                             </button> 
                         </div> 
                         <div className="flex justify-center text-md space-x-7 py-5">
-                            <Buttonv2 text="Save" action={() => handleSubmit} color="blue" width="w-40"/>
-                            <Buttonv2 text="Delete" action={handleDelete} color="red" width="w-40" />
+                            <Buttonv2 text="Save" action={() => handleSubmit()} color="blue" width="w-40"/>
+                            <Buttonv2 text="Delete" action={()=>handleDelete} color="red" width="w-40" />
                         </div>
                     </div>
                 </div>

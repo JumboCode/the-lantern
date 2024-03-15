@@ -5,7 +5,7 @@ import React, { useEffect, useState, Fragment } from 'react';
 // import TanPoster from "../../images/tanposter.png";
 // import Buttonv2 from "../Buttonv2";
 import { EventBox } from "../events/EventBox";
-import { EventType } from "../../types/event";
+import { EventType } from "@/types/event";
 // import RSVPOverlay from "./RSVPOverlay";
 // import ReactDOM from 'react-dom';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -121,7 +121,7 @@ export default function EventsI({ title }: { title: string }) {
               allEvents.slice(0,3).map((oneEvent: EventType) => {
                 return (
                   <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <EventBox event={oneEvent} isAdmin={true} />
+                    <EventBox event={oneEvent} isAdmin={false} />
                   </div>
                 );
               })}
