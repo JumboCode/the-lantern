@@ -33,6 +33,7 @@ const imageMap: ImageMap = {
 };
 
 const Card = ({ name, pronouns, title, email, major, pictureURL, color, action }: CardProps): JSX.Element => {
+    
     const nameFont = {
         fontFamily: 'coolvetica',
         fontSize: '40px',

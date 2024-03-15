@@ -3,7 +3,6 @@ import { useState, Fragment } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Card from "./Card"
-import Buttonv2 from "../Buttonv2";
 import EboardOverlay from "./EboardOverlay";
 
 interface CardType {
@@ -44,7 +43,13 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
     ];
 
     const [showModal, setShowModal] = useState(false);
-    
+    const [currentCardData, setCurrentCardData] = useState<CardType>();
+
+    const handleCardClick = (cardData: CardType) => {
+        setCurrentCardData(cardData);
+        setShowModal(true);
+    };
+
     return(
         <div>
             <div className="-mt-20 pt-32 w-full yellow-gradient">
@@ -75,16 +80,22 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                                 email={card.email}
                                 major={card.major}
                                 pictureURL={card.pictureURL} // Use the imageMap to get the correct image
-                                action={() => setShowModal(true)}
+                                action={() => handleCardClick(card)}
                             />
                         </div>
                     ))}
                 </Carousel>
-                <div style={{ position: 'relative', zIndex: 999 }}>
-                    <Fragment>
-                        <EboardOverlay type="Edit" isVisible={showModal} onClose={() => {setShowModal(false)}} name="Nika Lea Tomicic" pronouns="she/her" title="Editor-in-Chief" email="nika_lea.tomicic@tufts.edu" major="Sociology + STS" />
-                    </Fragment>
-                </div>
+                {showModal && currentCardData && (
+                    <EboardOverlay 
+                        type="Edit" 
+                        isVisible={showModal} 
+                        onClose={() => {setShowModal(false)}} 
+                        name={currentCardData.name} 
+                        pronouns={currentCardData.pronouns}
+                        title={currentCardData.title}
+                        email={currentCardData.email}
+                        major={currentCardData.major} />
+                )}
             </div>  
             </div>
             <div className="h-20 w-full mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
