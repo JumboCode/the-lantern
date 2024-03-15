@@ -13,5 +13,5 @@ export type EventType = {
 
 export type EventBoxProps = {
   event: EventType;
-  isAdmin: boolean;
+  isAdminEdit: boolean;
 }

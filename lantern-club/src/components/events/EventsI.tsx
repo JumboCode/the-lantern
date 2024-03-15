@@ -1,22 +1,21 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 // import Image from "next/image";
-// import OrangePoster from "../../images/orangeposter.png";
-// import BluePoster from "../../images/blueposter.png";
-// import TanPoster from "../../images/tanposter.png";
+// import OrangePoster from '../../images/orangeposter.png';
+// import BluePoster from '../../images/blueposter.png';
+// import TanPoster from '../../images/tanposter.png';
 // import Buttonv2 from "../Buttonv2";
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { EventBox } from "../events/EventBox";
 import { EventType } from "@/types/event";
-// import RSVPOverlay from "./RSVPOverlay";
-// import ReactDOM from 'react-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { useSession } from "next-auth/react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const handleButtonClick = () => {
-  // TODO
-  console.log("Button clicked!");
+type EventsIProps = {
+  isAdminEdit: boolean;
+  handleEditButtonClick: () => void;
 };
 
-export default function EventsI({ title }: { title: string }) {
+export default function EventsI({ isAdminEdit, handleEditButtonClick }: EventsIProps) {
   const background: React.CSSProperties = {
     height: "auto",
   };
@@ -34,7 +33,7 @@ export default function EventsI({ title }: { title: string }) {
 
   const numEvents = 1;
   const [allEvents, setEvents] = useState([]);
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const { data: session } = useSession();
 
   const fetchEvents = async () => {
     try {
@@ -48,8 +47,6 @@ export default function EventsI({ title }: { title: string }) {
 
   useEffect(() => {
     fetchEvents();
-    // Set isAdmin to true for demonstration purposes
-    setIsAdmin(false);
   }, []);
 
   const [showModal, setShowModal] = useState(false);
@@ -107,13 +104,20 @@ export default function EventsI({ title }: { title: string }) {
   } else {
     return (
       <div>
-        <div
-          className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1"
-          style={background}
-        >
-          <h1 className={`mb-20 font-coolvetica md:text-8xl text-7xl ${isAdmin ? 'text-red-500' : ''}`}>
-            {isAdmin ? 'Edit Upcoming Events' : 'Upcoming Events'}
+        <div className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
+          <h1 className={"mb-20 font-coolvetica md:text-8xl text-7xl"} style={{ display: 'flex', alignItems: 'center' }}>
+            {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
+            {session?.user.isAdmin && !isAdminEdit && (
+              <a href="#" className="font-nunito underline text-2xl ml-7" onClick={handleEditButtonClick}>edit</a>
+            )}
+            {isAdminEdit && (
+              <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+                <FontAwesomeIcon icon={faCirclePlus} style={{ fontSize: '3.5rem', marginRight: '5px' }} />
+                <span className="font-nunito" style={{ fontSize: '1rem' }}>Add New</span>
+              </div>
+            )}
           </h1>
+      
 
           {/* Two boxes */}
           <div className="flex flex-col gap-10 md:flex-row">
@@ -121,7 +125,7 @@ export default function EventsI({ title }: { title: string }) {
               allEvents.slice(0,3).map((oneEvent: EventType) => {
                 return (
                   <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <EventBox event={oneEvent} isAdmin={false} />
+                    <EventBox event={oneEvent} isAdminEdit={isAdminEdit} />
                   </div>
                 );
               })}
