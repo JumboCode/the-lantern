@@ -7,6 +7,7 @@ import Buttonv2 from "../Buttonv2";
 import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 
 type Event = {
   id: string;
@@ -22,7 +23,13 @@ const handleButtonClick = () => {
   console.log('Button clicked!');
 };
 
-export default function EventsI({ title }: { title: string }) {
+type EventsIProps = {
+  isAdmin: boolean;
+  isAdminEdit: boolean;
+  handleEditButtonClick: () => void;
+};
+
+export default function EventsI({ isAdmin, isAdminEdit, handleEditButtonClick }: EventsIProps) {
   const background: React.CSSProperties = {
     height: "auto",
   };
@@ -40,7 +47,6 @@ export default function EventsI({ title }: { title: string }) {
 
   const numEvents = 1;
   const [allEvents, setEvents] = useState<Event[]>([]);
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const fetchEvents = async () => {
     try {
@@ -51,12 +57,6 @@ export default function EventsI({ title }: { title: string }) {
       console.error('Error fetching events:', error);
     }
   };
-
-  useEffect(() => {
-    fetchEvents();
-    // Set isAdmin to true for demonstration purposes
-    setIsAdmin(true);
-  }, []);
 
   if (numEvents === 0) {
     return (
@@ -69,9 +69,19 @@ export default function EventsI({ title }: { title: string }) {
     return (
       <div>
         <div className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
-          <h1 className={`mb-20 font-coolvetica md:text-8xl text-7xl ${isAdmin ? 'text-red-500' : ''}`}>
-            {isAdmin ? 'Edit Upcoming Events' : 'Upcoming Events'}
+          <h1 className={"mb-20 font-coolvetica md:text-8xl text-7xl"} style={{ display: 'flex', alignItems: 'center' }}>
+            {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
+            {isAdmin && !isAdminEdit && (
+              <a href="#" className="font-nunito underline text-2xl ml-7" onClick={handleEditButtonClick}>edit</a>
+            )}
+            {isAdminEdit && (
+              <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+                <FontAwesomeIcon icon={faCirclePlus} alt="Add New Button" style={{ fontSize: '3.5rem', marginRight: '5px' }} />
+                <span className="font-nunito" style={{ fontSize: '1rem' }}>Add New</span>
+              </div>
+            )}
           </h1>
+      
 
           {/* Two boxes */}
           <div className="flex flex-col gap-10 md:flex-row">
@@ -79,9 +89,9 @@ export default function EventsI({ title }: { title: string }) {
             <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image src={OrangePoster} style={imageStyle} alt="Orange Poster picture" />
               <div style={{ paddingTop: '20px' }}>
-                {isAdmin ? (
+                {isAdminEdit ? (
                   <FontAwesomeIcon icon={faPen} alt="Edit Button" size="2x" onClick={handleButtonClick}/>
-                ) : (
+                ) : !isAdmin && (
                   <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" />
                 )}
               </div>
@@ -91,9 +101,9 @@ export default function EventsI({ title }: { title: string }) {
             <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image src={BluePoster} style={imageStyle} alt="Blue Poster picture" />
               <div style={{ paddingTop: '20px' }}>
-                {isAdmin ? (
+                {isAdminEdit ? (
                    <FontAwesomeIcon icon={faPen} alt="Edit Button" size="2x" onClick={handleButtonClick}/>
-                ) : (
+                ) : !isAdmin && (
                   <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" />
                 )}
               </div>
@@ -103,9 +113,9 @@ export default function EventsI({ title }: { title: string }) {
             <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Image src={TanPoster} style={imageStyle} alt="Tan Poster picture" />
               <div style={{ paddingTop: '20px' }}>
-                {isAdmin ? (
+                {isAdminEdit ? (
                    <FontAwesomeIcon icon={faPen} alt="Edit Button" size="2x" onClick={handleButtonClick}/>
-                ) : (
+                ) : !isAdmin && (
                   <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" />
                 )}
               </div>

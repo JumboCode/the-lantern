@@ -8,8 +8,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
-export default function EventsII() {
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+type EventsIIProps = {
+  isAdmin: boolean;
+  isAdminEdit: boolean;
+  handleEditButtonClick: () => void;
+};
+
+
+export default function EventsII({ isAdmin, isAdminEdit, handleEditButtonClick }: EventsIIProps) {
 
   const header_font: React.CSSProperties = {
     fontFamily: "coolvetica",
@@ -26,21 +32,19 @@ export default function EventsII() {
     height: "100%",
   };
 
-  useEffect(() => {
-    // Set isAdmin to true for demonstration purposes
-    setIsAdmin(true);
-  }, []);
 
   const handleButtonClick = () => {
     // TODO: Implement the button click logic
     console.log("Button clicked!");
   };
 
+
+  // ********* IS ADMIN EDIT BOOLEAN ********
   return (
     <div>
       <div className="-mt-20 py-20 px-20 blue2-gradient" style={background}>
-        <h1 className={`mb-20 font-coolvetica md:text-8xl text-7xl ${isAdmin ? "text-red-500" : ""}`}>
-          {isAdmin ? "Delete Past Events" : "Past Events"}
+        <h1 className={"mb-20 font-coolvetica md:text-8xl text-7xl"}>
+        {isAdminEdit ? "Delete Past Events" : "Past Events"}
         </h1>
 
         {/* Two boxes */}
@@ -48,7 +52,7 @@ export default function EventsII() {
           {/* Event Box 1 */}
           <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Image src={OrangePoster} style={imageStyle} alt="Orange Poster picture" />
-            {isAdmin && (
+            {isAdminEdit && (
               <div style={{ paddingTop: '20px'}}>
                 <FontAwesomeIcon icon={faTrashCan} alt="Delete Button" size="2x" onClick={handleButtonClick} />
               </div>
@@ -58,7 +62,7 @@ export default function EventsII() {
           {/* Event Box 2 */}
           <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Image src={BluePoster} style={imageStyle} alt="Blue Poster picture" />
-            {isAdmin && (
+            {isAdminEdit && (
               <div style={{ paddingTop: '20px'}}>
                 <FontAwesomeIcon icon={faTrashCan} alt="Delete Button" size="2x" onClick={handleButtonClick} />
               </div>
@@ -68,7 +72,7 @@ export default function EventsII() {
           {/* Event Box 3 */}
           <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Image src={TanPoster} style={imageStyle} alt="Tan Poster picture" />
-            {isAdmin && (
+            {isAdminEdit && (
               <div style={{ paddingTop: '20px'}}>
                 <FontAwesomeIcon icon={faTrashCan} alt="Delete Button" size="2x" onClick={handleButtonClick} />
               </div>

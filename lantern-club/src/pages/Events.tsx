@@ -27,12 +27,19 @@ export default function Events() {
 //     ))}
 //   </ul>
 // );
+    const [isAdmin, setIsAdmin] = useState<boolean>(false);
+    const [isAdminEdit, setIsAdminEdit] = useState<boolean>(false);
+
+    const handleEditButtonClick = () => {
+      setIsAdminEdit(!isAdminEdit);
+    };
+
     return (
       <div>
         <NavBar />
         <Header title="Events"/>
-        <EventsI />
-        <EventsII />
+        <EventsI isAdmin={isAdmin} isAdminEdit={isAdminEdit} handleEditButtonClick={handleEditButtonClick}/>
+        <EventsII isAdmin={isAdmin} isAdminEdit={isAdminEdit} handleEditButtonClick={handleEditButtonClick}/>
         <Footer showAdminLogin={false} />
       </div>
     );
