@@ -10,7 +10,6 @@ import EventsI from "@/components/events/EventsI";
 import EventsII from "@/components/events/EventsII";
 import Buttonv2 from "@/components/Buttonv2";
 import EventOverlay from "../components/events/EventOverlay";
-
 // new code w/ useState and useEffect
 
 export default function Events() {

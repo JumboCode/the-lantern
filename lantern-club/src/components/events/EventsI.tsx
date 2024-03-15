@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import Image from "next/image";
 import OrangePoster from '../../images/orangeposter.png';
 import BluePoster from '../../images/blueposter.png';
 import TanPoster from '../../images/tanposter.png';
 import Buttonv2 from "../Buttonv2";
+import RSVPOverlay from "./RSVPOverlay";
 import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons'
@@ -55,14 +56,24 @@ export default function EventsI({ title }: { title: string }) {
   useEffect(() => {
     fetchEvents();
     // Set isAdmin to true for demonstration purposes
-    setIsAdmin(true);
+    setIsAdmin(false);
   }, []);
 
-  if (numEvents === 0) {
+  const [showModal, setShowModal] = useState(false);
+
+  if (numEvents == 0) {
     return (
       <>
         <div className="-mt-20 flex flex-col h-contact bg-gradient-to-t from-contact-g2 to-g-yellow1" style={{ minHeight: "700px" }}>
+        <div className="flex justify-center items-center px-10 py-20">
+            <div className="flex-col md:flex-row md:grid blue font-nunito text-md text-white rounded-3xl p-5 shadow-md border border-solid blue-border">
+                <div className="flex flex-col justify-center items-center text-center">
+                <p> Follow us on our Instagram, <b>@thelanterntufts</b>, to get our most up-to-date flyers and endeavors! </p>
+                </div>
+            </div>
         </div>
+        </div>
+        <div className="h-20 w-full flex mellow-yellow z-0" id="triangle"></div>
       </>
     );
   } else {
@@ -80,10 +91,10 @@ export default function EventsI({ title }: { title: string }) {
               <Image src={OrangePoster} style={imageStyle} alt="Orange Poster picture" />
               <div style={{ paddingTop: '20px' }}>
                 {isAdmin ? (
-                  <FontAwesomeIcon icon={faPen} alt="Edit Button" size="2x" onClick={handleButtonClick}/>
+                  <FontAwesomeIcon icon={faPen} size="2x" onClick={handleButtonClick}/>
                 ) : (
-                  <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" />
-                )}
+                  <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-40" />
+                  )}
               </div>
             </div>
 
@@ -92,10 +103,13 @@ export default function EventsI({ title }: { title: string }) {
               <Image src={BluePoster} style={imageStyle} alt="Blue Poster picture" />
               <div style={{ paddingTop: '20px' }}>
                 {isAdmin ? (
-                   <FontAwesomeIcon icon={faPen} alt="Edit Button" size="2x" onClick={handleButtonClick}/>
+                   <FontAwesomeIcon icon={faPen} size="2x" onClick={handleButtonClick}/>
                 ) : (
-                  <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" />
+                  <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-40" />
                 )}
+              </div>
+              <div className="z-999">
+                <RSVPOverlay isVisible={showModal} onClose={() => {setShowModal(false)}} eventName="Interest Meeting" date={new Date()} location="miller" description="something something" />
               </div>
             </div>
 
@@ -104,16 +118,16 @@ export default function EventsI({ title }: { title: string }) {
               <Image src={TanPoster} style={imageStyle} alt="Tan Poster picture" />
               <div style={{ paddingTop: '20px' }}>
                 {isAdmin ? (
-                   <FontAwesomeIcon icon={faPen} alt="Edit Button" size="2x" onClick={handleButtonClick}/>
+                  <FontAwesomeIcon icon={faPen} size="2x" onClick={handleButtonClick}/>
                 ) : (
-                  <Buttonv2 text="RSVP" action={handleButtonClick} color="blue" width="w-40" />
+                  <Buttonv2 text="RSVP" action={() => setShowModal(true)} color="blue" width="w-40" />
                 )}
               </div>
             </div>
           </div>
 
         </div>
-        <div className="h-20 w-full flex mellow-yellow" id="triangle"></div>
+        <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
       </div>
     );
   }

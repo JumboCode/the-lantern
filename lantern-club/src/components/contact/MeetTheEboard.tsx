@@ -1,7 +1,10 @@
 import React from "react"
+import { useState, Fragment } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Card from "./Card"
+import Buttonv2 from "../Buttonv2";
+import EboardOverlay from "./EboardOverlay";
 
 interface CardType {
     name: string;
@@ -11,6 +14,7 @@ interface CardType {
     major: string;
     pictureURL: string; 
     color?: string; 
+    action?: () => void
 }
 
 interface MeetTheEBoardProps {
@@ -38,26 +42,28 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
         "orange-gradient orange-border", // For odd-indexed cards
         "true-blue-gradient text-white" // For even-indexed cards
     ];
+
+    const [showModal, setShowModal] = useState(false);
     
     return(
         <div>
             <div className="-mt-20 pt-32 w-full yellow-gradient">
                 <div className="ml-5">
                     <h1 className="font-coolvetica text-7xl ml-12">Meet the E-Board
-                    <a href="/ContactUs" className="font-nunito underline text-2xl ml-7">edit</a>
+                        <text className="font-nunito underline text-2xl ml-7" onClick={() => setShowModal(true)}>edit</text>
                     </h1>
                 </div>
+                <div className="z-100" style={{ position: 'relative' }} >
                 <Carousel
                     swipeable={true}
                     draggable={true}
-                    showDots={true}
+                    showDots={false}
                     responsive={responsive}
                     ssr={true}
                     infinite={true}
                     keyBoardControl={true}
                     containerClass="carousel-container pt-12 pb-20 mx-auto px-20"
-                    dotListClass="custom-dot-list-style"
-                    arrows={true} renderButtonGroupOutside={true}
+                    arrows={true}
                 >
                     {data.map((card, index) => (
                         <div key={index} className="-ml-5">
@@ -69,12 +75,19 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                                 email={card.email}
                                 major={card.major}
                                 pictureURL={card.pictureURL} // Use the imageMap to get the correct image
+                                action={() => setShowModal(true)}
                             />
                         </div>
                     ))}
                 </Carousel>
+                <div style={{ position: 'relative', zIndex: 999 }}>
+                    <Fragment>
+                        <EboardOverlay type="Edit" isVisible={showModal} onClose={() => {setShowModal(false)}} name="Nika Lea Tomicic" pronouns="she/her" title="Editor-in-Chief" email="nika_lea.tomicic@tufts.edu" major="Sociology + STS" />
+                    </Fragment>
+                </div>
+            </div>  
             </div>
-            <div className="h-20 w-full mellow-yellow" id="triangle"></div>
+            <div className="h-20 w-full mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
         </div>
     )
 }; export default MeetTheEBoard;

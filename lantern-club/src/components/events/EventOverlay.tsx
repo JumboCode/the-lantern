@@ -16,12 +16,12 @@ interface OverlayProps {
 const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, description}: OverlayProps ) => {
     if (!isVisible) return null; 
 
-    const handleButtonClick = () => {
+    const handleDelete = () => {
         onClose()
         console.log('Button clicked!')
     };
 
-    const [formData, setFormData] = useState({name: "",date: "",time: "",location: "",description: ""});
+    const [formData, setFormData] = useState({ name: name, date: date, time: time, location: location, description: description });
 
     const handleChange = (event: any) => {
         const { name, value } = event.target;
@@ -48,6 +48,7 @@ const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, de
                         </div>
                         <div>
                             <h2 className="mt-5 font-nunito text-md">Date</h2>
+
                             <input className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input" type="text" id="date" name="date" onChange={handleChange}></input>
                         </div>
                         <div>
@@ -68,8 +69,7 @@ const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, de
                         </div>
                         <div className="flex justify-center text-md space-x-7 py-5">
                             <Buttonv2 text="Save" action={() => handleSubmit} color="blue" width="w-40"/>
-                            {/* <button type="submit">Submit</button> */}
-                            <Buttonv2 text="Cancel" action={handleButtonClick} color="red" width="w-40" />
+                            <Buttonv2 text="Cancel" action={onClose} color="red" width="w-40" />
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@ const EventOverlay = ( {isVisible, onClose, type, name, date, time, location, de
                         </div>
                         <div className="flex justify-center text-md space-x-7 py-5">
                             <Buttonv2 text="Save" action={() => handleSubmit} color="blue" width="w-40"/>
-                            <Buttonv2 text="Delete" action={handleButtonClick} color="red" width="w-40" />
+                            <Buttonv2 text="Delete" action={handleDelete} color="red" width="w-40" />
                         </div>
                     </div>
                 </div>
