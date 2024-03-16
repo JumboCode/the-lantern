@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from "next/image";
 import Link from "next/link"
-
+import { useSession } from 'next-auth/react';
 import Lantern from "../../images/bluelatern.png";
 
 
 
 
-export default function MagazineDisplay () {
+export default function MagazineDisplay ({ handleToggleAdminView }: {handleToggleAdminView: () => void}) {
     const triangle: React.CSSProperties = {
         backgroundColor: "#FECB66",
       };
@@ -38,19 +38,17 @@ export default function MagazineDisplay () {
         fetchFileList();
       }, []);
 
-      const isLoggedIn = true; 
+      const { data: session } = useSession();
+
       return (
         <div>
             <div className="yellow-gradient -mt-20 pt-20 w-full p-20">
-                <div className="flex gap-10 my-12 "> 
+                <div className="flex gap-10 my-12 ">
                     <p style={headerFont}>Magazine Issues</p>
-
-                    {isLoggedIn ? (
-                        <Link href="/MagazineAdmin" className="align-bottom hover:underline">
-                            Edit                
-                        </Link>
-                    ) : (
-                        <p></p>
+                    {session?.user.isAdmin && (
+                    <button className="font-nunito underline text-2xl ml-7" onClick={handleToggleAdminView}>
+                        Edit
+                    </button>
                     )}
                 </div>
                 
