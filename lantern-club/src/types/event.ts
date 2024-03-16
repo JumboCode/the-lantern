@@ -1,4 +1,6 @@
-export type event = {
+export type EventType = {
+  image: string | StaticImport;
+  type: "Add Event" | "Edit Event";
   id: string;
   name: string;
   description: string;
@@ -8,3 +10,8 @@ export type event = {
   host: string;
   imageURL: string;
 };
+
+export type EventBoxProps = {
+  event: EventType;
+  isAdminEdit: boolean;
+}
