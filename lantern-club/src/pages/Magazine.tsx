@@ -4,10 +4,10 @@ import axios from 'axios';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MagazineAdmin from "../components/magazine/MagazineAdmin";
-import FileUpload from "../components/magazine/FileUpload";
-import FileDrop from "../components/magazine/FileDrop";
+import MagazineDisplay from "../components/magazine/MagazineDisplay";
 import Header from "../components/Header";
 import Buttonv2 from "../components/Buttonv2";
+import { useSession } from 'next-auth/react';
 
 export default function Magazine() {
   const headerFont = {
@@ -21,29 +21,24 @@ export default function Magazine() {
     lineHeight: '1',
   };
 
-  const [fileList, setFileList] = useState([]);
+  const [showAdminView, setShowAdminView] = useState(false);
 
-  useEffect(() => {
-    const fetchFileList = async () => {
-      try {
-        const response = await axios.get('/api/listFiles');
-        setFileList(response.data.urls);
-      } catch (error) {
-        console.error('Error fetching file list:', error);
-      }
-    };
-
-    fetchFileList();
-  }, []);
+  const handleToggleAdminView = () => {
+    setShowAdminView(!showAdminView);
+  };
 
   return (
     <div>
       <NavBar />
       <Header title='Magazine'/>
-      <MagazineAdmin />
+        <div>
+        {showAdminView ? (
+          <MagazineAdmin/>
+        ) : (
+          <MagazineDisplay handleToggleAdminView={handleToggleAdminView} />
+        )}
+        </div>
       <Footer showAdminLogin={true} />
-
-
     </div>
   );
 }
