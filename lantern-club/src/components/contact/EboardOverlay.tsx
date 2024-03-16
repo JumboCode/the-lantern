@@ -15,11 +15,6 @@ interface OverlayProps {
 const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     if (!isVisible) return null; 
 
-    const handleDelete = () => {
-        onClose()
-        console.log('Button clicked!')
-    };
-
     const [formData, setFormData] = useState({id: profile.id, name: profile.name, pronouns: profile.pronouns, title: profile.title, email: profile.email, major: profile.major});
 
     const handleChange = (event: any) => {
@@ -28,7 +23,8 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     };
 
     
-    const handleSubmit = async () => {
+    const handleEdit = async () => {
+        
         const url = `/api/content/profiles/${formData.id}`;    
         try {
             const response = await fetch(url, {
@@ -45,23 +41,47 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                     major: formData.major,
                 }),
             });
-            alert(response.status)
-
     
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
             const updatedProfile = await response.json();
-            alert(updatedProfile)
             console.log('Updated profile:', updatedProfile);
+            window.location.reload()
         } catch (error) {
             console.error('Failed to update profile:', error);
         }
     };
 
+    const handleDelete = async () => {
+        const url = `/api/content/profiles/${formData.id}`;    
+        try {
+            const response = await fetch(url, {
+                
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            alert(response.ok)
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+            
+            const deletedProfile = await response.json();
+            console.log('Deleted profile:', deletedProfile);
+            window.location.reload()
+        } catch (error) {
+            console.error('Failed to update profile:', error);
+        }
+    };
+
+    const handleAdd = () => {
+    
+    };
+
     if (type == "Add") {
         return (
-            <form onSubmit={()=>handleSubmit}>
             <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-0">
                 <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                     <button className="text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
@@ -88,17 +108,15 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                             <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
                         </div> 
                         <div className="flex justify-center text-md space-x-7 py-5">
-                            <Buttonv2 text="Save" action={() => handleSubmit} color="blue" width="w-40"/>
+                            <Buttonv2 text="Save" action={handleAdd} color="blue" width="w-40"/>
                             <Buttonv2 text="Cancel" action={onClose} color="red" width="w-40" />
                         </div>
                     </div>
                 </div>
             </div>
-            </form>
         );
     } else if (type == "Edit") {
         return (
-            <form onSubmit={()=>handleSubmit}>
             <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-0">
                 <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                     <button className="text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
@@ -127,13 +145,12 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                             </button> 
                         </div> 
                         <div className="flex justify-center text-md space-x-7 py-5">
-                            <Buttonv2 text="Save" action={() => handleSubmit()} color="blue" width="w-40"/>
-                            <Buttonv2 text="Delete" action={()=>handleDelete} color="red" width="w-40" />
+                            <Buttonv2 text="Save" action={handleEdit} color="blue" width="w-40"/>
+                            <Buttonv2 text="Delete" action={handleDelete} color="red" width="w-40" />
                         </div>
                     </div>
                 </div>
             </div>
-            </form>
         );
     } else {
         return null;
