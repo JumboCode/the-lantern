@@ -11,7 +11,8 @@ import Pencil from "../../images/pencil.png"
 interface CardProps {
     color?: string,
     action?: () => void,
-    profile: ProfileType
+    profile: ProfileType,
+    isEditingView: boolean
 }
 
 type ProfileType = {
@@ -36,7 +37,7 @@ const imageMap: ImageMap = {
     "hannah3.jpg": Image6,
 };
 
-const Card = ({ profile, color, action }: CardProps) => {
+const Card = ({ profile, color, action, isEditingView }: CardProps) => {
     
     const nameFont = {
         fontFamily: 'coolvetica',
@@ -66,11 +67,13 @@ const Card = ({ profile, color, action }: CardProps) => {
 
     return(
         <div className={`${color} p-3 shadow-xl justify-center items-center text-center`} style={cardStyle}>
-            <div className="flex justify-end -mb-5 mr-3 mt-2">
-                <button onClick={action}>
-                    <Image src={Pencil} height={20} width={20} className="justify-end" alt="pencil edit icon" />
-                </button>
-            </div>
+            { isEditingView &&
+                <div className="flex justify-end -mb-5 mr-3 mt-2">
+                    <button onClick={action}>
+                        <Image src={Pencil} height={20} width={20} className="justify-end" alt="pencil edit icon" />
+                    </button>
+                </div>
+            }
             <p style={nameFont}>{profile.name}</p>
             <p style={proFont}>{profile.pronouns}</p><br />
             <p style={textFont}><b>{profile.title}</b></p>
