@@ -6,6 +6,8 @@ import Card from "./Card"
 import ProfileType from "@/types/profile";
 import EboardOverlay from "./EboardOverlay";
 import { useSession } from "next-auth/react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 
 interface CardType {
     profile: ProfileType
@@ -41,7 +43,8 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
 
     const [showEditView, setShowEditView] = useState(false);
     const {data:session} = useSession();
-    const [showModal, setShowModal] = useState(false);
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const [currentCardData, setCurrentCardData] = useState<ProfileType>();
 
     const handleToggleEditView = () => {
@@ -50,20 +53,38 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
 
     const handleCardClick = (cardData: ProfileType) => {
         setCurrentCardData(cardData);
-        setShowModal(true);
+        setShowEditModal(true);
     };
+    
 
     return(
         <div>
             <div className="-mt-20 pt-32 w-full yellow-gradient">
                 <div className="ml-5">
 
-                    <h1 className="font-coolvetica text-7xl ml-12">Meet the E-Board
-                        { session?.user.isAdmin &&
-                        <text className="font-nunito underline text-2xl ml-7" onClick={handleToggleEditView}>edit</text>
-                        }
-                    </h1>
-                    
+                <h1 className="font-coolvetica text-7xl md:text-8xl ml-12 flex items-end w-11/12">
+                Meet the E-Board
+                {session?.user.isAdmin && (
+                    <span className="font-nunito underline text-2xl ml-7 cursor-pointer" onClick={handleToggleEditView}>
+                    edit
+                    </span>
+                )}
+                {showEditView && (
+                    <div className="flex items-center ml-auto">
+                        <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl mr-2" /> {/* Adjust the icon size as necessary */}
+                        <span className="font-nunito text-lg">Add New</span>
+                        <div className="z-999">
+                            <EboardOverlay 
+                                type="Add" 
+                                isVisible={showAddModal} 
+                                onClose={() => {setShowAddModal(false)}} 
+                                profile={currentCardData}
+                            />
+                        </div>
+                    </div>
+                )}
+                </h1>
+
                 </div>
                 <div className="z-100" style={{ position: 'relative' }} >
                 <Carousel
@@ -88,11 +109,11 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                         </div>
                     ))}
                 </Carousel>
-                {showModal && currentCardData && (
+                {showEditModal && currentCardData && (
                     <EboardOverlay 
                         type="Edit" 
-                        isVisible={showModal} 
-                        onClose={() => {setShowModal(false)}} 
+                        isVisible={showEditModal} 
+                        onClose={() => {setShowEditModal(false)}} 
                         profile={currentCardData}
                         />
                 )}
