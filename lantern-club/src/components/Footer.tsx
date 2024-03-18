@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Logo from "../images/lanternicon1.png";
+import LogoOrange from "../images/Lantern-logo-orange.png";
 import Email from "../images/email.png";
 import LinkedIn from "../images/LinkedIn.png";
 import Insta from "../images/insta.png";
@@ -22,25 +23,28 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
         {/* Image column */}
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="w-24 h-24 md:w-48 md:h-48 relative">
-            <Link href="/"> 
+            <Link className="transition-all opacity-100 duration-500 hover:opacity-0" href="/"> 
               <Image src={Logo} alt="Lantern Club Logo" />
+            </Link>
+            <Link className="transition-all duration-500 hover:scale-[1.02] absolute top-0 left-0 opacity-0 hover:opacity-100" href="/"> 
+              <Image src={LogoOrange} alt="Lantern Club Logo" />
             </Link>
           </div>
           <div className="font-coolvetica items-center md:items-start mt-4 md:mt-0 md:ml-8 flex flex-col">
             {/* Links here */}
-            <Link href="/Magazine" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline hover:decoration-orange-400">
+            <Link href="/Magazine" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               Magazine
             </Link>
-            <Link href="/Events" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline hover:decoration-orange-400">
+            <Link href="/Events" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               Events
             </Link>
-            <Link href="/AboutUs" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline hover:decoration-orange-400">
+            <Link href="/AboutUs" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               About Us
             </Link>
-            <Link href="/ContactUs" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline hover:decoration-orange-400">
+            <Link href="/ContactUs" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               Contact Us
             </Link>
-            <Link href="/Resources" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline hover:decoration-orange-400">
+            <Link href="/Resources" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               Resources
             </Link>
           </div>
@@ -70,7 +74,7 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
 
           <div className="flex">
             <a href="https://www.linkedin.com/company/the-lantern-at-tufts-university/about/" className="flex mr-2 hover:#faac4b">
-              <div className="w-11 h-10 md:w-12 md:h-12 relative hover:text-orange-400">
+              <div className="w-11 h-10 md:w-12 md:h-12 relative transition-all duration-300 hover:text-orange-400">
                 {/* <Image src={LinkedIn} alt="linkedin icon"/> */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                  <path className="fill-current "
@@ -78,7 +82,7 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
               </div>
             </a>
             <a href="https://www.instagram.com/thelanterntufts/" target="_blank" rel="noopener noreferrer">
-              <div className="w-11 h-10 md:w-12 md:h-12 relative hover:text-orange-400">
+              <div className="w-11 h-10 md:w-12 md:h-12 relative transition-all duration-300 hover:text-orange-400">
                 {/* <Image src={Insta} alt="instagram icon" /> */}
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
