@@ -61,32 +61,22 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
         <div>
             <div className="-mt-20 pt-32 w-full yellow-gradient">
                 <div className="ml-5">
-
-                <h1 className="font-coolvetica text-7xl md:text-8xl ml-12 flex items-end w-11/12">
-                Meet the E-Board
-                {session?.user.isAdmin && (
-                    <span className="font-nunito underline text-2xl ml-7 cursor-pointer" onClick={handleToggleEditView}>
-                    edit
-                    </span>
-                )}
-                {showEditView && (
-                    <div className="flex items-center ml-auto">
-                        <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl mr-2" /> {/* Adjust the icon size as necessary */}
-                        <span className="font-nunito text-lg">Add New</span>
-                        <div className="z-999">
-                            <EboardOverlay 
-                                type="Add" 
-                                isVisible={showAddModal} 
-                                onClose={() => {setShowAddModal(false)}} 
-                                profile={currentCardData}
-                            />
+                    <h1 className="font-coolvetica text-7xl md:text-8xl ml-12 flex items-end w-11/12">
+                    Meet the E-Board
+                    {session?.user.isAdmin && (
+                        <span className="font-nunito underline text-2xl ml-7 cursor-pointer" onClick={handleToggleEditView}>
+                        edit
+                        </span>
+                    )}
+                    {showEditView && (
+                        <div className="flex items-center ml-auto">
+                            <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl mr-2" /> {/* Adjust the icon size as necessary */}
+                            <span className="font-nunito text-lg">Add New</span>
+        
                         </div>
-                    </div>
-                )}
-                </h1>
-
+                    )}
+                    </h1>
                 </div>
-                <div className="z-100" style={{ position: 'relative' }} >
                 <Carousel
                     swipeable={true}
                     draggable={true}
@@ -117,7 +107,14 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                         profile={currentCardData}
                         />
                 )}
-            </div>  
+                {showAddModal && currentCardData && (
+                    <EboardOverlay 
+                        type="Add" 
+                        isVisible={showAddModal} 
+                        onClose={() => {setShowAddModal(false)}} 
+                        profile={currentCardData}
+                    />
+                )}
             </div>
             <div className="h-20 w-full mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
         </div>

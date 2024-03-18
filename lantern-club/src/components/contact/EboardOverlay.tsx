@@ -83,7 +83,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     if (type === "Add" || type === "Edit") {
         return (
             <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-0">
-                <div className="w-[800px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+                <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                     <button className="text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
                     <div className="px-5 flex flex-col overflow-y-scroll">
                         <h2 className="mb-5 text-4xl font-coolvetica underline decoration-sky-500">{type}</h2>
