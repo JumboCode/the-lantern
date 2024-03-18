@@ -32,19 +32,19 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
           </div>
           <div className="font-coolvetica items-center md:items-start mt-4 md:mt-0 md:ml-8 flex flex-col">
             {/* Links here */}
-            <Link href="/Magazine" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
+            <Link href="/Magazine" className="py-1 text-2xl transition-all duration-300 hover:scale-[1.02] hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               Magazine
             </Link>
-            <Link href="/Events" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
+            <Link href="/Events" className="py-1 text-2xl transition-all duration-300 hover:scale-[1.02] hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               Events
             </Link>
-            <Link href="/AboutUs" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
+            <Link href="/AboutUs" className="py-1 text-2xl transition-all duration-300 hover:scale-[1.02] hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               About Us
             </Link>
-            <Link href="/ContactUs" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
+            <Link href="/ContactUs" className="py-1 text-2xl transition-all duration-300 hover:scale-[1.02] hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               Contact Us
             </Link>
-            <Link href="/Resources" className="py-1 text-2xl transition-all duration-300 hover:scale-105 hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
+            <Link href="/Resources" className="py-1 text-2xl transition-all duration-300 hover:scale-[1.02] hover:tracking-wide hover:font-extrabold hover:underline decoration-orange-400">
               Resources
             </Link>
           </div>
