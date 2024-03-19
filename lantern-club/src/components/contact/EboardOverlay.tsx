@@ -128,7 +128,11 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                             <input className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="email" name="email" value={formData.email} onChange={handleChange}></input>
                         </div>
                         <div>
-                        <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
+                            <h2 className="mt-5 font-nunito text-lg">Major</h2>
+                            <input className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input font-nunito text-lg" type="text" id="major" name="major" value={formData.major} onChange={handleChange}></input>
+                        </div>
+                        <div>
+                            <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
                             <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
                         </div>
                         <div className="flex justify-center text-md space-x-7 py-5">
