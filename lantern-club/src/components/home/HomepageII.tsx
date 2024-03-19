@@ -1,8 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Define from '../../images/define.png';
-import Arrow from '../../images/arrow.png';
-import Buttonv2 from '../../components/Buttonv2';
+import Buttonv2 from '@/components/Buttonv2';
 
 export default function ResourcesI() {
   const headerFont = {
@@ -30,7 +28,7 @@ export default function ResourcesI() {
         {/* Image column */}
         <div className="flex justify-center items-center px-5">
           <Image
-            src={Define}
+            src={"/images/define.png"}
             height={300}
             width={300}
             style={imageStyle}

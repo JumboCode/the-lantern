@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
-import NavBar from "../components/Navbar";
-import Footer from "../components/Footer";
-import MagazineAdmin from "../components/magazine/MagazineAdmin";
-import MagazineDisplay from "../components/magazine/MagazineDisplay";
-import Header from "../components/Header";
-import Buttonv2 from "../components/Buttonv2";
+import NavBar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import MagazineAdmin from "@/components/magazine/MagazineAdmin";
+import MagazineDisplay from "@/components/magazine/MagazineDisplay";
+import Header from "@/components/Header";
+import Buttonv2 from "@/components/Buttonv2";
 import { useSession } from 'next-auth/react';
 
 export default function Magazine() {

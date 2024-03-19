@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../images/thelantern1.png";
 
 export default function NavBar() {
   return (
@@ -11,7 +10,7 @@ export default function NavBar() {
         >
           <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 pb-14">
             <Link href="/" className="hover:underline">
-              <Image src={Logo} height={250} width={250} alt="lantern logo"layout="intrinsic"/>
+              <Image src={"/images/thelantern1.png"} height={250} width={250} alt="lantern logo"layout="intrinsic"/>
             </Link>
           </div>
 

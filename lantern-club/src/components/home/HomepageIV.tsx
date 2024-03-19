@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import LanternHead from "../../images/lantern-head.png";
 import Buttonv2 from "../Buttonv2";
 
 export default function HomepageIV() {
@@ -20,7 +19,7 @@ export default function HomepageIV() {
       <div className="flex justify-center px-4 md:px-20 md:pt-32">
         <div className="mt-6">
           <Image
-            src={LanternHead}
+            src={"/images/lantern-head.png"}
             height={280}
             width={280}
             alt="LanternHead picture"

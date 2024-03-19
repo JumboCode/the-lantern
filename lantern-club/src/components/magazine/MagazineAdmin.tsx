@@ -2,9 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import FileUpload from ".//FileUpload";
-// import FileDelete from ".//FileDelete";
 import FileDrop from ".//FileDrop";
-// import Buttonv2 from "../components/Buttonv2";
 import Buttonv2 from "../Buttonv2";
 
 export default function MagazineAdmin() {

@@ -1,19 +1,12 @@
 import React, { use } from "react"
-import { useState, Fragment } from 'react'
+import { useState } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Card from "./Card"
-import ProfileType from "@/types/profile";
 import EboardOverlay from "./EboardOverlay";
 import { useSession } from "next-auth/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
-
-interface CardType {
-    profile: ProfileType
-    color?: string; 
-    action?: () => void,
-}
 
 interface MeetTheEBoardProps {
     data: ProfileType[]; 

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Image from "next/image";
 import Link from "next/link"
 import { useSession } from 'next-auth/react';
-import Lantern from "../../images/bluelatern.png";
+// import Lantern from "../../images/bluelatern.png";
 
 
 
@@ -82,7 +82,7 @@ export default function MagazineDisplay ({ handleToggleAdminView }: {handleToggl
                                 
                                 {/* gets rid of the file extension */}
                                 <div className="flex pt-5 align-bottom">
-                                <a className="w-60" href={url} target="_blank">{fileName}</a>                         
+                                <Link className="w-60" href={url} target="_blank">{fileName}</Link>                         
                                 </div>
                             
                                 </li>
@@ -94,7 +94,7 @@ export default function MagazineDisplay ({ handleToggleAdminView }: {handleToggl
                     <div className="px-20 flex justify-center items-center">
                         <div>
                             <Image
-                                src={Lantern.src}
+                                src={"/images/bluelatern.png"}
                                 height={280}
                                 width={280}
                                 // style={imageStyle}
