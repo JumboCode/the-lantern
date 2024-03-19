@@ -42,7 +42,7 @@ const RSVPOverlay = ( {isVisible, onClose, eventName, date, location, descriptio
                     <h2 className="mt-5 font-nunito-bold text-xl">Event Description:</h2>
                     <text className="text-lg font-nunito">{description}</text>
                     <div className="flex mt-7 justify-center">
-                        <Image src={"/images/line-RSVP.png"} alt="dotted line" width={500}/>
+                        <Image src={"/images/line-RSVP.png"} alt="dotted line" width={500} height={1}/>
                     </div>
                     <br></br>
                     <h2 className="text-4xl font-coolvetica">RSVP</h2>                   
