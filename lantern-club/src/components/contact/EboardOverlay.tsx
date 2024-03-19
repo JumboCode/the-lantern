@@ -8,7 +8,6 @@ interface OverlayProps {
     type: "Add" | "Edit",
     onClose: () => void,
     profile?: ProfileType
-    
 }
 
 
@@ -76,8 +75,33 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
         }
     };
 
-    const handleAdd = () => {
+    const handleAdd = async () => {
+        const url = '/api/content/profiles/'; 
+        try {
+            const response = await fetch(url, {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    pronouns: formData.pronouns,
+                    title: formData.title,
+                    email: formData.email,
+                    major: formData.major,
+                    pictureURL: "https://picsum.photos/seed/picsum/200/300"   
+                }),
+            });
     
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+            const newProfile = await response.json();
+            console.log('Added new profile:', newProfile);
+            window.location.reload(); 
+        } catch (error) {
+            console.error('Failed to add profile:', error);
+        }
     };
 
     if (type === "Add" || type === "Edit") {
@@ -108,7 +132,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                             <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
                         </div>
                         <div className="flex justify-center text-md space-x-7 py-5">
-                            <Buttonv2 text={type === "Add" ? "Save" : "Update"} action={type === "Add" ? handleAdd : handleEdit} color="blue" width="w-40"/>
+                            <Buttonv2 text={type === "Add" ? "Add" : "Update"} action={type === "Add" ? handleAdd : handleEdit} color="blue" width="w-40"/>
                             {type === "Edit" && <Buttonv2 text="Delete" action={handleDelete} color="red" width="w-40" />}
                             {type === "Add" && <Buttonv2 text="Cancel" action={onClose} color="red" width="w-40" />}
                         </div>

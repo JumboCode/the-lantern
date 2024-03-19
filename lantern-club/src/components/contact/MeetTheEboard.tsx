@@ -107,12 +107,11 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                         profile={currentCardData}
                         />
                 )}
-                {showAddModal && currentCardData && (
+                {showAddModal && (
                     <EboardOverlay 
                         type="Add" 
                         isVisible={showAddModal} 
                         onClose={() => {setShowAddModal(false)}} 
-                        profile={currentCardData}
                     />
                 )}
             </div>

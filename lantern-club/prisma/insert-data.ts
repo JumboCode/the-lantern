@@ -18,75 +18,11 @@ async function insertEvent() {
 
 // create a separate insert function so that everything isn't inserted at the same time
 
-async function insertProfile() {
-  const profilesData = await prisma.profile.create({
-    data: {
-      name: "Sample Name",
-      email: "Sample Email",
-      pronouns: "Sample Pronouns",
-      title: "Sample Role",
-      pictureURL: "Sample Picture URL",
-      major: "Sample Major",
-    },
+async function handleAddProfile(profileData: ProfileType) {
+  return await prisma.profile.create({
+      data: profileData,
   });
-  const profile = await prisma.profile.create({ data: profilesData });
-  return profile;
-}
-
-/*
-app.post(`/post`, async (req, res) => {
-    const { title, content, authorEmail } = req.body
-    const result = await prisma.post.create({
-      data: {
-        title,
-        content,
-        published: false,
-        author: { connect: { email: authorEmail } },
-      },
-    })
-    res.json(result)
-  })
-*/
-// Link to github examples:
-// https://github.com/prisma/prisma-examples/blob/latest/typescript/rest-nextjs-api-routes/src/pages/api/post/index.ts
-
-// async function handle (
-//     req: NextApiRequest,
-//     res : NextApiResponse,
-
-// ) {
-//     const {name, email, role, pictureURL }  = req.body
-//     const result = await prisma.post.create({
-//         data: {
-//             name,
-//             email,
-//             role,
-//             pictureURL,
-//         },
-//     })
-//     res.json(result);
-
-// }
-
-async function handlePostEvent() {
-  try {
-    // Common logic for handling POST requests
-    const responseData = await insertEvent();
-    return responseData;
-  } catch (error) {
-    console.error("Error handling POST request:", error);
-  }
-}
-
-async function handlePostProfile() {
-  try {
-    // Common logic for handling POST requests
-    const responseData = await insertProfile();
-    return responseData;
-  } catch (error) {
-    console.error("Error handling POST request:", error);
-  }
-}
+};
 
 //we want to export this so that we can get the data in another function
-export { insertEvent, insertProfile, handlePostEvent, handlePostProfile };
+export { insertEvent, handleAddProfile };
