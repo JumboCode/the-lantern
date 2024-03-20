@@ -22,7 +22,7 @@ export default function HomepageIII() {
         <div>
             <div className="orange-gradient -mt-20 pt-20 w-full flex flex-col md:grid md:grid-cols-2 gap-4 p-20 justify-center items-center">
                 {/* text side */}
-                <div className="px-4 md:px-0 md:ml-10">
+                <div className="px-4 flex flex-col text-center justify-center items-start md:text-left">
                     <p style={headerFontStyle}>
                         Submit your work!
                     </p>
@@ -44,7 +44,7 @@ export default function HomepageIII() {
                         <Image
                             src={"/images/submit-poster.png"}
                             height={280}
-                            width={280}
+                            width={280} 
                             style={imageStyle}
                             alt="submission poster"
                         />

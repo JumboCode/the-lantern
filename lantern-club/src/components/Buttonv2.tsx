@@ -1,3 +1,4 @@
+import { IntegerType } from 'mongodb';
 import React from 'react';
 
 interface ButtonProps {
