@@ -1,12 +1,11 @@
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-import Image1 from "../../images/ava1.jpg"
-import Image2 from "../../images/hannah1.jpeg"
-import Image3 from "../../images/ava2.jpg"
-import Image4 from "../../images/hannah2.jpg"
-import Image5 from "../../images/ava3.jpg"
-import Image6 from "../../images/hannah3.jpg"
-import Pencil from "../../images/pencil.png"
+import Image1 from "../../../public/images/ava1.jpg"
+import Image2 from "../../../public/images//hannah1.jpeg"
+import Image3 from "../../../public/images/ava2.jpg"
+import Image4 from "../../../public/images/hannah2.jpg"
+import Image5 from "../../../public/images/ava3.jpg"
+import Image6 from "../../../public/images/hannah3.jpg"
 
 interface CardProps {
     color?: string,
@@ -70,7 +69,7 @@ const Card = ({ profile, color, action, isEditingView }: CardProps) => {
             { isEditingView &&
                 <div className="flex justify-end -mb-5 mr-3 mt-2">
                     <button onClick={action}>
-                        <Image src={Pencil} height={20} width={20} className="justify-end" alt="pencil edit icon" />
+                        <Image src={"/images/pencil.png"} height={20} width={20} className="justify-end" alt="pencil edit icon" />
                     </button>
                 </div>
             }

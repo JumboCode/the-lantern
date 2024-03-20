@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
 import Buttonv2 from "../Buttonv2";
-import { ProfileType } from '@/types/profile';
 
 interface OverlayProps {
     isVisible: boolean,

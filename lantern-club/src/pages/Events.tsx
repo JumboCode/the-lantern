@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import NavBar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { useState } from "react";
 
 import EventsI from "@/components/events/EventsI";

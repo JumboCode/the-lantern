@@ -1,15 +1,17 @@
 import React from "react";
-import Image from "next/image";
-import AboutImage from "../../images/hannah1.jpeg";
-import Define from "../images/define.png";
-import Arrow from "../images/arrow.png";
+// import Image from "next/image";
+// import AboutImage from "../../images/hannah1.jpeg";
+// import Define from "../images/define.png";
+// import Arrow from "../images/arrow.png";
 
 export default function AboutUsIV() {
   const header_font: React.CSSProperties = {
     fontFamily: "coolvetica",
     fontSize: "90px",
     lineHeight: "1",
+    marginBottom: "3.5rem"
   };
+
   const background: React.CSSProperties = {
     height: "auto",
   };
@@ -18,15 +20,12 @@ export default function AboutUsIV() {
     display: "flex",
     gap: "20px",
     borderWidth: "4px",
-    // marginTop: "2.5rem",
-    // marginBottom: "2.5rem",
     borderRadius: "1.5rem",
     padding: "5rem",
     filter: "drop-shadow(5px 10px 3px rgb(0 0 0 / 0.2)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08))",
   };
 
   /* Arrow 3 */
-
 
 
   return (

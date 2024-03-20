@@ -2,7 +2,6 @@ import { useState } from 'react';
 import React from 'react';
 import Image from "next/image";
 import Buttonv2 from "../Buttonv2";
-import Line from "../../images/line-RSVP.png";
 
 interface OverlayProps {
     isVisible: boolean,
@@ -43,7 +42,7 @@ const RSVPOverlay = ( {isVisible, onClose, eventName, date, location, descriptio
                     <h2 className="mt-5 font-nunito-bold text-xl">Event Description:</h2>
                     <text className="text-lg font-nunito">{description}</text>
                     <div className="flex mt-7 justify-center">
-                        <Image src={Line} alt="dotted line" width={500}/>
+                        <Image src={"/images/line-RSVP.png"} alt="dotted line" width={500} height={1}/>
                     </div>
                     <br></br>
                     <h2 className="text-4xl font-coolvetica">RSVP</h2>                   

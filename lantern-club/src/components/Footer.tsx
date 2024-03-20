@@ -1,11 +1,10 @@
 
 import React from "react";
 import Image from "next/image";
-import Logo from "../images/lanternicon1.png";
-import LogoOrange from "../images/Lantern-logo-orange.png";
-import Email from "../images/email.png";
-import LinkedIn from "../images/LinkedIn.png";
-import Insta from "../images/insta.png";
+// import LogoOrange from "../images/Lantern-logo-orange.png";
+// import Email from "../images/email.png";
+// import LinkedIn from "../images/LinkedIn.png";
+// import Insta from "@/images/insta.png";
 import { signIn, signOut, useSession } from "next-auth/react"; 
 import Link from "next/link";
 import Buttonv2 from "./Buttonv2";
@@ -24,10 +23,10 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="w-24 h-24 md:w-48 md:h-48 relative">
             <Link className="transition-all opacity-100 duration-500 hover:opacity-0" href="/"> 
-              <Image src={Logo} alt="Lantern Club Logo" />
+              <Image src={"/images/lanternicon1.png"} layout="fill" alt="Lantern Club Logo" />
             </Link>
             <Link className="transition-all duration-500 hover:scale-[1.02] absolute top-0 left-0 opacity-0 hover:opacity-100" href="/"> 
-              <Image src={LogoOrange} alt="Lantern Club Logo" />
+              <Image src={"/images/Lantern-logo-orange.png"} layout="fill" alt="Lantern Club Logo" />
             </Link>
           </div>
           <div className="font-coolvetica items-center md:items-start mt-4 md:mt-0 md:ml-8 flex flex-col">

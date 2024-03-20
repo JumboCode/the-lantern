@@ -1,7 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
-import Define from '../../images/define.png';
-import Arrow from '../../images/arrow.png';
+// import Image from 'next/image';
+// import Define from '../../images/define.png';
+// import Arrow from '../../images/arrow.png';
 import Buttonv2 from "../Buttonv2";
 
 export default function ResourcesI() {
@@ -11,28 +11,7 @@ export default function ResourcesI() {
   
   const headerFontStyle = {
     fontFamily: 'coolvetica',
-    // fontSize: '90px',
     lineHeight: '1',
-  };
-
-  const buttonStyle = {
-    backgroundColor: "#4279BC",
-    borderColor: "#94BBE3",
-    borderWidth: "2px",
-    color: "white",
-    fontSize: "19px",
-    borderRadius: "35px",
-    width: "150px",
-    height: "45px",
-    fontFamily: "nunito",
-    margin: "auto",
-    display: "block",
-    marginTop: "20px",
-};
-
-  const imageStyle = {
-    minHeight: '300px',
-    minWidth: '300px',
   };
 
   const triangleStyle = {
