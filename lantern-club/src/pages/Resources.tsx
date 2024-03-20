@@ -1,9 +1,9 @@
-import NavBar from "../components/Navbar";
-import Footer from "../components/Footer";
-import ResourcesII from "../components/resources/ResourcesII";
-import ResourcesIII from "../components/resources/ResourcesIII";
+import NavBar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ResourcesII from "@/components/resources/ResourcesII";
+import ResourcesIII from "@/components/resources/ResourcesIII";
 
-import Header from "../components/Header";
+import Header from "@/components/Header";
 
 export default function Resources() {
   return (

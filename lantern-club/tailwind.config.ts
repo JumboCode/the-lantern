@@ -17,6 +17,8 @@ const config: Config = {
       'g-yellow1':"#FAEBBE",
       'blue-g1':'#D5E1F3',
       'blue-g2':'#94BBE3',
+      'nav-bg':'#D5E1F3',
+      'orange': '#F79838',
       
       sky: {
         "400": "color: rgb(56 189 248)",
@@ -29,6 +31,8 @@ const config: Config = {
         '2': '8px',
         'eboardx':'325px',
         'eboardy':'400px',
+        'line-space': '22rem',
+        'triangle-top': '150px',
 
       },
       backgroundImage: {
@@ -64,6 +68,7 @@ const config: Config = {
         gc1:'#6180B8',
         gc2:'#4E78C8',
         gc3:'#9A9789',
+        orange: colors.orange,
         gc4:'#BBA56D',
         gc5:'#E3B54C',
 

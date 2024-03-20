@@ -1,8 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Define from '../../images/define.png';
-import Arrow from '../../images/arrow.png';
-import Buttonv2 from "../Buttonv2";
+import Buttonv2 from '@/components/Buttonv2';
 
 export default function ResourcesI() {
   const headerFont = {
@@ -24,25 +22,13 @@ export default function ResourcesI() {
         console.log('Button clicked!');
   };
 
-  const buttonStyle = {
-        backgroundColor: "#4279BC",
-        borderColor: "#94BBE3",
-        borderWidth: "2px",
-        color: "white",
-        fontSize: "19px",
-        borderRadius: "35px",
-        width: "150px",
-        height: "45px",
-        fontFamily: "nunito",
-  };
-
   return (
     <div>
-      <div className="-mt-20 pt-20 w-full yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2">
+      <div className="-mt-20 pt-triangle-top w-full yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2">
         {/* Image column */}
         <div className="flex justify-center items-center px-5 my-12">
           <Image
-            src={Define}
+            src={"/images/define.png"}
             height={300}
             width={300}
             style={imageStyle}

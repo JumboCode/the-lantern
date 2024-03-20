@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import stsresources from '../../images/sts-resources.png';
-import r1 from '../../images/r1.png';
-import r2 from '../../images/r2.png';
-import r3 from '../../images/r3.png';
-import Poster from "../../images/submit-poster.png";
+// import stsresources from '../../images/sts-resources.png';
+// import r1 from '../../images/r1.png';
+// import r2 from '../../images/r2.png';
+// import r3 from '../../images/r3.png';
+// import Poster from "../../images/submit-poster.png";
 
 export default function HomepageIII() {
     const buttonStyle = {
@@ -85,7 +85,7 @@ export default function HomepageIII() {
                             <div className="w-1/2 h-full relative" >
                                 {/* Placeholder image while we wait for the real images from the google drive */}
                                 <Image
-                                    src={r1}
+                                    src={"/images/vialPic.png"}
                                     layout="fill"
                                     style={{ borderRadius: '30px' }}
                                     alt=" "
@@ -99,15 +99,15 @@ export default function HomepageIII() {
                     </div>
                     <br></br>
                     {/* Row 2  */}
-                    <div className="flex-col md:flex-row" >
+                    <div className="flex flex-col md:flex-row" >
                         <div className="flex flex-row justify-center items-start px-5">
                             
-                            <div className="w-1/2 h-full">
+                            <div className="w-1/2 h-full relative">
                                 <Image
-                                    src={r2}
+                                    src={"/images/plants.png"}
+                                    layout="fill"
                                     style={{ borderRadius: '30px' }}
                                     alt=" "
-
                                 />
                             </div>
                             {/* <br></br>
@@ -125,12 +125,8 @@ export default function HomepageIII() {
                             </div>
 
                         </div>
-                        {/* <br></br>
-                        <p></p>
-                        <br></br>
-                         */}
                     </div>
-                         <br></br>
+                    <br></br>
                     {/* Row 3 */}
                     <div className="flex flex-col md:flex-row" >
                         <div className="flex flex-row justify-center items-start px-5">
@@ -151,8 +147,10 @@ export default function HomepageIII() {
                         <br></br>
                             <div className="w-1/2 h-full relative">
                                 <Image
+                                    // layout="fill"
                                     layout="fill"
-                                    src={r3}
+
+                                    src={"/images/brain.png"}
                                     style={{ borderRadius: '30px' }}
                                     alt=" "
                                     // style={imageStyle}

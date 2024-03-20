@@ -1,21 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
-import Poster from "../../images/submit-poster.png";
-import Buttonv2 from "../Buttonv2";
+// import Poster from "../../images/submit-poster.png";
 
 export default function HomepageIII() {
-    const buttonStyle = {
-        backgroundColor: "#4279BC",
-        borderColor: "#94BBE3",
-        borderWidth: "2px",
-        color: "white",
-        fontSize: "19px",
-        borderRadius: "35px",
-        width: "150px",
-        height: "45px",
-        fontFamily: "nunito",
-    };
-
+   
     const imageStyle = {
         minHeight: "300px",
         minWidth: "300px",
@@ -48,14 +35,14 @@ export default function HomepageIII() {
                     >
                         Submit
                     </button> */}
-                    <Buttonv2 text="Submit" action={handleButtonClick} color="blue" width="w-40" />
+                    {/* <Buttonv2 text="Submit" action={handleButtonClick} color="blue" width="w-40" /> */}
                 </div>
 
                 {/* image side */}
                 <div className="flex justify-center items-center mt-4 md:mt-20">
                     <div>
                         <Image
-                            src={Poster.src}
+                            src={"/images/submit-poster.png"}
                             height={280}
                             width={280} 
                             style={imageStyle}
