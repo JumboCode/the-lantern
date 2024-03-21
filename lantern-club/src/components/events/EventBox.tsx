@@ -5,7 +5,7 @@ import { useState } from "react";
 import EventOverlay from "../events/EventOverlay";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { EventBoxProps } from "../../types/event"
+import { EventBoxProps } from "@/types/event"
 // import BluePoster from "../../images/blueposter.png";
 import RSVPOverlay from "./RSVPOverlay";
 import { useSession } from "next-auth/react";
@@ -39,11 +39,8 @@ const EventBox = ({event, isAdminEdit}: EventBoxProps) => {
                   setShowModal(false);
                 }}
                 type="Edit Event"
-                name={event.name}
-                date={event.date.toString()}
-                time={event.date.toString()}
-                location={event.location}
-                description={event.description}
+                event={event}
+                
               />
             </div>
           </>
@@ -56,11 +53,7 @@ const EventBox = ({event, isAdminEdit}: EventBoxProps) => {
                 onClose={() => {
                   setShowModal(false);
                 }}
-                name={event.name}
-                date={event.date.toString()}
-                time={event.time.toString()}
-                location={event.location}
-                description={event.description}
+                event={event}
               />
             </div>
           </>

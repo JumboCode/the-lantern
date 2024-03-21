@@ -2,17 +2,14 @@ import { useState } from 'react';
 import React from 'react';
 import Image from "next/image";
 import Buttonv2 from "../Buttonv2";
-
+import { EventType } from '@/types/event';
 interface OverlayProps {
     isVisible: boolean,
     onClose: () => void,
-    eventName: string,
-    date: Date,
-    location: string,
-    description: string
+    event: EventType
 }
 
-const RSVPOverlay = ( {isVisible, onClose, eventName, date, location, description}: OverlayProps ) => {
+const RSVPOverlay = ( {isVisible, onClose, event}: OverlayProps ) => {
     if (!isVisible) return null; 
 
     const [formData, setFormData] = useState({name: "", email: ""});

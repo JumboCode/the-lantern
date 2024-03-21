@@ -2,26 +2,20 @@ import { useState } from "react";
 import React from "react";
 import Buttonv2 from "../Buttonv2";
 
+import { EventType } from "@/types/event" 
+
 interface OverlayProps {
   isVisible: boolean;
   onClose: () => void;
   type: "Add Event" | "Edit Event";
-  name?: string;
-  date?: string;
-  time?: string;
-  location?: string;
-  description?: string;
+  event?: EventType;
 }
 
 const EventOverlay = ({
   isVisible,
   onClose,
   type,
-  name,
-  date,
-  time,
-  location,
-  description,
+  event,
 }: OverlayProps) => {
   if (!isVisible) return null;
 
@@ -31,11 +25,11 @@ const EventOverlay = ({
   };
 
   const [formData, setFormData] = useState({
-    name: "",
-    date: "",
-    time: "",
-    location: "",
-    description: "",
+    name: event?.name,
+    date: event?.date,
+    time: event?.time,
+    location: event?.location,
+    description: event?.description,
   });
 
   const handleChange = (event: any) => {
