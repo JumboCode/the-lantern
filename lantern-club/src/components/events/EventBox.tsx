@@ -40,7 +40,7 @@ const EventBox = ({event, isAdminEdit}: EventBoxProps) => {
                 }}
                 type="Edit Event"
                 name={event.name}
-                date={event.date.toString()}
+                date={event.date}
                 time={event.date.toString()}
                 location={event.location}
                 description={event.description}
@@ -56,8 +56,8 @@ const EventBox = ({event, isAdminEdit}: EventBoxProps) => {
                 onClose={() => {
                   setShowModal(false);
                 }}
-                name={event.name}
-                date={event.date.toString()}
+                eventName={event.name}
+                date={event.date}
                 time={event.time.toString()}
                 location={event.location}
                 description={event.description}

@@ -7,7 +7,7 @@ interface OverlayProps {
   onClose: () => void;
   type: "Add Event" | "Edit Event";
   name?: string;
-  date?: string;
+  date?: Date;
   time?: string;
   location?: string;
   description?: string;

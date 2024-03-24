@@ -24,5 +24,13 @@ async function handleAddProfile(profileData: ProfileType) {
   });
 };
 
+async function handlePostEvent() {
+        return 
+      };
+
+async function handlePostProfile() {
+        return 
+      };
+
 //we want to export this so that we can get the data in another function
-export { insertEvent, handleAddProfile };
+export { insertEvent, handleAddProfile, handlePostEvent, handlePostProfile };

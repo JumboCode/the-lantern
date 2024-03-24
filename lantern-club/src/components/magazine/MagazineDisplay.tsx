@@ -70,10 +70,10 @@ export default function MagazineDisplay ({ handleToggleAdminView }: {handleToggl
                     <div>
                         <p style={headerFont}>Read Past Issues</p>
                         <ul>
-                            {fileList.map((url, index) => {
+                            {fileList.map((url: string, index) => {
                             // Extract file name from the URL
                             const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
-                            const key = url.substring(url.lastIndexOf('/') + 1);
+                            //const key = url.substring(url.lastIndexOf('/') + 1);
                             let fileName = keyName.substring(keyName.indexOf('_') + 1);
                             fileName = fileName.replace(/\.[^/.]+$/, "");
 

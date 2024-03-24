@@ -51,7 +51,7 @@ export default function EventsI({ isAdminEdit, handleEditButtonClick }: EventsIP
 
   const [showModal, setShowModal] = useState(false);
 
-  if (numEvents == 0) {
+  if (Number(numEvents) == 0) {
     return (
       <>
         <div
