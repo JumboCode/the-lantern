@@ -2,40 +2,30 @@ import { useState } from "react";
 import React from "react";
 import Buttonv2 from "../Buttonv2";
 
+import { EventType } from "@/types/event" 
+
 interface OverlayProps {
   isVisible: boolean;
   onClose: () => void;
   type: "Add Event" | "Edit Event";
-  name?: string;
-  date?: Date;
-  time?: string;
-  location?: string;
-  description?: string;
+  event?: EventType;
 }
 
 const EventOverlay = ({
   isVisible,
   onClose,
   type,
-  name,
-  date,
-  time,
-  location,
-  description,
+  event,
 }: OverlayProps) => {
   if (!isVisible) return null;
 
-  const handleButtonClick = () => {
-    onClose();
-    console.log("Button clicked!");
-  };
 
   const [formData, setFormData] = useState({
-    name: "",
-    date: "",
-    time: "",
-    location: "",
-    description: "",
+    name: event?.name,
+    date: event?.date,
+    time: event?.time,
+    location: event?.location,
+    description: event?.description,
   });
 
   const handleChange = (event: any) => {
@@ -43,16 +33,77 @@ const EventOverlay = ({
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    alert(
-      `Name: ${formData.name}, Date: ${formData.date}, Time: ${formData.time}, Location: ${formData.location}, Description: ${formData.description}`
-    );
+
+  const handleDelete = async () => {
+    if (!event?.id) {
+      console.error("Event ID is required to delete.");
+      return;
+    }
+    const url = `/api/content/events/${event.id}`;    
+  
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+      });
+  
+      const result = await response.json();
+      console.log(result);
+      onClose(); 
+      window.location.reload()
+    } catch (error) {
+      console.error("Failed to delete the event:", error);
+
+      // Handle error (show error message, etc.)
+    }
+  };
+
+  const handleEdit = async () => {
+    
+    if (!event?.id) {
+      console.error("Event ID is required to edit.");
+      return;
+    }
+
+    const url = `/api/content/events/${event.id}`;    
+
+    try {
+      const response = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      console.log(result);
+      onClose(); 
+      window.location.reload()
+    } catch (error) {
+      console.error("Failed to edit the event:", error);
+    }
+  };
+
+  const handleAdd = async () => {
+    const url = `/api/content/events/`;    
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      console.log(result);
+      onClose(); 
+    } catch (error) {
+      console.error("Failed to add the event:", error);
+    }
   };
 
   if (type == "Add Event") {
     return (
-      <form onSubmit={handleSubmit}>
         <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
           <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
             <button
@@ -123,14 +174,14 @@ const EventOverlay = ({
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
                   text="Save"
-                  action={() => handleSubmit}
+                  action={handleAdd}
                   color="blue"
                   width="w-40"
                 />
                 {/* <button type="submit">Submit</button> */}
                 <Buttonv2
                   text="Cancel"
-                  action={handleButtonClick}
+                  action={() => onClose()}
                   color="red"
                   width="w-40"
                 />
@@ -138,12 +189,10 @@ const EventOverlay = ({
             </div>
           </div>
         </div>
-      </form>
     );
     /**************************************************************************/
   } else if (type == "Edit Event") {
     return (
-      <form onSubmit={handleSubmit}>
         <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
           <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
             <button
@@ -219,13 +268,13 @@ const EventOverlay = ({
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
                   text="Save"
-                  action={() => handleSubmit}
+                  action={handleEdit}
                   color="blue"
                   width="w-40"
                 />
                 <Buttonv2
                   text="Delete"
-                  action={handleButtonClick}
+                  action={handleDelete}
                   color="red"
                   width="w-40"
                 />
@@ -233,7 +282,6 @@ const EventOverlay = ({
             </div>
           </div>
         </div>
-      </form>
     );
   } else {
     return null;

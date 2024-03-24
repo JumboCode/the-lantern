@@ -1,4 +1,4 @@
-type ProfileType = {
+export type ProfileType = {
     name: string,
     pronouns: string,
     title: string,

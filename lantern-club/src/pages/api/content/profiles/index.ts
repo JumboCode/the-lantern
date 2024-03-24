@@ -1,15 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 // necessary functions for fetching or adding profiles
 import { handleAddProfile } from "../../../../../prisma/insert-data"; 
+import { handleFetchProfiles } from "../../../../../prisma/read-data";
+
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
     if (req.method === 'GET') {
-        // Logic to fetch and return all profiles
-        // const profiles = await fetchProfiles();
-        // res.status(200).json(profiles);
+        const responseData = await handleFetchProfiles();
+        res.status(200).json(responseData);
     } else if (req.method === 'POST') {
         try {
 

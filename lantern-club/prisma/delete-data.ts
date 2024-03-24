@@ -1,6 +1,6 @@
 import prisma from "../prisma/prisma";
 
-async function handleDeleteEvent(eventID: string) {
+async function handleDeleteEvent(eventID: sany) {
   const event = await prisma.event.delete({
     where: {
       id: eventID,
