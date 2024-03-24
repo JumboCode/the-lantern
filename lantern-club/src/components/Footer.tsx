@@ -1,7 +1,7 @@
 
 import React from "react";
 import Image from "next/image";
-// import LogoOrange from "../images/Lantern-logo-orange.png";
+import LogoOrange from "../images/Lantern-logo-orange.png";
 // import Email from "../images/email.png";
 // import LinkedIn from "../images/LinkedIn.png";
 // import Insta from "@/images/insta.png";
@@ -25,7 +25,7 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
             <Link className="transition-all opacity-100 duration-500 hover:opacity-0" href="/"> 
               <Image src={"/images/lanternicon1.png"} layout="fill" alt="Lantern Club Logo" />
             </Link>
-            <Link className="transition-all duration-500 hover:scale-[1.02] absolute top-0 left-0 opacity-0 hover:opacity-100" href="/"> 
+            <Link className="transition-all duration-500 hover:scale-[1.02] opacity-0 hover:opacity-100" href="/"> 
               <Image src={"/images/Lantern-logo-orange.png"} layout="fill" alt="Lantern Club Logo" />
             </Link>
           </div>
