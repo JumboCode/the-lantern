@@ -10,7 +10,7 @@ export default function ContactUs() {
   const [profiles, setProfiles] = useState([]);
   
   useEffect(() => {
-    fetch("/api/content/profile")
+    fetch("/api/content/profiles")
       .then((response) => response.json())
       .then((json) => setProfiles(json))
       .catch((error) => console.error(error));

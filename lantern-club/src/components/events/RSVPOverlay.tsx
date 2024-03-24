@@ -13,7 +13,6 @@ const RSVPOverlay = ( {isVisible, onClose, event}: OverlayProps ) => {
     if (!isVisible) return null; 
 
     const [formData, setFormData] = useState({name: "", email: ""});
-
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));

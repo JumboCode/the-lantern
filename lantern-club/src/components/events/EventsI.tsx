@@ -11,6 +11,7 @@ import { useSession } from "next-auth/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Session } from 'next-auth';
 import EventOverlay from "@/components/events/EventOverlay"
+import Carousel from 'react-multi-carousel';
 
 interface EventsIProps {
   isAdminEdit: boolean;
@@ -29,6 +30,21 @@ export default function EventsI({ isAdminEdit, handleEditButtonClick }: EventsIP
   const [allEvents, setEvents] = useState([]);
   const { data: session } = useSession();
 
+  const responsive = {
+    desktop: {
+        breakpoint: { max: 4000, min: 1100 },
+        items: 3
+    },
+    tablet: {
+        breakpoint: { max: 1100, min: 768 },
+        items: 2
+    },
+    mobile: {
+        breakpoint: { max: 768, min: 0 },
+        items: 1
+    },
+  };
+
   const fetchEvents = async () => {
     try {
       const response = await fetch("/api/content/events", { method: "GET" });
@@ -45,14 +61,14 @@ export default function EventsI({ isAdminEdit, handleEditButtonClick }: EventsIP
 
   const [showAddModal, setShowAddModal] = useState(false);
 
-  const numEvents = 1
   return (
     <>
-      {numEvents === 0 ? (
+      {allEvents.length === 0 ? (
         <NoEventsComponent />
       ) : (
         <EventsListComponent events={allEvents} isAdminEdit={isAdminEdit} session={session} handleEditButtonClick={handleEditButtonClick} setShowAddModal={setShowAddModal} />
       )}
+
       {showAddModal && (
           <EventOverlay 
               type="Add Event" 
@@ -122,9 +138,9 @@ const NoEventsComponent = () => (
 
 // Component for events list
 const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonClick, setShowAddModal }: EventsIProps) => (
-  <div>
-    <div>
+    <>
         <div className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
+
           <h1 className={"mb-20 font-coolvetica md:text-8xl text-7xl"} style={{ display: 'flex', alignItems: 'center' }}>
             {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
             {session?.user.isAdmin && !isAdminEdit && (
@@ -152,8 +168,7 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
           </div>
         </div>
         <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
-      </div>
-  </div>
+    </>
 );
 
   
