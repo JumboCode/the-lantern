@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Process a POST request
     const {name, email, message} = req.body
     
-    const transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({ 
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,

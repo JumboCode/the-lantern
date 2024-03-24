@@ -48,7 +48,7 @@ export default function EventsII({ isAdminEdit, handleEditButtonClick }: EventsI
             <Image src={"/images/orangeposter.png"} width={100} height={100} style={imageStyle} alt="Orange Poster picture" />
             {isAdminEdit && (
               <div style={{ paddingTop: '20px'}}>
-                <FontAwesomeIcon icon={faTrashCan} width={100} height={100} alt="Delete Button" size="2x" onClick={handleButtonClick} />
+                <FontAwesomeIcon icon={faTrashCan} width={100} height={100} size="2x" onClick={handleButtonClick} />
               </div>
             )}
           </div>
@@ -58,7 +58,7 @@ export default function EventsII({ isAdminEdit, handleEditButtonClick }: EventsI
             <Image src={"/images/blueposter.png"} width={100} height={100} style={imageStyle} alt="Blue Poster picture" />
             {isAdminEdit && (
               <div style={{ paddingTop: '20px'}}>
-                <FontAwesomeIcon icon={faTrashCan} alt="Delete Button" size="2x" onClick={handleButtonClick} />
+                <FontAwesomeIcon icon={faTrashCan} size="2x" onClick={handleButtonClick} />
               </div>
             )}
           </div>
@@ -68,7 +68,7 @@ export default function EventsII({ isAdminEdit, handleEditButtonClick }: EventsI
             <Image src={"/images/tanposter.png"} width={100} height={100} style={imageStyle} alt="Tan Poster picture" />
             {isAdminEdit && (
               <div style={{ paddingTop: '20px'}}>
-                <FontAwesomeIcon icon={faTrashCan} alt="Delete Button" size="2x" onClick={handleButtonClick} />
+                <FontAwesomeIcon icon={faTrashCan} size="2x" onClick={handleButtonClick} />
               </div>
             )}
           </div>

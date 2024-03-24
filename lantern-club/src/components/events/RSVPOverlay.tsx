@@ -30,13 +30,13 @@ const RSVPOverlay = ( {isVisible, onClose, event}: OverlayProps ) => {
             <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                 <button className="text-gray text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
                 <div className="px-5 flex flex-col overflow-y-scroll">
-                    <h2 className="text-5xl font-coolvetica">{eventName}</h2>
+                    <h2 className="text-5xl font-coolvetica">{event.name}</h2>
                     <h2 className="mt-5 font-nunito-bold text-xl">When:</h2>
-                    <text className="text-lg font-nunito">{date.toString()}</text>
+                    <text className="text-lg font-nunito">{event.date.toString()}</text>
                     <h2 className="mt-5 font-nunito-bold text-xl">Where:</h2>
-                    <text className="text-lg font-nunito">{location}</text>
+                    <text className="text-lg font-nunito">{event.location}</text>
                     <h2 className="mt-5 font-nunito-bold text-xl">Event Description:</h2>
-                    <text className="text-lg font-nunito">{description}</text>
+                    <text className="text-lg font-nunito">{event.description}</text>
                     <div className="flex mt-7 justify-center">
                         <Image src={"/images/line-RSVP.png"} alt="dotted line" width={500} height={1}/>
                     </div>

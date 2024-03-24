@@ -9,7 +9,7 @@ export default function Contact() {
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         
         event.preventDefault()
-        setIsLoading(true);
+        setIsLoading(true); 
 
         // formData ~ an object with string keys and string values
         const formData: { [key: string]: string } = {};

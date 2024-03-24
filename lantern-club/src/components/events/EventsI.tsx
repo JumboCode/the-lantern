@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Session } from 'next-auth';
 import EventOverlay from "@/components/events/EventOverlay"
-import Carousel from 'react-multi-carousel';
+// import Carousel from 'react-multi-carousel';
 
 interface EventsIProps {
   isAdminEdit: boolean;

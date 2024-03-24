@@ -16,6 +16,9 @@ export default function MagazineAdmin() {
         fontSize: '30px',
         lineHeight: '1',
       };
+
+
+      
       
       function extractFileKeyFromURL(url: URL) {
         // Create a URL object to easily access parts of the URL.
@@ -79,10 +82,10 @@ export default function MagazineAdmin() {
                   
 
                   <ul>
-                      {fileList.map((url, index) => {
+                      {fileList.map((url: string, index) => {
                       // Extract file name from the URL
                       const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
-                      const key = url.substring(url.lastIndexOf('/') + 1);
+                //       const key = url.substring(url.lastIndexOf('/') + 1);
                       let fileName = keyName.substring(keyName.indexOf('_') + 1);
                       fileName = fileName.replace(/\.[^/.]+$/, "");
 

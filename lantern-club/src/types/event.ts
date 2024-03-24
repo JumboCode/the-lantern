@@ -1,5 +1,5 @@
 export type EventType = {
-  image: string | StaticImport;
+  image: string;
   type: "Add Event" | "Edit Event";
   id: string;
   name: string;
