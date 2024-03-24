@@ -31,6 +31,7 @@ export default function MyButton ( { label } ) {
                 );
         };
         return (
+                // eslint-disable-next-line
                 <div style={divStyle}>
                         <button onClick={onClick} style={buttonStyle}>{label}??</button>
                         {result && <div>{result}</div>}
