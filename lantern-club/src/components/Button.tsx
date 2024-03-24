@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// eslint-disable-next-line
 export default function MyButton ( { label } ) {
         const buttonStyle = 
                         { color: 'red',

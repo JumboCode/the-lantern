@@ -17,7 +17,7 @@ export default function ContactUs() {
   }, []);
 
   return (
-    <>
+    <> 
       <NavBar />
       <Header title="Contact Us" />
       <MeetTheEBoard data={profiles} />
