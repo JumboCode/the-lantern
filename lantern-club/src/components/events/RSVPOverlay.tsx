@@ -8,6 +8,7 @@ interface OverlayProps {
     onClose: () => void,
     eventName: string,
     date: Date,
+    time: string,
     location: string,
     description: string
 }
