@@ -223,7 +223,7 @@ const EventOverlay = ({
                   type="text"
                   id="date"
                   name="date"
-                  value={formData.date}
+                  value={formData.date instanceof Date ? formData.date.toLocaleDateString() : undefined}
                   onChange={handleChange}
                 ></input>
               </div>
@@ -234,7 +234,7 @@ const EventOverlay = ({
                   type="text"
                   id="time"
                   name="time"
-                  value={formData.time}
+                  value={formData.time instanceof Date ? formData.time.toLocaleTimeString() : undefined}
                   onChange={handleChange}
                 ></input>
               </div>
