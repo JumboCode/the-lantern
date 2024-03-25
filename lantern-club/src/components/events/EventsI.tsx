@@ -19,7 +19,7 @@ interface EventsIProps {
   events: EventType[];
   session?: Session | null;
   setShowAddModal: (value: boolean) => void;
-};
+}; 
 
 const background: React.CSSProperties = {
   height: "auto",

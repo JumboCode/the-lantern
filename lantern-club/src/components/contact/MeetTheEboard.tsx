@@ -5,6 +5,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Card from "./Card"
 import EboardOverlay from "./EboardOverlay";
 import { useSession } from "next-auth/react";
+import { ProfileType } from '@/types/profile';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 
