@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk';
-import s3Config from '../../../aws-config.js';
+import s3Config from '../../../../../aws-config.js';
 
 const s3 = new AWS.S3(s3Config);
 
@@ -11,6 +11,8 @@ export default async function handler(req, res) {
     try {
         const { Contents } = await s3.listObjectsV2({
             Bucket: process.env.AWS_BUCKET_NAME,
+            Prefix: 'uploads/' // Specify the prefix for the magazines folder
+
         }).promise();
         
         const urls = Contents.map((content) => {

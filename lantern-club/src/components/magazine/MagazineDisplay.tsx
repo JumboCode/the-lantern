@@ -7,8 +7,12 @@ import { useSession } from 'next-auth/react';
 
 
 
-
-export default function MagazineDisplay ({ handleToggleAdminView }: {handleToggleAdminView: () => void}) {
+interface MagazineDisplayProps {
+  handleToggleAdminView: () => void
+  magazines: any[]
+  
+}
+export default function MagazineDisplay ({ handleToggleAdminView, magazines }: MagazineDisplayProps) {
     const triangle: React.CSSProperties = {
         backgroundColor: "#FECB66",
       };
@@ -22,21 +26,6 @@ export default function MagazineDisplay ({ handleToggleAdminView }: {handleToggl
         fontSize: '30px',
         lineHeight: '1',
       };
-
-      
-    const [fileList, setFileList] = useState([]);
-    useEffect(() => {
-        const fetchFileList = async () => {
-          try {
-            const response = await axios.get('/api/listFiles');
-            setFileList(response.data.urls);
-          } catch (error) {
-            console.error('Error fetching file list:', error);
-          }
-        };
-    
-        fetchFileList();
-      }, []);
 
       const { data: session } = useSession();
 
@@ -70,7 +59,7 @@ export default function MagazineDisplay ({ handleToggleAdminView }: {handleToggl
                     <div>
                         <p style={headerFont}>Read Past Issues</p>
                         <ul>
-                            {fileList.map((url: string, index) => {
+                            {magazines.map((url: string, index) => {
                             // Extract file name from the URL
                             const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
                             //const key = url.substring(url.lastIndexOf('/') + 1);
@@ -108,7 +97,7 @@ export default function MagazineDisplay ({ handleToggleAdminView }: {handleToggl
 
                 
                 
-                
+          
             </div>
 
         </div>

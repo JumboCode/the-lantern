@@ -5,38 +5,51 @@ import Footer from "@/components/Footer";
 import MagazineAdmin from "@/components/magazine/MagazineAdmin";
 import MagazineDisplay from "@/components/magazine/MagazineDisplay";
 import Header from "@/components/Header";
-import Buttonv2 from "@/components/Buttonv2";
-import { useSession } from 'next-auth/react';
+import axios from 'axios';
+// import { useSession } from 'next-auth/react';
 
 export default function Magazine() {
-  const headerFont = {
-    fontFamily: 'coolvetica',
-    fontSize: '90px',
-    lineHeight: '1',
-  };
-  const subheaderFont = {
-    fontFamily: 'nunito',
-    fontSize: '30px',
-    lineHeight: '1',
-  };
-
+  
   const [showAdminView, setShowAdminView] = useState(false);
 
   const handleToggleAdminView = () => {
     setShowAdminView(!showAdminView);
   };
 
+  const [magazineList, setMagazineList] = useState([]);
+
+
+  useEffect(() => {
+    const fetchFileList = async () => {
+      try {
+        const response = await axios.get('/api/content/magazine/listFiles');
+        setMagazineList(response.data.urls);
+      } catch (error) {
+        console.error('Error fetching file list:', error);
+      }
+    };
+
+    fetchFileList();
+  }, [magazineList]);
+
+  
   return (
     <div>
       <NavBar />
       <Header title='Magazine'/>
-        <div>
-        {showAdminView ? (
-          <MagazineAdmin/>
+        <>
+        {magazineList ? (
+          // Render MagazineDisplay or MagazineAdmin based on showAdminView
+          showAdminView ? (
+            <MagazineAdmin magazines={magazineList}/>
+          ) : (
+            <MagazineDisplay magazines={magazineList} handleToggleAdminView={handleToggleAdminView} />
+          )
         ) : (
-          <MagazineDisplay handleToggleAdminView={handleToggleAdminView} />
+          // Render a loading state while magazineList is being fetched
+          <div>Loading...</div>
         )}
-        </div>
+        </>
       <Footer showAdminLogin={true} />
     </div>
   );

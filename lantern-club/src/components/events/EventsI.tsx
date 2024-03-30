@@ -25,9 +25,8 @@ const background: React.CSSProperties = {
   height: "auto",
 };
 
-export default function EventsI({ isAdminEdit, handleEditButtonClick }: EventsIProps) {
+export default function EventsI({ events, isAdminEdit, handleEditButtonClick }: EventsIProps) {
 
-  const [allEvents, setEvents] = useState([]);
   const { data: session } = useSession();
 
   const responsive = {
@@ -45,28 +44,14 @@ export default function EventsI({ isAdminEdit, handleEditButtonClick }: EventsIP
     },
   };
 
-  const fetchEvents = async () => {
-    try {
-      const response = await fetch("/api/content/events", { method: "GET" });
-      const data = await response.json();
-      setEvents(data);
-    } catch (error) {
-      console.error("Error fetching events:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchEvents();
-  }, []);
-
   const [showAddModal, setShowAddModal] = useState(false);
 
   return (
     <>
-      {allEvents.length === 0 ? (
+      {events.length === 0 ? (
         <NoEventsComponent />
       ) : (
-        <EventsListComponent events={allEvents} isAdminEdit={isAdminEdit} session={session} handleEditButtonClick={handleEditButtonClick} setShowAddModal={setShowAddModal} />
+        <EventsListComponent events={events} isAdminEdit={isAdminEdit} session={session} handleEditButtonClick={handleEditButtonClick} setShowAddModal={setShowAddModal} />
       )}
 
       {showAddModal && (
@@ -141,7 +126,7 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
     <>
         <div className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
 
-          <h1 className={"mb-20 font-coolvetica md:text-8xl text-7xl"} style={{ display: 'flex', alignItems: 'center' }}>
+          <h1 className={"mb-20 mt-20 font-coolvetica md:text-8xl text-7xl"} style={{ display: 'flex', alignItems: 'center' }}>
             {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
             {session?.user.isAdmin && !isAdminEdit && (
               <a href="#" className="font-nunito underline text-2xl ml-7" onClick={handleEditButtonClick}>edit</a>

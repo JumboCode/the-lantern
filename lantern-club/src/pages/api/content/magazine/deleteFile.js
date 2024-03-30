@@ -1,6 +1,6 @@
 // pages/api/deleteFile.js
 import AWS from 'aws-sdk';
-import s3Config from '../../../aws-config';
+import s3Config from '../../../../../aws-config';
 
 
 const s3 = new AWS.S3(s3Config);
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { keyName } = req.body; 
+    const { keyName } = req.query;
 
     const deleteParams = {
       Bucket: process.env.AWS_BUCKET_NAME,

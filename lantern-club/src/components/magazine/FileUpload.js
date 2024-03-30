@@ -14,16 +14,13 @@ const FileUpload = () => {
     formData.append('file', selectedFile);
       try {
         setUploading(true);
-        const response = await axios.post('/api/cloud', formData, {
+        const response = await axios.post('/api/content/magazine/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
         setFileUrl(response.data.url);
-    
-        // Trigger the file listing API after a successful upload
-        await axios.get('/api/listFiles');
-      } catch (error) {
+          } catch (error) {
         console.error('Error uploading file:', error);
       } finally {
         setUploading(false);

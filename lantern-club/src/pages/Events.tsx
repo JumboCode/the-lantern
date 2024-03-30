@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -16,9 +16,22 @@ export default function Events() {
     setIsAdminEdit(!isAdminEdit);
   };
 
-   const [events, setEvents] = useState<EventType[]>([]);
-   const [showAddModal, setShowAddModal] = useState<boolean>(false);
+  const [events, setEvents] = useState<EventType[]>([]);
+  const [showAddModal, setShowAddModal] = useState<boolean>(false);
 
+  const fetchEvents = async () => {
+    try {
+      const response = await fetch("/api/content/events", { method: "GET" });
+      const data = await response.json();
+      setEvents(data);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   return (
     <div>
@@ -30,7 +43,11 @@ export default function Events() {
         events={events} 
         setShowAddModal={setShowAddModal}
       />
-      <EventsII isAdminEdit={isAdminEdit} handleEditButtonClick={handleEditButtonClick}/>
+      <EventsII 
+        isAdminEdit={isAdminEdit} 
+        handleEditButtonClick={handleEditButtonClick}
+        events={events}
+      />
       <Footer showAdminLogin={false} />
     </div>
   );
