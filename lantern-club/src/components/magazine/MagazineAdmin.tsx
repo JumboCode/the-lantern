@@ -4,7 +4,7 @@ import axios from 'axios';
 import FileUpload from ".//FileUpload";
 import FileDrop from ".//FileDrop";
 import Buttonv2 from "../Buttonv2";
-import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
+// import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
 
 export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
     const headerFont = {
@@ -20,7 +20,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
       
       const FileDelete = async (keyName: string) => {
         try {
-          const response = await axios.delete(`/api/content/magazine/deleteFile?keyName=${keyName}`);
+          const response = await axios.delete(`/api/content/magazine?keyName=${keyName}`);
      
           if (response.data.success) {
 

@@ -9,7 +9,7 @@ const FileDrop = () => {
         useEffect(() => {
                 const fetchFileList = async () => {
                 try {
-                        const response = await axios.get('/api/content/magazine/listFiles');
+                        const response = await axios.get('/api/content/magazine/');
                         setFileList(response.data.urls);
                         if (response.data.urls.length > 0) {
                                 // Automatically set the first image as the current image

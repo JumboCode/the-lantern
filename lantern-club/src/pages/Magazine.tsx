@@ -22,7 +22,7 @@ export default function Magazine() {
   useEffect(() => {
     const fetchFileList = async () => {
       try {
-        const response = await axios.get('/api/content/magazine/listFiles');
+        const response = await axios.get('/api/content/magazine/');
         setMagazineList(response.data.urls);
       } catch (error) {
         console.error('Error fetching file list:', error);
