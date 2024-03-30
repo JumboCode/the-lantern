@@ -14,7 +14,7 @@ const FileUpload = () => {
     formData.append('file', selectedFile);
       try {
         setUploading(true);
-        const response = await axios.post('/api/cloud', formData, {
+        const response = await axios.post('/api/content/magazine/cloud', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

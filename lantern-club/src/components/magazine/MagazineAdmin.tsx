@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { Key, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import FileUpload from ".//FileUpload";
 import FileDrop from ".//FileDrop";
 import Buttonv2 from "../Buttonv2";
+import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
 
-export default function MagazineAdmin() {
+export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
     const headerFont = {
         fontFamily: 'coolvetica',
         fontSize: '90px',
@@ -16,39 +17,20 @@ export default function MagazineAdmin() {
         fontSize: '30px',
         lineHeight: '1',
       };
-
-
-      
-      
-      function extractFileKeyFromURL(url: URL) {
-        // Create a URL object to easily access parts of the URL.
-        const urlObj = new URL(url);
-      
-        // Get the pathname part of the URL, which includes the key.
-        let key = urlObj.pathname;
-      
-        // Remove the leading '/' from the pathname to get the key.
-        key = key.substring(1);
-      
-        // Decode the key to convert URL-encoded parts back to the original characters.
-        return decodeURIComponent(key);
-      }
-
-      const [fileList, setFileList] = useState([]);
       
       const FileDelete = async (keyName: string) => {
         try {
-          const response = await axios.delete(`/api/deleteFile`, { 
-            data: { keyName } 
-          });
+          const response = await axios.delete(`/api/content/magazine/deleteFile?keyName=${keyName}`);
+     
           if (response.data.success) {
 
-            console.log('File List before filtering:', fileList);
-            console.log('Key Name to remove:', keyName);
-            setFileList(fileList.filter((fileUrl) => {
-                console.log('Current File URL in loop:', fileUrl);
-                return extractFileKeyFromURL(fileUrl) !== keyName;
-            }));
+            // console.log('File List before filtering:', fileList);
+            // console.log('Key Name to remove:', keyName);
+            // magazines.filter((fileUrl) => {
+            //     return extractFileKeyFromURL(fileUrl) !== keyName;
+            // });
+
+            
             alert('File deleted successfully');
           } else {
             alert('Failed to delete the file');
@@ -58,19 +40,6 @@ export default function MagazineAdmin() {
           alert('Error deleting the file');
         }
       };
-
-      useEffect(() => {
-        const fetchFileList = async () => {
-          try {
-            const response = await axios.get('/api/listFiles');
-            setFileList(response.data.urls);
-          } catch (error) {
-            console.error('Error fetching file list:', error);
-          }
-        };
-    
-        fetchFileList();
-      }, []);
 
         return (
             <div className="-mt-20 p-20 pt-40 w-full yellow-gradient flex gap-5 flex-col">
@@ -82,10 +51,9 @@ export default function MagazineAdmin() {
                   
 
                   <ul>
-                      {fileList.map((url: string, index) => {
+                      {magazines.map((url: string, index: Key) => {
                       // Extract file name from the URL
                       const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
-                //       const key = url.substring(url.lastIndexOf('/') + 1);
                       let fileName = keyName.substring(keyName.indexOf('_') + 1);
                       fileName = fileName.replace(/\.[^/.]+$/, "");
 
