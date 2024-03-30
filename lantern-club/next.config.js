@@ -13,7 +13,7 @@ module.exports = {
         pathname: "/400/**",
       },
     ],
-    domains: ["placehold.co", "picsum.photos"],
+    domains: ['placehold.co', 'picsum.photos', 'thelantern.s3.amazonaws.com']
   },
   reactStrictMode: true,
 };
