@@ -64,7 +64,7 @@ export default function EventsII({ events, isAdminEdit, handleEditButtonClick }:
             {events &&
               events.slice(0,3).map((oneEvent: EventType) => {
                 return (
-                  <div className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Image src={oneEvent.imageURL} width={100} height={100} style={imageStyle} alt="Orange Poster picture" />
                     {isAdminEdit && (
                       <div style={{ paddingTop: '20px'}}>
