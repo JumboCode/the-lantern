@@ -61,8 +61,8 @@ model Event {
   id           String @id @default(auto()) @map("_id") @db.ObjectId
   name         String
   description  String
-  date         DateTime // TODO: extract date vs time out of datetime
-  time         DateTime
+  date         String
+  time         String
   location     String
   host         String 
   imageURL     String
