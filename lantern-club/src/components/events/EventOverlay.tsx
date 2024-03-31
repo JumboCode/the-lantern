@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import React from "react";
 import Buttonv2 from "../Buttonv2";
 
@@ -26,13 +26,18 @@ const EventOverlay = ({
     time: event?.time,
     location: event?.location,
     description: event?.description,
+    host: event?.host,
   });
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const handleFileClick = () => {
+    fileInputRef.current?.click();
+  };
 
   const handleChange = (event: any) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
-
 
   const handleDelete = async () => {
     if (!event?.id) {
@@ -92,11 +97,12 @@ const EventOverlay = ({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({...formData, imageURL: "https://picsum.photos/seed/picsum/200/300"})
       });
       const result = await response.json();
       console.log(result);
       onClose(); 
+      window.location.reload()
     } catch (error) {
       console.error("Failed to add the event:", error);
     }
@@ -157,6 +163,16 @@ const EventOverlay = ({
                 ></input>
               </div>
               <div>
+                <h2 className="mt-5 font-nunito text-md">Host</h2>
+                <input
+                  className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
+                  type="text"
+                  id="host"
+                  name="host"
+                  onChange={handleChange}
+                ></input>
+              </div>
+              <div>
                 <h2 className="mt-5 font-nunito text-md">Description</h2>
                 <textarea
                   className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-12 contact-input-height"
@@ -167,9 +183,17 @@ const EventOverlay = ({
               </div>
               <div>
                 <h2 className="mt-5 font-nunito text-md">Cover Photo</h2>
-                <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">
+                <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">
                   +
                 </button>
+                <input
+                  type="file"
+                  accept="image/*"
+                  style={{ display: 'none' }}
+                  ref={fileInputRef}
+                  onChange={handleChange}
+                  // id="imageURL"
+                />
               </div>
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
@@ -223,7 +247,7 @@ const EventOverlay = ({
                   type="text"
                   id="date"
                   name="date"
-                  value={formData.date instanceof Date ? formData.date.toLocaleDateString() : undefined}
+                  value={formData.date}
                   onChange={handleChange}
                 ></input>
               </div>
@@ -234,7 +258,7 @@ const EventOverlay = ({
                   type="text"
                   id="time"
                   name="time"
-                  value={formData.time instanceof Date ? formData.time.toLocaleTimeString() : undefined}
+                  value={formData.time}
                   onChange={handleChange}
                 ></input>
               </div>
@@ -246,6 +270,16 @@ const EventOverlay = ({
                   id="location"
                   name="location"
                   value={formData.location}
+                  onChange={handleChange}
+                ></input>
+              </div>
+              <div>
+                <h2 className="mt-5 font-nunito text-md">Host</h2>
+                <input
+                  className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
+                  type="text"
+                  id="host"
+                  name="host"
                   onChange={handleChange}
                 ></input>
               </div>
