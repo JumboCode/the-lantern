@@ -55,11 +55,13 @@ export default function EventsI({ events, isAdminEdit, handleEditButtonClick }: 
       )}
 
       {showAddModal && (
+          <div style={{ zIndex: 999, position: 'relative' }}>
           <EventOverlay 
               type="Add Event" 
               isVisible={showAddModal} 
               onClose={() => {setShowAddModal(false)}} 
           />
+          </div>
       )}
       {/* {showEditModal && currentCardData && (
           <EboardOverlay 
@@ -133,8 +135,8 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
             )}
             {isAdminEdit && (
               <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-                <FontAwesomeIcon icon={faCirclePlus} onClick={() => setShowAddModal(true)} style={{ fontSize: '3.5rem', marginRight: '5px'}} />
-                <span className="font-nunito" style={{ fontSize: '1rem' }}>Add New</span>
+                <FontAwesomeIcon icon={faCirclePlus} onClick={() => setShowAddModal(true)} className="cursor-pointer" style={{ fontSize: '3.5rem', marginRight: '5px'}} />
+                <span className="font-nunito" style={{ fontSize: '1rem', marginLeft: '10px'}}>Add New</span>
               </div>
             )}
           </h1>

@@ -31,7 +31,7 @@ const EventBox = ({event, isAdminEdit}: EventBoxProps) => {
       <div style={{ paddingTop: '20px' }}>
         {isAdminEdit ? (
           <>
-            <FontAwesomeIcon icon={faPen} size="2x" onClick={() => setShowModal(true)} />
+            <FontAwesomeIcon icon={faPen} size="2x" onClick={() => setShowModal(true)} className="cursor-pointer" />
             <div className="z-999">
               <EventOverlay
                 isVisible={showModal}
