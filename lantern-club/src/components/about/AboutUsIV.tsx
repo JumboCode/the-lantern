@@ -43,7 +43,7 @@ export default function AboutUsIV() {
           <div
            className="w-1/2 flex-col pale-yellow mellow-yellow-border"
            style={round_box}>
-            <p className="font-nunito text-xl font-bold">
+            <p className="font-nunito text-xl font-extrabold">
             Problem #1. The way of thinking in the technical world is not varied enough for the territory that it has entered.
             </p>
             <p className="font-nunito text-xl">
@@ -54,7 +54,7 @@ export default function AboutUsIV() {
           <div
           className="w-1/2 flex-col mellow-yellow orange-border"
           style={round_box}>
-            <p className="font-nunito text-xl font-bold">
+            <p className="font-nunito text-xl font-extrabold">
             Problem #2: Academic and expert discussions are not accessible to the general public.            </p>
             <p className="font-nunito text-xl">
             We believe that information should be distributed in a way that is easy to understand for the people who are affected by the decisions.            </p>
@@ -78,7 +78,7 @@ export default function AboutUsIV() {
         <div
          className="flex-col orange pale-yellow-border font-nunito text-xl"
          style={round_box}>
-          <p className="font-bold">As a “Think-and-Action” Tank, The Lantern has a dual mission: </p>
+          <p className="font-extrabold">As a “Think-and-Action” Tank, The Lantern has a dual mission: </p>
           <p><span className="font-bold">(1)</span> to break down critical and complex ideas at the intersection of STS for the general public </p>
           <p><span className="font-bold">(2)</span> to engage students and organizations in a socially responsible path of science and technology </p>
         </div>
