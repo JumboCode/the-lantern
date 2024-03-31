@@ -28,7 +28,28 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
       };
 
       const { data: session } = useSession();
-
+      
+      const [fileList, setFileList] = useState([]);
+      const [currentImage, setCurrentImage] = useState('');
+      
+      useEffect(() => {
+        const fetchFileList = async () => {
+          try {
+            const response = await axios.get('/api/content/magazine/listFiles');
+            setFileList(response.data.urls);
+            if (response.data.urls.length > 0) {
+                    // Automatically set the first image as the current image
+                    setCurrentImage(response.data.urls[0]);
+            }
+    
+          } catch (error) {
+            console.error('Error fetching file list:', error);
+          }
+        };
+    
+        fetchFileList();
+      }, []);
+      
       return (
         <div>
             <div className="yellow-gradient -mt-20 pt-20 w-full p-20">
@@ -42,8 +63,14 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 </div>
                 
                 
-                <div className="bg-gray-700 rounded-3xl pt-20 min-h-[575px] justify-center items-center">
-                  Image ?? !! o oo ooo
+                <div className="bg-gray-700 rounded-3xl py-20 min-h-[575px] flex justify-center items-center">
+                    {currentImage && (
+                        <div className="flex justify-center items-center w-full h-full">
+                            <Link href={currentImage}>
+                                <iframe src={currentImage} className="w-full min-h-[575px]" title="Selected" style={{ width: '80vw'}} />
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div> 
             

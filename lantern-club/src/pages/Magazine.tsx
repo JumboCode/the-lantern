@@ -24,6 +24,8 @@ export default function Magazine() {
       try {
         const response = await axios.get('/api/content/magazine/listFiles');
         setMagazineList(response.data.urls);
+        
+
       } catch (error) {
         console.error('Error fetching file list:', error);
       }
@@ -48,6 +50,8 @@ export default function Magazine() {
         ) : (
           // Render a loading state while magazineList is being fetched
           <div>Loading...</div>
+          
+          
         )}
         </>
       <Footer showAdminLogin={true} />
