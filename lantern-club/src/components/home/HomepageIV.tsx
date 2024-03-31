@@ -5,7 +5,7 @@ import Buttonv2 from "../Buttonv2";
 export default function HomepageIV() {
   const headerFontStyle = {
     fontFamily: "coolvetica",
-    fontSize: "4rem",
+    fontSize: "90px",
     lineHeight: "1.2", 
   };
   const handleButtonClick = () => {
