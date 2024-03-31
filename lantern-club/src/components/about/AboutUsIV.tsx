@@ -7,7 +7,6 @@ import React from "react";
 export default function AboutUsIV() {
   const header_font: React.CSSProperties = {
     fontFamily: "coolvetica",
-    fontSize: "90px",
     lineHeight: "1",
     marginBottom: "3.5rem"
   };
@@ -31,10 +30,10 @@ export default function AboutUsIV() {
   return (
     <div>
       <div
-        className="-mt-20 py-20 px-20 blue2-gradient"
+        className="-mt-20 py-40 px-20 blue2-gradient"
         style={background}
       > 
-        <p style={header_font} className="mb-20">Our Mission</p>
+        <p style={header_font} className="md:text-8xl text-6xl"> Our Mission</p>
 
         {/* Two boxes */}
         <div className="flex gap-10"

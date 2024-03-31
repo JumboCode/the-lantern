@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function AboutUsII() {
   const header_font: React.CSSProperties = {
     fontFamily: "coolvetica",
-    fontSize: "90px",
     lineHeight: "1",
     marginBottom: "3.5rem"
   };
@@ -25,7 +24,7 @@ export default function AboutUsII() {
   return (
     <div>
       <div className="-mt-20 yellow-gradient py-40 px-20"> 
-        <p className="mb-20" style={header_font}>Who are we?</p>
+        <p className="mb-20 md:text-8xl text-6xl" style={header_font}>Who are we?</p>
 
         {/* First section */}
         
