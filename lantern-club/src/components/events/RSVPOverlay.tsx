@@ -27,7 +27,7 @@ const RSVPOverlay = ( {isVisible, onClose, event}: OverlayProps ) => {
     return (
         <form onSubmit={handleSubmit}>
         <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-0">
-            <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+            <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                 <button className="text-gray text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
                 <div className="px-5 flex flex-col overflow-y-scroll">
                     <h2 className="text-5xl font-coolvetica">{event.name}</h2>
@@ -52,7 +52,7 @@ const RSVPOverlay = ( {isVisible, onClose, event}: OverlayProps ) => {
                     </div>
                     <div className="flex justify-center text-md space-x-7 py-5">
                         <Buttonv2 text="RSVP" action={() => handleSubmit} color="blue" width="w-40"/>
-                        <Buttonv2 text="Cancel" action={onClose} color="red" width="w-40" />
+                        <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={onClose}>Cancel</a>
                     </div>
                 </div>
             </div>

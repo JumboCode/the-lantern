@@ -66,6 +66,7 @@ model Event {
   location     String
   host         String 
   imageURL     String
+  isPast       Boolean
 }
 
 model Magazine {

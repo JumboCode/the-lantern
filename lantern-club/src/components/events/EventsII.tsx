@@ -68,7 +68,7 @@ export default function EventsII({ events, isAdminEdit, handleEditButtonClick }:
                     <Image src={oneEvent.imageURL} width={100} height={100} style={imageStyle} alt="Orange Poster picture" />
                     {isAdminEdit && (
                       <div style={{ paddingTop: '20px'}}>
-                        <FontAwesomeIcon icon={faTrashCan} width={100} height={100} size="2x" onClick={() => handleDelete(oneEvent.id)} />
+                        <FontAwesomeIcon icon={faTrashCan} width={100} height={100} size="2x" onClick={() => handleDelete(oneEvent.id)} className="cursor-pointer" />
                       </div>
                     )}
                   </div>
