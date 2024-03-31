@@ -59,7 +59,7 @@ const Buttonv2: React.FC<ButtonProps> = ({ text, action, color, width, type, isL
   return (
     <button
       type={type} 
-      className={`py-2 ${width} font-nunitosans items-center tracking-wide text-lg rounded-full border-2 font-bold ${defaultBackgroundColor} ${borderColor} ${defaultTextColor} ${hoverBackgroundColor} ${hoverBorderColor} ${hoverTextColor} shadow-md`}
+      className={`py-2 ${width} font-nunitosans items-center tracking-wide text-lg rounded-full border-2 font-bold ${defaultBackgroundColor} ${borderColor} ${defaultTextColor} ${hoverBackgroundColor} ${hoverBorderColor} ${hoverTextColor} shadow-md relative transition-all duration-300`}
       onClick={action}
       disabled={isLoading} // Disable button when isLoading is true
     >

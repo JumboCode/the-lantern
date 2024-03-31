@@ -16,27 +16,27 @@ export default function NavBar() {
 
           <ul className="flex flex-row justify-center space-x-8 md:space-x-16 md:pr-20 pt-14 overflow-x-auto pb-14">
           <li>
-            <Link href="/Magazine" className="hover:bg-nav-bg rounded-2xl p-3">
+            <Link href="/Magazine" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-300">
               Magazine
             </Link>
           </li>
           <li>
-            <Link href="/Events" className="hover:bg-nav-bg rounded-2xl p-3">
+            <Link href="/Events" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-300">
               Events
             </Link>
           </li>
           <li>
-            <Link href="/AboutUs" className="hover:bg-nav-bg rounded-2xl p-3">
+            <Link href="/AboutUs" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-300">
               About Us
             </Link>
           </li>
           <li>
-            <Link href="/ContactUs" className="hover:bg-nav-bg rounded-2xl p-3">
+            <Link href="/ContactUs" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-300">
               Contact Us
             </Link>
           </li>
           <li>
-            <Link href="/Resources" className="hover:bg-nav-bg rounded-2xl p-3">
+            <Link href="/Resources" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-300">
               Resources
             </Link>
           </li>
