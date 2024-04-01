@@ -148,3 +148,7 @@ width: 300px;
   scroll-snap-align: start;
   width: 100%;
 }
+
+.link:hover {
+  text-decoration: underline;
+}
