@@ -217,7 +217,7 @@ const EventOverlay = ({
     /**************************************************************************/
   } else if (type == "Edit Event") {
     return (
-        <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
+        <div className="z-50 fixed flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
           <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
             <button
               className="text-gray text-xl place-self-end mr-5 mt-2"
