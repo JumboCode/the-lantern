@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import React from 'react';
 import Buttonv2 from "../Buttonv2";
 import { ProfileType } from '@/types/profile';
@@ -10,13 +10,31 @@ interface OverlayProps {
     profile?: ProfileType
 }
 
+interface FormData {
+    id: string;
+    name: string;
+    pronouns: string;
+    title: string;
+    email: string;
+    major: string;
+    coverPhoto: File | null; 
+}
+
 
 const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     if (!isVisible) return null; 
 
-    const [formData, setFormData] = useState({id: profile?.id, name: profile?.name, pronouns: profile?.pronouns, title: profile?.title, email: profile?.email, major: profile?.major});
+    const [formData, setFormData] = useState<FormData>({
+        id: profile?.id || '', 
+        name: profile?.name || '', 
+        pronouns: profile?.pronouns || '', 
+        title: profile?.title || '', 
+        email: profile?.email || '', 
+        major: profile?.major || '',
+        coverPhoto: null, 
+    });
 
-    const handleChange = (event: any) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
@@ -26,19 +44,22 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
         
         const url = `/api/content/profiles/${formData.id}`;    
         try {
+            const formDataWithPhoto = new FormData();
+            formDataWithPhoto.append('name', formData.name);
+            formDataWithPhoto.append('pronouns', formData.pronouns);
+            formDataWithPhoto.append('title', formData.title);
+            formDataWithPhoto.append('email', formData.email);
+            formDataWithPhoto.append('major', formData.major);
+            if (formData.coverPhoto) {
+                formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+            }            
             const response = await fetch(url, {
                 
                 method: 'PATCH',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'multipart/form-data',
                 },
-                body: JSON.stringify({
-                    name: formData.name,
-                    pronouns: formData.pronouns,
-                    title: formData.title,
-                    email: formData.email,
-                    major: formData.major,
-                }),
+                body: formDataWithPhoto
             });
     
             if (!response.ok) {
@@ -74,23 +95,46 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
             console.error('Failed to update profile:', error);
         }
     };
+    const [filePreview, setFilePreview] = useState<string>('');
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    
+    const handleFileClick = () => {
+        setFilePreview(''); // Reset the file preview when the button is clicked
+        fileInputRef.current?.click(); // Trigger the file input click event to open the file dialog if fileInputRef.current is not null
+    };
+    const handleCoverPhotoChange = (event: any) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const result = reader.result as string; // Explicitly cast the result to string
+            setFilePreview(result); // Set the file preview with the data URI
+        };
+        reader.readAsDataURL(file); // Read the file as a data URL
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            coverPhoto: file, // Update coverPhoto with the selected file
+        }));
+    };
+    
 
     const handleAdd = async () => {
         const url = '/api/content/profiles/'; 
         try {
+            const formDataWithPhoto = new FormData();
+            formDataWithPhoto.append('name', formData.name || '');
+            formDataWithPhoto.append('pronouns', formData.pronouns || '');
+            formDataWithPhoto.append('title', formData.title || '');
+            formDataWithPhoto.append('email', formData.email || '');
+            formDataWithPhoto.append('major', formData.major || '');
+            formDataWithPhoto.append('coverPhoto', formData.coverPhoto || '');
+            
             const response = await fetch(url, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    name: formData.name,
-                    pronouns: formData.pronouns,
-                    title: formData.title,
-                    email: formData.email,
-                    major: formData.major,
-                    pictureURL: "https://picsum.photos/seed/picsum/200/300"   
-                }),
+                body: formDataWithPhoto
+
             });
     
             if (!response.ok) {
@@ -133,8 +177,18 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                         </div>
                         <div>
                             <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
-                            <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
-                        </div>
+                            <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
+                            {filePreview && <img src={filePreview} alt="Cover Photo Preview" className="mt-2 mb-2" style={{ maxWidth: '100%', height: 'auto' }} />}
+
+                            <input
+                            type="file"
+                            accept="image/*"
+                            style={{ display: 'none' }}
+                            ref={fileInputRef}
+                            onChange={handleCoverPhotoChange} 
+                            // id="imageURL"
+                            />
+                            </div>
                         <div className="flex justify-center text-md space-x-7 py-5">
                             <Buttonv2 text={type === "Add" ? "Add" : "Update"} action={type === "Add" ? handleAdd : handleEdit} color="blue" width="w-40"/>
                             {type === "Edit" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>}
