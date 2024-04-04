@@ -18,7 +18,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
       };
     const headerFont = {
         fontFamily: 'coolvetica',
-        fontSize: '90px',
+        marginBottom: "3.5rem",
         lineHeight: '1',
       };
       const subheaderFont = {
@@ -52,8 +52,8 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
       
       return (
         <div>
-            <div className="yellow-gradient -mt-20 pt-20 w-full p-20">
-                <div className="flex gap-10 my-12 ">
+            <div className="yellow-gradient -mt-20 py-40 px-20 w-full p-20">
+                <div className="flex gap-10 md:text-8xl text-6xl">
                     <p style={headerFont}>Magazine Issues</p>
                     {session?.user.isAdmin && (
                     <button className="font-nunito underline text-2xl ml-7" onClick={handleToggleAdminView}>
@@ -86,7 +86,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 <div className="grid grid-flow-col">
                     {/* left container  */}
                     <div>
-                        <p style={headerFont}>Read Past Issues</p>
+                        <p className="md:text-8xl text-6xl" style={headerFont}>Read Past Issues</p>
                         <ul>
                             {magazines.map((url: string, index) => {
                                 // Extract file name from the URL

@@ -55,7 +55,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
         <div className="z-40">
             <div className="-mt-20 pt-32 w-full yellow-gradient">
                 <div className="ml-5">
-                    <h1 className="font-coolvetica text-7xl md:text-8xl ml-12 flex items-end w-11/12">
+                    <h1 className="font-coolvetica text-6xl md:text-8xl ml-12 flex items-end w-11/12">
                     Meet the E-Board
                     {session?.user.isAdmin && (
                         <span className="font-nunito underline text-2xl ml-7 cursor-pointer" onClick={handleToggleEditView}>
