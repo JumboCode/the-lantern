@@ -52,7 +52,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
     
 
     return(
-        <div>
+        <div className="z-40">
             <div className="-mt-20 pt-32 w-full yellow-gradient">
                 <div className="ml-5">
                     <h1 className="font-coolvetica text-6xl md:text-8xl ml-12 flex items-end w-11/12">
@@ -109,7 +109,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                     />
                 )}
             </div>
-            <div className="h-20 w-full mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
+            
         </div>
     )
 }; export default MeetTheEBoard;

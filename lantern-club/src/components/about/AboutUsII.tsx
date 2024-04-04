@@ -62,7 +62,7 @@ export default function AboutUsII() {
           <span className="text-white w-full md:w-3/5 font-nunito text-base md:text-lg md:order-2"> 
             One of the primary objectives of The Lantern is to design and publish an <span className="font-extrabold">eponymous magazine</span> each academic year. Our <span className="font-extrabold">first issue</span> of The Lantern magazine was <span className="font-extrabold">published on May 11, 2023</span>, with written submissions <span className="font-bold">centering around science, technology, and society (STS) topics</span> from the Tufts University student body. We are excited to grow our community and <span className="font-bold">work towards publishing future issues.</span>
             <br/><br/>
-            <p className="font-bold">You can read our first issue <Link href="" className="underline">here.</Link></p>
+            <p className="font-black">You can read our first issue <Link href="" className="underline">here.</Link></p>
           </span>
         </div>
     
