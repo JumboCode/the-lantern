@@ -21,13 +21,15 @@ const EventBox = ({event, isAdminEdit}: EventBoxProps) => {
 
   return (
     <>
-      <Image
-        src={event.imageURL}
-        style={imageStyle}
-        width={100}
-        height={100}
-        alt="Orange Poster picture"
-      />
+      <div className="relative flex-shrink w-full" style={{ minHeight: '500px'}}>
+        <Image
+            src={event.imageURL}
+            style={imageStyle}
+            layout="fill"
+            objectFit="cover"
+            alt="Event image"
+        />
+      </div>   
       <div style={{ paddingTop: '20px' }}>
         {isAdminEdit ? (
           <>

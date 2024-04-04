@@ -65,8 +65,16 @@ export default function EventsII({ events, isAdminEdit, handleEditButtonClick }:
               events.slice(0,3).map((oneEvent: EventType) => {
                 return (
                   <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <Image src={oneEvent.imageURL} width={100} height={100} style={imageStyle} alt="Orange Poster picture" />
-                    {isAdminEdit && (
+                      <div className="relative flex-shrink w-full" style={{ minHeight: '500px'}}>
+                              <Image
+                                  src={oneEvent.imageURL}
+                                  style={imageStyle}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  alt="Event image"
+                              />
+                      </div>                       
+                      {isAdminEdit && (
                       <div style={{ paddingTop: '20px'}}>
                         <FontAwesomeIcon icon={faTrashCan} width={100} height={100} size="2x" onClick={() => handleDelete(oneEvent.id)} className="cursor-pointer" />
                       </div>
