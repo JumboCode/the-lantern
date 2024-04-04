@@ -106,7 +106,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
 
     if (type === "Add" || type === "Edit") {
         return (
-            <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-0">
+            <div className="z-50 flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
                 <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                     <button className="text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
                     <div className="px-5 flex flex-col overflow-y-scroll">
@@ -135,7 +135,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                             <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
                             <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
                         </div>
-                        <div className="flex justify-center text-md space-x-7 py-5">
+                        <div className="z-50 flex justify-center text-md space-x-7 py-5">
                             <Buttonv2 text={type === "Add" ? "Add" : "Update"} action={type === "Add" ? handleAdd : handleEdit} color="blue" width="w-40"/>
                             {type === "Edit" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>}
                             {type === "Add" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={onClose}>Cancel</a>}
