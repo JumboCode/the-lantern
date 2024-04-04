@@ -26,7 +26,7 @@ export default function AboutUsIII() {
 
   return (
     <div>
-      <div className="-mt-20 py-40 px-4 md:px-20 orange-gradient" style={background}> 
+      <div className="md:-mt-20 -mt-10 py-40 px-4 md:px-20 orange-gradient" style={background}> 
         <p className="md:text-8xl text-6xl" style={header_font}> Who is STS?</p>
         <div className="pale-yellow mellow-yellow-border" style={round_box}>
           <div className="flex flex-col md:flex-row items-center">
