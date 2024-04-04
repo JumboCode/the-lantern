@@ -31,7 +31,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
         title: profile?.title || '', 
         email: profile?.email || '', 
         major: profile?.major || '',
-        coverPhoto: null, 
+        coverPhoto: null
     });
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -50,16 +50,14 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
             formDataWithPhoto.append('title', formData.title);
             formDataWithPhoto.append('email', formData.email);
             formDataWithPhoto.append('major', formData.major);
+
             if (formData.coverPhoto) {
                 formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
             }            
+
             const response = await fetch(url, {
-                
                 method: 'PATCH',
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-                body: formDataWithPhoto
+                body: formDataWithPhoto,
             });
     
             if (!response.ok) {
