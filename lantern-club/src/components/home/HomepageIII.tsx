@@ -8,6 +8,10 @@ export default function HomepageIII() {
         minWidth: "300px",
     };
 
+    const triangleStyle = {
+        backgroundColor: '#FECB66',
+      };
+
     const headerFontStyle = {
         fontFamily: "coolvetica",
         fontSize: "90px",
@@ -20,6 +24,7 @@ export default function HomepageIII() {
 
     return (
         <div>
+            <div className="-mt-20 h-20 w-full" style={triangleStyle} id="triangle"></div>
             <div className="orange-gradient -mt-20 pt-20 w-full flex flex-col md:grid md:grid-cols-2 gap-4 p-20 justify-center items-center">
                 {/* text side */}
                 <div className="px-4 flex flex-col text-center justify-center items-start md:text-left">
