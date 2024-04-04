@@ -11,7 +11,6 @@ interface OverlayProps {
 }
 
 interface FormData {
-    id: string;
     name: string;
     pronouns: string;
     title: string;
@@ -25,7 +24,6 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     if (!isVisible) return null; 
 
     const [formData, setFormData] = useState<FormData>({
-        id: profile?.id || '', 
         name: profile?.name || '', 
         pronouns: profile?.pronouns || '', 
         title: profile?.title || '', 
@@ -42,7 +40,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     
     const handleEdit = async () => {
         
-        const url = `/api/content/profiles/${formData.id}`;    
+        const url = `/api/content/profiles/${profile?.id}`;    
         try {
             const formDataWithPhoto = new FormData();
             formDataWithPhoto.append('name', formData.name);
@@ -72,7 +70,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     };
 
     const handleDelete = async () => {
-        const url = `/api/content/profiles/${formData.id}`;    
+        const url = `/api/content/profiles/${profile?.id}`;    
         try {
             const response = await fetch(url, {
                 
@@ -118,21 +116,21 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     const handleAdd = async () => {
         const url = '/api/content/profiles/'; 
         try {
-            const formDataWithPhoto = new FormData();
-            formDataWithPhoto.append('name', formData.name || '');
-            formDataWithPhoto.append('pronouns', formData.pronouns || '');
-            formDataWithPhoto.append('title', formData.title || '');
-            formDataWithPhoto.append('email', formData.email || '');
-            formDataWithPhoto.append('major', formData.major || '');
-            formDataWithPhoto.append('coverPhoto', formData.coverPhoto || '');
             
+            const profile = {
+                name: formData.name, 
+                pronouns: formData.pronouns, 
+                title: formData.title, 
+                email: formData.email, 
+                major: formData.major,
+                pictureURL: "https://placehold.co/400.png"
+            }
             const response = await fetch(url, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: formDataWithPhoto
-
+                body: JSON.stringify(profile)
             });
     
             if (!response.ok) {

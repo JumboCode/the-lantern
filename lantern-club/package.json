@@ -36,10 +36,12 @@
   },
   "devDependencies": {
     "@types/formidable": "^3.4.5",
+    "@types/multer": "^1.4.11",
     "@types/node": "latest",
     "@types/nodemailer": "^6.4.14",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/uuid": "^9.0.8",
     "autoprefixer": "^10.4.16",
     "eslint": "latest",
     "eslint-config-next": "latest",
