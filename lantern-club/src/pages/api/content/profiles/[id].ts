@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { handleDeleteProfile } from "../../../../../prisma/delete-data";
 import { handleUpdateProfile } from "../../../../../prisma/edit-data";
 import { IncomingForm, Fields, Files, File } from 'formidable';
-import { v4 as uuidv4 } from 'uuid';
 import { ProfileType } from "@/types/profile";
 import { uploadFileToS3 } from "@/utils/uploadFileToS3";
 
@@ -29,27 +28,27 @@ export default async function handler(
       const { id } = req.query;
 
       try {
-        // Here, you would handle your logic using fields and files
-        // For example:
-        // Assuming `fields` comes from parsing the form data and could be string, string[], or undefined
+        // `fields` comes from parsing the form data and could be string, string[], or undefined
         const updateData: ProfileType = {
           name: Array.isArray(fields.name) ? fields.name[0] : fields.name ?? "",
           pronouns: Array.isArray(fields.pronouns) ? fields.pronouns[0] : fields.pronouns ?? "",
           title: Array.isArray(fields.title) ? fields.title[0] : fields.title ?? "",
           email: Array.isArray(fields.email) ? fields.email[0] : fields.email ?? "",
           major: Array.isArray(fields.major) ? fields.major[0] : fields.major ?? "",
+
         };
 
         // Uploading the cover photo if present
         if (files.coverPhoto && Array.isArray(files.coverPhoto)) {
-          // Example for a single file; adjust if you're handling multiple files
           const formidableFile: File = files.coverPhoto[0];
       
           // Convert the formidable file object to match the UploadFile structure
-          // Note: Formidable's File object uses `originalFilename` and not `originalname`
-         
           const id = Array.isArray(req.query.id) ? req.query.id[0] : req.query.id;
           await uploadFileToS3(formidableFile, "images/profiles", id);
+
+          const updatedProfile = await handleUpdateProfile(id, {...updateData, pictureURL: `https://thelantern.s3.amazonaws.com/images/profiles/${id}`});
+          res.status(200).json(updatedProfile);
+          return
         }
     
         const updatedProfile = await handleUpdateProfile(id, updateData);

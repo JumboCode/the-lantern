@@ -117,20 +117,20 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
         const url = '/api/content/profiles/'; 
         try {
             
-            const profile = {
+            const data = {
                 name: formData.name, 
                 pronouns: formData.pronouns, 
                 title: formData.title, 
                 email: formData.email, 
                 major: formData.major,
-                pictureURL: "https://placehold.co/400.png"
+                pictureURL: `https://placehold.co/400.png`
             }
             const response = await fetch(url, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(profile)
+                body: JSON.stringify(data)
             });
     
             if (!response.ok) {
