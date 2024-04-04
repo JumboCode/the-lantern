@@ -26,7 +26,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
         fontSize: '30px',
         lineHeight: '1',
       };
-
+    
       const { data: session } = useSession();
       
       const [fileList, setFileList] = useState([]);
@@ -67,8 +67,10 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                     {currentImage && (
                         <div className="flex justify-center items-center w-full h-full">
                             <Link href={currentImage}>
-                                <iframe src={currentImage} className="w-full min-h-[575px]" title="Selected" style={{ width: '80vw'}} />
+                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ width: '80vw'}} />
                             </Link>
+
+
                         </div>
                     )}
                 </div>
@@ -87,22 +89,26 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                         <p style={headerFont}>Read Past Issues</p>
                         <ul>
                             {magazines.map((url: string, index) => {
-                            // Extract file name from the URL
-                            const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
-                            //const key = url.substring(url.lastIndexOf('/') + 1);
-                            let fileName = keyName.substring(keyName.indexOf('_') + 1);
-                            fileName = fileName.replace(/\.[^/.]+$/, "");
+                                // Extract file name from the URL
+                                const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
+                                //const key = url.substring(url.lastIndexOf('/') + 1);
+                                let fileName = keyName.substring(keyName.indexOf('_') + 1);
+                                fileName = fileName.replace(/\.[^/.]+$/, "");
 
-                            return (
-                                <li key={index} >
-                                
-                                {/* gets rid of the file extension */}
-                                <div className="flex pt-5 align-bottom">
-                                <Link className="w-60" href={url} target="_blank">{fileName}</Link>                         
-                                </div>
-                            
-                                </li>
-                            );
+                                return (
+                                    <li key={index}>
+
+                                        {/* gets rid of the file extension */}
+                                        <div className="flex pt-5 align-bottom">
+                                            <Link className="w-60 hover:underline" href={url} style={{fontWeight: 'normal'}}>
+                                                <span style={{transition: 'all 0.3s ease', fontWeight: 'bold', textDecoration: 'none'}}>
+                                                    {fileName}
+                                                </span>
+                                            </Link>
+                                        </div>
+
+                                    </li>
+                                );
                             })}
                         </ul>
                     </div>
