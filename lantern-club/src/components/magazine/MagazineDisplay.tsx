@@ -26,9 +26,30 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
         fontSize: '30px',
         lineHeight: '1',
       };
-
+    
       const { data: session } = useSession();
-
+      
+      const [fileList, setFileList] = useState([]);
+      const [currentImage, setCurrentImage] = useState('');
+      
+      useEffect(() => {
+        const fetchFileList = async () => {
+          try {
+            const response = await axios.get('/api/content/magazine/');
+            setFileList(response.data.urls);
+            if (response.data.urls.length > 0) {
+                    // Automatically set the first image as the current image
+                    setCurrentImage(response.data.urls[0]);
+            }
+    
+          } catch (error) {
+            console.error('Error fetching file list:', error);
+          }
+        };
+    
+        fetchFileList();
+      }, []);
+      
       return (
         <div>
             <div className="yellow-gradient -mt-20 pt-20 w-full p-20">
@@ -42,8 +63,16 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 </div>
                 
                 
-                <div className="bg-gray-700 rounded-3xl pt-20 min-h-[575px] justify-center items-center">
-                  Image ?? !! o oo ooo
+                <div className="bg-gray-700 rounded-3xl py-20 min-h-[575px] flex justify-center items-center">
+                    {currentImage && (
+                        <div className="flex justify-center items-center w-full h-full">
+                            <Link href={currentImage}>
+                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ width: '80vw'}} />
+                            </Link>
+
+
+                        </div>
+                    )}
                 </div>
             </div> 
             
@@ -60,22 +89,26 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                         <p style={headerFont}>Read Past Issues</p>
                         <ul>
                             {magazines.map((url: string, index) => {
-                            // Extract file name from the URL
-                            const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
-                            //const key = url.substring(url.lastIndexOf('/') + 1);
-                            let fileName = keyName.substring(keyName.indexOf('_') + 1);
-                            fileName = fileName.replace(/\.[^/.]+$/, "");
+                                // Extract file name from the URL
+                                const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
+                                //const key = url.substring(url.lastIndexOf('/') + 1);
+                                let fileName = keyName.substring(keyName.indexOf('_') + 1);
+                                fileName = fileName.replace(/\.[^/.]+$/, "");
 
-                            return (
-                                <li key={index} >
-                                
-                                {/* gets rid of the file extension */}
-                                <div className="flex pt-5 align-bottom">
-                                <Link className="w-60" href={url} target="_blank">{fileName}</Link>                         
-                                </div>
-                            
-                                </li>
-                            );
+                                return (
+                                    <li key={index}>
+
+                                        {/* gets rid of the file extension */}
+                                        <div className="flex pt-5 align-bottom">
+                                            <Link className="w-60 hover:underline" href={url} style={{fontWeight: 'normal'}}>
+                                                <span style={{transition: 'all 0.3s ease', fontWeight: 'bold', textDecoration: 'none'}}>
+                                                    {fileName}
+                                                </span>
+                                            </Link>
+                                        </div>
+
+                                    </li>
+                                );
                             })}
                         </ul>
                     </div>

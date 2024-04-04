@@ -97,8 +97,9 @@ const EventOverlay = ({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({...formData, imageURL: "https://picsum.photos/seed/picsum/200/300"})
+        body: JSON.stringify({...formData, imageURL: "https://picsum.photos/seed/picsum/200/300", isPast: false})
       });
+
       const result = await response.json();
       console.log(result);
       onClose(); 
@@ -108,10 +109,20 @@ const EventOverlay = ({
     }
   };
 
+  const handleMovetoPastEvent = async () => {
+    try {
+      // WORK IN PROGRESS, set isPast to true
+      console.log("MOVE THIS EVENT TO PAST EVENTS");
+    } catch (error) {
+      console.error("Failed to move the event to Past Events:", error);
+    }
+  };
+
+  
   if (type == "Add Event") {
     return (
         <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
-          <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+          <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
             <button
               className="text-gray text-xl place-self-end mr-5 mt-2"
               onClick={() => onClose()}
@@ -217,8 +228,8 @@ const EventOverlay = ({
     /**************************************************************************/
   } else if (type == "Edit Event") {
     return (
-        <div className="z-50 fixed flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
-          <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+        <div className="z-50 flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
+          <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
             <button
               className="text-gray text-xl place-self-end mr-5 mt-2"
               onClick={() => onClose()}
@@ -306,12 +317,8 @@ const EventOverlay = ({
                   color="blue"
                   width="w-40"
                 />
-                <Buttonv2
-                  text="Delete"
-                  action={handleDelete}
-                  color="red"
-                  width="w-40"
-                />
+              <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleMovetoPastEvent}>Move to Past Events</a>
+              <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>
               </div>
             </div>
           </div>

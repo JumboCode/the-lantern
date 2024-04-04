@@ -64,7 +64,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                     )}
                     {showEditView && (
                         <div className="flex items-center ml-auto">
-                            <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl mr-2" /> {/* Adjust the icon size as necessary */}
+                            <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl mr-2 cursor-pointer" />
                             <span className="font-nunito text-lg">Add New</span>
         
                         </div>

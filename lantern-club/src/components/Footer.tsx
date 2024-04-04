@@ -60,14 +60,14 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
           <div className="font-nunitosans flex flex-col pb-5 md:pb-0 pr-0 md:pr-10 space-y-4 items-start justify-start">
             {!session ? (
               showAdminLogin && (
-              <Buttonv2 text="Admin Login" action={() => signIn("google")} color="blue" width="w-48" />
+              <Buttonv2 text="Admin Login" action={() => signIn("google")} color="blue" width="w-48"/>
               )
             ) : (
               <Buttonv2 text="Sign Out" action={() => signOut()} color="blue" width="w-48" />
             )
             
             }
-            <Buttonv2 text="Submit Work" action={handleButtonClick} color="orange" width="w-48" />
+            <Buttonv2 text="Submit Work" action={handleButtonClick} color="orange" width="w-48"/>
 
           </div>
 
