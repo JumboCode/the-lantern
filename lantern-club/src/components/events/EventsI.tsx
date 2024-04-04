@@ -156,7 +156,12 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
               })}
           </div>
         </div>
-        <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
+        <div>
+        <div className="z-4 relative"><div className="h-20 w-full flex mellow-yellow -z-50" id="triangle"></div></div>
+        </div>
+        
+        
+        {/* <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div> */}
     </>
 );
 
