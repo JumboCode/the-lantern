@@ -223,113 +223,108 @@ const EventOverlay = ({ isVisible, onClose, type, event }: OverlayProps) => {
     /**************************************************************************/
   } else if (type == "Edit Event") {
     return (
-      <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
-        <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
-          <button
-            className="text-gray text-xl place-self-end mr-5 mt-2"
-            onClick={() => onClose()}
-          >
-            x
-          </button>
-          <div className="px-5 flex-col overflow-y-scroll">
-            <h2 className="text-4xl font-coolvetica underline decoration-sky-500">
-              {type}
-            </h2>
-            <div>
-              <h2 className="mt-5 font-nunito text-md">Event Name</h2>
-              <input
-                className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              ></input>
-            </div>
-            <div>
-              <h2 className="mt-5 font-nunito text-md">Date</h2>
-              <input
-                className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
-                type="text"
-                id="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-              ></input>
-            </div>
-            <div>
-              <h2 className="mt-5 font-nunito text-md">Time</h2>
-              <input
-                className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
-                type="text"
-                id="time"
-                name="time"
-                value={formData.time}
-                onChange={handleChange}
-              ></input>
-            </div>
-            <div>
-              <h2 className="mt-5 font-nunito text-md">Location</h2>
-              <input
-                className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
-                type="text"
-                id="location"
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
-              ></input>
-            </div>
-            <div>
-              <h2 className="mt-5 font-nunito text-md">Host</h2>
-              <input
-                className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
-                type="text"
-                id="host"
-                name="host"
-                onChange={handleChange}
-              ></input>
-            </div>
-            <div>
-              <h2 className="mt-5 font-nunito text-md">Description</h2>
-              <textarea
-                className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-12 contact-input-height"
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-              ></textarea>
-            </div>
-            <div>
-              <h2 className="mt-5 font-nunito text-md">Cover Photo</h2>
-              <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">
-                +
-              </button>
-            </div>
-            <div className="flex justify-center text-md space-x-7 py-5">
-              <Buttonv2
-                text="Save"
-                action={() => handleEdit(formData)}
-                color="blue"
-                width="w-40"
-              />
-              <a
+        <div className="z-50 flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
+          <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+            <button
+              className="text-gray text-xl place-self-end mr-5 mt-2"
+              onClick={() => onClose()}
+            >
+              x
+            </button>
+            <div className="px-5 flex-col overflow-y-scroll">
+              <h2 className="text-4xl font-coolvetica underline decoration-sky-500">
+                {type}
+              </h2>
+              <div>
+                <h2 className="mt-5 font-nunito text-md">Event Name</h2>
+                <input
+                  className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                ></input>
+              </div>
+              <div>
+                <h2 className="mt-5 font-nunito text-md">Date</h2>
+                <input
+                  className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
+                  type="text"
+                  id="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                ></input>
+              </div>
+              <div>
+                <h2 className="mt-5 font-nunito text-md">Time</h2>
+                <input
+                  className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
+                  type="text"
+                  id="time"
+                  name="time"
+                  value={formData.time}
+                  onChange={handleChange}
+                ></input>
+              </div>
+              <div>
+                <h2 className="mt-5 font-nunito text-md">Location</h2>
+                <input
+                  className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
+                  type="text"
+                  id="location"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleChange}
+                ></input>
+              </div>
+              <div>
+                <h2 className="mt-5 font-nunito text-md">Host</h2>
+                <input
+                  className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
+                  type="text"
+                  id="host"
+                  name="host"
+                  value={formData.host}
+                  onChange={handleChange}
+                ></input>
+              </div>
+              <div>
+                <h2 className="mt-5 font-nunito text-md">Description</h2>
+                <textarea
+                  className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-12 contact-input-height"
+                  id="description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+              <div>
+                <h2 className="mt-5 font-nunito text-md">Cover Photo</h2>
+                <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">
+                  +
+                </button>
+              </div>
+              <div className="flex justify-center text-md space-x-7 py-5">
+                <Buttonv2
+                  text="Save"
+                  action={() => handleEdit(formData)}
+                  color="blue"
+                  width="w-40"
+                />
+                <a
                 href="#"
                 className="font-nunito underline text-l mt-3 ml-3"
                 onClick={() => handleEdit({ ...formData, isPast: true })}
-              >
-                Move to Past Events
-              </a>
-              <a
-                href="#"
-                className="font-nunito underline text-l mt-3 ml-3"
-                onClick={handleDelete}
-              >
-                Delete
-              </a>
+                >
+                  Move to Past Events
+                </a>
+                <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
     );
   } else {
     return null;

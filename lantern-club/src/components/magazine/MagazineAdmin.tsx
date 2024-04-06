@@ -16,6 +16,8 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
         fontFamily: 'nunito',
         fontSize: '30px',
         lineHeight: '1',
+        fontWeight: 'bold',
+
       };
       
       const FileDelete = async (keyName: string) => {
@@ -43,12 +45,17 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
 
         return (
             <div className="-mt-20 p-20 pt-40 w-full yellow-gradient flex gap-5 flex-col">
-              
-                  <p style={headerFont}>Edit magazine issues</p>
-                  <p style={subheaderFont}>Featured Issue</p>
-                  <FileDrop />
-                  <p style={subheaderFont}>Past Issues</p>
+                    <p style={headerFont}>Edit magazine issues</p>
                   
+                  <div className =" my-7">
+
+                    <p style={subheaderFont}>Featured Issue</p>
+                    <FileDrop />
+                  </div>
+                  
+                  <div className = "mt-7"> 
+                    <p style={subheaderFont}>Past Issues</p>
+                  </div>
 
                   <ul>
                       {magazines.map((url: string, index: Key) => {
@@ -89,6 +96,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                   <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" />
               
            </div>   
+            
         );
 }
 

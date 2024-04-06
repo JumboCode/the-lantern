@@ -56,8 +56,8 @@ export default function EventsII({
   return (
     <div>
       <div className="-mt-20 py-20 px-20 blue2-gradient" style={background}>
-        <h1 className={"mb-20 font-coolvetica md:text-8xl text-7xl"}>
-          {isAdminEdit ? "Delete Past Events" : "Past Events"}
+        <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl"}>
+        {isAdminEdit ? "Delete Past Events" : "Past Events"}
         </h1>
 
         <div className="flex flex-col gap-10 md:flex-row">
@@ -76,13 +76,15 @@ export default function EventsII({
                       alignItems: "center",
                     }}
                   >
-                    <Image
-                      src={oneEvent.imageURL}
-                      width={100}
-                      height={100}
-                      style={imageStyle}
-                      alt="Orange Poster picture"
-                    />
+                    <div className="relative flex-shrink w-full" style={{ minHeight: '500px'}}>
+                              <Image
+                                  src={oneEvent.imageURL}
+                                  style={imageStyle}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  alt="Event image"
+                              />
+                    </div>       
                     {isAdminEdit && (
                       <div style={{ paddingTop: "20px" }}>
                         <FontAwesomeIcon
