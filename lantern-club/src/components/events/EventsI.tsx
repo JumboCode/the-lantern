@@ -78,8 +78,8 @@ export default function EventsI({ events, isAdminEdit, handleEditButtonClick }: 
 // Component for no events scenario
 const NoEventsComponent = () => (
   <>
-    <div className="-mt-20 flex flex-col h-contact bg-gradient-to-t from-contact-g2 to-g-yellow1" style={{ minHeight: "700px" }}>
-      <h1 className="py-10 px-2 mt-20 font-coolvetica md:text-8xl text-7xl ml-12">
+    <div className="-mt-20 py-40 px-20 flex flex-col h-contact bg-gradient-to-t from-contact-g2 to-g-yellow1" style={{ minHeight: "700px" }}>
+      <h1 className="mb-20 font-coolvetica md:text-8xl text-6xl">
         Upcoming Events
       </h1>
       <div className="flex justify-between items-center px-10 py-10">
@@ -128,9 +128,9 @@ const NoEventsComponent = () => (
 // Component for events list
 const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonClick, setShowAddModal }: EventsIProps) => (
     <>
-        <div className="-mt-20 py-20 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
+        <div className="-mt-20 py-40 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
 
-          <h1 className={"mb-20 mt-20 font-coolvetica md:text-8xl text-7xl"} style={{ display: 'flex', alignItems: 'center' }}>
+          <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl"} style={{ display: 'flex', alignItems: 'center' }}>
             {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
             {session?.user.isAdmin && !isAdminEdit && (
               <a href="#" className="font-nunito underline text-2xl ml-7" onClick={handleEditButtonClick}>edit</a>
@@ -156,7 +156,12 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
               })}
           </div>
         </div>
-        <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div>
+        <div>
+        <div className="z-4 relative"><div className="h-20 w-full flex mellow-yellow -z-50" id="triangle"></div></div>
+        </div>
+        
+        
+        {/* <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div> */}
     </>
 );
 

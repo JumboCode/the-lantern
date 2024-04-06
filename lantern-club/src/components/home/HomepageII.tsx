@@ -18,13 +18,23 @@ export default function ResourcesI() {
     backgroundColor: '#FECB66',
   };
 
+  const triangleStyle2 = {
+        backgroundColor: '#FFFFFF',
+        clipPath: 'polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%)',
+      };
+
   const handleButtonClick = () => {
         console.log('Button clicked!');
   };
 
+
   return (
     <div>
+        <div className="-mt-20 yellow-gradient opacity-0 h-20 w-full" style={triangleStyle2} id="triangle"></div>
+
+      <div className="-mt-20 h-20 w-full bg-bottom bg-cover bg-no-repeat bg-[url('/images/background.png')]" id="triangle"></div>
       <div className="-mt-20 pt-triangle-top w-full yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2">
+        
         {/* Image column */}
         <div className="flex justify-center items-center px-5 my-12">
           <Image
@@ -35,6 +45,7 @@ export default function ResourcesI() {
             alt="Define picture"
           />
         </div>
+        
 
         {/* Text column */}
         <div className="px-4 flex flex-col justify-center items-start md:text-left">

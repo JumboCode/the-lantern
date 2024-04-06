@@ -18,7 +18,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
       };
     const headerFont = {
         fontFamily: 'coolvetica',
-        fontSize: '90px',
+        marginBottom: "3.5rem",
         lineHeight: '1',
       };
       const subheaderFont = {
@@ -26,7 +26,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
         fontSize: '30px',
         lineHeight: '1',
       };
-
+    
       const { data: session } = useSession();
       
       const [fileList, setFileList] = useState([]);
@@ -35,7 +35,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
       useEffect(() => {
         const fetchFileList = async () => {
           try {
-            const response = await axios.get('/api/content/magazine/listFiles');
+            const response = await axios.get('/api/content/magazine/');
             setFileList(response.data.urls);
             if (response.data.urls.length > 0) {
                     // Automatically set the first image as the current image
@@ -52,8 +52,8 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
       
       return (
         <div>
-            <div className="yellow-gradient -mt-20 pt-20 w-full p-20">
-                <div className="flex gap-10 my-12 ">
+            <div className="yellow-gradient -mt-20 py-40 px-20 w-full p-20">
+                <div className="flex gap-10 md:text-8xl text-6xl">
                     <p style={headerFont}>Magazine Issues</p>
                     {session?.user.isAdmin && (
                     <button className="font-nunito underline text-2xl ml-7" onClick={handleToggleAdminView}>
@@ -67,8 +67,10 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                     {currentImage && (
                         <div className="flex justify-center items-center w-full h-full">
                             <Link href={currentImage}>
-                                <iframe src={currentImage} className="w-full min-h-[575px]" title="Selected" style={{ width: '80vw'}} />
+                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ width: '80vw'}} />
                             </Link>
+
+
                         </div>
                     )}
                 </div>
@@ -84,25 +86,29 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 <div className="grid grid-flow-col">
                     {/* left container  */}
                     <div>
-                        <p style={headerFont}>Read Past Issues</p>
+                        <p className="md:text-8xl text-6xl" style={headerFont}>Read Past Issues</p>
                         <ul>
                             {magazines.map((url: string, index) => {
-                            // Extract file name from the URL
-                            const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
-                            //const key = url.substring(url.lastIndexOf('/') + 1);
-                            let fileName = keyName.substring(keyName.indexOf('_') + 1);
-                            fileName = fileName.replace(/\.[^/.]+$/, "");
+                                // Extract file name from the URL
+                                const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
+                                //const key = url.substring(url.lastIndexOf('/') + 1);
+                                let fileName = keyName.substring(keyName.indexOf('_') + 1);
+                                fileName = fileName.replace(/\.[^/.]+$/, "");
 
-                            return (
-                                <li key={index} >
-                                
-                                {/* gets rid of the file extension */}
-                                <div className="flex pt-5 align-bottom">
-                                <Link className="w-60" href={url} target="_blank">{fileName}</Link>                         
-                                </div>
-                            
-                                </li>
-                            );
+                                return (
+                                    <li key={index}>
+
+                                        {/* gets rid of the file extension */}
+                                        <div className="flex pt-5 align-bottom">
+                                            <Link className="w-60 hover:underline" href={url} style={{fontWeight: 'normal'}}>
+                                                <span style={{transition: 'all 0.3s ease', fontWeight: 'bold', textDecoration: 'none'}}>
+                                                    {fileName}
+                                                </span>
+                                            </Link>
+                                        </div>
+
+                                    </li>
+                                );
                             })}
                         </ul>
                     </div>
