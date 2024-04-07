@@ -6,11 +6,11 @@ export type EventType = {
   time: string;
   location: string;
   host: string;
-  imageURL?: string;
+  imageURL: string;
   isPast: boolean;
 };
 
 export type EventBoxProps = {
   event: EventType;
   isAdminEdit: boolean;
-}
+};

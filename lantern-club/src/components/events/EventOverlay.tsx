@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import React from "react";
 import Buttonv2 from "../Buttonv2";
 
-import { EventType } from "@/types/event" 
+import { EventType } from "@/types/event";
 
 interface OverlayProps {
   isVisible: boolean;
@@ -70,17 +70,17 @@ const EventOverlay = ({
       console.error("Event ID is required to delete.");
       return;
     }
-    const url = `/api/content/events/${event.id}`;    
-  
+    const url = `/api/content/events/${event.id}`;
+
     try {
       const response = await fetch(url, {
-        method: 'DELETE',
+        method: "DELETE",
       });
-  
+
       const result = await response.json();
       console.log(result);
-      onClose(); 
-      window.location.reload()
+      onClose();
+      window.location.reload();
     } catch (error) {
       console.error("Failed to delete the event:", error);
     }
@@ -123,7 +123,7 @@ const EventOverlay = ({
   };
 
   const handleAdd = async () => {
-    const url = `/api/content/events/`;    
+    const url = `/api/content/events/`;
 
     try {
 
@@ -139,32 +139,27 @@ const EventOverlay = ({
       }
 
       const response = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data)
       });
 
       const result = await response.json();
       console.log(result);
-      onClose(); 
-      window.location.reload()
+      onClose();
+      window.location.reload();
     } catch (error) {
       console.error("Failed to add the event:", error);
     }
   };
 
-  const handleMovetoPastEvent = async () => {
-    try {
-      // WORK IN PROGRESS, set isPast to true
-      console.log("MOVE THIS EVENT TO PAST EVENTS");
-    } catch (error) {
-      console.error("Failed to move the event to Past Events:", error);
-    }
-  };
+  // Sets isPast to true for the current event
+  // const handleIsPast = async () => {
+  //   setFormData(isPast);
+  // };
 
-  
   if (type == "Add Event") {
     return (
         <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
@@ -353,12 +348,18 @@ const EventOverlay = ({
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
                   text="Save"
-                  action={handleEdit}
+                  action={() => handleEdit(formData)}
                   color="blue"
                   width="w-40"
                 />
-              <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleMovetoPastEvent}>Move to Past Events</a>
-              <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>
+                <a
+                href="#"
+                className="font-nunito underline text-l mt-3 ml-3"
+                onClick={() => handleEdit({ ...formData, isPast: true })}
+                >
+                  Move to Past Events
+                </a>
+                <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>
               </div>
             </div>
           </div>
