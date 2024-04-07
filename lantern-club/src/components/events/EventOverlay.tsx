@@ -11,6 +11,16 @@ interface OverlayProps {
   event?: EventType;
 }
 
+interface FormData {
+  name: string;
+  date: string;
+  time: string;
+  host: string;
+  location: string;
+  description: string;
+  coverPhoto: File | null; 
+}
+
 const EventOverlay = ({
   isVisible,
   onClose,
@@ -19,20 +29,36 @@ const EventOverlay = ({
 }: OverlayProps) => {
   if (!isVisible) return null;
 
-
-  const [formData, setFormData] = useState({
-    name: event?.name,
-    date: event?.date,
-    time: event?.time,
-    location: event?.location,
-    description: event?.description,
-    host: event?.host,
+  const [formData, setFormData] = useState<FormData>({
+    name: event?.name || '', 
+    date: event?.date || '', 
+    time: event?.time || '',
+    host: event?.host || '', 
+    location: event?.location || '', 
+    description: event?.description || '',
+    coverPhoto: null,
   });
 
+  const [filePreview, setFilePreview] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const handleFileClick = () => {
-    fileInputRef.current?.click();
-  };
+    setFilePreview(''); // Reset the file preview when the button is clicked
+    fileInputRef.current?.click(); // Trigger the file input click event to open the file dialog if fileInputRef.current is not null
+};
+
+  const handleCoverPhotoChange = (event: any) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        const result = reader.result as string; // Explicitly cast the result to string
+        setFilePreview(result); // Set the file preview with the data URI
+    };
+    reader.readAsDataURL(file); // Read the file as a data URL
+    setFormData((prevFormData) => ({
+        ...prevFormData,
+        coverPhoto: file, // Update coverPhoto with the selected file
+    }));
+};
 
   const handleChange = (event: any) => {
     const { name, value } = event.target;
@@ -57,31 +83,39 @@ const EventOverlay = ({
       window.location.reload()
     } catch (error) {
       console.error("Failed to delete the event:", error);
-
-      // Handle error (show error message, etc.)
     }
   };
 
   const handleEdit = async () => {
     
-    if (!event?.id) {
-      console.error("Event ID is required to edit.");
-      return;
-    }
 
-    const url = `/api/content/events/${event.id}`;    
+    const url = `/api/content/events/${event?.id}`;    
 
     try {
+      const formDataWithPhoto = new FormData();
+      formDataWithPhoto.append('name', formData.name);
+      formDataWithPhoto.append('time', formData.time );
+      formDataWithPhoto.append('date', formData.date);
+      formDataWithPhoto.append('location', formData.location);
+      formDataWithPhoto.append('description', formData.description);
+      formDataWithPhoto.append('host', formData.host);
+      formDataWithPhoto.append('isPast', event?.isPast.toString() || 'false');
+
+      if (formData.coverPhoto) {
+          formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+      }            
+
       const response = await fetch(url, {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formDataWithPhoto,
       });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      
       const result = await response.json();
       console.log(result);
-      onClose(); 
       window.location.reload()
     } catch (error) {
       console.error("Failed to edit the event:", error);
@@ -92,12 +126,24 @@ const EventOverlay = ({
     const url = `/api/content/events/`;    
 
     try {
+
+      const data = {
+        name: formData.name, 
+        time: formData.time, 
+        date: formData.date, 
+        location: formData.location, 
+        description: formData.description,
+        host: formData.host,
+        imageURL: `https://placehold.co/400.png`,
+        isPast: false
+      }
+
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({...formData, imageURL: "https://picsum.photos/seed/picsum/200/300", isPast: false})
+        body: JSON.stringify(data)
       });
 
       const result = await response.json();
@@ -192,20 +238,6 @@ const EventOverlay = ({
                   onChange={handleChange}
                 ></textarea>
               </div>
-              <div>
-                <h2 className="mt-5 font-nunito text-md">Cover Photo</h2>
-                <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">
-                  +
-                </button>
-                <input
-                  type="file"
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  ref={fileInputRef}
-                  onChange={handleChange}
-                  // id="imageURL"
-                />
-              </div>
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
                   text="Save"
@@ -291,6 +323,7 @@ const EventOverlay = ({
                   type="text"
                   id="host"
                   name="host"
+                  value={formData.host}
                   onChange={handleChange}
                 ></input>
               </div>
@@ -305,10 +338,17 @@ const EventOverlay = ({
                 ></textarea>
               </div>
               <div>
-                <h2 className="mt-5 font-nunito text-md">Cover Photo</h2>
-                <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">
-                  +
-                </button>
+                <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
+                <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
+                {filePreview && <img src={filePreview} alt="Cover Photo Preview" className="mt-2 mb-2" style={{ maxWidth: '100%', height: 'auto' }} />}
+
+                <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                ref={fileInputRef}
+                onChange={handleCoverPhotoChange} 
+                />
               </div>
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
@@ -330,3 +370,7 @@ const EventOverlay = ({
 };
 
 export default EventOverlay;
+function setFilePreview(result: string) {
+  throw new Error("Function not implemented.");
+}
+
