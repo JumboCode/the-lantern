@@ -40,6 +40,8 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
         } catch (error) {
           console.error('Error deleting the file:', error);
           alert('Error deleting the file');
+          alert(keyName)
+
         }
       };
 

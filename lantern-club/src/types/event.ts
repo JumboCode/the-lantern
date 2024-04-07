@@ -1,11 +1,9 @@
 export type EventType = {
-  image: string;
-  type: "Add Event" | "Edit Event";
-  id: string;
+  id?: string;
   name: string;
   description: string;
-  date: Date;
-  time: Date;
+  date: string;
+  time: string;
   location: string;
   host: string;
   imageURL: string;

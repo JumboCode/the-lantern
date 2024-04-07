@@ -22,7 +22,7 @@ const EventBox = ({ event, isAdminEdit }: EventBoxProps) => {
     <>
       <div className="relative flex-shrink w-full" style={{ minHeight: '500px'}}>
         <Image
-            src={event.imageURL}
+            src={event.imageURL ? event.imageURL : "https://placehold.co/400.png"}
             style={imageStyle}
             layout="fill"
             objectFit="cover"
