@@ -86,20 +86,23 @@ const EventOverlay = ({
     }
   };
 
-  const handleEdit = async () => {
-    
+  const handleEdit = async (updatedEvent: EventType) => {
+    if (!event?.id) {
+      console.error("Event ID is required to edit.");
+      return;
+    }
 
-    const url = `/api/content/events/${event?.id}`;    
+    const url = `/api/content/events/${event.id}`;
 
     try {
       const formDataWithPhoto = new FormData();
-      formDataWithPhoto.append('name', formData.name);
-      formDataWithPhoto.append('time', formData.time );
-      formDataWithPhoto.append('date', formData.date);
-      formDataWithPhoto.append('location', formData.location);
-      formDataWithPhoto.append('description', formData.description);
-      formDataWithPhoto.append('host', formData.host);
-      formDataWithPhoto.append('isPast', event?.isPast.toString() || 'false');
+      formDataWithPhoto.append('name', updatedEvent.name);
+      formDataWithPhoto.append('time', updatedEvent.time );
+      formDataWithPhoto.append('date', updatedEvent.date);
+      formDataWithPhoto.append('location', updatedEvent.location);
+      formDataWithPhoto.append('description', updatedEvent.description);
+      formDataWithPhoto.append('host', updatedEvent.host);
+      formDataWithPhoto.append('isPast', updatedEvent.isPast.toString() || 'false');
 
       if (formData.coverPhoto) {
           formDataWithPhoto.append('coverPhoto', formData.coverPhoto);

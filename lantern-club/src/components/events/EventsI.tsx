@@ -158,12 +158,14 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
           {/* Two boxes */}
           <div className="flex flex-col gap-10 md:flex-row">
             {events &&
-              events.slice(0,3).map((oneEvent: EventType) => {
-                return (
-                  <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <EventBox event={oneEvent} isAdminEdit={isAdminEdit} />
-                  </div>
-                );
+              events
+                .filter((oneEvent) => oneEvent.isPast === false)
+                .slice(0,3).map((oneEvent: EventType) => {
+                  return (
+                    <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <EventBox event={oneEvent} isAdminEdit={isAdminEdit} />
+                    </div>
+                  );
               })}
           </div>
         </div>
