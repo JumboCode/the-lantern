@@ -43,6 +43,7 @@ export default async function handler(
             time: Array.isArray(fields.time) ? fields.time[0] : fields.time ?? "",
             host: Array.isArray(fields.host) ? fields.host[0] : fields.host ?? "",
             isPast: Array.isArray(fields.isPast) ? fields.isPast[0] === 'true' : !!fields.isPast,
+            imageURL: `https://thelantern.s3.amazonaws.com/images/events/${id}`
           };
     
           // Uploading the cover photo if present
@@ -53,7 +54,7 @@ export default async function handler(
             const id = Array.isArray(req.query.id) ? req.query.id[0] : req.query.id;
             await uploadFileToS3(formidableFile, "images/events", id);
 
-            const updatedEvent = await handleUpdateEvent(id, {...updateData, imageURL: `https://thelantern.s3.amazonaws.com/images/events/${id}`});
+            const updatedEvent = await handleUpdateEvent(id, updateData);
             res.status(200).json(updatedEvent);
             return
           }

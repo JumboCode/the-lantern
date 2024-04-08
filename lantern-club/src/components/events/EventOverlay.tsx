@@ -18,6 +18,7 @@ interface FormData {
   host: string;
   location: string;
   description: string;
+  imageUrl: string;
   coverPhoto: File | null; 
 }
 
@@ -36,6 +37,7 @@ const EventOverlay = ({
     host: event?.host || '', 
     location: event?.location || '', 
     description: event?.description || '',
+    imageURL: event?.imageURL || '',
     coverPhoto: null,
   });
 

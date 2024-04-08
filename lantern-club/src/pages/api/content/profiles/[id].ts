@@ -35,7 +35,7 @@ export default async function handler(
           title: Array.isArray(fields.title) ? fields.title[0] : fields.title ?? "",
           email: Array.isArray(fields.email) ? fields.email[0] : fields.email ?? "",
           major: Array.isArray(fields.major) ? fields.major[0] : fields.major ?? "",
-
+          pictureURL: `https://thelantern.s3.amazonaws.com/images/profiles/${id}`
         };
 
         // Uploading the cover photo if present
@@ -46,7 +46,7 @@ export default async function handler(
           const id = Array.isArray(req.query.id) ? req.query.id[0] : req.query.id;
           await uploadFileToS3(formidableFile, "images/profiles", id);
 
-          const updatedProfile = await handleUpdateProfile(id, {...updateData, pictureURL: `https://thelantern.s3.amazonaws.com/images/profiles/${id}`});
+          const updatedProfile = await handleUpdateProfile(id, updateData);
           res.status(200).json(updatedProfile);
           return
         }
