@@ -4,6 +4,6 @@ export type ProfileType = {
     title: string,
     email: string
     major: string,
-    id?: string,
-    pictureURL?: string
+    id: string,
+    pictureURL: string
 }
