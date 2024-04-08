@@ -1,5 +1,6 @@
 import React, { useState, useRef, FormEvent, useEffect } from "react";
 import Buttonv2 from "../Buttonv2";
+import ThankYou from "./ThankYou";
 
 export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
@@ -9,11 +10,11 @@ export default function Contact() {
   const [formData, setFormData] = useState<{ [key: string]: string } | null>(
     null
   );
+  const [showThankYou, setShowThankYou] = useState(false);
   const imageRef = useRef(null);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsLoading(true);
 
     const tempFormData: { [key: string]: string } = {};
     new FormData(event.currentTarget).forEach((value, key) => {
@@ -22,10 +23,10 @@ export default function Contact() {
 
     setFormData(tempFormData); // Store form data for later submission
     setShowConfirmation(true); // Show the confirmation popup
-    setIsLoading(false); // Reset loading state
   };
 
   const onConfirmSubmit = async () => {
+    setIsLoading(true);
     if (!formData) return; // Check if formData is null
 
     try {
@@ -52,9 +53,8 @@ export default function Contact() {
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (imageRef.current && !imageRef.current.contains(event.target)) {
-        setFormSubmitted(false);
-      }
+      setFormSubmitted(false);
+      console.log(formSubmitted);
     };
 
     document.addEventListener("click", handleClickOutside);
@@ -63,6 +63,8 @@ export default function Contact() {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  const buttonText = isLoading ? "Sending..." : "Yes";
 
   return (
     <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2 -mt-20">
@@ -73,19 +75,7 @@ export default function Contact() {
       {/* Shows popup when the form is submitted */}
       {formSubmitted && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div
-            className="bg-[#FFA500] p-10 text-center rounded-lg shadow-xl"
-            ref={imageRef}
-          >
-            <img
-              src="images/lantern.png"
-              alt="Thank you message"
-              className="w-full"
-            />
-            <p className="text-white mt-4">
-              Please wait 2-3 business days for a reply
-            </p>
-          </div>
+          {formSubmitted && <ThankYou></ThankYou>}
         </div>
       )}
       <form onSubmit={onSubmit} ref={formRef}>
@@ -141,10 +131,32 @@ export default function Contact() {
               <button
                 onClick={onConfirmSubmit}
                 className={
-                  "bg-[#4279bc] text-white border-[#94bbe3] border-2 shadow-2xl drop-shadow-2xl font-bold py-2 px-10 rounded-3xl hover:bg-white hover:text-[#4279bc] ${formSubmitted ? 'bg-[#94bbe3]' : ''}"
+                  isLoading
+                    ? "flex bg-[#4279bc] text-white border-[#94bbe3] border-2 shadow-2xl drop-shadow-2xl font-bold py-2 pl-4 rounded-3xl"
+                    : "flex bg-[#4279bc] text-white border-[#94bbe3] border-2 shadow-2xl drop-shadow-2xl font-bold py-2 px-8 rounded-3xl hover:bg-white hover:text-[#4279bc] "
                 }
               >
-                Yes
+                <div className={isLoading ? "pr-2" : ""}>{buttonText}</div>
+                {isLoading && (
+                  <svg
+                    className="animate-spin h-5 w-5 mr-3 "
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                )}
               </button>
               <button
                 onClick={() => setShowConfirmation(false)}
