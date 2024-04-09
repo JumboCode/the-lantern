@@ -1,6 +1,14 @@
 import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
+import Hamburger from './Hamburger.tsx';
+
+const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
 export default function NavBar() {
   return (
@@ -14,35 +22,38 @@ export default function NavBar() {
             </Link>
           </div>
 
-          <ul className="flex flex-row justify-center space-x-8 md:space-x-16 md:pr-20 pt-10 overflow-x-auto pb-10">
-          <li>
-            <Link href="/Magazine" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
-              Magazine
-            </Link>
-          </li>
-          <li>
-            <Link href="/Events" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
-              Events
-            </Link>
-          </li>
-          <li>
-            <Link href="/AboutUs" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link href="/ContactUs" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
-              Contact Us
-            </Link>
-          </li>
-          <li>
-            <Link href="/Resources" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
-              Resources
-            </Link>
-          </li>
-          </ul>
+          <Hamburger onToggle={toggleMenu} />
 
+          <div className={`nav-links ${isMenuOpen ? 'active' : ''} hidden md:flex flex-row justify-center space-x-8 md:space-x-16 overflow-x-auto`}>
+            <li className="list-none">
+              <Link href="/Magazine">
+                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Magazine</a>
+              </Link>
+            </li>
+            <li className="list-none">
+              <Link href="/Events">
+                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Events</a>
+              </Link>
+            </li>
+            <li className="list-none">
+              <Link href="/AboutUs">
+                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">About Us</a>
+              </Link>
+            </li>
+            <li className="list-none">
+              <Link href="/ContactUs">
+                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Contact Us</a>
+              </Link>
+            </li>
+            <li className="list-none">
+              <Link href="/Resources">
+                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Resources</a>
+              </Link>
+            </li>
+          </div>
         </nav>
     </div>
   );
 }
+
+export default NavBar;
