@@ -106,6 +106,7 @@ const EventOverlay = ({
       formDataWithPhoto.append('location', updatedEvent.location);
       formDataWithPhoto.append('description', updatedEvent.description);
       formDataWithPhoto.append('host', updatedEvent.host);
+      formDataWithPhoto.append('imageURL', updatedEvent.imageURL);
       formDataWithPhoto.append('isPast', updatedEvent.isPast.toString() || 'false');
 
       if (formData.coverPhoto) {

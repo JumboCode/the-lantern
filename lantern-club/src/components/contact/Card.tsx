@@ -48,7 +48,7 @@ const Card = ({ profile, color, action, isEditingView }: CardProps) => {
             </div>
             <div className="relative flex-grow w-full" style={{ minHeight: '200px' }}>
                 <Image
-                    src={profile.pictureURL ? profile.pictureURL : "https://placehold.co/400.png"}
+                    src={profile.pictureURL}
                     alt="Profile image"
                     layout="fill"
                     objectFit="cover"

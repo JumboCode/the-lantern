@@ -16,6 +16,7 @@ interface FormData {
     title: string;
     email: string;
     major: string;
+    pictureURL: string;
     coverPhoto: File | null; 
 }
 
@@ -29,6 +30,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
         title: profile?.title || '', 
         email: profile?.email || '', 
         major: profile?.major || '',
+        pictureURL: profile?.pictureURL || '',
         coverPhoto: null
     });
 
@@ -48,10 +50,13 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
             formDataWithPhoto.append('title', formData.title);
             formDataWithPhoto.append('email', formData.email);
             formDataWithPhoto.append('major', formData.major);
+            formDataWithPhoto.append('pictureURL', formData.pictureURL);
 
             if (formData.coverPhoto) {
                 formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
             }            
+
+            alert(formData.coverPhoto)
 
             const response = await fetch(url, {
                 method: 'PATCH',

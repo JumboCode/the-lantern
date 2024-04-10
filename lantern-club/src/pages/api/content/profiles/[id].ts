@@ -28,15 +28,7 @@ export default async function handler(
       const { id } = req.query;
 
       try {
-        // `fields` comes from parsing the form data and could be string, string[], or undefined
-        const updateData: ProfileType = {
-          name: Array.isArray(fields.name) ? fields.name[0] : fields.name ?? "",
-          pronouns: Array.isArray(fields.pronouns) ? fields.pronouns[0] : fields.pronouns ?? "",
-          title: Array.isArray(fields.title) ? fields.title[0] : fields.title ?? "",
-          email: Array.isArray(fields.email) ? fields.email[0] : fields.email ?? "",
-          major: Array.isArray(fields.major) ? fields.major[0] : fields.major ?? "",
-          pictureURL: `https://thelantern.s3.amazonaws.com/images/profiles/${id}`,
-        };
+        let url = Array.isArray(fields.pictureURL) ? fields.pictureURL[0] : fields.pictureURL ?? "" // Change the type to string instead of string[]
 
         // Uploading the cover photo if present
         if (files.coverPhoto && Array.isArray(files.coverPhoto)) {
@@ -44,12 +36,18 @@ export default async function handler(
       
           // Convert the formidable file object to match the UploadFile structure
           const id = Array.isArray(req.query.id) ? req.query.id[0] : req.query.id;
-          await uploadFileToS3(formidableFile, "images/profiles", id);
+          url = await uploadFileToS3(formidableFile, "images/profiles", id);
 
-          const updatedProfile = await handleUpdateProfile(id, updateData);
-          res.status(200).json(updatedProfile);
-          return
         }
+        // `fields` comes from parsing the form data and could be string, string[], or undefined
+        const updateData: ProfileType = {
+          name: Array.isArray(fields.name) ? fields.name[0] : fields.name ?? "",
+          pronouns: Array.isArray(fields.pronouns) ? fields.pronouns[0] : fields.pronouns ?? "",
+          title: Array.isArray(fields.title) ? fields.title[0] : fields.title ?? "",
+          email: Array.isArray(fields.email) ? fields.email[0] : fields.email ?? "",
+          major: Array.isArray(fields.major) ? fields.major[0] : fields.major ?? "",
+          pictureURL: url
+        };
     
         const updatedProfile = await handleUpdateProfile(id, updateData);
         res.status(200).json(updatedProfile);

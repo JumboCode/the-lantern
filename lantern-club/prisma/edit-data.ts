@@ -22,6 +22,7 @@ async function handleUpdateEvent(eventID: any, updateData: EventType) {
 // Function to update a profile by id
 async function handleUpdateProfile(profileID: any, updateData: ProfileType) {
   try {
+    console.error(updateData)
     const updatedProfile = await prisma.profile.update({
       where: {
         id: profileID,
