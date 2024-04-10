@@ -92,7 +92,7 @@ export default function EventsII({
                           width={100}
                           height={100}
                           size="2x"
-                          onClick={() => handleDelete(oneEvent.id)}
+                          onClick={() => oneEvent.id && handleDelete(oneEvent.id)}
                           className="cursor-pointer"
                         />
                       </div>
