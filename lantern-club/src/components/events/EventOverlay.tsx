@@ -18,6 +18,7 @@ interface FormData {
   host: string;
   location: string;
   description: string;
+  isPast: string;
   coverPhoto: File | null; 
 }
 
@@ -36,6 +37,7 @@ const EventOverlay = ({
     host: event?.host || '', 
     location: event?.location || '', 
     description: event?.description || '',
+    isPast: event?.isPast.toString() || '',
     coverPhoto: null,
   });
 
@@ -86,7 +88,7 @@ const EventOverlay = ({
     }
   };
 
-  const handleEdit = async (updatedEvent: EventType) => {
+  const handleEdit = async (updatedEvent: FormData) => {
     if (!event?.id) {
       console.error("Event ID is required to edit.");
       return;
@@ -358,7 +360,7 @@ const EventOverlay = ({
                 <a
                 href="#"
                 className="font-nunito underline text-l mt-3 ml-3"
-                onClick={() => handleEdit({ ...formData, isPast: true })}
+                onClick={() => handleEdit({ ...formData, isPast: 'true' })}
                 >
                   Move to Past Events
                 </a>

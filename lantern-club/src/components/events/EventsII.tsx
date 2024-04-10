@@ -77,13 +77,15 @@ export default function EventsII({
                     }}
                   >
                     <div className="relative flex-shrink w-full" style={{ minHeight: '500px'}}>
-                              <Image
-                                  src={oneEvent.imageURL}
-                                  style={imageStyle}
-                                  layout="fill"
-                                  objectFit="cover"
-                                  alt="Event image"
-                              />
+                    {oneEvent.imageURL && (
+                        <Image
+                        src={oneEvent.imageURL}
+                        style={imageStyle}
+                        layout="fill"
+                        objectFit="cover"
+                        alt=""
+                        />
+                        )}
                     </div>       
                     {isAdminEdit && (
                       <div style={{ paddingTop: "20px" }}>
@@ -92,7 +94,7 @@ export default function EventsII({
                           width={100}
                           height={100}
                           size="2x"
-                          onClick={() => handleDelete(oneEvent.id)}
+                          onClick={() => oneEvent.id && handleDelete(oneEvent.id)}
                           className="cursor-pointer"
                         />
                       </div>

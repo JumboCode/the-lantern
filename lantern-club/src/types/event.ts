@@ -1,12 +1,12 @@
 export type EventType = {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   date: string;
   time: string;
   location: string;
   host: string;
-  imageURL: string;
+  imageURL?: string;
   isPast: boolean;
 };
 
