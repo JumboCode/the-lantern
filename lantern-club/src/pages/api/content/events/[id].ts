@@ -24,7 +24,7 @@ export default async function handler(
       const deleteResponseData = await handleDeleteEvent(id);
       res.status(200).json(deleteResponseData);
       break;
-    case "PUT":
+    case "PATCH":
       const form = new IncomingForm();
       form.parse(req, async (err: any, fields: Fields, files: Files) => {
         if (err) {
