@@ -12,13 +12,14 @@ interface OverlayProps {
 }
 
 interface FormData {
+  isPast: boolean;
   name: string;
   date: string;
   time: string;
   host: string;
   location: string;
   description: string;
-  imageUrl: string;
+  imageURL: string;
   coverPhoto: File | null; 
 }
 
@@ -31,6 +32,7 @@ const EventOverlay = ({
   if (!isVisible) return null;
 
   const [formData, setFormData] = useState<FormData>({
+    isPast: typeof event?.isPast === 'string' ? event.isPast === 'true' : !!event?.isPast,
     name: event?.name || '', 
     date: event?.date || '', 
     time: event?.time || '',
@@ -108,7 +110,7 @@ const EventOverlay = ({
 
       if (formData.coverPhoto) {
           formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
-      }            
+      }
 
       const response = await fetch(url, {
         method: 'PATCH',
@@ -353,7 +355,7 @@ const EventOverlay = ({
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
                   text="Save"
-                  action={() => handleEdit(formData)}
+                  action={() => handleEdit({ ...formData, isPast: event?.isPast ?? false })}
                   color="blue"
                   width="w-40"
                 />
