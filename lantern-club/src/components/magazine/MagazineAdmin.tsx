@@ -22,7 +22,9 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
       
       const FileDelete = async (keyName: string) => {
         try {
-          const response = await axios.delete(`/api/content/magazine?keyName=${keyName}`);
+          const response = await axios.delete(`/api/content/magazine`, { 
+            data: { keyName } 
+          });
      
           if (response.data.success) {
 
