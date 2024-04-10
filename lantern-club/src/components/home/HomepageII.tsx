@@ -58,9 +58,11 @@ export default function ResourcesI() {
           </div>
           <div className="flex flex-row justify-between pt-8 items-center w-full mt-5">
             <p className="font-nunito text-xl">Issue No 1 Spring 2023</p>
+            <a href="/Magazine">
             <div>
                 <Buttonv2 text="Read it here!" action={handleButtonClick} color="blue" width="w-60"/>
             </div>
+            </a>
             <a href="/Magazine" className="position: relative; top: -30px;">
           </a>
           </div>
