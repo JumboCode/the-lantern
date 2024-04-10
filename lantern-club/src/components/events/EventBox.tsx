@@ -27,6 +27,7 @@ const EventBox = ({ event, isAdminEdit }: EventBoxProps) => {
             layout="fill"
             objectFit="cover"
             alt="Event image"
+            className="rounded-xl overflow-hidden"
         />
       </div>   
       <div style={{ paddingTop: '20px' }}>
