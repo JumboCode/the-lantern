@@ -54,7 +54,7 @@ export default async function handler(
             time: Array.isArray(fields.time) ? fields.time[0] : fields.time ?? "",
             host: Array.isArray(fields.host) ? fields.host[0] : fields.host ?? "",
             isPast: Array.isArray(fields.isPast) ? fields.isPast[0] === 'true' : !!fields.isPast,
-            imageURL: fields.coverPhoto ? `https://thelantern.s3.amazonaws.com/images/events/${id}` : Array.isArray(fields.imageURL) ? fields.imageURL[0] : fields.imageURL ?? "",
+            imageURL: url
           };
       
           const updatedEvent = await handleUpdateEvent(id, updateData);
