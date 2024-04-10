@@ -35,7 +35,7 @@ export default async function handler(
           title: Array.isArray(fields.title) ? fields.title[0] : fields.title ?? "",
           email: Array.isArray(fields.email) ? fields.email[0] : fields.email ?? "",
           major: Array.isArray(fields.major) ? fields.major[0] : fields.major ?? "",
-          pictureURL: `https://thelantern.s3.amazonaws.com/images/profiles/${id}`
+          pictureURL: `https://thelantern.s3.amazonaws.com/images/profiles/${id}`,
         };
 
         // Uploading the cover photo if present
