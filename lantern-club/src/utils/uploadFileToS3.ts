@@ -5,12 +5,12 @@ import fs from 'fs/promises'; // Node.js File System module with Promises API
 
 import { File as FormidableFile } from 'formidable'; // Assuming you've defined or imported a type for Formidable files
 
-export async function uploadFileToS3(file: FormidableFile, folder: string, id?: string): Promise<string> {
+export async function uploadFileToS3(file: FormidableFile, folder: string): Promise<string> {
     if (!file.filepath) {
         throw new Error("File path is undefined.");
     }
     
-    const key: string = id ? `${folder}/${id}`: `${folder}/${uuidv4()}_${file.originalFilename}`;
+    const key: string = `${folder}/${uuidv4()}_${file.originalFilename}`;
   
     // Read the file into a buffer for upload
     const fileContent = await fs.readFile(file.filepath);

@@ -38,11 +38,7 @@ export default async function handler(
 
           // Uploading the cover photo if present
           if (files.coverPhoto && Array.isArray(files.coverPhoto)) {
-            const formidableFile: File = files.coverPhoto[0];
-        
-            // Convert the formidable file object to match the UploadFile structure
-            const id = Array.isArray(req.query.id) ? req.query.id[0] : req.query.id;
-            url = await uploadFileToS3(formidableFile, "images/events", id);
+            url = await uploadFileToS3(files.coverPhoto[0], "images/events");
           } 
 
           // `fields` comes from parsing the form data and could be string, string[], or undefined

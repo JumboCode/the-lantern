@@ -163,11 +163,6 @@ const EventOverlay = ({
     }
   };
 
-  // Sets isPast to true for the current event
-  // const handleIsPast = async () => {
-  //   setFormData(isPast);
-  // };
-
   if (type == "Add Event") {
     return (
         <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
@@ -240,6 +235,19 @@ const EventOverlay = ({
                   name="description"
                   onChange={handleChange}
                 ></textarea>
+              </div>
+              <div>
+                <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
+                <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
+                {filePreview && <img src={filePreview} alt="Cover Photo Preview" className="mt-2 mb-2" style={{ maxWidth: '100%', height: 'auto' }} />}
+
+                <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                ref={fileInputRef}
+                onChange={handleCoverPhotoChange} 
+                />
               </div>
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
@@ -379,7 +387,4 @@ const EventOverlay = ({
 };
 
 export default EventOverlay;
-function setFilePreview(result: string) {
-  throw new Error("Function not implemented.");
-}
 
