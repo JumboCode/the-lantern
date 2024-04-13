@@ -148,7 +148,7 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
             )}
             {isAdminEdit && (
               <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-                <FontAwesomeIcon icon={faCirclePlus} onClick={() => setShowAddModal(true)} className="cursor-pointer relative transition-all duration-300 hover:text-orange-400" style={{ fontSize: '3.5rem', marginRight: '5px'}} />
+                <FontAwesomeIcon icon={faCirclePlus} onClick={() => setShowAddModal(true)} className="cursor-pointer relative transition-all duration-500 hover:text-orange-400" style={{ fontSize: '3.5rem', marginRight: '5px'}} />
                 <span className="font-nunito" style={{ fontSize: '1rem', marginLeft: '10px'}}>Add New</span>
               </div>
             )}
