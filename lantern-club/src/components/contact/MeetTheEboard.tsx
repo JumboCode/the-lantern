@@ -58,13 +58,13 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                     <h1 className="font-coolvetica text-6xl md:text-8xl ml-12 flex items-end w-11/12">
                     Meet the E-Board
                     {session?.user.isAdmin && (
-                        <span className="font-nunito underline text-2xl ml-7 cursor-pointer" onClick={handleToggleEditView}>
+                        <span className="font-nunito underline text-2xl ml-7 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleEditView}>
                         edit
                         </span>
                     )}
                     {showEditView && (
                         <div className="flex items-center ml-auto">
-                            <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl mr-2 cursor-pointer" />
+                            <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl mr-2 cursor-pointer relative transition-all duration-500 hover:text-orange-400" />
                             <span className="font-nunito text-lg">Add New</span>
         
                         </div>
@@ -96,7 +96,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                 {showEditModal && currentCardData && (
                     <EboardOverlay 
                         type="Edit" 
-                        isVisible={showEditModal} 
+                        isVisible={true}
                         onClose={() => {setShowEditModal(false)}} 
                         profile={currentCardData}
                         />
@@ -104,7 +104,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                 {showAddModal && (
                     <EboardOverlay 
                         type="Add" 
-                        isVisible={showAddModal} 
+                        isVisible={true} 
                         onClose={() => {setShowAddModal(false)}} 
                     />
                 )}
