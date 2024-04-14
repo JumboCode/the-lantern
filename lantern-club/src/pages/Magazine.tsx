@@ -43,7 +43,7 @@ export default function Magazine() {
         {magazineList ? (
           // Render MagazineDisplay or MagazineAdmin based on showAdminView
           showAdminView ? (
-            <MagazineAdmin magazines={magazineList}/>
+            <MagazineAdmin magazines={magazineList}  handleToggleAdminView={handleToggleAdminView}/>
           ) : (
             <MagazineDisplay magazines={magazineList} handleToggleAdminView={handleToggleAdminView} />
           )

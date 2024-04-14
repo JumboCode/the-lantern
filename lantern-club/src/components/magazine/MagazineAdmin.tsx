@@ -4,9 +4,15 @@ import axios from 'axios';
 import FileUpload from ".//FileUpload";
 import FileDrop from ".//FileDrop";
 import Buttonv2 from "../Buttonv2";
-// import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
+import { useSession } from 'next-auth/react';
 
-export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
+// import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
+interface MagazineDisplayProps {
+  handleToggleAdminView: () => void
+  magazines: any[]
+
+}
+export default function MagazineAdmin({handleToggleAdminView, magazines }: MagazineDisplayProps) {
     const headerFont = {
         fontFamily: 'coolvetica',
         fontSize: '90px',
@@ -19,6 +25,16 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
         fontWeight: 'bold',
 
       };
+      const { data: session } = useSession();
+      const [fileList, setFileList] = useState([]);
+      // const [currentImage, setCurrentImage] = useState('');
+
+      const saveFeatures = async (keyName: string) => {
+
+        handleToggleAdminView();
+        console.log(keyName);
+        
+      }
       
       const FileDelete = async (keyName: string) => {
         try {
@@ -97,7 +113,9 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                   </ul>
 
                   <FileUpload />
-                  <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" />
+                  <Buttonv2 text="Save" action={() => saveFeatures('please!')} color="blue" width="w-48" />
+              
+                  {/* <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" /> */}
               
            </div>   
             
