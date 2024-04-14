@@ -60,6 +60,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                         edit
                     </button>
                     )}
+                    
                 </div>
                 
                 
