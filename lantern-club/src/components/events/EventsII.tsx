@@ -83,6 +83,7 @@ export default function EventsII({
                                   layout="fill"
                                   objectFit="cover"
                                   alt="Event image"
+                                  className="rounded-xl overflow-hidden"
                               />
                     </div>       
                     {isAdminEdit && (
