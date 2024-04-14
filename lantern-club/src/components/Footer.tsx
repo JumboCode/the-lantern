@@ -20,12 +20,12 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
     <div className="bg-[#d5e1f3] p-10 w-full text-[#4279bc] flex items-center justify-center">
       <div className="grid w-full max-w-screen-xl grid-cols-1 md:grid-cols-3">
         {/* Image column */}
-        <div className="flex flex-col md:flex-row items-center md:items-start">
+        <div className="static flex flex-col md:flex-row items-center md:items-start">
           <div className="w-24 h-24 md:w-48 md:h-48 relative">
-            <Link className="transition-all opacity-100 duration-500 hover:opacity-0" href="/"> 
+            <Link className="border-3 static z-50 transition-all opacity-100 duration-500 hover:opacity-0" href="/"> 
               <Image src={"/images/lanternicon1.png"} layout="fill" alt="Lantern Club Logo" />
             </Link>
-            <Link className="transition-all duration-500 hover:scale-[1.02] opacity-0 hover:opacity-100" href="/"> 
+            <Link className=" transition-all duration-500 hover:scale-[1.02] opacity-0 hover:opacity-100" href="/"> 
               <Image src={"/images/Lantern-logo-orange.png"} layout="fill" alt="Lantern Club Logo" />
             </Link>
           </div>
