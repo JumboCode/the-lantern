@@ -24,10 +24,10 @@ export default function HomepageIII() {
 
     return (
         <div>
-            <div className="-mt-20 h-20 w-full" style={triangleStyle} id="triangle"></div>
-            <div className="orange-gradient -mt-20 pt-20 w-full flex flex-col md:grid md:grid-cols-2 gap-4 p-20 justify-center items-center">
+            {/* <div className="-mt-20 h-20 w-full" style={triangleStyle} id="triangle"></div> */}
+            <div className="orange-gradient -mt-20 pb-40 pt-20 w-full flex flex-col md:grid md:grid-cols-2 gap-4 p-20 justify-center items-center"  id="pentagon">
                 {/* text side */}
-                <div className="px-4 flex flex-col text-center justify-center items-start md:text-left">
+                <div className="px-4 flex mt-12 flex-col text-center justify-center items-start md:text-left">
                     <p style={headerFontStyle}>
                         Submit your work!
                     </p>
@@ -56,10 +56,8 @@ export default function HomepageIII() {
                     </div>
                 </div>
             </div>
-
-            <div className="h-20 w-full flex-1 mellow-yellow" id="triangle">
                 {/* Additional content here */}
-            </div>
+            
         </div>
     );
 }

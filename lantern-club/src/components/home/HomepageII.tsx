@@ -30,10 +30,7 @@ export default function ResourcesI() {
 
   return (
     <div>
-        <div className="-mt-20 yellow-gradient opacity-0 h-20 w-full" style={triangleStyle2} id="triangle"></div>
-
-      <div className="-mt-20 h-20 w-full bg-bottom bg-cover bg-no-repeat bg-[url('/images/background.png')]" id="triangle"></div>
-      <div className="-mt-20 pt-triangle-top w-full yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2">
+      <div className="-mt-20 pb-24 pt-triangle-top w-full h-58 yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2" id="pentagon">
         
         {/* Image column */}
         <div className="flex justify-center items-center px-5 my-12">
@@ -68,7 +65,7 @@ export default function ResourcesI() {
           </div>
         </div>
       </div>
-      <div className="h-20 w-full" style={triangleStyle} id="triangle"></div>
+      {/* <div className="h-20 w-full" style={triangleStyle} id="triangle"></div> */}
     </div>
   );
 }

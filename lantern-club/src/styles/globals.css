@@ -95,6 +95,15 @@ body {
 clip-path: polygon(50% 100%,0% 0%,100% 0%);
 }
 
+#pentagon {
+ clip-path: polygon(0 0, 50% 11%, 100% 0, 100% 89%, 50% 100%, 0 89%);
+}
+
+#pentagon2 {
+        clip-path: polygon(0 0, 50% 12%, 100% 0, 100% 100%, 50% 100%, 0 100%);
+       }
+       
+
 .button-blue {
   color: #4279BC; 
 }
