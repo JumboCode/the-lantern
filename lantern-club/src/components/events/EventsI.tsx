@@ -141,18 +141,19 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
     <>
         <div className="-mt-20 py-40 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
 
-          <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl"} style={{ display: 'flex', alignItems: 'center' }}>
+          <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl flex items-end w-11/12"}>
             {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
             {session?.user.isAdmin && !isAdminEdit && (
-              <button className="font-nunito underline text-2xl ml-7" onClick={handleEditButtonClick}>edit</button>
+              <button className="font-nunito underline text-2xl ml-7 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleEditButtonClick}>edit</button>
             )}
             {isAdminEdit && (
               <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-                <FontAwesomeIcon icon={faCirclePlus} onClick={() => setShowAddModal(true)} className="cursor-pointer" style={{ fontSize: '3.5rem', marginRight: '5px'}} />
+                <FontAwesomeIcon icon={faCirclePlus} onClick={() => setShowAddModal(true)} className="cursor-pointer relative transition-all duration-500 hover:text-orange-400" style={{ fontSize: '3.5rem', marginRight: '5px'}} />
                 <span className="font-nunito" style={{ fontSize: '1rem', marginLeft: '10px'}}>Add New</span>
               </div>
             )}
           </h1>
+
       
 
           {/* Two boxes */}

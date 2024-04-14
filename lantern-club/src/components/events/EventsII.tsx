@@ -94,7 +94,7 @@ export default function EventsII({
                           height={100}
                           size="2x"
                           onClick={() => oneEvent.id && handleDelete(oneEvent.id)}
-                          className="cursor-pointer"
+                          className="cursor-pointer relative transition-all duration-300 hover:text-orange-400"
                         />
                       </div>
                     )}
