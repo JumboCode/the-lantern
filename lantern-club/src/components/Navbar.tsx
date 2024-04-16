@@ -19,7 +19,9 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          <Hamburger onToggle={toggleMenu} />
+          <div className="md:hidden">
+            <Hamburger onToggle={toggleMenu} />
+          </div>
 
           <div className={`nav-links ${isMenuOpen ? 'active' : ''} hidden md:flex flex-row justify-center space-x-8 md:space-x-16 overflow-x-auto`}>
             <li className="list-none">
