@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react'; // Corrected import of useState
 import Link from "next/link";
 import Image from "next/image";
-import Hamburger from './Hamburger.tsx';
+import Hamburger from './Hamburger';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,15 +10,12 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-export default function NavBar() {
   return (
     <div className="w-screen">
-        <nav
-          className="flex justify-between items-center text-lg font-kiona"
-        >
+        <nav className="flex justify-between items-center text-lg font-kiona">
           <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 pb-10">
-            <Link href="/" className="hover:underline">
-              <Image src={"/images/thelantern1.png"} height={200} width={200} alt="lantern logo"layout="intrinsic"/>
+            <Link href="/" passHref>
+              <Image src="/images/thelantern1.png" height={200} width={200} alt="lantern logo" layout="intrinsic"/>
             </Link>
           </div>
 
@@ -26,27 +23,27 @@ export default function NavBar() {
 
           <div className={`nav-links ${isMenuOpen ? 'active' : ''} hidden md:flex flex-row justify-center space-x-8 md:space-x-16 overflow-x-auto`}>
             <li className="list-none">
-              <Link href="/Magazine">
+            <Link href="/Magazine" legacyBehavior>
                 <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Magazine</a>
               </Link>
             </li>
             <li className="list-none">
-              <Link href="/Events">
+              <Link href="/Events" legacyBehavior>
                 <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Events</a>
               </Link>
             </li>
             <li className="list-none">
-              <Link href="/AboutUs">
+              <Link href="/AboutUs" legacyBehavior>
                 <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">About Us</a>
               </Link>
             </li>
             <li className="list-none">
-              <Link href="/ContactUs">
+              <Link href="/ContactUs" legacyBehavior>
                 <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Contact Us</a>
               </Link>
             </li>
             <li className="list-none">
-              <Link href="/Resources">
+              <Link href="/Resources" legacyBehavior>
                 <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Resources</a>
               </Link>
             </li>
@@ -56,4 +53,4 @@ export default function NavBar() {
   );
 }
 
-export default NavBar;
+export default Navbar;
