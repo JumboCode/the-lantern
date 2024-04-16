@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // Corrected import of useState
+import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import Hamburger from './Hamburger';
@@ -20,7 +20,6 @@ function Navbar() {
       }
     };
 
-    // Set the logo correctly on initial render
     handleResize();
 
     window.addEventListener('resize', handleResize);
@@ -37,7 +36,7 @@ function Navbar() {
   return (
     <div className="w-screen">
       <nav className="flex justify-between items-center text-lg font-kiona">
-        <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 pb-10">
+        <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 pb-10" style={{ transform: 'scale(0.6)' }}>
           <Link href="/" passHref>
             <div>
               <Image 
@@ -60,7 +59,7 @@ function Navbar() {
           </Link>
         </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden" style={{ transform: 'scale(8)' }}>
             <Hamburger onToggle={toggleMenu} />
           </div>
 
