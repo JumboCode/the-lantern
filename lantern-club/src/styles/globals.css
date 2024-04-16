@@ -170,3 +170,9 @@ width: 300px;
     display: block;
   }
 }
+
+@media (max-width: 768px) { /* Adjust this for your mobile breakpoint */
+  .nav-links {
+    display: flex; /* Show nav links for mobile */
+  }
+}
