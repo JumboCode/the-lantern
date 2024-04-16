@@ -10,12 +10,21 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const defaultLogo = "/images/thelantern1.png";
+  const toggleLogo = "/images/lanternlogo.PNG";
+
   return (
     <div className="w-screen">
         <nav className="flex justify-between items-center text-lg font-kiona">
           <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 pb-10">
             <Link href="/" passHref>
-              <Image src="/images/thelantern1.png" height={200} width={200} alt="lantern logo" layout="intrinsic"/>
+            <Image 
+              src={isMenuOpen ? toggleLogo : defaultLogo} 
+              height={200} 
+              width={200} 
+              alt="lantern logo" 
+              layout="intrinsic"
+            />
             </Link>
           </div>
 
