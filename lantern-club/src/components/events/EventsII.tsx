@@ -3,12 +3,14 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { EventType } from "@/types/event";
+import ConfirmModal from "../ConfirmModal";
 
 type EventsIIProps = {
   isAdminEdit: boolean;
   handleEditButtonClick: () => void;
   events: EventType[];
 };
+
 
 export default function EventsII({
   events,
@@ -52,6 +54,7 @@ export default function EventsII({
     }
   };
 
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   // ********* IS ADMIN EDIT BOOLEAN ********
   return (
     <div>
@@ -93,9 +96,11 @@ export default function EventsII({
                           width={100}
                           height={100}
                           size="2x"
-                          onClick={() => oneEvent.id && handleDelete(oneEvent.id)}
+                          // onClick={() => oneEvent.id && handleDelete(oneEvent.id)}
+                          onClick={() => setShowConfirmModal(true)}
                           className="cursor-pointer relative transition-all duration-300 hover:text-orange-400"
                         />
+                        <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={() => oneEvent.id && handleDelete(oneEvent.id)} />
                       </div>
                     )}
                   </div>

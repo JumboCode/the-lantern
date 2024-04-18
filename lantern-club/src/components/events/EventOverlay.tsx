@@ -3,6 +3,7 @@ import React from "react";
 import Buttonv2 from "../Buttonv2";
 
 import { EventType } from "@/types/event";
+import ConfirmModal from "../ConfirmModal";
 
 interface OverlayProps {
   isVisible: boolean;
@@ -162,6 +163,8 @@ const EventOverlay = ({
       console.error("Failed to add the event:", error);
     }
   };
+
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   if (type == "Add Event") {
     return (
@@ -375,7 +378,10 @@ const EventOverlay = ({
                 >
                   Move to Past Events
                 </a>
-                <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>
+                <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={() => setShowConfirmModal(true)}>
+                    Delete
+                </a>
+                <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={handleDelete} />
               </div>
             </div>
           </div>
