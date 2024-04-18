@@ -12,7 +12,12 @@ const FileDrop = () => {
                         const response = await axios.get('/api/content/magazine/');
                         setFileList(response.data.urls);
                         if (response.data.urls.length > 0) {
+                          console.log("HAVE U EVER MET A DATA?");
                                 // Automatically set the first image as the current image
+                                for (let i = 0; i < response.data.urls.length; i++) {
+                                  
+                                  console.log(response);
+                                }
                                 setCurrentImage(response.data.urls[0]);
                         }
                 } catch (error) {
@@ -35,7 +40,7 @@ const FileDrop = () => {
                         // Extract file name from the URL
                         let fileName = url.substring(url.lastIndexOf('/') + 1);
                         fileName = fileName.substring(fileName.indexOf('_') + 1);
-                        
+                        // console.log(`FEATURED? ${fileList[index]}`);
                         return (
                         <option key={index} value={url}>
                                 {fileName.replace(/\.[^/.]+$/, "")}

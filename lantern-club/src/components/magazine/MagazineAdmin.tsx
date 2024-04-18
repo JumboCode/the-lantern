@@ -29,10 +29,9 @@ export default function MagazineAdmin({handleToggleAdminView, magazines }: Magaz
       const [fileList, setFileList] = useState([]);
       // const [currentImage, setCurrentImage] = useState('');
 
-      const saveFeatures = async (keyName: string) => {
+      const saveFeatures = async () => {
 
         handleToggleAdminView();
-        console.log(keyName);
         
       }
       
@@ -113,7 +112,7 @@ export default function MagazineAdmin({handleToggleAdminView, magazines }: Magaz
                   </ul>
 
                   <FileUpload />
-                  <Buttonv2 text="Save" action={() => saveFeatures('please!')} color="blue" width="w-48" />
+                  <Buttonv2 text="Save" action={() => saveFeatures()} color="blue" width="w-48" />
               
                   {/* <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" /> */}
               
