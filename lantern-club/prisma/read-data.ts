@@ -1,6 +1,4 @@
-import { PrismaClient, Prisma } from "@prisma/client";
-import type { NextApiRequest, NextApiResponse } from "next";
-const prisma = new PrismaClient();
+import prisma from "../prisma/prisma";
 
 // gets all events from the events model in mongodb
 async function handleFetchEvents() {

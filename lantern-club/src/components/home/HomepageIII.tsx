@@ -1,25 +1,16 @@
-import Link from "next/link";
 import Image from "next/image";
-import Poster from "../../images/submit-poster.png";
-import Buttonv2 from "../Buttonv2";
+// import Poster from "../../images/submit-poster.png";
 
 export default function HomepageIII() {
-    const buttonStyle = {
-        backgroundColor: "#4279BC",
-        borderColor: "#94BBE3",
-        borderWidth: "2px",
-        color: "white",
-        fontSize: "19px",
-        borderRadius: "35px",
-        width: "150px",
-        height: "45px",
-        fontFamily: "nunito",
-    };
-
+   
     const imageStyle = {
         minHeight: "300px",
         minWidth: "300px",
     };
+
+    const triangleStyle = {
+        backgroundColor: '#FECB66',
+      };
 
     const headerFontStyle = {
         fontFamily: "coolvetica",
@@ -33,9 +24,10 @@ export default function HomepageIII() {
 
     return (
         <div>
-            <div className="orange-gradient -mt-20 pt-20 w-full flex flex-col md:grid md:grid-cols-2 gap-4 p-20 justify-center items-center">
+            {/* <div className="-mt-20 h-20 w-full" style={triangleStyle} id="triangle"></div> */}
+            <div className="orange-gradient -mt-20 pb-40 pt-20 w-full flex flex-col md:grid md:grid-cols-2 gap-4 p-20 justify-center items-center"  id="pentagon">
                 {/* text side */}
-                <div className="px-4 md:px-0 md:ml-10">
+                <div className="px-4 flex mt-12 flex-col text-center justify-center items-start md:text-left">
                     <p style={headerFontStyle}>
                         Submit your work!
                     </p>
@@ -55,19 +47,17 @@ export default function HomepageIII() {
                 <div className="flex justify-center items-center mt-4 md:mt-20">
                     <div>
                         <Image
-                            src={Poster.src}
+                            src={"/images/submit-poster.png"}
                             height={280}
-                            width={280}
+                            width={280} 
                             style={imageStyle}
                             alt="submission poster"
                         />
                     </div>
                 </div>
             </div>
-
-            <div className="h-20 w-full flex-1 mellow-yellow" id="triangle">
                 {/* Additional content here */}
-            </div>
+            
         </div>
     );
 }

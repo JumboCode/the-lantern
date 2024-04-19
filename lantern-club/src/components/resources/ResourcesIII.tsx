@@ -1,15 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import stsresources from '../../images/sts-resources.png';
+// import stsresources from '../../images/sts-resources.png';
 // import r1 from '../../images/r1.png';
 // import r2 from '../../images/r2.png';
 // import r3 from '../../images/r3.png';
-import r1 from '../../images/ava1.jpg';
-import r2 from '../../images/ava1.jpg';
-import r3 from '../../images/ava1.jpg';
-
-
-import Poster from "../../images/submit-poster.png";
+// import Poster from "../../images/submit-poster.png";
 
 export default function HomepageIII() {
     const buttonStyle = {
@@ -69,8 +64,8 @@ export default function HomepageIII() {
                         {/* <br></br>
                             <br></br> */}
                             <div className="pr-12 py-10 w-1/2 h-full">
-                                <p>From the <u>Tufts University School of Arts & Sciences STS 
-                                    Department website</u>: Science, Technology, and Society 
+                                <p>From the <u><a href="https://as.tufts.edu/science-technology-and-society/about" target="_blank" rel="noopener noreferrer" className="text-sky-500">Tufts University School of Arts & Sciences STS 
+                                    Department website</a></u>: Science, Technology, and Society 
                                     draws on humanities and social sciences approaches to 
                                     study science and technology in their social context. We 
                                     have more than 40 faculty affiliates across Tufts 
@@ -90,7 +85,7 @@ export default function HomepageIII() {
                             <div className="w-1/2 h-full relative" >
                                 {/* Placeholder image while we wait for the real images from the google drive */}
                                 <Image
-                                    src={r1}
+                                    src={"/images/vialPic.png"}
                                     layout="fill"
                                     style={{ borderRadius: '30px' }}
                                     alt=" "
@@ -104,25 +99,24 @@ export default function HomepageIII() {
                     </div>
                     <br></br>
                     {/* Row 2  */}
-                    <div className="flex-col md:flex-row" >
+                    <div className="flex flex-col md:flex-row" >
                         <div className="flex flex-row justify-center items-start px-5">
                             
-                            <div className="w-1/2 h-full">
+                            <div className="w-1/2 h-full relative">
                                 <Image
-                                    src={r2}
+                                    src={"/images/plants.png"}
+                                    layout="fill"
                                     style={{ borderRadius: '30px' }}
                                     alt=" "
-
                                 />
                             </div>
                             {/* <br></br>
                             <br></br> */}
                             <div className="pl-10 py-10 w-1/2 h-full">
-                            <p> The 10-course <u><a href="https://as.tufts.edu/science-technology-and-society/requirements/babs-science-technology-and-society-co-major">co-major</a></u> must be declared in conjunction 
+                            <p> The 10-course <u><a href="https://as.tufts.edu/science-technology-and-society/requirements/babs-science-technology-and-society-co-major" target="_blank" rel="noopener noreferrer" className="text-sky-500">co-major</a></u> must be declared in conjunction 
                                 with another major, and pairs very well with pairs well 
                                 with science, humanities, social science, or visual and 
-                                performing arts majors (Tufts University). The 6-
-                                course <u><a href="https://as.tufts.edu/science-technology-and-society/requirements/minor-science-technology-and-society">minor</a></u> may be of particular interest to students 
+                                performing arts majors (Tufts University). The 6-course <u><a href="https://as.tufts.edu/science-technology-and-society/requirements/minor-science-technology-and-society" target="_blank" rel="noopener noreferrer" className="text-sky-500">minor</a></u> may be of particular interest to students 
                                 majoring in the natural sciences or enrolled in the School 
                                 of Engineering as a complement to their major technical 
                                 fields (Tufts University).
@@ -130,12 +124,8 @@ export default function HomepageIII() {
                             </div>
 
                         </div>
-                        {/* <br></br>
-                        <p></p>
-                        <br></br>
-                         */}
                     </div>
-                         <br></br>
+                    <br></br>
                     {/* Row 3 */}
                     <div className="flex flex-col md:flex-row" >
                         <div className="flex flex-row justify-center items-start px-5">
@@ -157,10 +147,10 @@ export default function HomepageIII() {
                             <div className="w-1/2 h-full relative">
                                 <Image
                                     layout="fill"
-                                    src={r3}
+
+                                    src={"/images/brain.png"}
                                     style={{ borderRadius: '30px' }}
                                     alt=" "
-                                    // style={imageStyle}
                                 />
                             </div>
                         </div>

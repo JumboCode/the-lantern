@@ -9,7 +9,7 @@ const FileDrop = () => {
         useEffect(() => {
                 const fetchFileList = async () => {
                 try {
-                        const response = await axios.get('/api/listFiles');
+                        const response = await axios.get('/api/content/magazine/');
                         setFileList(response.data.urls);
                         if (response.data.urls.length > 0) {
                                 // Automatically set the first image as the current image
@@ -45,7 +45,7 @@ const FileDrop = () => {
                 </select>
                 {currentImage && (
                 <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                    <Link href={currentImage}><iframe src={currentImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '400px', objectFit: 'contain' }} /></Link>
+                    <Link href={currentImage}><iframe src={currentImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain' }} /></Link>
                 </div>
                 )}
           </div> 

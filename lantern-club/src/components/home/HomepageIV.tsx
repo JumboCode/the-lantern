@@ -1,12 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import LanternHead from "../../images/lantern-head.png";
 import Buttonv2 from "../Buttonv2";
 
 export default function HomepageIV() {
   const headerFontStyle = {
     fontFamily: "coolvetica",
-    fontSize: "4rem",
+    fontSize: "90px",
     lineHeight: "1.2", 
   };
   const handleButtonClick = () => {
@@ -15,12 +14,13 @@ export default function HomepageIV() {
       };
 
   return (
-    <div className="w-full blue2-gradient flex flex-col md:grid md:grid-cols-2 -mt-20 pb-20 pt-20 md:pt-0">
+        <div>
+    <div className="w-full blue2-gradient flex flex-col md:grid md:grid-cols-2 -mt-20 pb-20 pt-20 md:pt-0" id="pentagon2">
       {/* Image Column */}
       <div className="flex justify-center px-4 md:px-20 md:pt-32">
         <div className="mt-6">
           <Image
-            src={LanternHead}
+            src={"/images/lantern-head.png"}
             height={280}
             width={280}
             alt="LanternHead picture"
@@ -44,6 +44,7 @@ export default function HomepageIV() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
