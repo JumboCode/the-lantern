@@ -78,7 +78,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                   </div>
 
                   <ul>
-                      {magazines.map((url: string, index: Key) => {
+                      {magazines.map((url: string, index: number) => {
                       // Extract file name from the URL
                       const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
                       let fileName = keyName.substring(keyName.indexOf('_') + 1);
