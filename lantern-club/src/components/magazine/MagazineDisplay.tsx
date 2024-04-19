@@ -100,8 +100,8 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                                     <li key={index}>
 
                                         {/* gets rid of the file extension */}
-                                        <div className="flex pt-5 ">
-                                            <Link className="w-82 md:w-96 text-lg hover:underline" href={url} style={{fontWeight: 'normal'}}>
+                                        <div className="flex pt-5 align-bottom">
+                                            <Link className="w-60 hover:underline" href={url} target="_blank" rel="noopener noreferrer" style={{fontWeight: 'normal'}}>
                                                 <span style={{transition: 'all 0.3s ease', fontWeight: 'bold', textDecoration: 'none'}}>
                                                     {fileName}
                                                 </span>
