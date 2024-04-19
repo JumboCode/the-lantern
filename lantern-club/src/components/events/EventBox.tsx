@@ -27,6 +27,7 @@ const EventBox = ({ event, isAdminEdit }: EventBoxProps) => {
             layout="fill"
             objectFit="cover"
             alt="Event image"
+            className="rounded-xl overflow-hidden"
         />
       </div>   
       <div style={{ paddingTop: '20px' }}>
@@ -36,7 +37,7 @@ const EventBox = ({ event, isAdminEdit }: EventBoxProps) => {
               icon={faPen}
               size="2x"
               onClick={() => setShowModal(true)}
-              className="cursor-pointer"
+              className="cursor-pointer relative transition-all duration-300 hover:text-orange-400"
             />
             <div className="z-999">
               <EventOverlay
