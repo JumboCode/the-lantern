@@ -6,19 +6,46 @@ const FileDrop = () => {
         const [fileList, setFileList] = useState([]);
         const [currentImage, setCurrentImage] = useState('');
 
+        
+        const handleFeatureMag = async () => {
+          const url = `/api/content/magazine/featuredmag/`;
+
+          try {
+
+            const data = {
+              cloudURL : `https://placehold.co/400.png`
+            };
+
+            const response = await fetch(url, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data)
+            });
+
+            // const result = await response.json();
+            console.log(response.data);
+            // onClose();
+            // window.location.reload();
+          } catch (error) {
+            console.error("Failed to add the event:", error);
+          }
+        };
+
         useEffect(() => {
                 const fetchFileList = async () => {
                 try {
                         const response = await axios.get('/api/content/magazine/');
                         setFileList(response.data.urls);
                         if (response.data.urls.length > 0) {
-                          console.log("HAVE U EVER MET A DATA?");
+                          // console.log("HAVE U EVER MET A DATA?");
                                 // Automatically set the first image as the current image
                                 for (let i = 0; i < response.data.urls.length; i++) {
-                                  
-                                  console.log(response);
+                                  // console.log(response);
                                 }
                                 setCurrentImage(response.data.urls[0]);
+                                
                         }
                 } catch (error) {
                         console.error('Error fetching file list:', error);
@@ -30,8 +57,11 @@ const FileDrop = () => {
         }, []);
 
         const handleImageChange = (event) => {
+                handleFeatureMag();
                 setCurrentImage(event.target.value);
         };
+
+        
 
         return (
             <div class="dropdown">
