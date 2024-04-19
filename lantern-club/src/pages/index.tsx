@@ -17,7 +17,7 @@ export default function Home() {
       <FadeInOutComponent><HomepageII /></FadeInOutComponent>
       <FadeInOutComponent><HomepageIII /></FadeInOutComponent>
       <FadeInOutComponent><HomepageIV /></FadeInOutComponent>
-      <Footer showAdminLogin={true} />
+      <Footer showAdminLogin={false} />
     </div>
   );
 }
