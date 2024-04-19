@@ -43,7 +43,7 @@ export default function ResourcesI() {
                 with announcements about club events like discussion groups and
                 movie screenings, our magazine publishing timeline and meetings, 
                 submission opportunities, professor talks, local STS 
-                conferences, and more! 
+                conferences, and more!
               </p>
             </div>
         </div>

@@ -59,6 +59,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
           } else {
             alert('Failed to delete the file');
           }
+          setShowConfirmModal(false);
         } catch (error) {
           console.error('Error deleting the file:', error);
           alert('Error deleting the file');

@@ -32,6 +32,8 @@ export default function EventsII({
     height: "100%",
   };
 
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+
   const handleDelete = async (id: string) => {
     const url = `/api/content/events/${id}`;
     try {
@@ -49,12 +51,13 @@ export default function EventsII({
       const deletedEvent = await response.json();
       console.log("Deleted profile:", deletedEvent);
       window.location.reload();
+      setShowConfirmModal(false);
     } catch (error) {
       console.error("Failed to delete event:", error);
     }
   };
 
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  
   // ********* IS ADMIN EDIT BOOLEAN ********
   return (
     <div>

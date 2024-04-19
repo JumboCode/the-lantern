@@ -93,7 +93,9 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
             
             const deletedProfile = await response.json();
             console.log('Deleted profile:', deletedProfile);
-            window.location.reload()
+            window.location.reload();
+
+            setShowConfirmModal(false);
         } catch (error) {
             console.error('Failed to update profile:', error);
         }
