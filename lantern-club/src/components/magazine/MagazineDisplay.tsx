@@ -114,7 +114,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                         </ul>
                     </div>
                    {/* image side */}
-                    <div className="px-20 flex justify-center items-center">
+                   <div className="flex justify-center items-center">
                         <div>
                             <Image
                                 src={"/images/bluelatern.png"}
@@ -125,6 +125,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                             />
                         </div>
                     </div>
+
 
                     
                 </div>
