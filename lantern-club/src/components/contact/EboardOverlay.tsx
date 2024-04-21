@@ -56,8 +56,6 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                 formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
             }            
 
-            alert(formData.coverPhoto)
-
             const response = await fetch(url, {
                 method: 'PATCH',
                 body: formDataWithPhoto,
@@ -84,7 +82,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                     'Content-Type': 'application/json',
                 },
             });
-            alert(response.ok)
+            // alert(response.ok)
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
@@ -143,7 +141,6 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
             }
             const addedProfile = await response.json();
             console.log('Add profile:', addedProfile);
-            alert("ADDED")
             window.location.reload()
         } catch (error) {
             console.error('Failed to add profile:', error);

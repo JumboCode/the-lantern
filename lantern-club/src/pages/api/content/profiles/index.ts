@@ -6,6 +6,12 @@ import { Fields, Files, IncomingForm } from "formidable";
 import { uploadFileToS3 } from "@/utils/uploadFileToS3";
 import { ProfileType } from "@/types/profile";
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 
 export default async function handler(
   req: NextApiRequest,
