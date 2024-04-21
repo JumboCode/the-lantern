@@ -55,7 +55,7 @@ export default function ResourcesI() {
           </div>
         </div>
         {/* Button */}
-        <Buttonv2 text="Join our e-list!" action={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScoIJSqdbxqKcswFmnCiFj65L2_P7dqogSpGLegc0EaORK9MA/viewform')} color="blue" width="w-48" />
+        <Buttonv2 text="Join our E-List!" action={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScoIJSqdbxqKcswFmnCiFj65L2_P7dqogSpGLegc0EaORK9MA/viewform')} color="blue" width="w-48" />
 
         </div>
         </div>

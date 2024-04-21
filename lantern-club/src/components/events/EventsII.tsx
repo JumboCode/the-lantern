@@ -55,7 +55,7 @@ export default function EventsII({
   // ********* IS ADMIN EDIT BOOLEAN ********
   return (
     <div>
-      <div className="-mt-20 py-20 px-20 blue2-gradient" style={background}>
+      <div className="-mt-20 py-40 px-20 blue2-gradient" style={background}>
         <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl"}>
         {isAdminEdit ? "Delete Past Events" : "Past Events"}
         </h1>
