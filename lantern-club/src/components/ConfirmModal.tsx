@@ -15,7 +15,7 @@ const ConfirmModal = ({ isVisible, onClose, onDelete }: ConfirmProps) => {
     return (
         <div className="flex fixed inset-0 justify-center items-center">
           <div className="bg-white p-8 text-center rounded-3xl border-[#f79838] border-8">
-            <h3 className="text-xl mb-4 break-want">
+            <h3 className="text-xl font-nunito mb-4 break-want">
               Are you sure you want to delete?
             </h3>
             <div className="flex justify-center mt-6 gap-6">
