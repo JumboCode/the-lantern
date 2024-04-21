@@ -8,10 +8,10 @@ const FileDrop = () => {
 
         
         const handleFeatureMag = async () => {
-          const url = `/api/content/magazine/featuredmag/`;
+          const url = `/api/content/magazine/featuredmag`;
 
           try {
-
+            // TODO: change this later
             const data = {
               cloudURL : `https://placehold.co/400.png`
             };

@@ -16,7 +16,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === 'POST') {
       try {
         const { fileURL } = req.body;
-        handleAddFeaturedMag(fileURL);
+        
+        handleAddFeaturedMag({cloudURL: fileURL});
 
       } catch (error) {
         console.error('Failed to upload file to S3', error);
