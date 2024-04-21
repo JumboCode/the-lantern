@@ -31,7 +31,7 @@ export default function ResourcesI() {
   return (
     <div>
       <div 
-        className="-mt-20 overflow-hidden py-30 px-4 md:px-0 md:px-10 yellow-gradient" style={background}> 
+        className="-mt-20 overflow-hidden py-30 px-4 md:px-10 yellow-gradient" style={background}> 
         {/* text side */}
         <div className="pt-20 pb-12 px-4 md:px-0 md:ml-10">
             <p className="py-5 mb-10 mt-10 md:text-8xl text-6xl" style={headerFontStyle}>
