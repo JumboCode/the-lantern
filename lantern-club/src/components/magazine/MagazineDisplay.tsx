@@ -66,15 +66,14 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 
                 <div className="bg-gray-700 rounded-3xl py-20 min-h-[575px] flex justify-center items-center">
                     {currentImage && (
-                        <div className="flex justify-center items-center w-full h-full">
+                        <div className="flex justify-center items-center w-full">
                             <Link href={currentImage}>
-                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ width: '80vw'}} />
+                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ maxWidth: '100%', height: 'auto', width: '40vw' }} />
                             </Link>
-
-
                         </div>
                     )}
                 </div>
+
             </div> 
             
             {/* triangle man */}
