@@ -56,10 +56,11 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 <div className="flex gap-10 md:text-8xl text-6xl">
                     <p style={headerFont}>Magazine Issues</p>
                     {session?.user.isAdmin && (
-                    <button className="font-nunito underline text-2xl ml-7" onClick={handleToggleAdminView}>
-                        Edit
+                    <button className="font-nunito underline text-2xl ml-7 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleAdminView}>
+                        edit
                     </button>
                     )}
+                    
                 </div>
                 
                 
@@ -99,8 +100,8 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                                     <li key={index}>
 
                                         {/* gets rid of the file extension */}
-                                        <div className="flex pt-5 align-bottom">
-                                            <Link className="w-60 hover:underline" href={url} style={{fontWeight: 'normal'}}>
+                                        <div className="flex pt-5 ">
+                                            <Link className="w-82 md:w-96 text-lg hover:underline" href={url} style={{fontWeight: 'normal'}}>
                                                 <span style={{transition: 'all 0.3s ease', fontWeight: 'bold', textDecoration: 'none'}}>
                                                     {fileName}
                                                 </span>

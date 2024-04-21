@@ -16,10 +16,10 @@ export default async function handler(
 
             const newProfile = await handleAddProfile(req.body);
             console.log(req.body)
-            return res.status(201).json(newProfile); // Use 201 status code for resource creation
+            res.status(201).json(newProfile); 
         } catch (error) {
             console.error("Failed to add profile:", error);
-            return res.status(500).json({ error: "Failed to add profile." });
+            res.status(500).json({ error: "Failed to add profile." });
         }
     } else {
         // If other HTTP methods are not supported
