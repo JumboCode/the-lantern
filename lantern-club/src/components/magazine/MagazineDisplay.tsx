@@ -52,7 +52,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
       
       return (
         <div>
-            <div className="yellow-gradient -mt-20 py-40 px-20 w-full p-20">
+            <div className="yellow-gradient -mt-20 py-40  px-2 md:px-20 w-full p-20">
                 <div className="flex gap-10 md:text-8xl text-6xl">
                     <p style={headerFont}>Magazine Issues</p>
                     {session?.user.isAdmin && (
