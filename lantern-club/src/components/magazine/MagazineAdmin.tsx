@@ -127,6 +127,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
 
                   <FileUpload />
                   <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" />
+                  
               
            </div>   
             

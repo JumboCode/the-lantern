@@ -13,7 +13,7 @@ const ConfirmModal = ({ isVisible, onClose, onDelete }: ConfirmProps) => {
     const [isLoading, setIsLoading] = useState(false);
 
     return (
-        <div className="flex fixed inset-0 justify-center items-center">
+        <div className="flex fixed backdrop-blur-sm inset-0 justify-center items-center" style={{ zIndex: 999}}>
           <div className="bg-white p-8 text-center rounded-3xl border-[#f79838] border-8">
             <h3 className="text-xl font-nunito mb-4 break-want">
               Are you sure you want to delete?

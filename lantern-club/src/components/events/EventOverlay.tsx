@@ -364,7 +364,7 @@ const EventOverlay = ({
                 onChange={handleCoverPhotoChange} 
                 />
               </div>
-              <div className="flex justify-center text-md space-x-7 py-5">
+              <div className="flex justify-center justify-items-center text-md py-5">
                 <Buttonv2
                   text="Save"
                   action={() => handleEdit({ ...formData, isPast: event?.isPast ?? false })}
@@ -373,12 +373,12 @@ const EventOverlay = ({
                 />
                 <a
                 href="#"
-                className="font-nunito underline text-l mt-3 ml-3"
+                className="font-nunito underline text-l mt-3 mx-7"
                 onClick={() => handleEdit({ ...formData, isPast: true })}
                 >
                   Move to Past Events
                 </a>
-                <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={() => setShowConfirmModal(true)}>
+                <a href="#" className="font-nunito underline text-l mt-3" onClick={() => setShowConfirmModal(true)}>
                     Delete
                 </a>
                 <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={handleDelete} />

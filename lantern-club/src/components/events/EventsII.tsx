@@ -99,7 +99,6 @@ export default function EventsII({
                           width={100}
                           height={100}
                           size="2x"
-                          // onClick={() => oneEvent.id && handleDelete(oneEvent.id)}
                           onClick={() => setShowConfirmModal(true)}
                           className="cursor-pointer relative transition-all duration-300 hover:text-orange-400"
                         />

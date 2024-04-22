@@ -140,7 +140,6 @@ const NoEventsComponent = () => (
 const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonClick, setShowAddModal }: EventsIProps) => (
     <>
         <div className="-mt-20 py-40 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
-
           <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl flex items-end w-11/12"}>
             {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
             {session?.user.isAdmin && !isAdminEdit && (
@@ -153,8 +152,6 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
               </div>
             )}
           </h1>
-
-      
 
           {/* Two boxes */}
           <div className="flex flex-col gap-10 md:flex-row">
@@ -173,8 +170,5 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
         <div>
         <div className="z-4 relative"><div className="h-20 w-full flex mellow-yellow -z-50" id="triangle"></div></div>
         </div>
-        
-        
-        {/* <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div> */}
     </>
 );
