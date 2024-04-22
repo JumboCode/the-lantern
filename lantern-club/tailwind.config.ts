@@ -25,6 +25,10 @@ const config: Config = {
       },
     },
     extend: {
+      scale: {
+        '50': '.5',
+        '175': '1.75',
+      },
       spacing:{
         '13': '500px',
         'contact':'500px',
