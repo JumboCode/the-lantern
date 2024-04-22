@@ -1,98 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
-import Hamburger from './Hamburger';
 
-function Navbar() {
-
-  const defaultLogo = "/images/thelantern1.png";
-  const toggleLogo = "/images/lantern-logo-blue.png";
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentLogo, setCurrentLogo] = useState(defaultLogo);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setCurrentLogo(toggleLogo);
-      } else {
-        setCurrentLogo(defaultLogo);
-      }
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+export default function NavBar() {
   return (
     <div className="w-screen">
-      <nav className="flex justify-between items-center text-lg font-kiona">
-        <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 pb-10" style={{ transform: 'scale(0.6)' }}>
-          <Link href="/" passHref>
-            <div>
-              <Image 
-                src={defaultLogo} 
-                height={200} 
-                width={200} 
-                alt="Default Logo" 
-                className="default-logo"
-                layout="intrinsic"
-              />
-              <Image 
-                src={toggleLogo} 
-                height={200} 
-                width={200} 
-                alt="Toggle Logo" 
-                className="toggle-logo"
-                layout="intrinsic"
-              />
-            </div>
-          </Link>
-        </div>
-
-          <div className="md:hidden" style={{ transform: 'scale(8)' }}>
-            <Hamburger onToggle={toggleMenu} />
+        <nav
+          className="flex justify-between items-center text-lg font-kiona"
+        >
+          <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-5">
+            <Link href="/" className="hover:underline">
+              <Image src={"/images/lantern-logo-blue.png"} height={91} width={91} alt="lantern logo"layout="intrinsic"/>
+            </Link>
           </div>
 
-          <div className={`nav-links ${isMenuOpen ? 'active' : ''} hidden md:flex flex-row justify-center space-x-8 md:space-x-16 overflow-x-auto`}>
-            <li className="list-none">
-            <Link href="/Magazine" legacyBehavior>
-                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Magazine</a>
-              </Link>
-            </li>
-            <li className="list-none">
-              <Link href="/Events" legacyBehavior>
-                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Events</a>
-              </Link>
-            </li>
-            <li className="list-none">
-              <Link href="/AboutUs" legacyBehavior>
-                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">About Us</a>
-              </Link>
-            </li>
-            <li className="list-none">
-              <Link href="/ContactUs" legacyBehavior>
-                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Contact Us</a>
-              </Link>
-            </li>
-            <li className="list-none">
-              <Link href="/Resources" legacyBehavior>
-                <a className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">Resources</a>
-              </Link>
-            </li>
-          </div>
+          <ul className="flex flex-row justify-center space-x-8 md:space-x-16 md:pr-20 pt-10 overflow-x-auto pb-10">
+          <li>
+            <Link href="/AboutUs" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
+              About Us
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/Events" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
+              Events
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/Magazine" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
+              Magazine
+            </Link>
+          </li>
+          
+          <li>
+            <Link href="/Resources" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
+              Resources
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/ContactUs" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
+              Contact Us
+            </Link>
+          </li>
+
+          </ul>
+
         </nav>
     </div>
   );
 }
-
-export default Navbar;
