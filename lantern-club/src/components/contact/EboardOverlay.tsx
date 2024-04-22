@@ -56,8 +56,6 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                 formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
             }            
 
-            alert(formData.coverPhoto)
-
             const response = await fetch(url, {
                 method: 'PATCH',
                 body: formDataWithPhoto,
@@ -84,7 +82,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                     'Content-Type': 'application/json',
                 },
             });
-            alert(response.ok)
+            // alert(response.ok)
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
@@ -121,29 +119,29 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     const handleAdd = async () => {
         const url = '/api/content/profiles/'; 
         try {
-            
-            const data = {
-                name: formData.name, 
-                pronouns: formData.pronouns, 
-                title: formData.title, 
-                email: formData.email, 
-                major: formData.major,
-                pictureURL: `https://placehold.co/400.png`
-            }
+            const formDataWithPhoto = new FormData();
+            formDataWithPhoto.append('name', formData.name);
+            formDataWithPhoto.append('pronouns', formData.pronouns);
+            formDataWithPhoto.append('title', formData.title);
+            formDataWithPhoto.append('email', formData.email);
+            formDataWithPhoto.append('major', formData.major);
+            formDataWithPhoto.append('pictureURL', `https://placehold.co/400.png`);
+
+            if (formData.coverPhoto) {
+                formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+            }            
+
             const response = await fetch(url, {
-                method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
+                method: 'POST',
+                body: formDataWithPhoto,
             });
     
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
-            const newProfile = await response.json();
-            console.log('Added new profile:', newProfile);
-            window.location.reload(); 
+            const addedProfile = await response.json();
+            console.log('Add profile:', addedProfile);
+            window.location.reload()
         } catch (error) {
             console.error('Failed to add profile:', error);
         }

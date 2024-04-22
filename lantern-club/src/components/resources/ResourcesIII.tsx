@@ -24,7 +24,7 @@ export default function HomepageIII() {
                 {/* Yellow box with text and images */}
                 <div className="flex-col pale-yellow mellow-yellow-border font-nunito text-xl ml-5 md:ml-10" style={round_box}>
                     {/* Row 1 */}
-                    <div className="flex flex-col md:flex-row items-center items-center justify-center">
+                    <div className="flex flex-col md:flex-row justify-center">
                         <div className="pr-10 md:w-1/2 text-lg md:text-xl pb-10">
                             <p>From the <u><a href="https://as.tufts.edu/science-technology-and-society/about" className="text-sky-500">Tufts University School of Arts & Sciences STS 
                                 Department website</a></u>: Science, Technology, and Society 
