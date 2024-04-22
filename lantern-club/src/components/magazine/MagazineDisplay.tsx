@@ -56,7 +56,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 <div className="flex gap-10 md:text-8xl text-6xl">
                     <p style={headerFont}>Magazine Issues</p>
                     {session?.user.isAdmin && (
-                    <button className="font-nunito underline text-2xl ml-7 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleAdminView}>
+                    <button className="font-nunito underline text-2xl cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleAdminView}>
                         edit
                     </button>
                     )}
@@ -68,7 +68,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                     {currentImage && (
                         <div className="flex justify-center items-center w-full">
                             <Link href={currentImage}>
-                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ maxWidth: '100%', height: 'auto', width: '40vw' }} />
+                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ maxWidth: '100%', height: 'auto', width: '80vw' }} />
                             </Link>
                         </div>
                     )}
