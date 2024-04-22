@@ -4,9 +4,13 @@ import axios from 'axios';
 import FileUpload from ".//FileUpload";
 import FileDrop from ".//FileDrop";
 import Buttonv2 from "../Buttonv2";
+import ConfirmModal from "../ConfirmModal";
 // import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
 
 export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
+
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+
   const [hoveredTrashCans, setHoveredTrashCans] = useState<{ [key: number]: boolean }>({});
 
   const handleMouseEnter = (index: number) => {
@@ -55,6 +59,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
           } else {
             alert('Failed to delete the file');
           }
+          setShowConfirmModal(false);
         } catch (error) {
           console.error('Error deleting the file:', error);
           alert('Error deleting the file');
@@ -90,11 +95,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                           {/* gets rid of the file extension */}
                           <div className="flex pt-5 align-bottom">
                           <a className="w-80 md:w-96 font-bold" href={url} target="_blank">{fileName}</a>
-                          <button onClick={() => {
-                            // FileDelete('thelantern', keyName)
-                            FileDelete(keyName);
-                          }
-                            
+                          <button onClick={() => setShowConfirmModal(true)
                           }
                           >                            
                              <div className="svg-container hover:underline decoration-orange-400" >
@@ -116,16 +117,9 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
 
                                   </svg>
                               </div>
-
-                           
-                            
-
-                          </button>
-                          
-
+                              </button>
+                              <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={() => FileDelete(keyName)} />
                           </div>
-                          
-                          
                           </li>
                       );
                       })}
@@ -133,6 +127,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
 
                   <FileUpload />
                   <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" />
+                  
               
            </div>   
             

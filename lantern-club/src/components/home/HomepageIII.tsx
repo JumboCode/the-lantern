@@ -32,7 +32,7 @@ export default function HomepageIII() {
                         Submit your work!
                     </p>
                     <p className="py-5 font-nunito text-xl">
-                        Did you write a paper for an STS course that you’re passionate about? Or do you have an idea that you’re excited to share? Submit your work to The Lantern Magazine and join the conversation! We invite essays, opinion pieces, book reviews, and research.
+                        Did you write a paper for an STS course that you're passionate about? Or do you have an idea that you're excited to share? Submit your work to The Lantern Magazine and join the conversation! We invite essays, opinion pieces, book reviews, and research.
                     </p>
                     <a href="http://forms.gle/JP6arAGa9cKE48Pv9" target="_blank" rel="noopener">
                     <Buttonv2

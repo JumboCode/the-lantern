@@ -2,6 +2,7 @@ import { ChangeEvent, useRef, useState } from 'react';
 import React from 'react';
 import Buttonv2 from "../Buttonv2";
 import { ProfileType } from '@/types/profile';
+import ConfirmModal from "../ConfirmModal";
 
 interface OverlayProps {
     isVisible: boolean,
@@ -22,6 +23,7 @@ interface FormData {
 
 
 const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
+        const [showConfirmModal, setShowConfirmModal] = useState(false);
     if (!isVisible) return null; 
 
     const [formData, setFormData] = useState<FormData>({
@@ -89,7 +91,9 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
             
             const deletedProfile = await response.json();
             console.log('Deleted profile:', deletedProfile);
-            window.location.reload()
+            window.location.reload();
+
+            setShowConfirmModal(false);
         } catch (error) {
             console.error('Failed to update profile:', error);
         }
@@ -188,9 +192,10 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                             // id="imageURL"
                             />
                         </div>
-                        <div className="z-50 flex justify-center text-md space-x-7 py-5">
+                        <div className="z-50 flex justify-center text-md py-5">
                             <Buttonv2 text={type === "Add" ? "Add" : "Update"} action={type === "Add" ? handleAdd : handleEdit} color="blue" width="w-40"/>
-                            {type === "Edit" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>}
+                            {type === "Edit" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={() => setShowConfirmModal(true)}>Delete</a>}
+                            <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={handleDelete} />
                             {type === "Add" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={onClose}>Cancel</a>}
                         </div>
                     </div>
