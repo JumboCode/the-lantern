@@ -26,6 +26,8 @@ export default async function handler(
       break;
     case "PATCH":
       const form = new IncomingForm();
+      // console.error(form)
+
       form.parse(req, async (err: any, fields: Fields, files: Files) => {
         if (err) {
           console.error("Formidable parse error:", err);

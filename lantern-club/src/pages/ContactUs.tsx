@@ -22,7 +22,7 @@ export default function ContactUs() {
       <Header title="Contact Us" />
       <MeetTheEBoard data={profiles} />
       <Contact />
-      <Footer showAdminLogin={false} />
+      <Footer showAdminLogin={true} />
     </>
   );
 }

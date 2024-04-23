@@ -20,12 +20,12 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
     <div className="bg-[#d5e1f3] p-10 w-full text-[#4279bc] flex items-center justify-center">
       <div className="grid w-full max-w-screen-xl grid-cols-1 md:grid-cols-3">
         {/* Image column */}
-        <div className="static flex flex-col md:flex-row items-center md:items-start">
+        <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="w-24 h-24 md:w-48 md:h-48 relative">
-            <Link className="border-3 static z-50 transition-all opacity-100 duration-500 hover:opacity-0" href="/"> 
+            <Link className="transition-all opacity-100 duration-500 hover:opacity-0" href="/"> 
               <Image src={"/images/lanternicon1.png"} layout="fill" alt="Lantern Club Logo" />
             </Link>
-            <Link className=" transition-all duration-500 hover:scale-[1.02] opacity-0 hover:opacity-100" href="/"> 
+            <Link className="transition-all duration-500 hover:scale-[1.02] opacity-0 hover:opacity-100" href="/"> 
               <Image src={"/images/Lantern-logo-orange.png"} layout="fill" alt="Lantern Club Logo" />
             </Link>
           </div>
@@ -60,19 +60,19 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
           <div className="font-nunitosans flex flex-col pb-5 md:pb-0 pr-0 md:pr-10 space-y-4 items-start justify-start">
             {!session ? (
               showAdminLogin && (
-              <Buttonv2 text="Admin Login" action={() => signIn("google")} color="blue" width="w-48"/>
+              <Buttonv2 text="Admin Login" action={() => signIn("google")} color="blue" width="w-48" />
               )
             ) : (
               <Buttonv2 text="Sign Out" action={() => signOut()} color="blue" width="w-48" />
             )
             
             }
-            <Buttonv2 text="Submit Work" action={handleButtonClick} color="orange" width="w-48"/>
+            <Buttonv2 text="Submit Work" action={handleButtonClick} color="orange" width="w-48" />
 
           </div>
 
           <div className="flex">
-            <a href="https://www.linkedin.com/company/the-lantern-at-tufts-university/about/" className="flex mr-2 hover:#faac4b">
+            <a href="https://www.linkedin.com/company/the-lantern-at-tufts-university/about/" target="_blank" rel="noopener noreferrer" className="flex mr-2 hover:#faac4b">
               <div className="w-11 h-10 md:w-12 md:h-12 relative transition-all duration-300 hover:text-orange-400">
                 {/* <Image src={LinkedIn} alt="linkedin icon"/> */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

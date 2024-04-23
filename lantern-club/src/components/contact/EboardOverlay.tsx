@@ -2,6 +2,7 @@ import { ChangeEvent, useRef, useState } from 'react';
 import React from 'react';
 import Buttonv2 from "../Buttonv2";
 import { ProfileType } from '@/types/profile';
+import ConfirmModal from "../ConfirmModal";
 
 interface OverlayProps {
     isVisible: boolean,
@@ -22,6 +23,7 @@ interface FormData {
 
 
 const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
+        const [showConfirmModal, setShowConfirmModal] = useState(false);
     if (!isVisible) return null; 
 
     const [formData, setFormData] = useState<FormData>({
@@ -56,8 +58,6 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                 formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
             }            
 
-            alert(formData.coverPhoto)
-
             const response = await fetch(url, {
                 method: 'PATCH',
                 body: formDataWithPhoto,
@@ -84,14 +84,16 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                     'Content-Type': 'application/json',
                 },
             });
-            alert(response.ok)
+            // alert(response.ok)
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
             
             const deletedProfile = await response.json();
             console.log('Deleted profile:', deletedProfile);
-            window.location.reload()
+            window.location.reload();
+
+            setShowConfirmModal(false);
         } catch (error) {
             console.error('Failed to update profile:', error);
         }
@@ -121,29 +123,29 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     const handleAdd = async () => {
         const url = '/api/content/profiles/'; 
         try {
-            
-            const data = {
-                name: formData.name, 
-                pronouns: formData.pronouns, 
-                title: formData.title, 
-                email: formData.email, 
-                major: formData.major,
-                pictureURL: `https://placehold.co/400.png`
-            }
+            const formDataWithPhoto = new FormData();
+            formDataWithPhoto.append('name', formData.name);
+            formDataWithPhoto.append('pronouns', formData.pronouns);
+            formDataWithPhoto.append('title', formData.title);
+            formDataWithPhoto.append('email', formData.email);
+            formDataWithPhoto.append('major', formData.major);
+            formDataWithPhoto.append('pictureURL', `https://placehold.co/400.png`);
+
+            if (formData.coverPhoto) {
+                formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+            }            
+
             const response = await fetch(url, {
-                method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
+                method: 'POST',
+                body: formDataWithPhoto,
             });
     
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
-            const newProfile = await response.json();
-            console.log('Added new profile:', newProfile);
-            window.location.reload(); 
+            const addedProfile = await response.json();
+            console.log('Add profile:', addedProfile);
+            window.location.reload()
         } catch (error) {
             console.error('Failed to add profile:', error);
         }
@@ -190,9 +192,10 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                             // id="imageURL"
                             />
                         </div>
-                        <div className="z-50 flex justify-center text-md space-x-7 py-5">
+                        <div className="z-50 flex justify-center text-md py-5">
                             <Buttonv2 text={type === "Add" ? "Add" : "Update"} action={type === "Add" ? handleAdd : handleEdit} color="blue" width="w-40"/>
-                            {type === "Edit" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>}
+                            {type === "Edit" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={() => setShowConfirmModal(true)}>Delete</a>}
+                            <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={handleDelete} />
                             {type === "Add" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={onClose}>Cancel</a>}
                         </div>
                     </div>

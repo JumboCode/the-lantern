@@ -22,10 +22,10 @@ export default function HomepageIII() {
                 </div>
 
                 {/* Yellow box with text and images */}
-                <div className="flex-col pale-yellow mellow-yellow-border font-nunito text-xl ml-5 md:ml-10" style={round_box}>
+                <div className="flex-col pale-yellow mellow-yellow-border font-nunito text-xl ml-0 md:ml-10" style={round_box}>
                     {/* Row 1 */}
-                    <div className="flex flex-col md:flex-row items-center items-center justify-center">
-                        <div className="pr-10 md:w-1/2 text-lg md:text-xl pb-10">
+                    <div className="flex flex-col md:flex-row items-center justify-center">
+                        <div className="pr-0 md:pr-10 md:w-1/2 text-lg md:text-xl pb-10">
                             <p>From the <u><a href="https://as.tufts.edu/science-technology-and-society/about" className="text-sky-500">Tufts University School of Arts & Sciences STS 
                                 Department website</a></u>: Science, Technology, and Society 
                                 draws on humanities and social sciences approaches to 
@@ -53,7 +53,7 @@ export default function HomepageIII() {
                     </div>
 
                     {/* Row 2 */}
-                    <div className="flex flex-col flex-col-reverse md:flex-row items-center justify-center">
+                    <div className="flex flex-col-reverse md:flex-row items-center justify-center">
                         <div className="relative w-full md:w-1/2 h-96 md:h-auto flex justify-center">
                             <Image
                                 src={"/images/plants.png"}
