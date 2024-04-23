@@ -56,8 +56,8 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 <div className="flex gap-10 md:text-8xl text-6xl">
                     <p style={headerFont}>Magazine Issues</p>
                     {session?.user.isAdmin && (
-                    <button className="font-nunito underline text-2xl cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleAdminView}>
-                        edit
+                    <button className="font-nunito underline text-2xl mb-2 -ml-2 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleAdminView}>
+                        Edit
                     </button>
                     )}
                     
