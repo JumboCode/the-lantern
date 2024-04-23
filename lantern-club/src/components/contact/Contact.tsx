@@ -70,7 +70,7 @@ export default function Contact() {
       <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"> </div>
       <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2 -mt-20">
         <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"></div>
-        <h1 className="mt-20 font-coolvetica text-7xl ml-16 pt-20">
+        <h1 className="mt-20 font-coolvetica md:text-8xl text-6xl ml-16 pt-20">
           Get in touch!
         </h1>
         {/* Shows popup when the form is submitted */}
@@ -87,7 +87,7 @@ export default function Contact() {
                 required
                 type="text"
                 name="name"
-                className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 rounded-full outline-gc2 h-8 contact-input rounded-3xl"
+                className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 outline-gc2 h-8 contact-input rounded-3xl"
               ></input>
             </div>
 
@@ -97,7 +97,7 @@ export default function Contact() {
                 required
                 type="email"
                 name="email"
-                className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 rounded-full outline-gc2 h-8 contact-input rounded-3xl"
+                className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 outline-gc2 h-8 contact-input rounded-3xl"
               ></input>
             </div>
 
