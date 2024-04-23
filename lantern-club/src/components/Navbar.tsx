@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
@@ -10,6 +10,20 @@ const NavBar = () => {
     setNav(!nav);
   };
 
+  useEffect(() => {
+        const handleResize = () => {
+          if (window.innerWidth > 1207) { 
+            setNav(false);
+          }
+        };
+    
+        window.addEventListener('resize', handleResize);
+    
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
+
   const links = [
     { url: '/AboutUs', label: 'About Us' },
     { url: '/Events', label: 'Events' },
@@ -19,8 +33,8 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="flex justify-between z-50 items-center h-32 max-w-screen mx-auto px-4 text-lg font-kiona">
-      <div className="z-20 pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-0">
+    <div className={nav ? 'fixed flex justify-between bg-white z-50 items-center h-32 w-screen px-4 text-lg font-kiona' : 'flex justify-between z-50 items-center h-32 max-w-screen mx-auto px-4 text-lg font-kiona'}>
+      <div className={nav ? 'fixed z-20 pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-0' : 'z-20 pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-0'}>
         <Link href="/" className="hover:underline">
           <Image src={"/images/lantern-logo-blue.png"} height={91} width={91} alt="lantern logo" layout="intrinsic" />
         </Link>
@@ -36,13 +50,13 @@ const NavBar = () => {
           ))}
         </ul>
 
-      <div onClick={handleNav} className="block z-20 md:hidden">
+      <div onClick={handleNav} className={nav ? 'fixed block right-4 z-20 md:hidden' : 'block z-20 md:hidden'}>
         {nav ? <AiOutlineClose size={40} /> : <AiOutlineMenu size={40} />}
       </div>
 
       <ul className={nav ? 'fixed md:hidden z-10 left-0 top-32 w-screen h-full ease-in-out duration-500' : 'z-0 w-screen fixed left-0 top-[-100%] opacity-0'}>
         {links.map((link, index) => (
-          <li key={index} className={`z-10 p-4 justify-center align-center bg-white text-center hover:bg-nav-bg duration-300 items-center cursor-pointer ${link.url === '/AboutUs' ? 'z-10 border-t-2 border-sky-800' : ''}`}>
+          <li key={index} className={`z-10 p-10 justify-center align-center bg-white text-center hover:bg-nav-bg duration-300 items-center cursor-pointer ${link.url === '/AboutUs' ? 'z-10 border-t-2 border-sky-800' : ''}`}>
           <Link href={link.url}>{link.label}</Link>
         </li>
         ))}
