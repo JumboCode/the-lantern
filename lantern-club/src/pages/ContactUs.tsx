@@ -4,6 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contact from "@/components/contact/Contact";
 import MeetTheEBoard from "@/components/contact/MeetTheEboard";
+import Head from 'next/head';
+
 // import sampleData from "@/components/contact/sampleCardData.json";
 
 export default function ContactUs() {
@@ -19,6 +21,9 @@ export default function ContactUs() {
   return (
     <> 
       <NavBar />
+      <Head>
+        <title>Contact Us — The Lantern</title> // Tab Title
+      </Head>
       <Header title="Contact Us" />
       <MeetTheEBoard data={profiles} />
       <Contact />

@@ -5,11 +5,16 @@ import Footer from "@/components/Footer";
 import AboutUsII from "@/components/about/AboutUsII";
 import AboutUsIII from "@/components/about/AboutUsIII";
 import AboutUsIV from "@/components/about/AboutUsIV";
+import Head from 'next/head';
+
 
 export default function AboutUs() {
   return (
     <div>
       <NavBar />
+      <Head>
+        <title>About Us — The Lantern</title> // Tab Title
+      </Head>
       <Header title="About Us"/>
       <AboutUsII />
       <AboutUsIII />
