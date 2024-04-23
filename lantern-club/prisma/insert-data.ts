@@ -3,6 +3,7 @@ import { EventType } from "@/types/event";
 import { ProfileType } from "@/types/profile";
 import { FeaturedMagType } from "@/types/featuredmag"
 
+
 async function handleAddEvent(eventData: EventType) {
   return await prisma.event.create({ data: eventData });
 }

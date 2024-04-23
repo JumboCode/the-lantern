@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import { handleDeleteFeaturedMag } from '../../../prisma/delete-data';
 
 const FileDrop = () => {
         const [fileList, setFileList] = useState([]);
         const [currentImage, setCurrentImage] = useState('');
 
         
-        const handleFeatureMag = async () => {
+        const handleFeatureMag = async (newFeatured) => {
           const url = `/api/content/magazine/featuredmag`;
 
           try {
             // TODO: change this later
             const data = {
-              cloudURL : `https://placehold.co/400.png`
+              cloudURL : newFeatured
             };
 
             const response = await fetch(url, {
@@ -25,6 +26,7 @@ const FileDrop = () => {
             });
 
             // const result = await response.json();
+            console.log("getting result...")
             console.log(response.data);
             // onClose();
             // window.location.reload();
@@ -37,6 +39,7 @@ const FileDrop = () => {
                 const fetchFileList = async () => {
                 try {
                         const response = await axios.get('/api/content/magazine/');
+                        // const featuredResponse = await axios.get('/api/content/magazine/');
                         setFileList(response.data.urls);
                         if (response.data.urls.length > 0) {
                           // console.log("HAVE U EVER MET A DATA?");
@@ -57,8 +60,12 @@ const FileDrop = () => {
         }, []);
 
         const handleImageChange = (event) => {
-                handleFeatureMag();
-                setCurrentImage(event.target.value);
+                console.log(`image: ${event.target.value}`);
+                // TODO: remove other featured mag
+                // handleDeleteFeaturedMag();
+                handleFeatureMag(event.target.value);
+                
+                // setCurrentImage(event.target.value);
         };
 
         

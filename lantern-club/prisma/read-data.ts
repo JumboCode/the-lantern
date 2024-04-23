@@ -6,6 +6,11 @@ async function handleFetchEvents() {
   return responseData;
 }
 
+async function handleFetchFeaturedMag() {
+  const responseData = await prisma.featuredMag.findMany();
+  return responseData;
+}
+
 // gets all profiles from the profiles model in mongodb
 
 async function handleFetchProfiles() {
@@ -24,4 +29,4 @@ async function fetchEventbyID(eventId: string) {
   // console.log(event);
 }
 
-export { fetchEventbyID, handleFetchEvents, handleFetchProfiles };
+export { fetchEventbyID, handleFetchFeaturedMag, handleFetchEvents, handleFetchProfiles };
