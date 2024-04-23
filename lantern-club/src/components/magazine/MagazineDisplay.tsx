@@ -52,11 +52,11 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
       
       return (
         <div>
-            <div className="yellow-gradient -mt-20 py-40 px-20 w-full p-20">
+            <div className="yellow-gradient -mt-20 py-40  px-2 md:px-20 w-full p-20">
                 <div className="flex gap-10 md:text-8xl text-6xl">
                     <p style={headerFont}>Magazine Issues</p>
                     {session?.user.isAdmin && (
-                    <button className="font-nunito underline text-2xl ml-7 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleAdminView}>
+                    <button className="font-nunito underline text-2xl cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleAdminView}>
                         edit
                     </button>
                     )}
@@ -66,15 +66,14 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 
                 <div className="bg-gray-700 rounded-3xl py-20 min-h-[575px] flex justify-center items-center">
                     {currentImage && (
-                        <div className="flex justify-center items-center w-full h-full">
+                        <div className="flex justify-center items-center w-full">
                             <Link href={currentImage}>
-                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ width: '80vw'}} />
+                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ maxWidth: '100%', height: 'auto', width: '80vw' }} />
                             </Link>
-
-
                         </div>
                     )}
                 </div>
+
             </div> 
             
             {/* triangle man */}
@@ -100,8 +99,8 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                                     <li key={index}>
 
                                         {/* gets rid of the file extension */}
-                                        <div className="flex pt-5 ">
-                                            <Link className="w-82 md:w-96 text-lg hover:underline" href={url} style={{fontWeight: 'normal'}}>
+                                        <div className="flex pt-5 align-bottom">
+                                            <Link className="w-60 hover:underline" href={url} target="_blank" rel="noopener noreferrer" style={{fontWeight: 'normal'}}>
                                                 <span style={{transition: 'all 0.3s ease', fontWeight: 'bold', textDecoration: 'none'}}>
                                                     {fileName}
                                                 </span>
@@ -114,7 +113,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                         </ul>
                     </div>
                    {/* image side */}
-                    <div className="px-20 flex justify-center items-center">
+                   <div className="flex justify-center items-center">
                         <div>
                             <Image
                                 src={"/images/bluelatern.png"}
@@ -125,6 +124,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                             />
                         </div>
                     </div>
+
 
                     
                 </div>
