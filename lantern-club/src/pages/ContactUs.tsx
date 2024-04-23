@@ -22,7 +22,7 @@ export default function ContactUs() {
     <> 
       <NavBar />
       <Head>
-        <title>Contact Us — The Lantern</title> // Tab Title
+        <title>Contact Us — The Lantern</title>
       </Head>
       <Header title="Contact Us" />
       <MeetTheEBoard data={profiles} />

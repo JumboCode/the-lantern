@@ -39,7 +39,7 @@ export default function Events() {
     <div>
       <NavBar />
       <Head>
-        <title>Events — The Lantern</title> // Tab Title
+        <title>Events — The Lantern</title> 
       </Head>
       <Header title="Events"/>
       <EventsI 
