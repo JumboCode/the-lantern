@@ -22,20 +22,20 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
 
   return (
       <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-50">
-        <div className="w-[700px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+        <div className="w-[700px] flex flex-col orange-border border-4 rounded-3xl bg-white">
           <button
             className="text-gray text-xl place-self-end mr-5 mt-2"
             onClick={() => onClose()}
           >
             x
           </button>
-          <div className="px-5 flex flex-col overflow-y-scroll">
+          <div className="px-5 flex flex-col">
             <h2 className="text-5xl font-coolvetica">{event.name}</h2>
-            <h2 className="mt-5 font-nunito-bold text-xl">When:</h2>
+            <h2 className="mt-5 font-nunitobold text-xl">When:</h2>
             <text className="text-lg font-nunito">{event.date.toString()}</text>
-            <h2 className="mt-5 font-nunito-bold text-xl">Where:</h2>
+            <h2 className="mt-5 font-nunitobold text-xl">Where:</h2>
             <text className="text-lg font-nunito">{event.location}</text>
-            <h2 className="mt-5 font-nunito-bold text-xl">
+            <h2 className="mt-5 font-nunitobold text-xl">
               Event Description:
             </h2>
             <text className="text-lg font-nunito">{event.description}</text>
