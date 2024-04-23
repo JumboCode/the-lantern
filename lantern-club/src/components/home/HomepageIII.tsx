@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Buttonv2 from "../Buttonv2";
 // import Poster from "../../images/submit-poster.png";
 
 export default function HomepageIII() {
@@ -17,30 +18,30 @@ export default function HomepageIII() {
         fontSize: "90px",
         lineHeight: "1",
     };
-    const handleButtonClick = () => {
-        // TODO
-        console.log('Button clicked!');
+    const openForm = () => {
+        console.log('Form opened!');
       };
 
     return (
         <div>
-            <div className="-mt-20 h-20 w-full" style={triangleStyle} id="triangle"></div>
-            <div className="orange-gradient -mt-20 pt-20 w-full flex flex-col md:grid md:grid-cols-2 gap-4 p-20 justify-center items-center">
+            {/* <div className="-mt-20 h-20 w-full" style={triangleStyle} id="triangle"></div> */}
+            <div className="orange-gradient -mt-20 pb-40 pt-20 w-full flex flex-col md:grid md:grid-cols-2 gap-4 p-20 justify-center items-center"  id="pentagon">
                 {/* text side */}
-                <div className="px-4 flex flex-col text-center justify-center items-start md:text-left">
+                <div className="px-4 flex mt-12 flex-col text-center justify-center items-start md:text-left">
                     <p style={headerFontStyle}>
                         Submit your work!
                     </p>
                     <p className="py-5 font-nunito text-xl">
-                        Did you write a paper for an STS course that you’re passionate about? Or do you have an idea that you’re excited to share? Submit your work to The Lantern Magazine and join the conversation! We invite essays, opinion pieces, book reviews, and research.
+                        Did you write a paper for an STS course that you're passionate about? Or do you have an idea that you're excited to share? Submit your work to The Lantern Magazine and join the conversation! We invite essays, opinion pieces, book reviews, and research.
                     </p>
-                    {/* <button
-                        style={buttonStyle}
-                        className="hover:underline flex items-center justify-center"
-                    >
-                        Submit
-                    </button> */}
-                    {/* <Buttonv2 text="Submit" action={handleButtonClick} color="blue" width="w-40" /> */}
+                    <a href="http://forms.gle/JP6arAGa9cKE48Pv9" target="_blank" rel="noopener">
+                    <Buttonv2
+                  text="Submit Work"
+                  action={openForm}
+                  color="blue"
+                  width="w-40"
+                />
+                </a>
                 </div>
 
                 {/* image side */}
@@ -56,10 +57,8 @@ export default function HomepageIII() {
                     </div>
                 </div>
             </div>
-
-            <div className="h-20 w-full flex-1 mellow-yellow" id="triangle">
                 {/* Additional content here */}
-            </div>
+            
         </div>
     );
 }

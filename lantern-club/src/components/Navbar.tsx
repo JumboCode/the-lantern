@@ -13,12 +13,23 @@ export default function NavBar() {
 
   return (
     <div className="w-screen">
+<<<<<<< HEAD
       <nav className="flex justify-between items-center text-lg font-kiona">
         <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-5">
           <Link href="/" className="hover:underline">
             <Image src={"/images/lantern-logo-blue.png"} height={91} width={91} alt="lantern logo" layout="intrinsic" />
           </Link>
         </div>
+=======
+        <nav
+          className="flex justify-between items-center text-lg font-kiona"
+        >
+          <div className="pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-5">
+            <Link href="/" className="hover:underline">
+              <Image src={"/images/lantern-logo-blue.png"} height={91} width={91} alt="lantern logo"layout="intrinsic"/>
+            </Link>
+          </div>
+>>>>>>> 6beed3e1160e01b6f98ead19379aec9f9f76e74c
 
         {/* Hamburger menu icon */}
         <div className="md:hidden flex items-center px-10">
@@ -39,28 +50,42 @@ export default function NavBar() {
               About Us
             </Link>
           </li>
+
           <li>
             <Link href="/Events" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
               Events
             </Link>
           </li>
+
           <li>
             <Link href="/Magazine" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
               Magazine
             </Link>
           </li>
+          
           <li>
             <Link href="/Resources" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
               Resources
             </Link>
           </li>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6beed3e1160e01b6f98ead19379aec9f9f76e74c
           <li>
             <Link href="/ContactUs" className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
               Contact Us
             </Link>
           </li>
+<<<<<<< HEAD
         </ul>
       </nav>
+=======
+
+          </ul>
+
+        </nav>
+>>>>>>> 6beed3e1160e01b6f98ead19379aec9f9f76e74c
     </div>
   );
 }

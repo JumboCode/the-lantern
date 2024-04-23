@@ -48,7 +48,7 @@ export default function Events() {
         handleEditButtonClick={handleEditButtonClick}
         events={events}
       />
-      <Footer showAdminLogin={false} />
+      <Footer showAdminLogin={true} />
     </div>
   );
 }

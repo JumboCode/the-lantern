@@ -26,6 +26,8 @@ export default async function handler(
       break;
     case "PATCH":
       const form = new IncomingForm();
+      // console.error(form)
+
       form.parse(req, async (err: any, fields: Fields, files: Files) => {
         if (err) {
           console.error("Formidable parse error:", err);
@@ -34,6 +36,13 @@ export default async function handler(
         }
 
         try {
+          let url = Array.isArray(fields.imageURL) ? fields.imageURL[0] : fields.imageURL ?? "" 
+
+          // Uploading the cover photo if present
+          if (files.coverPhoto && Array.isArray(files.coverPhoto)) {
+            url = await uploadFileToS3(files.coverPhoto[0], "images/events");
+          } 
+
           // `fields` comes from parsing the form data and could be string, string[], or undefined
           const updateData: EventType = {
             name: Array.isArray(fields.name) ? fields.name[0] : fields.name ?? "",
@@ -43,20 +52,8 @@ export default async function handler(
             time: Array.isArray(fields.time) ? fields.time[0] : fields.time ?? "",
             host: Array.isArray(fields.host) ? fields.host[0] : fields.host ?? "",
             isPast: Array.isArray(fields.isPast) ? fields.isPast[0] === 'true' : !!fields.isPast,
+            imageURL: url
           };
-    
-          // Uploading the cover photo if present
-          if (files.coverPhoto && Array.isArray(files.coverPhoto)) {
-            const formidableFile: File = files.coverPhoto[0];
-        
-            // Convert the formidable file object to match the UploadFile structure
-            const id = Array.isArray(req.query.id) ? req.query.id[0] : req.query.id;
-            await uploadFileToS3(formidableFile, "images/events", id);
-
-            const updatedEvent = await handleUpdateEvent(id, {...updateData, imageURL: `https://thelantern.s3.amazonaws.com/images/events/${id}`});
-            res.status(200).json(updatedEvent);
-            return
-          }
       
           const updatedEvent = await handleUpdateEvent(id, updateData);
           res.status(200).json(updatedEvent);

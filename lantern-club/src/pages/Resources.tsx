@@ -12,7 +12,7 @@ export default function Resources() {
       <Header title="Resources"/>
       <ResourcesII />
       <ResourcesIII />
-      <Footer showAdminLogin={true} />
+      <Footer showAdminLogin={false} />
     </>
   );
 }

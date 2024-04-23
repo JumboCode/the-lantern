@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { ProfileType } from '@/types/profile';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties } from 'react'; // Import CSSProperties
 
 interface CardProps {
@@ -31,9 +33,11 @@ const Card = ({ profile, color, action, isEditingView }: CardProps) => {
         <div className={`${color} shadow-xl text-center`} style={cardStyle}>
             {isEditingView &&
             <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
-                <button onClick={action}>
-                    <Image src="/images/pencil.png" height={20} width={20} alt="pencil edit icon" />
-                </button>
+                <FontAwesomeIcon
+                icon={faPen}
+                onClick={action}
+                className="cursor-pointer text-[#000000] relative transition-all duration-500 hover:text-[#FFFFFF]"
+                />
             </div>
             }
             
@@ -48,7 +52,7 @@ const Card = ({ profile, color, action, isEditingView }: CardProps) => {
             </div>
             <div className="relative flex-grow w-full" style={{ minHeight: '200px' }}>
                 <Image
-                    src={profile.pictureURL ? profile.pictureURL : "https://placehold.co/400.png"}
+                    src={profile.pictureURL}
                     alt="Profile image"
                     layout="fill"
                     objectFit="cover"
