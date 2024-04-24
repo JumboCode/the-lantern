@@ -6,6 +6,8 @@ import MagazineAdmin from "@/components/magazine/MagazineAdmin";
 import MagazineDisplay from "@/components/magazine/MagazineDisplay";
 import Header from "@/components/Header";
 import axios from 'axios';
+import Head from 'next/head';
+
 // import { useSession } from 'next-auth/react';
 
 export default function Magazine() {
@@ -38,6 +40,9 @@ export default function Magazine() {
   return (
     <div>
       <NavBar />
+      <Head>
+        <title>Magazine — The Lantern</title>
+      </Head>
       <Header title='Magazine'/>
         <>
         {magazineList ? (
