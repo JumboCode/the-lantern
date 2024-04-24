@@ -11,7 +11,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
 
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState<string | null>(null);
 
   const headerFont = {
         fontFamily: 'coolvetica',
@@ -45,7 +45,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
           } else {
             alert('Failed to delete the file');
           }
-          setShowConfirmModal(false);
+          setShowConfirmModal(null);
         } catch (error) {
           console.error('Error deleting the file:', error);
           alert('Error deleting the file');
@@ -79,23 +79,21 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                           {/* gets rid of the file extension */}
                           <div className="flex pt-5 align-bottom">
                           <a className="w-80 md:w-96 font-bold" href={url} target="_blank">{fileName}</a>
-                          <button onClick={() => setShowConfirmModal(true)
+                          <button onClick={() => setShowConfirmModal(keyName)
                           }
                           >                            
                              <div className="svg-container hover:underline decoration-orange-400" >
                             
                               <FontAwesomeIcon
                                 icon={faTrashCan} 
-                                width={100}
-                                height={100}
-                                size="2x"
-                                onClick={() => setShowConfirmModal(true)}
+                                width={24}
+                                height={24}
                                 className="cursor-pointer relative transition-all duration-300 hover:text-[#4279BC]"
                               />
 
                               </div>
                               </button>
-                              <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={() => FileDelete(keyName)} />
+                              <ConfirmModal isVisible={showConfirmModal === keyName} onClose={() => {setShowConfirmModal(null)}} onDelete={() => FileDelete(keyName)} />
                           </div>
                           </li>
                       );
