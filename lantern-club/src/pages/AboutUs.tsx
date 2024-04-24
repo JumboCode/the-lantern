@@ -13,7 +13,7 @@ export default function AboutUs() {
     <div>
       <NavBar />
       <Head>
-        <title>About Us — The Lantern</title>
+        <title>About Us | The Lantern</title>
       </Head>
       <Header title="About Us"/>
       <AboutUsII />
