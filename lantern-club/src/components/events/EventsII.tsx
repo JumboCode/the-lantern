@@ -3,12 +3,14 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { EventType } from "@/types/event";
+import ConfirmModal from "../ConfirmModal";
 
 type EventsIIProps = {
   isAdminEdit: boolean;
   handleEditButtonClick: () => void;
   events: EventType[];
 };
+
 
 export default function EventsII({
   events,
@@ -30,6 +32,8 @@ export default function EventsII({
     height: "100%",
   };
 
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+
   const handleDelete = async (id: string) => {
     const url = `/api/content/events/${id}`;
     try {
@@ -47,15 +51,17 @@ export default function EventsII({
       const deletedEvent = await response.json();
       console.log("Deleted profile:", deletedEvent);
       window.location.reload();
+      setShowConfirmModal(false);
     } catch (error) {
       console.error("Failed to delete event:", error);
     }
   };
 
+  
   // ********* IS ADMIN EDIT BOOLEAN ********
   return (
     <div>
-      <div className="-mt-20 py-20 px-20 blue2-gradient" style={background}>
+      <div className="-mt-20 py-40 px-20 blue2-gradient" style={background}>
         <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl"}>
         {isAdminEdit ? "Delete Past Events" : "Past Events"}
         </h1>
@@ -83,6 +89,7 @@ export default function EventsII({
                                   layout="fill"
                                   objectFit="cover"
                                   alt="Event image"
+                                  className="rounded-xl overflow-hidden"
                               />
                     </div>       
                     {isAdminEdit && (
@@ -92,9 +99,10 @@ export default function EventsII({
                           width={100}
                           height={100}
                           size="2x"
-                          onClick={() => handleDelete(oneEvent.id)}
-                          className="cursor-pointer"
+                          onClick={() => setShowConfirmModal(true)}
+                          className="cursor-pointer relative transition-all duration-300 hover:text-orange-400"
                         />
+                        <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={() => oneEvent.id && handleDelete(oneEvent.id)} />
                       </div>
                     )}
                   </div>

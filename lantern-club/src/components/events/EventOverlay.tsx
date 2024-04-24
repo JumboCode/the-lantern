@@ -3,6 +3,7 @@ import React from "react";
 import Buttonv2 from "../Buttonv2";
 
 import { EventType } from "@/types/event";
+import ConfirmModal from "../ConfirmModal";
 
 interface OverlayProps {
   isVisible: boolean;
@@ -12,12 +13,14 @@ interface OverlayProps {
 }
 
 interface FormData {
+  isPast: boolean;
   name: string;
   date: string;
   time: string;
   host: string;
   location: string;
   description: string;
+  imageURL: string;
   coverPhoto: File | null; 
 }
 
@@ -30,12 +33,14 @@ const EventOverlay = ({
   if (!isVisible) return null;
 
   const [formData, setFormData] = useState<FormData>({
+    isPast: typeof event?.isPast === 'string' ? event.isPast === 'true' : !!event?.isPast,
     name: event?.name || '', 
     date: event?.date || '', 
     time: event?.time || '',
     host: event?.host || '', 
     location: event?.location || '', 
     description: event?.description || '',
+    imageURL: event?.imageURL || '',
     coverPhoto: null,
   });
 
@@ -102,11 +107,13 @@ const EventOverlay = ({
       formDataWithPhoto.append('location', updatedEvent.location);
       formDataWithPhoto.append('description', updatedEvent.description);
       formDataWithPhoto.append('host', updatedEvent.host);
+      formDataWithPhoto.append('imageURL', updatedEvent.imageURL);
       formDataWithPhoto.append('isPast', updatedEvent.isPast.toString() || 'false');
 
       if (formData.coverPhoto) {
           formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
-      }            
+      }
+
 
       const response = await fetch(url, {
         method: 'PATCH',
@@ -125,32 +132,36 @@ const EventOverlay = ({
     }
   };
 
-  const handleAdd = async () => {
-    const url = `/api/content/events/`;
+  const handleAdd = async (updatedEvent: EventType) => {
+    const url = "/api/content/events/";
 
     try {
 
-      const data = {
-        name: formData.name, 
-        time: formData.time, 
-        date: formData.date, 
-        location: formData.location, 
-        description: formData.description,
-        host: formData.host,
-        imageURL: `https://placehold.co/400.png`,
-        isPast: false
+      const formDataWithPhoto = new FormData();
+      formDataWithPhoto.append('name', updatedEvent.name);
+      formDataWithPhoto.append('time', updatedEvent.time );
+      formDataWithPhoto.append('date', updatedEvent.date);
+      formDataWithPhoto.append('location', updatedEvent.location);
+      formDataWithPhoto.append('description', updatedEvent.description);
+      formDataWithPhoto.append('host', updatedEvent.host);
+      formDataWithPhoto.append('imageURL', updatedEvent.imageURL);
+      formDataWithPhoto.append('isPast', updatedEvent.isPast.toString() || 'false');
+
+      if (formData.coverPhoto) {
+          formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
       }
 
       const response = await fetch(url, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
+        body: formDataWithPhoto
       });
 
-      const result = await response.json();
-      console.log(result);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      // const result = await response.json();
+      // console.log(result);
       onClose();
       window.location.reload();
     } catch (error) {
@@ -158,10 +169,7 @@ const EventOverlay = ({
     }
   };
 
-  // Sets isPast to true for the current event
-  // const handleIsPast = async () => {
-  //   setFormData(isPast);
-  // };
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   if (type == "Add Event") {
     return (
@@ -236,10 +244,23 @@ const EventOverlay = ({
                   onChange={handleChange}
                 ></textarea>
               </div>
+              <div>
+                <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
+                <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
+                {filePreview && <img src={filePreview} alt="Cover Photo Preview" className="mt-2 mb-2" style={{ maxWidth: '100%', height: 'auto' }} />}
+
+                <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                ref={fileInputRef}
+                onChange={handleCoverPhotoChange} 
+                />
+              </div>
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
                   text="Save"
-                  action={handleAdd}
+                  action={()=> handleAdd(formData)}
                   color="blue"
                   width="w-40"
                 />
@@ -348,21 +369,24 @@ const EventOverlay = ({
                 onChange={handleCoverPhotoChange} 
                 />
               </div>
-              <div className="flex justify-center text-md space-x-7 py-5">
+              <div className="flex justify-center justify-items-center text-md py-5">
                 <Buttonv2
                   text="Save"
-                  action={() => handleEdit(formData)}
+                  action={() => handleEdit({ ...formData, isPast: event?.isPast ?? false })}
                   color="blue"
                   width="w-40"
                 />
                 <a
                 href="#"
-                className="font-nunito underline text-l mt-3 ml-3"
+                className="font-nunito underline text-l mt-3 mx-7"
                 onClick={() => handleEdit({ ...formData, isPast: true })}
                 >
                   Move to Past Events
                 </a>
-                <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>
+                <a href="#" className="font-nunito underline text-l mt-3" onClick={() => setShowConfirmModal(true)}>
+                    Delete
+                </a>
+                <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={handleDelete} />
               </div>
             </div>
           </div>
@@ -374,7 +398,4 @@ const EventOverlay = ({
 };
 
 export default EventOverlay;
-function setFilePreview(result: string) {
-  throw new Error("Function not implemented.");
-}
 

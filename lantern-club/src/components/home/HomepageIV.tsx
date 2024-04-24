@@ -15,8 +15,7 @@ export default function HomepageIV() {
 
   return (
         <div>
-    <div className="-mt-20 h-20 w-full flex-1 mellow-yellow" id="triangle"> </div>
-    <div className="w-full blue2-gradient flex flex-col md:grid md:grid-cols-2 -mt-20 pb-20 pt-20 md:pt-0">
+    <div className="w-full blue2-gradient flex flex-col md:grid md:grid-cols-2 -mt-20 pb-20 pt-20 md:pt-0" id="pentagon2">
       {/* Image Column */}
       <div className="flex justify-center px-4 md:px-20 md:pt-32">
         <div className="mt-6">
