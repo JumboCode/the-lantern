@@ -82,31 +82,36 @@ export default function Contact() {
         <form onSubmit={onSubmit} ref={formRef}>
           <div className="flex flex-col border-contact-g1 border-4 mx-16 mb-16 mt-10 px-7 h-contact bg-gradient-to-b from-contact-g1 to-contact-g2 rounded-3xl">
             <div>
-              <h2 className="mt-5 text-nunito text-lg">Name</h2>
-              <input
-                required
-                type="text"
-                name="name"
-                className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 outline-gc2 h-8 contact-input rounded-3xl"
-              ></input>
+              <h2 className="mt-5 font-nunito text-lg">Name</h2>
+              <div className="w-full">
+                <input
+                  required
+                  type="text"
+                  name="name"
+                  className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 h-8 contact-input rounded-3xl w-full max-w-full"
+                ></input>
+              </div> 
+            </div>
+
+            <div className="w-full">
+              <h2 className="mt-5 font-nunito text-lg">Email</h2>
+              <div >
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 h-8 contact-input rounded-3xl w-full max-w-full"
+                ></input>
+              </div>
+              
             </div>
 
             <div>
-              <h2 className="mt-5 text-nunito text-lg">Email</h2>
-              <input
-                required
-                type="email"
-                name="email"
-                className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 outline-gc2 h-8 contact-input rounded-3xl"
-              ></input>
-            </div>
-
-            <div>
-              <h2 className="mt-5 text-nunito text-lg">Message</h2>
+              <h2 className="mt-5 font-nunito text-lg">Message</h2>
               <textarea
                 required
                 name="message"
-                className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 contact-input-height rounded-3xl"
+                className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 contact-input-height rounded-2xl h-full max-h-full resize-none"
               ></textarea>
               <br></br>
             </div>

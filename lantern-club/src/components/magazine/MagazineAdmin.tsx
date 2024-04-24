@@ -71,9 +71,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
         return (
             <div className="-mt-20 p-20 pt-40 w-full yellow-gradient flex gap-5 flex-col">
                     <p style={headerFont}>Edit magazine issues</p>
-                  
                   <div className =" my-7">
-
                     <p style={subheaderFont}>Featured Issue</p>
                     <FileDrop />
                   </div>
@@ -99,7 +97,6 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                           }
                           >                            
                              <div className="svg-container hover:underline decoration-orange-400" >
-                                  
                                   <svg 
                                       className="w-10 h-10"                                      
                                       viewBox="0 0 32 32" 
@@ -113,8 +110,6 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                                           onMouseEnter={() => handleMouseEnter(index)}
                                           onMouseLeave={() => handleMouseLeave(index)}
                                       />
-                                      
-
                                   </svg>
                               </div>
                               </button>
