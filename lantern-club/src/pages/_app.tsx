@@ -11,7 +11,7 @@ export default function App({
     <SessionProvider session={session}>
       <Head>
           <title>The Lantern</title>
-          <link rel="icon" href="/images/lantern-tab-icon.png" />
+          <link rel="icon" href="/images/blue-circle-logo.png" />
       </Head>
       <Component {...pageProps} />
     </SessionProvider>
