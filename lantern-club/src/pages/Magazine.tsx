@@ -41,7 +41,7 @@ export default function Magazine() {
     <div>
       <NavBar />
       <Head>
-        <title>Magazine — The Lantern</title>
+        <title>Magazine | The Lantern</title>
       </Head>
       <Header title='Magazine'/>
         <>

@@ -12,7 +12,7 @@ export default function Resources() {
     <>
       <NavBar />
       <Head>
-        <title>Resources — The Lantern</title>
+        <title>Resources | The Lantern</title>
       </Head>
       <Header title="Resources"/>
       <ResourcesII />
