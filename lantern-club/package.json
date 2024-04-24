@@ -33,7 +33,6 @@
     "nodemailer": "^6.9.9",
     "react": "^18.2.0",
     "react-dom": "latest",
-    "react-icons": "^5.1.0",
     "react-intersection-observer": "^9.8.1",
     "react-multi-carousel": "^2.8.4",
     "uuid": "^9.0.1"
