@@ -57,9 +57,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
         return (
             <div className="-mt-20 p-20 pt-40 w-full yellow-gradient flex gap-5 flex-col">
                     <p style={headerFont}>Edit magazine issues</p>
-                  
                   <div className =" my-7">
-
                     <p style={subheaderFont}>Featured Issue</p>
                     <FileDrop />
                   </div>
@@ -86,14 +84,14 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                           >                            
                              <div className="svg-container hover:underline decoration-orange-400" >
                             
-                        <FontAwesomeIcon
-                          icon={faTrashCan} 
-                          width={100}
-                          height={100}
-                          size="2x"
-                          onClick={() => setShowConfirmModal(true)}
-                          className="cursor-pointer relative transition-all duration-300 hover:text-[#4279BC]"
-                        />
+                              <FontAwesomeIcon
+                                icon={faTrashCan} 
+                                width={100}
+                                height={100}
+                                size="2x"
+                                onClick={() => setShowConfirmModal(true)}
+                                className="cursor-pointer relative transition-all duration-300 hover:text-[#4279BC]"
+                              />
 
                               </div>
                               </button>

@@ -6,6 +6,8 @@ import { useState } from "react";
 import { EventType } from "@/types/event";
 import EventsI from "@/components/events/EventsI";
 import EventsII from "@/components/events/EventsII";
+import Head from 'next/head';
+
 
 // new code w/ useState and useEffect
 
@@ -36,6 +38,9 @@ export default function Events() {
   return (
     <div>
       <NavBar />
+      <Head>
+        <title>Events — The Lantern</title> 
+      </Head>
       <Header title="Events"/>
       <EventsI 
         isAdminEdit={isAdminEdit} 

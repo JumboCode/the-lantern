@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import Buttonv2 from "../Buttonv2";
 import { EventType } from "@/types/event";
+import AddtoCalendar from "./AddtoCalendar";
+
 interface OverlayProps {
   isVisible: boolean;
   onClose: () => void;
@@ -12,34 +14,28 @@ interface OverlayProps {
 const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
   if (!isVisible) return null;
 
-  const [formData, setFormData] = useState({ name: "", email: "" });
-  const handleChange = (event: any) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-  };
+  const [showAddModal, setShowAddModal] = useState(false);
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    alert(`Name: ${formData.name}, Email: ${formData.email}`);
-  };
+  const handleClick = () => {
+    console.log("add to calendar clicked!")
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
       <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-50">
-        <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+        <div className="w-[700px] flex flex-col orange-border border-4 rounded-3xl bg-white">
           <button
             className="text-gray text-xl place-self-end mr-5 mt-2"
             onClick={() => onClose()}
           >
             x
           </button>
-          <div className="px-5 flex flex-col overflow-y-scroll">
+          <div className="px-5 flex flex-col">
             <h2 className="text-5xl font-coolvetica">{event.name}</h2>
-            <h2 className="mt-5 font-nunito-bold text-xl">When:</h2>
+            <h2 className="mt-5 font-nunitobold text-xl">When:</h2>
             <text className="text-lg font-nunito">{event.date.toString()}</text>
-            <h2 className="mt-5 font-nunito-bold text-xl">Where:</h2>
+            <h2 className="mt-5 font-nunitobold text-xl">Where:</h2>
             <text className="text-lg font-nunito">{event.location}</text>
-            <h2 className="mt-5 font-nunito-bold text-xl">
+            <h2 className="mt-5 font-nunitobold text-xl">
               Event Description:
             </h2>
             <text className="text-lg font-nunito">{event.description}</text>
@@ -52,37 +48,17 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
               />
             </div>
             <br></br>
-            <h2 className="text-4xl font-coolvetica">RSVP</h2>
-            <div>
-              <h2 className="mt-5 font-nunito text-md">Name</h2>
-              <input
-                className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
-                type="text"
-                id="name"
-                name="name"
-                onChange={handleChange}
-              ></input>
-            </div>
-            <div>
-              <h2 className="mt-5 font-nunito text-md">Email</h2>
-              <input
-                className="mt-2 p-3 w-full border-contact-g1 border-2 rounded-lg outline-gc2 h-8 contact-input"
-                type="text"
-                id="email"
-                name="email"
-                onChange={handleChange}
-              ></input>
-            </div>
-            <div className="flex justify-center text-md space-x-7 py-5">
+            <div className="flex justify-center text-md py-5">
               <Buttonv2
-                text="RSVP"
-                action={() => handleSubmit}
+                text="Add to Calendar"
+                action={() => setShowAddModal(true)}
                 color="blue"
-                width="w-40"
+                width="w-60"
               />
+              <AddtoCalendar isVisible={showAddModal} onClose={() => setShowAddModal(false)}></AddtoCalendar>
               <a
                 href="#"
-                className="font-nunito underline text-l mt-3 ml-3"
+                className="px-7 font-nunito underline text-l mt-3 ml-3"
                 onClick={onClose}
               >
                 Cancel
@@ -91,7 +67,6 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
           </div>
         </div>
       </div>
-    </form>
   );
 };
 
