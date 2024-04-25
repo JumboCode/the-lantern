@@ -22,10 +22,12 @@
   font-family: "NUNITO";
   src: url("../fonts/NunitoSans_10pt-Light.ttf");
 }
+
 @font-face {
   font-family: "NUNITO-REG";
   src: url("../fonts/NunitoSans_7pt-Regular.ttf");
 }
+
 @font-face {
   font-family: "NUNITO-LIGHT";
   src: url("../fonts/Nunito-VariableFont_wght.ttf");
@@ -33,13 +35,14 @@
 
 @font-face {
   font-family: "NUNITOBOLD";
-  src: url("../fonts/NunitoSans_10pt_Condensed-Bold.ttf");
+  src: url("../fonts/NunitoSans_7pt-SemiBold.ttf");
 }
 
 @font-face {
   font-family: "COOLVETICA";
   src: url("../fonts/coolvetica-condensed.ttf");
 }
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -84,15 +87,14 @@ body {
 } */
 
 .crazy-gradient {
-  background-image: linear-gradient(
-    to right,
-    #6180b8,
-    #4e78c8,
-    #9a9789,
-    #bba56d,
-    #e3b54c
-  );
+  background-image: linear-gradient(to right,
+      #6180b8,
+      #4e78c8,
+      #9a9789,
+      #bba56d,
+      #e3b54c);
 }
+
 .button-blue {
   color: #4279bc;
 }
@@ -102,15 +104,15 @@ body {
 }
 
 #pentagon {
- clip-path: polygon(0 0, 50% 11%, 100% 0, 100% 89%, 50% 100%, 0 89%);
+  clip-path: polygon(0 0, 50% 11%, 100% 0, 100% 89%, 50% 100%, 0 89%);
 }
 
 #pentagon2 {
-        clip-path: polygon(0 0, 50% 12%, 100% 0, 100% 100%, 50% 100%, 0 100%);
+  clip-path: polygon(0 0, 50% 12%, 100% 0, 100% 100%, 50% 100%, 0 100%);
 }
-       
+
 #pentagon3 {
-        clip-path: polygon(0 0, 0 88%, 50% 100%, 100% 88%, 100% 0%);
+  clip-path: polygon(0 0, 0 88%, 50% 100%, 100% 88%, 100% 0%);
 }
 
 .button-blue {
@@ -128,6 +130,7 @@ body {
 .pale-yellow {
   background-color: #faebbe;
 }
+
 .pale-yellow-border {
   border-color: #faebbe;
 }
@@ -135,9 +138,11 @@ body {
 .mellow-yellow {
   background-color: #fecb66;
 }
+
 .contact-input {
   width: 300px;
 }
+
 .contact-input-height {
   height: 130px;
 }
@@ -166,4 +171,3 @@ body {
   scroll-snap-align: start;
   width: 100%;
 }
-
