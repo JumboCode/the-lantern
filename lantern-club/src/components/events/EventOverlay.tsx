@@ -4,6 +4,8 @@ import Buttonv2 from "../Buttonv2";
 
 import { EventType } from "@/types/event";
 import ConfirmModal from "../ConfirmModal";
+import extractFileKeyFromURL from "@/utils/extractFileKeyFromURL";
+import FileDelete from "@/utils/FileDelete";
 
 interface OverlayProps {
   isVisible: boolean;
@@ -112,6 +114,7 @@ const EventOverlay = ({
 
       if (formData.coverPhoto) {
           formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+          FileDelete(extractFileKeyFromURL(event.imageURL))
       }
 
 
@@ -144,7 +147,7 @@ const EventOverlay = ({
       formDataWithPhoto.append('location', updatedEvent.location);
       formDataWithPhoto.append('description', updatedEvent.description);
       formDataWithPhoto.append('host', updatedEvent.host);
-      formDataWithPhoto.append('imageURL', updatedEvent.imageURL);
+      formDataWithPhoto.append('imageURL', 'https://placehold.co/400.png');
       formDataWithPhoto.append('isPast', updatedEvent.isPast.toString() || 'false');
 
       if (formData.coverPhoto) {
