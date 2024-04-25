@@ -16,7 +16,7 @@ export default function HomepageI({title}:{title:string}){
                     <br></br> technology use and production</h1>
             </div>             */}
 
-                <div className="flex md:h-13 justify-center align-center bg-center bg-cover bg-no-repeat bg-[url('/images/background.png')] relative">
+                <div className="flex justify-center align-center bg-center bg-cover bg-no-repeat bg-[url('/images/background.png')] relative">
                   {/* <div className = "flex justify-between">
                     <img className="justify-self-start ml-20 h-lantern-pic" src={"/images/lantern.png"}/>
                     </div> */}
