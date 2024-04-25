@@ -58,8 +58,8 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                     <h1 className="font-coolvetica text-6xl md:text-8xl ml-12 flex items-end w-12/12">
                     Meet the E-Board
                     {session?.user.isAdmin && (
-                        <span className="font-nunito underline text-2xl ml-7 cursor-pointer transition-all duration-300 hover:text-orange-400" onClick={handleToggleEditView}>
-                        edit
+                        <span className="font-nunito underline text-2xl ml-8 mb-2 cursor-pointer transition-all duration-300 hover:text-orange-400" onClick={handleToggleEditView}>
+                        Edit
                         </span>
                     )}
                     {showEditView && (
