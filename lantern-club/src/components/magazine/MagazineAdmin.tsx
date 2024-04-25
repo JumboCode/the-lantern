@@ -86,8 +86,9 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                             
                               <FontAwesomeIcon
                                 icon={faTrashCan} 
-                                width={24}
-                                height={24}
+                                width={100}
+                                height={100}
+                                size='2x'
                                 className="cursor-pointer relative transition-all duration-300 hover:text-[#4279BC]"
                               />
 

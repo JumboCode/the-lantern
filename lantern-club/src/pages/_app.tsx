@@ -11,7 +11,7 @@ export default function App({
     <SessionProvider session={session}>
       <Head>
           <title>The Lantern</title>
-          <link rel="icon" href="/images/blue-circle-logo.png" />
+          {/* <link rel="icon" href="/images/blue-circle-logo.png" /> this is causing an issue where logos on pages either not show or different size */}
       </Head>
       <Component {...pageProps} />
     </SessionProvider>
