@@ -3,6 +3,9 @@ import React from "react";
 import Buttonv2 from "../Buttonv2";
 
 import { EventType } from "@/types/event";
+import ConfirmModal from "../ConfirmModal";
+import extractFileKeyFromURL from "@/utils/extractFileKeyFromURL";
+import FileDelete from "@/utils/FileDelete";
 
 interface OverlayProps {
   isVisible: boolean;
@@ -111,7 +114,9 @@ const EventOverlay = ({
 
       if (formData.coverPhoto) {
           formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+          FileDelete(extractFileKeyFromURL(event.imageURL))
       }
+
 
       const response = await fetch(url, {
         method: 'PATCH',
@@ -130,38 +135,44 @@ const EventOverlay = ({
     }
   };
 
-  const handleAdd = async () => {
-    const url = `/api/content/events/`;
+  const handleAdd = async (updatedEvent: EventType) => {
+    const url = "/api/content/events/";
 
     try {
 
-      const data = {
-        name: formData.name, 
-        time: formData.time, 
-        date: formData.date, 
-        location: formData.location, 
-        description: formData.description,
-        host: formData.host,
-        imageURL: `https://placehold.co/400.png`,
-        isPast: false
+      const formDataWithPhoto = new FormData();
+      formDataWithPhoto.append('name', updatedEvent.name);
+      formDataWithPhoto.append('time', updatedEvent.time );
+      formDataWithPhoto.append('date', updatedEvent.date);
+      formDataWithPhoto.append('location', updatedEvent.location);
+      formDataWithPhoto.append('description', updatedEvent.description);
+      formDataWithPhoto.append('host', updatedEvent.host);
+      formDataWithPhoto.append('imageURL', 'https://placehold.co/400.png');
+      formDataWithPhoto.append('isPast', updatedEvent.isPast.toString() || 'false');
+
+      if (formData.coverPhoto) {
+          formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
       }
 
       const response = await fetch(url, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
+        body: formDataWithPhoto
       });
 
-      const result = await response.json();
-      console.log(result);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      // const result = await response.json();
+      // console.log(result);
       onClose();
       window.location.reload();
     } catch (error) {
       console.error("Failed to add the event:", error);
     }
   };
+
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   if (type == "Add Event") {
     return (
@@ -252,7 +263,7 @@ const EventOverlay = ({
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
                   text="Save"
-                  action={handleAdd}
+                  action={()=> handleAdd(formData)}
                   color="blue"
                   width="w-40"
                 />
@@ -361,7 +372,7 @@ const EventOverlay = ({
                 onChange={handleCoverPhotoChange} 
                 />
               </div>
-              <div className="flex justify-center text-md space-x-7 py-5">
+              <div className="flex justify-center justify-items-center text-md py-5">
                 <Buttonv2
                   text="Save"
                   action={() => handleEdit({ ...formData, isPast: event?.isPast ?? false })}
@@ -370,12 +381,15 @@ const EventOverlay = ({
                 />
                 <a
                 href="#"
-                className="font-nunito underline text-l mt-3 ml-3"
+                className="font-nunito underline text-l mt-3 mx-7"
                 onClick={() => handleEdit({ ...formData, isPast: true })}
                 >
                   Move to Past Events
                 </a>
-                <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={handleDelete}>Delete</a>
+                <a href="#" className="font-nunito underline text-l mt-3" onClick={() => setShowConfirmModal(true)}>
+                    Delete
+                </a>
+                <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={handleDelete} />
               </div>
             </div>
           </div>

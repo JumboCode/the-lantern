@@ -59,11 +59,11 @@ body {
 } */
 
 .yellow-gradient {
-  background-image: linear-gradient(to bottom, #FAEBBE, #FECB66);
+  background-image: linear-gradient(to bottom, #faebbe, #fecb66);
 }
 
 .orange-gradient {
-  background-image: linear-gradient(to bottom, #F79838, #FECb66);
+  background-image: linear-gradient(to bottom, #f79838, #fecb66);
 }
 
 #triangle {
@@ -71,11 +71,11 @@ body {
 }
 
 .blue2-gradient {
-  background-image: linear-gradient(to bottom, #D5E1F3, #94BBE3);
+  background-image: linear-gradient(to bottom, #d5e1f3, #94bbe3);
 }
 
 .true-blue-gradient {
-  background-image: linear-gradient(to bottom, #4279BC, #94BBE3);
+  background-image: linear-gradient(to bottom, #4279bc, #94bbe3);
 }
 
 /* .blue-gradient {
@@ -84,15 +84,21 @@ body {
 } */
 
 .crazy-gradient {
-  background-image: linear-gradient(to right, #6180B8, #4E78C8, #9A9789, #BBA56D, #E3B54C);
-
+  background-image: linear-gradient(
+    to right,
+    #6180b8,
+    #4e78c8,
+    #9a9789,
+    #bba56d,
+    #e3b54c
+  );
 }
 .button-blue {
-  color: #4279BC; 
+  color: #4279bc;
 }
 
 #triangle {
-clip-path: polygon(50% 100%,0% 0%,100% 0%);
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
 }
 
 #pentagon {
@@ -101,48 +107,51 @@ clip-path: polygon(50% 100%,0% 0%,100% 0%);
 
 #pentagon2 {
         clip-path: polygon(0 0, 50% 12%, 100% 0, 100% 100%, 50% 100%, 0 100%);
-       }
+}
        
+#pentagon3 {
+        clip-path: polygon(0 0, 0 88%, 50% 100%, 100% 88%, 100% 0%);
+}
 
 .button-blue {
-  color: #4279BC; 
+  color: #4279bc;
 }
 
 .blue {
-  background-color: #4279BC; 
+  background-color: #4279bc;
 }
 
 .blue-border {
-  border-color: #94BBE3; 
+  border-color: #94bbe3;
 }
 
 .pale-yellow {
-  background-color: #FAEBBE;
+  background-color: #faebbe;
 }
 .pale-yellow-border {
-  border-color: #FAEBBE;
+  border-color: #faebbe;
 }
 
 .mellow-yellow {
-  background-color: #FECb66;
+  background-color: #fecb66;
 }
-.contact-input{
-width: 300px;
+.contact-input {
+  width: 300px;
 }
-.contact-input-height{
-  height:130px;
+.contact-input-height {
+  height: 130px;
 }
 
 .mellow-yellow-border {
-  border-color: #FECb66;
+  border-color: #fecb66;
 }
 
 .orange {
-  background-color: #F79838;
+  background-color: #f79838;
 }
 
 .orange-border {
-  border-color: #F79838;
+  border-color: #f79838;
 }
 
 .carousel {

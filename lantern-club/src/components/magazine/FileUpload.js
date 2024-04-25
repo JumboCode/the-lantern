@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Buttonv2 from '../Buttonv2';
 
-const FileUpload = ({ onUpload }) => {
+const FileUpload = () => {
   const fileInputRef = useRef(null);
   const [uploading, setUploading] = useState(false);
   const [fileUrl, setFileUrl] = useState('');
