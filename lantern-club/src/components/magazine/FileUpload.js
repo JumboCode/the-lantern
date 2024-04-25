@@ -67,8 +67,8 @@ const FileUpload = ({ onUpload }) => {
         </div>
       )}
         
-        <div> 
-          <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" />
+        <div style={{ display: 'flex', justifyContent: 'center' }}> 
+          <Buttonv2 text="Save" action={handleUpload} color="blue" width="w-48" />
         </div>
     </div>
   );
