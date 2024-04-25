@@ -19,6 +19,11 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
         fontWeight: 'bold',
 
       };
+      const handleUpload = (url: string) => {
+        // Handle the uploaded file URL here
+        console.log('Uploaded file URL:', url);
+        // You can perform any other actions with the uploaded file URL here
+      };
       
       const FileDelete = async (keyName: string) => {
         try {
@@ -111,8 +116,8 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                       })}
                   </ul>
 
-                  <FileUpload />
-                  <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" />
+                  <FileUpload onUpload={handleUpload}/>
+                  {/* <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" /> */}
               
            </div>   
             

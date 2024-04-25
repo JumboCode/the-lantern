@@ -68,7 +68,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                     {currentImage && (
                         <div className="flex justify-center items-center w-full">
                             <Link href={currentImage}>
-                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ maxWidth: '100%', height: 'auto', width: '40vw' }} />
+                                <iframe src={currentImage} className="w-full min-h-[575px] no-underline hover:underline" title="Selected" style={{ maxWidth: '100%', height: 'auto', width: '80vw' }} />
                             </Link>
                         </div>
                     )}
