@@ -16,16 +16,17 @@ export default function HomepageI({title}:{title:string}){
                     <br></br> technology use and production</h1>
             </div>             */}
 
-                <div className="flex h-13 justify-between bg-center bg-cover bg-no-repeat bg-[url('/images/background.png')]">
-                  <div className = "flex justify-between">
+                <div className="flex h-13 justify-center align-center bg-center bg-cover bg-no-repeat bg-[url('/images/background.png')]">
+                  {/* <div className = "flex justify-between">
                     <img className="justify-self-start ml-20 h-lantern-pic" src={"/images/lantern.png"}/>
-                    </div>
-                    <div>
-                    <h1 className="justify-self-center mt-40 text-6xl md:text-8xl font-kiona font-bold text-center">The Lantern</h1>
-                    <h1 className="justify-self-center mt-20 text-2xl md:text-4xl font-nunitolight text-center tracking-wide">A think-tank advocating socially responsible
+                    </div> */}
+                    <div className='flex flex-col col-1 '>
+                    <img className="flex text-center h-lantern-pic" src={"/images/text-logo.png"}/> 
+                    {/* <h1 className="justify-self-center mt-40 text-6xl md:text-8xl font-kiona font-bold text-center">The Lantern</h1> */}
+                    <h1 className="justify-self-center mt-20 text-2xl md:text-4xl font-nunitolight italic text-center tracking-wide">A think-tank advocating for socially responsible
                     <br></br> technology use and production</h1>
                     </div>
-                    <img className="justify-self-end mr-20 h-lantern-pic" src={"/images/lantern.png"}/>
+                    {/* <img className="justify-self-end mr-20 h-lantern-pic" src={"/images/lantern.png"}/> */}
 
             </div>  
 
