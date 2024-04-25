@@ -7,7 +7,7 @@ async function handleFetchEvents() {
 }
 
 async function handleFetchFeaturedMag() {
-  const responseData = await prisma.featuredMag.findMany();
+  const responseData = await prisma.featuredMag.findMany(); 
   return responseData;
 }
 
