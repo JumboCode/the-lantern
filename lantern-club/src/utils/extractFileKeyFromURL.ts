@@ -1,5 +1,5 @@
 
-const extractFileKeyFromURL = (url: URL) => {
+const extractFileKeyFromURL = (url: string) => {
     // Create a URL object to easily access parts of the URL.
     const urlObj = new URL(url);
   

@@ -3,6 +3,8 @@ import React from 'react';
 import Buttonv2 from "../Buttonv2";
 import { ProfileType } from '@/types/profile';
 import ConfirmModal from "../ConfirmModal";
+import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
+import FileDelete from '@/utils/FileDelete';
 
 interface OverlayProps {
     isVisible: boolean,
@@ -43,7 +45,11 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
 
     
     const handleEdit = async () => {
-        
+        if (!profile?.id) {
+            console.error("Event ID is required to edit.");
+            return;
+        }
+    
         const url = `/api/content/profiles/${profile?.id}`;    
         try {
             const formDataWithPhoto = new FormData();
@@ -56,6 +62,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
 
             if (formData.coverPhoto) {
                 formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+                FileDelete(extractFileKeyFromURL(profile.pictureURL))
             }            
 
             const response = await fetch(url, {
@@ -121,6 +128,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     
 
     const handleAdd = async () => {
+
         const url = '/api/content/profiles/'; 
         try {
             const formDataWithPhoto = new FormData();
