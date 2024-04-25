@@ -2,13 +2,28 @@ import { useRef, useState } from "react";
 import React from "react";
 import Buttonv2 from "../Buttonv2";
 
-import { EventType } from "@/types/event" 
+import { EventType } from "@/types/event";
+import ConfirmModal from "../ConfirmModal";
+import extractFileKeyFromURL from "@/utils/extractFileKeyFromURL";
+import FileDelete from "@/utils/FileDelete";
 
 interface OverlayProps {
   isVisible: boolean;
   onClose: () => void;
   type: "Add Event" | "Edit Event";
   event?: EventType;
+}
+
+interface FormData {
+  isPast: boolean;
+  name: string;
+  date: string;
+  time: string;
+  host: string;
+  location: string;
+  description: string;
+  imageURL: string;
+  coverPhoto: File | null; 
 }
 
 const EventOverlay = ({
@@ -19,20 +34,38 @@ const EventOverlay = ({
 }: OverlayProps) => {
   if (!isVisible) return null;
 
-
-  const [formData, setFormData] = useState({
-    name: event?.name,
-    date: event?.date,
-    time: event?.time,
-    location: event?.location,
-    description: event?.description,
-    host: event?.host,
+  const [formData, setFormData] = useState<FormData>({
+    isPast: typeof event?.isPast === 'string' ? event.isPast === 'true' : !!event?.isPast,
+    name: event?.name || '', 
+    date: event?.date || '', 
+    time: event?.time || '',
+    host: event?.host || '', 
+    location: event?.location || '', 
+    description: event?.description || '',
+    imageURL: event?.imageURL || '',
+    coverPhoto: null,
   });
 
+  const [filePreview, setFilePreview] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const handleFileClick = () => {
-    fileInputRef.current?.click();
-  };
+    setFilePreview(''); // Reset the file preview when the button is clicked
+    fileInputRef.current?.click(); // Trigger the file input click event to open the file dialog if fileInputRef.current is not null
+};
+
+  const handleCoverPhotoChange = (event: any) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        const result = reader.result as string; // Explicitly cast the result to string
+        setFilePreview(result); // Set the file preview with the data URI
+    };
+    reader.readAsDataURL(file); // Read the file as a data URL
+    setFormData((prevFormData) => ({
+        ...prevFormData,
+        coverPhoto: file, // Update coverPhoto with the selected file
+    }));
+};
 
   const handleChange = (event: any) => {
     const { name, value } = event.target;
@@ -44,74 +77,107 @@ const EventOverlay = ({
       console.error("Event ID is required to delete.");
       return;
     }
-    const url = `/api/content/events/${event.id}`;    
-  
+    const url = `/api/content/events/${event.id}`;
+
     try {
       const response = await fetch(url, {
-        method: 'DELETE',
+        method: "DELETE",
       });
-  
+
       const result = await response.json();
       console.log(result);
-      onClose(); 
-      window.location.reload()
+      onClose();
+      window.location.reload();
     } catch (error) {
       console.error("Failed to delete the event:", error);
-
-      // Handle error (show error message, etc.)
     }
   };
 
-  const handleEdit = async () => {
-    
+  const handleEdit = async (updatedEvent: EventType) => {
     if (!event?.id) {
       console.error("Event ID is required to edit.");
       return;
     }
 
-    const url = `/api/content/events/${event.id}`;    
+    const url = `/api/content/events/${event.id}`;
 
     try {
+      const formDataWithPhoto = new FormData();
+      formDataWithPhoto.append('name', updatedEvent.name);
+      formDataWithPhoto.append('time', updatedEvent.time );
+      formDataWithPhoto.append('date', updatedEvent.date);
+      formDataWithPhoto.append('location', updatedEvent.location);
+      formDataWithPhoto.append('description', updatedEvent.description);
+      formDataWithPhoto.append('host', updatedEvent.host);
+      formDataWithPhoto.append('imageURL', updatedEvent.imageURL);
+      formDataWithPhoto.append('isPast', updatedEvent.isPast.toString() || 'false');
+
+      if (formData.coverPhoto) {
+          formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+          FileDelete(extractFileKeyFromURL(event.imageURL))
+      }
+
+
       const response = await fetch(url, {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formDataWithPhoto,
       });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      
       const result = await response.json();
       console.log(result);
-      onClose(); 
       window.location.reload()
     } catch (error) {
       console.error("Failed to edit the event:", error);
     }
   };
 
-  const handleAdd = async () => {
-    const url = `/api/content/events/`;    
+  const handleAdd = async (updatedEvent: EventType) => {
+    const url = "/api/content/events/";
 
     try {
+
+      const formDataWithPhoto = new FormData();
+      formDataWithPhoto.append('name', updatedEvent.name);
+      formDataWithPhoto.append('time', updatedEvent.time );
+      formDataWithPhoto.append('date', updatedEvent.date);
+      formDataWithPhoto.append('location', updatedEvent.location);
+      formDataWithPhoto.append('description', updatedEvent.description);
+      formDataWithPhoto.append('host', updatedEvent.host);
+      formDataWithPhoto.append('imageURL', 'https://placehold.co/400.png');
+      formDataWithPhoto.append('isPast', updatedEvent.isPast.toString() || 'false');
+
+      if (formData.coverPhoto) {
+          formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+      }
+
       const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({...formData, imageURL: "https://picsum.photos/seed/picsum/200/300"})
+        method: "POST",
+        body: formDataWithPhoto
       });
-      const result = await response.json();
-      console.log(result);
-      onClose(); 
-      window.location.reload()
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      // const result = await response.json();
+      // console.log(result);
+      onClose();
+      window.location.reload();
     } catch (error) {
       console.error("Failed to add the event:", error);
     }
   };
 
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+
   if (type == "Add Event") {
     return (
         <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
-          <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+          <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
             <button
               className="text-gray text-xl place-self-end mr-5 mt-2"
               onClick={() => onClose()}
@@ -182,23 +248,22 @@ const EventOverlay = ({
                 ></textarea>
               </div>
               <div>
-                <h2 className="mt-5 font-nunito text-md">Cover Photo</h2>
-                <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">
-                  +
-                </button>
+                <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
+                <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
+                {filePreview && <img src={filePreview} alt="Cover Photo Preview" className="mt-2 mb-2" style={{ maxWidth: '100%', height: 'auto' }} />}
+
                 <input
-                  type="file"
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  ref={fileInputRef}
-                  onChange={handleChange}
-                  // id="imageURL"
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                ref={fileInputRef}
+                onChange={handleCoverPhotoChange} 
                 />
               </div>
               <div className="flex justify-center text-md space-x-7 py-5">
                 <Buttonv2
                   text="Save"
-                  action={handleAdd}
+                  action={()=> handleAdd(formData)}
                   color="blue"
                   width="w-40"
                 />
@@ -217,8 +282,8 @@ const EventOverlay = ({
     /**************************************************************************/
   } else if (type == "Edit Event") {
     return (
-        <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
-          <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+        <div className="z-50 flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
+          <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
             <button
               className="text-gray text-xl place-self-end mr-5 mt-2"
               onClick={() => onClose()}
@@ -280,6 +345,7 @@ const EventOverlay = ({
                   type="text"
                   id="host"
                   name="host"
+                  value={formData.host}
                   onChange={handleChange}
                 ></input>
               </div>
@@ -294,24 +360,36 @@ const EventOverlay = ({
                 ></textarea>
               </div>
               <div>
-                <h2 className="mt-5 font-nunito text-md">Cover Photo</h2>
-                <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">
-                  +
-                </button>
+                <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
+                <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
+                {filePreview && <img src={filePreview} alt="Cover Photo Preview" className="mt-2 mb-2" style={{ maxWidth: '100%', height: 'auto' }} />}
+
+                <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                ref={fileInputRef}
+                onChange={handleCoverPhotoChange} 
+                />
               </div>
-              <div className="flex justify-center text-md space-x-7 py-5">
+              <div className="flex justify-center justify-items-center text-md py-5">
                 <Buttonv2
                   text="Save"
-                  action={handleEdit}
+                  action={() => handleEdit({ ...formData, isPast: event?.isPast ?? false })}
                   color="blue"
                   width="w-40"
                 />
-                <Buttonv2
-                  text="Delete"
-                  action={handleDelete}
-                  color="red"
-                  width="w-40"
-                />
+                <a
+                href="#"
+                className="font-nunito underline text-l mt-3 mx-7"
+                onClick={() => handleEdit({ ...formData, isPast: true })}
+                >
+                  Move to Past Events
+                </a>
+                <a href="#" className="font-nunito underline text-l mt-3" onClick={() => setShowConfirmModal(true)}>
+                    Delete
+                </a>
+                <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={handleDelete} />
               </div>
             </div>
           </div>
@@ -323,3 +401,4 @@ const EventOverlay = ({
 };
 
 export default EventOverlay;
+

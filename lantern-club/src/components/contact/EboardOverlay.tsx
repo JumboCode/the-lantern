@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import React from 'react';
 import Buttonv2 from "../Buttonv2";
 import { ProfileType } from '@/types/profile';
+import ConfirmModal from "../ConfirmModal";
+import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
+import FileDelete from '@/utils/FileDelete';
 
 interface OverlayProps {
     isVisible: boolean,
@@ -10,35 +13,61 @@ interface OverlayProps {
     profile?: ProfileType
 }
 
+interface FormData {
+    name: string;
+    pronouns: string;
+    title: string;
+    email: string;
+    major: string;
+    pictureURL: string;
+    coverPhoto: File | null; 
+}
+
 
 const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
+        const [showConfirmModal, setShowConfirmModal] = useState(false);
     if (!isVisible) return null; 
 
-    const [formData, setFormData] = useState({id: profile?.id, name: profile?.name, pronouns: profile?.pronouns, title: profile?.title, email: profile?.email, major: profile?.major});
+    const [formData, setFormData] = useState<FormData>({
+        name: profile?.name || '', 
+        pronouns: profile?.pronouns || '', 
+        title: profile?.title || '', 
+        email: profile?.email || '', 
+        major: profile?.major || '',
+        pictureURL: profile?.pictureURL || '',
+        coverPhoto: null
+    });
 
-    const handleChange = (event: any) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
 
     
     const handleEdit = async () => {
-        
-        const url = `/api/content/profiles/${formData.id}`;    
+        if (!profile?.id) {
+            console.error("Event ID is required to edit.");
+            return;
+        }
+    
+        const url = `/api/content/profiles/${profile?.id}`;    
         try {
+            const formDataWithPhoto = new FormData();
+            formDataWithPhoto.append('name', formData.name);
+            formDataWithPhoto.append('pronouns', formData.pronouns);
+            formDataWithPhoto.append('title', formData.title);
+            formDataWithPhoto.append('email', formData.email);
+            formDataWithPhoto.append('major', formData.major);
+            formDataWithPhoto.append('pictureURL', formData.pictureURL);
+
+            if (formData.coverPhoto) {
+                formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+                FileDelete(extractFileKeyFromURL(profile.pictureURL))
+            }            
+
             const response = await fetch(url, {
-                
                 method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    pronouns: formData.pronouns,
-                    title: formData.title,
-                    email: formData.email,
-                    major: formData.major,
-                }),
+                body: formDataWithPhoto,
             });
     
             if (!response.ok) {
@@ -53,7 +82,7 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
     };
 
     const handleDelete = async () => {
-        const url = `/api/content/profiles/${formData.id}`;    
+        const url = `/api/content/profiles/${profile?.id}`;    
         try {
             const response = await fetch(url, {
                 
@@ -62,43 +91,69 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                     'Content-Type': 'application/json',
                 },
             });
-            alert(response.ok)
+            // alert(response.ok)
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
             
             const deletedProfile = await response.json();
             console.log('Deleted profile:', deletedProfile);
-            window.location.reload()
+            window.location.reload();
+
+            setShowConfirmModal(false);
         } catch (error) {
             console.error('Failed to update profile:', error);
         }
     };
+    const [filePreview, setFilePreview] = useState<string>('');
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    
+    const handleFileClick = () => {
+        setFilePreview(''); // Reset the file preview when the button is clicked
+        fileInputRef.current?.click(); // Trigger the file input click event to open the file dialog if fileInputRef.current is not null
+    };
+    const handleCoverPhotoChange = (event: any) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const result = reader.result as string; // Explicitly cast the result to string
+            setFilePreview(result); // Set the file preview with the data URI
+        };
+        reader.readAsDataURL(file); // Read the file as a data URL
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            coverPhoto: file, // Update coverPhoto with the selected file
+        }));
+    };
+    
 
     const handleAdd = async () => {
+
         const url = '/api/content/profiles/'; 
         try {
+            const formDataWithPhoto = new FormData();
+            formDataWithPhoto.append('name', formData.name);
+            formDataWithPhoto.append('pronouns', formData.pronouns);
+            formDataWithPhoto.append('title', formData.title);
+            formDataWithPhoto.append('email', formData.email);
+            formDataWithPhoto.append('major', formData.major);
+            formDataWithPhoto.append('pictureURL', `https://placehold.co/400.png`);
+
+            if (formData.coverPhoto) {
+                formDataWithPhoto.append('coverPhoto', formData.coverPhoto);
+            }            
+
             const response = await fetch(url, {
-                method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    pronouns: formData.pronouns,
-                    title: formData.title,
-                    email: formData.email,
-                    major: formData.major,
-                    pictureURL: "https://picsum.photos/seed/picsum/200/300"   
-                }),
+                method: 'POST',
+                body: formDataWithPhoto,
             });
     
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
-            const newProfile = await response.json();
-            console.log('Added new profile:', newProfile);
-            window.location.reload(); 
+            const addedProfile = await response.json();
+            console.log('Add profile:', addedProfile);
+            window.location.reload()
         } catch (error) {
             console.error('Failed to add profile:', error);
         }
@@ -106,8 +161,8 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
 
     if (type === "Add" || type === "Edit") {
         return (
-            <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-0">
-                <div className="w-[800px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
+            <div className="z-50 flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
+                <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
                     <button className="text-xl place-self-end mr-5 mt-2" onClick={() => onClose()}>x</button>
                     <div className="px-5 flex flex-col overflow-y-scroll">
                         <h2 className="mb-5 text-4xl font-coolvetica underline decoration-sky-500">{type}</h2>
@@ -133,12 +188,23 @@ const EboardOverlay = ( {isVisible, onClose, type, profile}: OverlayProps ) => {
                         </div>
                         <div>
                             <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
-                            <button className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
+                            <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
+                            {filePreview && <img src={filePreview} alt="Cover Photo Preview" className="mt-2 mb-2" style={{ maxWidth: '100%', height: 'auto' }} />}
+
+                            <input
+                            type="file"
+                            accept="image/*"
+                            style={{ display: 'none' }}
+                            ref={fileInputRef}
+                            onChange={handleCoverPhotoChange} 
+                            // id="imageURL"
+                            />
                         </div>
-                        <div className="flex justify-center text-md space-x-7 py-5">
+                        <div className="z-50 flex justify-center text-md py-5">
                             <Buttonv2 text={type === "Add" ? "Add" : "Update"} action={type === "Add" ? handleAdd : handleEdit} color="blue" width="w-40"/>
-                            {type === "Edit" && <Buttonv2 text="Delete" action={handleDelete} color="red" width="w-40" />}
-                            {type === "Add" && <Buttonv2 text="Cancel" action={onClose} color="red" width="w-40" />}
+                            {type === "Edit" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={() => setShowConfirmModal(true)}>Delete</a>}
+                            <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={handleDelete} />
+                            {type === "Add" && <a href="#" className="font-nunito underline text-l mt-3 ml-3" onClick={onClose}>Cancel</a>}
                         </div>
                     </div>
                 </div>

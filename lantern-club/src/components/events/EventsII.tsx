@@ -3,16 +3,20 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { EventType } from "@/types/event";
+import ConfirmModal from "../ConfirmModal";
+import { EventBox } from "./EventBox";
 
 type EventsIIProps = {
   isAdminEdit: boolean;
   handleEditButtonClick: () => void;
-  events: EventType[]
+  events: EventType[];
 };
 
 
-export default function EventsII({ events, isAdminEdit, handleEditButtonClick }: EventsIIProps) {
-
+export default function EventsII({
+  events,
+  isAdminEdit,
+}: EventsIIProps) {
   const header_font: React.CSSProperties = {
     fontFamily: "coolvetica",
     fontSize: "90px",
@@ -28,50 +32,27 @@ export default function EventsII({ events, isAdminEdit, handleEditButtonClick }:
     height: "100%",
   };
 
-
-  const handleDelete = async (id: string) => {
-    const url = `/api/content/events/${id}`;    
-    try {
-        const response = await fetch(url, {
-            
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-        }
-        
-        const deletedEvent = await response.json();
-        console.log('Deleted profile:', deletedEvent);
-        window.location.reload()
-    } catch (error) {
-        console.error('Failed to delete event:', error);
-    }
-  };
-
+  
   // ********* IS ADMIN EDIT BOOLEAN ********
   return (
     <div>
-      <div className="-mt-20 py-20 px-20 blue2-gradient" style={background}>
-        <h1 className={"mb-20 font-coolvetica md:text-8xl text-7xl"}>
+      <div className="-mt-20 py-40 px-20 blue2-gradient" style={background}>
+        <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl"}>
         {isAdminEdit ? "Delete Past Events" : "Past Events"}
         </h1>
 
         <div className="flex flex-col gap-10 md:flex-row">
-            {events &&
-              events.slice(0,3).map((oneEvent: EventType) => {
+          {events &&
+            events
+              .filter((oneEvent) => oneEvent.isPast === true)
+              .slice(0, 3)
+              .map((oneEvent: EventType) => {
                 return (
-                  <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <Image src={oneEvent.imageURL} width={100} height={100} style={imageStyle} alt="Orange Poster picture" />
-                    {isAdminEdit && (
-                      <div style={{ paddingTop: '20px'}}>
-                        <FontAwesomeIcon icon={faTrashCan} width={100} height={100} size="2x" onClick={() => handleDelete(oneEvent.id)} />
-                      </div>
-                    )}
+                  <div key={oneEvent.id} className="w-full md:w-1/3">
+                    <EventBox event={oneEvent} isAdminEdit={isAdminEdit} isPast={true}/>
                   </div>
+              
+                
                 );
               })}
         </div>

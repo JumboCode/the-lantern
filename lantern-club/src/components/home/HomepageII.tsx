@@ -18,13 +18,20 @@ export default function ResourcesI() {
     backgroundColor: '#FECB66',
   };
 
+  const triangleStyle2 = {
+        backgroundColor: '#FFFFFF',
+        clipPath: 'polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%)',
+      };
+
   const handleButtonClick = () => {
         console.log('Button clicked!');
   };
 
+
   return (
     <div>
-      <div className="-mt-20 pt-triangle-top w-full yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2">
+      <div className="-mt-20 pb-24 pt-triangle-top w-full h-58 yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2" id="pentagon">
+        
         {/* Image column */}
         <div className="flex justify-center items-center px-5 my-12">
           <Image
@@ -35,6 +42,7 @@ export default function ResourcesI() {
             alt="Define picture"
           />
         </div>
+        
 
         {/* Text column */}
         <div className="px-4 flex flex-col justify-center items-start md:text-left">
@@ -47,15 +55,17 @@ export default function ResourcesI() {
           </div>
           <div className="flex flex-row justify-between pt-8 items-center w-full mt-5">
             <p className="font-nunito text-xl">Issue No 1 Spring 2023</p>
+            <a href="/Magazine">
             <div>
-                <Buttonv2 text="Read it here!" action={handleButtonClick} color="blue" width="w-60"/>
+                <Buttonv2 text="Read it here!" action={handleButtonClick} color="blue" width="w-40"/>
             </div>
+            </a>
             <a href="/Magazine" className="position: relative; top: -30px;">
           </a>
           </div>
         </div>
       </div>
-      <div className="h-20 w-full" style={triangleStyle} id="triangle"></div>
+      {/* <div className="h-20 w-full" style={triangleStyle} id="triangle"></div> */}
     </div>
   );
 }
