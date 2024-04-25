@@ -142,7 +142,7 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
         <div className="-mt-20 py-40 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
           <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl flex items-end"}>
             {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
-            {session?.user.isAdmin && !isAdminEdit && (
+            {session?.user.isAdmin && (
               <button className="font-nunito underline text-2xl ml-7 mb-2 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleEditButtonClick}>Edit</button>
             )}
             {isAdminEdit && (
