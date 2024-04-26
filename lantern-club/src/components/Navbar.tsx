@@ -57,7 +57,7 @@ const NavBar = () => {
       <ul className={nav ? 'fixed md:hidden z-10 left-0 top-28 w-screen h-full ease-in-out duration-500' : 'z-10 w-screen fixed left-[-100%]  top-28 opacity-0'}>
         {links.map((link, index) => (
           <Link key={index} href={link.url}>
-          <li className={`z-10 p-8 flex justify-center h-[7.8rem] items-center align-center bg-white text-center hover:bg-nav-bg duration-300 items-center cursor-pointer ${link.url === '/AboutUs' ? 'z-10 border-t-2 border-sky-800' : ''}`}>
+          <li className={`z-10 p-8 flex justify-center h-[16.7%] items-center align-center bg-white text-center hover:bg-nav-bg duration-300 items-center cursor-pointer ${link.url === '/AboutUs' ? 'z-10 border-t-2 border-sky-800' : ''}`}>
             {link.label}
           </li>
         </Link>
