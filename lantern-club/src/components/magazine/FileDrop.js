@@ -31,7 +31,7 @@ const FileDrop = () => {
 
     return (
         <div>
-            <select style={{ padding: '10px', borderRadius: '5px', border: '2px solid #FFA500', marginRight: '10px', backgroundColor: '#fff' }} onChange={handleImageChange} value={currentImage}>
+            <select className='w-1/2 flex' style={{ padding: '10px', borderRadius: '5px', border: '2px solid #FFA500', marginRight: '10px', backgroundColor: '#fff' }} onChange={handleImageChange} value={currentImage}>
                 {fileList.map((url, index) => {
                     // Extract file name from the URL
                     let fileName = url.substring(url.lastIndexOf('/') + 1);

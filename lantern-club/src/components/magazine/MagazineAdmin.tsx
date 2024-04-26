@@ -2,16 +2,24 @@ import { useState } from 'react';
 
 import FileUpload from ".//FileUpload";
 import FileDrop from ".//FileDrop";
-import Buttonv2 from "../Buttonv2";
 import ConfirmModal from "../ConfirmModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import FileDelete from '@/utils/FileDelete';
+import { useSession } from 'next-auth/react';
+
 // import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
 
-export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
+interface MagazineAdminProps {
+  handleToggleAdminView: () => void
+  magazines: any[]
+  
+}
+export default function MagazineDisplay ({ handleToggleAdminView, magazines }: MagazineAdminProps) {
+
 
   const [showConfirmModal, setShowConfirmModal] = useState<string | null>(null);
+  const { data: session } = useSession();
 
   const headerFont = {
         fontFamily: 'coolvetica',
@@ -26,20 +34,27 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
   };
        
   return (
-      <div className="-mt-20 p-20 pt-40 w-full yellow-gradient flex gap-5 flex-col">
-              <p style={headerFont}>Edit magazine issues</p>
-            
+      <div className="yellow-gradient -mt-20 py-40 px-2 md:px-20 w-full p-20">
+            <div className="flex gap-10 md:text-8xl text-6xl items-end">
+              <p style={headerFont}>Edit Magazine Issues</p>
+              {session?.user.isAdmin && (
+                <button className="font-nunito underline text-2xl cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleAdminView}>
+                    Edit
+                </button>
+              )}
+            </div>
+              
             <div className ="my-7">
 
               <p style={subheaderFont}>Featured Issue</p>
               <FileDrop />
             </div>
             
-            <div className = "mt-7"> 
+            <div className = "mt-20"> 
               <p style={subheaderFont}>Past Issues</p>
             </div>
 
-            <ul>
+            <ul className='pb-10'>
                 {magazines.map((url: string, index: number) => {
                 // Extract file name from the URL
                 const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
@@ -49,7 +64,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                 return (
                     <li key={index}>
                       <div className="flex pt-5 align-bottom">
-                        <a className="w-80 md:w-96 font-bold" href={url} target="_blank">{fileName}</a>
+                        <a className="w-80 md:w-96 font-bold hover:text-[#4279BC]" href={url} target="_blank">{fileName}</a>
                         <button onClick={() => setShowConfirmModal(keyName)
                       }>                            
                       <div className="svg-container hover:underline decoration-orange-400" >
