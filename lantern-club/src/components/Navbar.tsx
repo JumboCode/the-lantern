@@ -35,7 +35,7 @@ const NavBar = () => {
   return (
     <div className={nav ? 'fixed flex justify-between bg-white z-50 items-center h-28 w-screen px-4 text-lg font-kiona' : 'flex justify-between z-50 items-center h-28 max-w-screen mx-auto px-4 text-lg font-kiona'}>
       <div className={nav ? 'fixed z-50 pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-0' : 'z-50 pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-0'}>
-        <Link href="/" className="hover:underline">
+        <Link href="/" className="p-4 hover:underline">
           <Image src={"/images/lantern-logo-blue.png"} height={82} width={82} alt="lantern logo" layout="intrinsic" />
         </Link>
       </div>
