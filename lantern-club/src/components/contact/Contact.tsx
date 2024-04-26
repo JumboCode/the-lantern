@@ -21,6 +21,9 @@ export default function Contact() {
       tempFormData[key] = value.toString();
     });
 
+    setFormData(tempFormData); // Store form data for later submission
+    setShowConfirmation(true); // Show the confirmation popup
+
   };
 
   const onConfirmSubmit = async () => {
