@@ -56,7 +56,7 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
             <div className="-mt-20 p-20 pt-40 w-full yellow-gradient flex gap-5 flex-col">
                     <p style={headerFont}>Edit magazine issues</p>
                   
-                  <div className =" my-7">
+                  <div className ="my-7">
 
                     <p style={subheaderFont}>Featured Issue</p>
                     <FileDrop />
@@ -117,7 +117,6 @@ export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
                   </ul>
 
                   <FileUpload onUpload={handleUpload}/>
-                  {/* <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" /> */}
               
            </div>   
             
