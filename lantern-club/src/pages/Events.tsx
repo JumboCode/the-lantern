@@ -7,6 +7,7 @@ import { EventType } from "@/types/event";
 import EventsI from "@/components/events/EventsI";
 import EventsII from "@/components/events/EventsII";
 
+
 // new code w/ useState and useEffect
 
 export default function Events() {
