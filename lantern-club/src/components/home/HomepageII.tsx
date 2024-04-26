@@ -30,7 +30,7 @@ export default function ResourcesI() {
 
   return (
     <div>
-      <div className="-mt-20 pb-24 pt-triangle-top w-full h-58 yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2" id="pentagon">
+      <div className="-mt-20 pb-24 pt-triangle-top w-full h-58 yellow-gradient flex flex-col md:flex-row md:grid md:grid-cols-2" id="pentagon-body">
         
         {/* Image column */}
         <div className="flex justify-center items-center px-5 my-12">

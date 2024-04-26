@@ -9,6 +9,7 @@ export default function HomepageI({title}:{title:string}){
             {/* <div className="flex h-13 bg-center bg-cover bg-no-repeat bg-[url('/images/background.png')] grid grid-rows-3">
                   <div className = "flex justify-between">
                     <img className="justify-self-start ml-20" src={"/images/lantern.png"}/>
+            <div className="pb-20 flex h-13 bg-center bg-cover bg-no-repeat bg-[url('/images/background.png')] grid grid-rows-3" id="header-pent">
                     <img className="justify-self-end mr-20" src={"/images/lantern.png"}/>
                     </div>
                     <h1 className="justify-self-center mb-20 text-6xl md:text-8xl font-kiona text-right">The Lantern</h1>
