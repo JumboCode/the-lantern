@@ -15,14 +15,21 @@ export default function Contact() {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
+    addEventListener("invalid", (event) => {});
+    oninvalid = (event) => {};
 
     const tempFormData: { [key: string]: string } = {};
     new FormData(event.currentTarget).forEach((value, key) => {
       tempFormData[key] = value.toString();
     });
 
-    setFormData(tempFormData); // Store form data for later submission
-    setShowConfirmation(true); // Show the confirmation popup
+    if (false) {
+
+    } else {
+        setFormData(tempFormData); // Store form data for later submission
+        setShowConfirmation(true); // Show the confirmation popu
+    }
   };
 
   const onConfirmSubmit = async () => {
@@ -87,6 +94,8 @@ export default function Contact() {
                 required
                 type="text"
                 name="name"
+                pattern="[A-Za-z\s]+"
+                title="Name field can only contain letters"
                 className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 outline-gc2 h-8 contact-input rounded-3xl"
               ></input>
             </div>
