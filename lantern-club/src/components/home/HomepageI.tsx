@@ -17,7 +17,7 @@ export default function HomepageI({title}:{title:string}){
                     <br></br> technology use and production</h1>
             </div>             */}
 
-                <div className="flex justify-center align-center bg-center bg-cover bg-no-repeat bg-[url('/images/background.png')] relative">
+                <div className="flex justify-center align-center bg-center bg-cover bg-no-repeat bg-[url('/images/background.png')] relative" id="header-pent">
                   {/* <div className = "flex justify-between">
                     <img className="justify-self-start ml-20 h-lantern-pic" src={"/images/lantern.png"}/>
                     </div> */}
@@ -31,7 +31,7 @@ export default function HomepageI({title}:{title:string}){
 
             </div>  
 
-            <div className="h-20 w-full bg-bottom bg-cover bg-no-repeat bg-[url('/images/background.png')]" id="triangle"></div>
+            {/* <div className="h-20 w-full bg-bottom bg-cover bg-no-repeat bg-[url('/images/background.png')]" id="triangle"></div> */}
         </div>
      )
 }

@@ -7,7 +7,7 @@ export default function Header({title}:{title:string}){
       }; 
     return(
         <div className="drop-shadow-md">
-                <div className="flex items-start justify-center bg-center bg-cover bg-no-repeat bg-[url('/images/header-bg.png')]">
+                <div className="flex items-start justify-center bg-center pb-20 bg-cover bg-no-repeat bg-[url('/images/header-bg.png')]"  id="header2-pent">
                         <div className='flex flex-shrink-0'>
                                 <Image src={"/images/short-lantern.png"} height={90} width={90} alt="lantern logo" />
                         </div>
@@ -16,7 +16,7 @@ export default function Header({title}:{title:string}){
                                 <Image src={"/images/short-lantern.png"} height={90} width={90}  alt="lantern logo" />
                         </div>
                 </div>            
-                <div className="h-20 bg-bottom bg-cover bg-no-repeat bg-[url('/images/header-bg.png')]" id="triangle"></div>
+                {/* <div className="h-20 bg-bottom bg-cover bg-no-repeat bg-[url('/images/header-bg.png')]" id="triangle"></div> */}
         </div>
 
 

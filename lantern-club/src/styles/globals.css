@@ -115,6 +115,10 @@ body {
         clip-path: polygon(0 0, 0 88%, 50% 100%, 100% 88%, 100% 0%);
 }
 
+#header2-pent {
+        clip-path: polygon(0 0, 0 75%, 50% 100%, 100% 75%, 100% 0%);
+}
+
 .button-blue {
   color: #4279bc;
 }
