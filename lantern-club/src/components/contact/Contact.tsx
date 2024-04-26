@@ -15,21 +15,12 @@ export default function Contact() {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
-    addEventListener("invalid", (event) => {});
-    oninvalid = (event) => {};
 
     const tempFormData: { [key: string]: string } = {};
     new FormData(event.currentTarget).forEach((value, key) => {
       tempFormData[key] = value.toString();
     });
 
-    if (false) {
-
-    } else {
-        setFormData(tempFormData); // Store form data for later submission
-        setShowConfirmation(true); // Show the confirmation popu
-    }
   };
 
   const onConfirmSubmit = async () => {
