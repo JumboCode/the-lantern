@@ -57,7 +57,7 @@ export default function ResourcesI() {
             <p className="font-nunito text-xl">Issue No 1 Spring 2023</p>
             <a href="/Magazine">
             <div>
-                <Buttonv2 text="Read it here!" action={handleButtonClick} color="blue" width="w-60"/>
+                <Buttonv2 text="Read it here!" action={handleButtonClick} color="blue" width="w-40"/>
             </div>
             </a>
             <a href="/Magazine" className="position: relative; top: -30px;">

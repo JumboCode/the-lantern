@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Buttonv2 from '../Buttonv2';
 
-const FileUpload = ({ onUpload }) => {
+const FileUpload = () => {
   const fileInputRef = useRef(null);
   const [uploading, setUploading] = useState(false);
   const [fileUrl, setFileUrl] = useState('');
@@ -25,7 +25,7 @@ const FileUpload = ({ onUpload }) => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      onUpload(response.data.url); // Assuming you want to pass the file URL to the parent component
+      
       setFileUrl('');
       setSelectedFile(null);
     } catch (error) {
