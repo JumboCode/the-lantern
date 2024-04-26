@@ -94,8 +94,8 @@ export default function Contact() {
                 required
                 type="text"
                 name="name"
-                pattern="[A-Za-z\s]+"
-                title="Name field can only contain letters"
+                pattern="[A-Za-z.\s\-]+"
+                title="Must be a valid name (no numbers, symbols, etc.)"
                 className="mt-2 w-full p-3 border-contact-g1 border-4 mr-7 outline-gc2 h-8 contact-input rounded-3xl"
               ></input>
             </div>
