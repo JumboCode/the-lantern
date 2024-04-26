@@ -32,14 +32,31 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
       const [fileList, setFileList] = useState([]);
       const [currentImage, setCurrentImage] = useState('');
       
+      const fetchFeatured = async () => {
+        try {
+          const response = await fetch("/api/content/magazine/featured", { method: "GET" });
+          const data = await response.json();
+          
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          // console.log(data);
+          return data[0];
+        } catch (error) {
+          console.log("Error fetching featured mag:", error);
+        }
+      }
+
       useEffect(() => {
         const fetchFileList = async () => {
           try {
             const response = await axios.get('/api/content/magazine/');
             setFileList(response.data.urls);
-            if (response.data.urls.length > 0) {
-                    // Automatically set the first image as the current image
-                    setCurrentImage(response.data.urls[0]);
+            const featuredResponse = await fetch("/api/content/magazine/featured", { method: "GET" });
+            const featuredData = await featuredResponse.json();
+            if (featuredData.length > 0) {
+                    const featured = featuredData[0].cloudURL;
+                    setCurrentImage(featured);
             }
     
           } catch (error) {

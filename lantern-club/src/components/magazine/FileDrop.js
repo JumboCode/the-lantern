@@ -15,33 +15,28 @@ const FileDrop = () => {
           const url = `/api/content/magazine/featuredmag`;
 
           try {
-            console.log('about to delete...')
-            // TODO: what if theres none?
             const Delresponse = await fetch(url, {
               method: "DELETE",
-              
             });
             const result = await Delresponse.json();
-            console.log(result);
-
           } catch (error) {
             console.error("Failed to switch the featured mag:", error);
           }
         };
 
-        const fetchFeatured = async () => {
-          try {
-            const response = await fetch("/api/content/magazine/", { method: "GET" });
-            const data = await response.json();
+        // const fetchFeatured = async () => {
+        //   try {
+        //     const response = await fetch("/api/content/magazine/featured", { method: "GET" });
+        //     const data = await response.json();
             
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            console.log(data);
-          } catch (error) {
-            console.log("Error fetching featured mag:", error);
-          }
-        }
+        //     if (!response.ok) {
+        //       throw new Error('Network response was not ok');
+        //     }
+        //     return data[0];
+        //   } catch (error) {
+        //     console.log("Error fetching featured mag:", error);
+        //   }
+        // }
         const handleFeatureMag = async (newFeatured) => {
 
           const url = `/api/content/magazine/featuredmag`;
@@ -69,21 +64,11 @@ const FileDrop = () => {
                         const response = await axios.get('/api/content/magazine/');
                         // const featuredResponse = await axios.get('/api/content/magazine/');
                         setFileList(response.data.urls);
-                        if (response.data.urls.length > 0) {
-                            
-
-                            // TODO: fetch featured mag
-                            console.log("ABOUT TO FETCH FEATURED")
-                            fetchFeatured();
-                            // const Fres = await Fresponse.json();
-                            // console.log(Fresponse);
-                            // console.log(Fres);
-                            // const featured = await findFirst();
-                            // console.log(featured);
-
-
-                            setCurrentImage(response.data.urls[0]);
-                                
+                        const featuredResponse = await fetch("/api/content/magazine/featured", { method: "GET" });
+                        const featuredData = await featuredResponse.json();
+                        if (featuredData.length > 0) {
+                          const featured = featuredData[0].cloudURL;
+                          setCurrentImage(featured);
                         }
                 } catch (error) {
                         console.error('Error fetching file list:', error);
@@ -95,12 +80,11 @@ const FileDrop = () => {
         }, []);
 
         const handleImageChange = (event) => {
-                console.log(`image: ${event.target.value}`);
-                
+                              
                 handleDeleteFeaturedMag();
                 handleFeatureMag(event.target.value);
                 
-                // setCurrentImage(event.target.value);
+                setCurrentImage(event.target.value);
         };
 
         
@@ -112,7 +96,6 @@ const FileDrop = () => {
                         // Extract file name from the URL
                         let fileName = url.substring(url.lastIndexOf('/') + 1);
                         fileName = fileName.substring(fileName.indexOf('_') + 1);
-                        // console.log(`FEATURED? ${fileList[index]}`);
                         return (
                         <option key={index} value={url}>
                                 {fileName.replace(/\.[^/.]+$/, "")}
