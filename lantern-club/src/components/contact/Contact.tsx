@@ -68,9 +68,9 @@ export default function Contact() {
   return (
     <div>
       <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"> </div>
-      <div className="flex flex-col bg-gradient-to-b from-blue-g1 to-blue-g2 -mt-20">
+      <div className="flex flex-col md:justify-center bg-gradient-to-b from-blue-g1 to-blue-g2 -mt-20">
         <div className="h-20 w-full flex-1 mellow-yellow" id="triangle"></div>
-        <h1 className="mt-20 font-coolvetica md:text-8xl text-6xl ml-16 pt-20">
+        <h1 className="mt-20 font-coolvetica text-center md:text-8xl text-6xl md:ml-16 pt-20">
           Get in touch!
         </h1>
         {/* Shows popup when the form is submitted */}
@@ -80,7 +80,7 @@ export default function Contact() {
           </div>
         )}
         <form onSubmit={onSubmit} ref={formRef}>
-          <div className="flex flex-col border-contact-g1 border-4 mx-16 mb-16 mt-10 px-7 h-contact bg-gradient-to-b from-contact-g1 to-contact-g2 rounded-3xl">
+          <div className="flex flex-col border-contact-g1 border-4 md:mx-16 mx-8 mb-16 mt-10 px-7 h-contact bg-gradient-to-b from-contact-g1 to-contact-g2 rounded-3xl">
             <div>
               <h2 className="mt-5 font-nunito text-lg">Name</h2>
               <div className="w-full">
