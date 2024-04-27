@@ -140,20 +140,18 @@ const NoEventsComponent = () => (
 const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonClick, setShowAddModal }: EventsIProps) => (
     <>
         <div className="-mt-20 py-40 px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" style={background}>
-
-          <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl"} style={{ display: 'flex', alignItems: 'center' }}>
+          <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl flex items-end"}>
             {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
-            {session?.user.isAdmin && !isAdminEdit && (
-              <button className="font-nunito underline text-2xl ml-7" onClick={handleEditButtonClick}>edit</button>
+            {session?.user.isAdmin && (
+              <button className="font-nunito underline text-2xl ml-7 mb-2 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleEditButtonClick}>Edit</button>
             )}
             {isAdminEdit && (
-              <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-                <FontAwesomeIcon icon={faCirclePlus} onClick={() => setShowAddModal(true)} className="cursor-pointer" style={{ fontSize: '3.5rem', marginRight: '5px'}} />
-                <span className="font-nunito" style={{ fontSize: '1rem', marginLeft: '10px'}}>Add New</span>
+              <div className="flex items-center ml-auto">
+                <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl cursor-pointer transition-all duration-500 hover:text-orange-400" />
+                <span className="font-nunito ml-10 fs-1 text-base">Add New</span>
               </div>
             )}
           </h1>
-      
 
           {/* Two boxes */}
           <div className="flex flex-col gap-10 md:flex-row">
@@ -162,8 +160,8 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
                 .filter((oneEvent) => oneEvent.isPast === false)
                 .slice(0,3).map((oneEvent: EventType) => {
                   return (
-                    <div key={oneEvent.id} className="flex-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <EventBox event={oneEvent} isAdminEdit={isAdminEdit} />
+                    <div key={oneEvent.id} className="w-full md:w-1/3">
+                      <EventBox event={oneEvent} isAdminEdit={isAdminEdit} isPast={false}/>
                     </div>
                   );
               })}
@@ -172,8 +170,5 @@ const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonCli
         <div>
         <div className="z-4 relative"><div className="h-20 w-full flex mellow-yellow -z-50" id="triangle"></div></div>
         </div>
-        
-        
-        {/* <div className="h-20 w-full flex mellow-yellow" style={{ zIndex: -50, position: 'relative'}} id="triangle"></div> */}
     </>
 );

@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+// FileDrop.jsx
+
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import { FeaturedMagType } from "@/types/featuredmag"
@@ -76,8 +78,8 @@ const FileDrop = () => {
                 };
 
 
-                fetchFileList();
-        }, []);
+        fetchFileList();
+    }, []);
 
         const handleImageChange = (event) => {
                               
@@ -89,29 +91,30 @@ const FileDrop = () => {
 
         
 
-        return (
-            <div className="dropdown">
-                <select onChange={handleImageChange} value={currentImage}>
-                        {fileList.map((url, index) => {
-                        // Extract file name from the URL
-                        let fileName = url.substring(url.lastIndexOf('/') + 1);
-                        fileName = fileName.substring(fileName.indexOf('_') + 1);
-                        return (
+    return (
+        <div>
+            <select className='w-1/2 flex' style={{ padding: '10px', borderRadius: '5px', border: '2px solid #FFA500', marginRight: '10px', backgroundColor: '#fff' }} onChange={handleImageChange} value={currentImage}>
+                {fileList.map((url, index) => {
+                    // Extract file name from the URL
+                    let fileName = url.substring(url.lastIndexOf('/') + 1);
+                    fileName = fileName.substring(fileName.indexOf('_') + 1);
+                    
+                    return (
                         <option key={index} value={url}>
-                                {fileName.replace(/\.[^/.]+$/, "")}
+                            {fileName.replace(/\.[^/.]+$/, "")}
                         </option>
-                        );
-                        })}
-                </select>
-                {currentImage && (
+                    );
+                })}
+            </select>
+            {currentImage && (
                 <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                    <Link href={currentImage}><iframe src={currentImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain' }} /></Link>
+                    <Link href={currentImage}>
+                        <iframe src={currentImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain' }} />
+                    </Link>
                 </div>
-                )}
-          </div> 
-          
-        );
-      };
-      export default FileDrop;
+            )}
+        </div> 
+    );
+};
 
-
+export default FileDrop;

@@ -30,7 +30,7 @@ export default function AboutUsIV() {
         <div className="flex flex-col md:flex-row gap-10">
           {/* Box 1 */}
           <div className="w-full md:w-1/2 pale-yellow mellow-yellow-border" style={round_box}>
-            <p className="font-nunito text-lg md:text-xl font-bold">
+            <p className="font-nunito text-lg md:text-xl font-nunitobold">
               Problem #1. The way of thinking in the technical world is not varied enough for the territory that it has entered.
             </p>
             <p className="font-nunito text-lg md:text-xl">
@@ -39,7 +39,7 @@ export default function AboutUsIV() {
           </div>
           {/* Box 2 */}
           <div className="w-full md:w-1/2 mellow-yellow orange-border" style={round_box}>
-            <p className="font-nunito text-lg md:text-xl font-bold">
+            <p className="font-nunitobold text-lg md:text-xl">
               Problem #2: Academic and expert discussions are not accessible to the general public.
             </p>
             <p className="font-nunito text-lg md:text-xl">
@@ -60,9 +60,9 @@ export default function AboutUsIV() {
         </div>
 
         <div className="flex-col orange pale-yellow-border font-nunito text-xl" style={round_box}>
-          <p className="font-bold">As a “Think-and-Action” Tank, The Lantern has a dual mission: </p>
-          <p><span className="font-bold">(1)</span> to break down critical and complex ideas at the intersection of STS for the general public </p>
-          <p><span className="font-bold">(2)</span> to engage students and organizations in a socially responsible path of science and technology </p>
+          <p className="font-nunitobold">As a “Think-and-Action” Tank, The Lantern has a dual mission: </p>
+          <p><span className="font-nunitobold">(1)</span> to break down critical and complex ideas at the intersection of STS for the general public </p>
+          <p><span className="font-nunitobold">(2)</span> to engage students and organizations in a socially responsible path of science and technology </p>
         </div>
       </div>
     </div>
