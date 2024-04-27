@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import FileDelete from '@/utils/FileDelete';
 import { useSession } from 'next-auth/react';
-
 // import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
 
 interface MagazineAdminProps {
@@ -83,10 +82,13 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 })}
             </ul>
 
-            <FileUpload />
-
-      </div>   
-      
-  );
+                  <FileUpload />
+                  {/* <Buttonv2 text="Save" action={() => saveFeatures()} color="blue" width="w-48" /> */}
+              
+                  {/* <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" /> */}
+              
+           </div>   
+            
+        );
 }
 

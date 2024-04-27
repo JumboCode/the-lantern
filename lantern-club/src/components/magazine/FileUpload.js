@@ -68,7 +68,7 @@ const FileUpload = () => {
       )}
         
         <div style={{ display: 'flex', justifyContent: 'center' }}> 
-          <Buttonv2 text="Save" action={handleUpload} color="blue" width="w-48" />
+          <Buttonv2 text="Save File Upload" action={handleUpload} color="blue" width="w-48" />
         </div>
     </div>
   );

@@ -3,31 +3,93 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import { FeaturedMagType } from "@/types/featuredmag"
+// import { handleDeleteFeaturedMag } from '../../../prisma/delete-data';
+// import { handleAddFeaturedMag } from '../../../prisma/insert-data';
+// import { handleFetchFeaturedMag } from '../../../prisma/read-data';
 
 const FileDrop = () => {
-    const [fileList, setFileList] = useState([]);
-    const [currentImage, setCurrentImage] = useState('');
+        const [fileList, setFileList] = useState([]);
+        const [currentImage, setCurrentImage] = useState('');
 
-    useEffect(() => {
-        const fetchFileList = async () => {
-            try {
-                const response = await axios.get('/api/content/magazine/');
-                setFileList(response.data.urls);
-                if (response.data.urls.length > 0) {
-                    // Automatically set the first image as the current image
-                    setCurrentImage(response.data.urls[0]);
-                }
-            } catch (error) {
-                console.error('Error fetching file list:', error);
-            }
+        const handleDeleteFeaturedMag = async () => {
+          
+          const url = `/api/content/magazine/featuredmag`;
+
+          try {
+            const Delresponse = await fetch(url, {
+              method: "DELETE",
+            });
+            const result = await Delresponse.json();
+          } catch (error) {
+            console.error("Failed to switch the featured mag:", error);
+          }
         };
+
+        // const fetchFeatured = async () => {
+        //   try {
+        //     const response = await fetch("/api/content/magazine/featured", { method: "GET" });
+        //     const data = await response.json();
+            
+        //     if (!response.ok) {
+        //       throw new Error('Network response was not ok');
+        //     }
+        //     return data[0];
+        //   } catch (error) {
+        //     console.log("Error fetching featured mag:", error);
+        //   }
+        // }
+        const handleFeatureMag = async (newFeatured) => {
+
+          const url = `/api/content/magazine/featuredmag`;
+
+          try {
+            const data = {
+              cloudURL : newFeatured
+            };
+            const response = await fetch(url, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data)
+            });
+          } catch (error) {
+            console.error("Failed to add the event:", error);
+          }
+        };
+
+        useEffect(() => {
+                const fetchFileList = async () => {
+                try {
+                  
+                        const response = await axios.get('/api/content/magazine/');
+                        // const featuredResponse = await axios.get('/api/content/magazine/');
+                        setFileList(response.data.urls);
+                        const featuredResponse = await fetch("/api/content/magazine/featured", { method: "GET" });
+                        const featuredData = await featuredResponse.json();
+                        if (featuredData.length > 0) {
+                          const featured = featuredData[0].cloudURL;
+                          setCurrentImage(featured);
+                        }
+                } catch (error) {
+                        console.error('Error fetching file list:', error);
+                }
+                };
+
 
         fetchFileList();
     }, []);
 
-    const handleImageChange = (event) => {
-        setCurrentImage(event.target.value);
-    };
+        const handleImageChange = (event) => {
+                              
+                handleDeleteFeaturedMag();
+                handleFeatureMag(event.target.value);
+                
+                setCurrentImage(event.target.value);
+        };
+
+        
 
     return (
         <div>
