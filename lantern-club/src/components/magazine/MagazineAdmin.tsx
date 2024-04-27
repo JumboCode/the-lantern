@@ -12,31 +12,20 @@ import FileDelete from '@/utils/FileDelete';
 export default function MagazineAdmin({ magazines }: { magazines: any[]}) {
 
   const [showConfirmModal, setShowConfirmModal] = useState<string | null>(null);
-
-  const headerFont = {
-        fontFamily: 'coolvetica',
-        fontSize: '90px',
-        lineHeight: '1',
-  };
-  const subheaderFont = {
-    fontFamily: 'nunito',
-    fontSize: '30px',
-    lineHeight: '1',
-    fontWeight: 'bold',
-
-  };
-    
+  const headerFont = "font-coolvetica text-6xl leading-tight";
+  const subheaderFont = "font-nunito text-2xl leading-tight font-bold";
+  
 
   return (
     <div className="-mt-20 p-20 pt-40 w-full yellow-gradient flex gap-5 flex-col">
-            <p style={headerFont}>Edit magazine issues</p>
+            <p className={headerFont}>Edit magazine issues</p>
           <div className =" my-7">
-            <p style={subheaderFont}>Featured Issue</p>
+            <p className={subheaderFont}>Featured Issue</p>
             <FileDrop />
           </div>
           
           <div className = "mt-7"> 
-            <p style={subheaderFont}>Past Issues</p>
+            <p className={subheaderFont}>Past Issues</p>
           </div>
 
           <ul>
