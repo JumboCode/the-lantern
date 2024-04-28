@@ -77,6 +77,11 @@ model Magazine {
   publishdate  DateTime
 }
 
+model FeaturedMag {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  cloudURL     String
+}
+
 model Profile {
   id           String @id @default(auto()) @map("_id") @db.ObjectId
   name         String 

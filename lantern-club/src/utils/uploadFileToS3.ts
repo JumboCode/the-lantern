@@ -15,12 +15,14 @@ export async function uploadFileToS3(file: FormidableFile, folder: string): Prom
     // Read the file into a buffer for upload
     const fileContent = await fs.readFile(file.filepath);
     const contentType = file.mimetype || 'application/octet-stream';
-
+    
+    const metadata = { featured: "false"};
     const params = {
         Bucket: process.env.AWS_BUCKET_NAME as string,
         Key: key,
         Body: fileContent,
         ContentType: contentType,
+        Metadata: metadata,
     };
 
     await s3.upload(params).promise();
