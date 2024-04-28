@@ -26,7 +26,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
         },
         mobile: {
             breakpoint: { max: 768, min: 0 },
-            items: 1
+            items: 1,
         },
     };
 
@@ -53,46 +53,57 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
 
     return(
         <div className="z-40">
-            <div className="-mt-20 pt-32 w-full yellow-gradient">
-                <div className="ml-5">
-                    <h1 className="font-coolvetica text-6xl md:text-8xl ml-12 flex items-end w-12/12">
-                    Meet the E-Board
-                    {session?.user.isAdmin && (
-                        <span className="font-nunito underline text-2xl ml-8 mb-2 cursor-pointer transition-all duration-300 hover:text-orange-400" onClick={handleToggleEditView}>
-                        Edit
-                        </span>
-                    )}
-                    {showEditView && (
-                        <div className="flex items-center ml-auto">
-                            <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl mr-2 cursor-pointer" />
-                            <span className="font-nunito text-lg">Add New</span>
-        
+            <div className="flex flex-col -mt-20 pt-32 w-full yellow-gradient">
+                    <div className="flex md:flex-row flex-col justify-center md:justify-start md:ml-16 md:grid md:grid-cols-2">
+                        <div className="flex md:flex-row flex-col">
+                            <h1 className="font-coolvetica text-6xl text-center md:text-8xl w-12/12">
+                            Meet the E-Board
+                            </h1>
+                            <div className="mt-14">
+                            {session?.user.isAdmin && (
+                                <p className="font-nunito underline text-center md:text-2xl text-lg md:mb-2 md:mt-0 -mt-6 md:ml-10 cursor-pointer transition-all duration-300 hover:text-orange-400" onClick={handleToggleEditView}>
+                                Edit
+                                </p>
+                            )}
+                            </div>
                         </div>
-                    )}
-                    </h1>
+                        <div className="md:mr-16 md:mt-5 mt-8">
+                            {showEditView && (
+                                <div className="flex flex-row items-center md:justify-end justify-center">
+                                    <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="md:text-7xl text-5xl mr-2 cursor-pointer transition-all duration-500 hover:text-orange-400" />
+                                    <span className="font-nunito md:text-2xl text-lg ml-3">Add New</span>
+                                </div>
+                            )}
+                        </div>
+                        
+                    </div>
+                    
+                <div>
+                    <Carousel
+                        swipeable={true}
+                        draggable={true}
+                        showDots={false}
+                        responsive={responsive}
+                        ssr={true}
+                        infinite={true}
+                        keyBoardControl={true}
+                        containerClass="carousel-container pt-12 pb-20 mx-auto md:px-16"
+                        itemClass="flex justify-center md:justify-start"
+                        arrows={true}
+                    >
+                        {data.map((profileData, index) => (
+                            <div key={index} className="">
+                                <Card
+                                    color={colors[index % 2]}
+                                    profile={profileData} // Use the imageMap to get the correct image
+                                    action={() => handleCardClick(profileData)}
+                                    isEditingView={showEditView}
+                                />
+                            </div>
+                        ))}
+                    </Carousel>
                 </div>
-                <Carousel
-                    swipeable={true}
-                    draggable={true}
-                    showDots={false}
-                    responsive={responsive}
-                    ssr={true}
-                    infinite={true}
-                    keyBoardControl={true}
-                    containerClass="carousel-container pt-12 pb-20 mx-auto px-20"
-                    arrows={true}
-                >
-                    {data.map((profileData, index) => (
-                        <div key={index} className="-ml-5">
-                            <Card
-                                color={colors[index % 2]}
-                                profile={profileData} // Use the imageMap to get the correct image
-                                action={() => handleCardClick(profileData)}
-                                isEditingView={showEditView}
-                            />
-                        </div>
-                    ))}
-                </Carousel>
+                
                 {showEditModal && currentCardData && (
                     <EboardOverlay 
                         type="Edit" 
