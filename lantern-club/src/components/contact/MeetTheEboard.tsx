@@ -70,7 +70,7 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
                         <div className="md:mr-16 md:mt-5 mt-8">
                             {showEditView && (
                                 <div className="flex flex-row items-center md:justify-end justify-center">
-                                    <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="md:text-7xl text-5xl mr-2 cursor-pointer" />
+                                    <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="md:text-7xl text-5xl mr-2 cursor-pointer transition-all duration-500 hover:text-orange-400" />
                                     <span className="font-nunito md:text-2xl text-lg ml-3">Add New</span>
                                 </div>
                             )}
