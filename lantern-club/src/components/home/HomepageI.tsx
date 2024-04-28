@@ -11,7 +11,7 @@ export default function HomepageI({title}:{title:string}){
                     <div className='mx-5 flex flex-col col-1 '>
                       <img className="flex text-center md:h-lantern-pic" src={"/images/text-logo.png"}/> 
                       {/* <h1 className="justify-self-center mt-40 text-6xl md:text-8xl font-kiona font-bold text-center">The Lantern</h1> */}
-                      <h1 className="justify-self-center my-20 text-2xl pb-20 md:text-4xl font-nunitolight italic text-center tracking-wide">A think-tank advocating for socially responsible
+                      <h1 className="justify-self-center my-20 text-2xl pb-16 md:pb-20 md:text-4xl font-nunitolight italic text-center tracking-wide">A think-tank advocating for socially responsible
                       <br/>technology use and production</h1>
                     </div>
 
