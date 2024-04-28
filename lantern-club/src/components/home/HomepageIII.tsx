@@ -25,7 +25,7 @@ export default function HomepageIII() {
     return (
         <div>
             {/* <div className="-mt-20 h-20 w-full" style={triangleStyle} id="triangle"></div> */}
-            <div className="orange-gradient -mt-36 md:-mt-20 pt-40 pb-40 md:pt-20 w-full flex flex-col md:grid md:grid-cols-2 md:gap-4 md:p-20 justify-center items-center"  id="pentagon-body">
+            <div className="orange-gradient -mt-36 md:-mt-20 pt-40 pb-40 md:pt-20 md:pb-32 w-full flex flex-col md:grid md:grid-cols-2 md:gap-4 md:p-20 justify-center items-center"  id="pentagon-body">
                 {/* text side */}
                 <div className="px-4 flex mt-12 flex-col text-center justify-center items-start md:text-left">
                     <p style={headerFontStyle}>
