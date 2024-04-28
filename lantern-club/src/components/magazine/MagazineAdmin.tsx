@@ -19,23 +19,13 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
 
   const [showConfirmModal, setShowConfirmModal] = useState<string | null>(null);
   const { data: session } = useSession();
-
-  const headerFont = {
-        fontFamily: 'coolvetica',
-        fontSize: '90px',
-        lineHeight: '1',
-  };
-  const subheaderFont = {
-    fontFamily: 'nunito',
-    fontSize: '30px',
-    lineHeight: '1',
-    fontWeight: 'bold',
-  };
-       
+  const headerFont = "font-coolvetica text-6xl leading-tight";
+  const subheaderFont = "font-nunito text-2xl leading-tight font-bold";
+  
   return (
       <div className="yellow-gradient -mt-20 py-40 px-2 md:px-20 w-full p-20">
             <div className="flex gap-10 md:text-8xl text-6xl items-end">
-              <p style={headerFont}>Edit Magazine Issues</p>
+              <p className={headerFont}>Edit Magazine Issues</p>
               {session?.user.isAdmin && (
                 <button className="font-nunito underline text-2xl cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleToggleAdminView}>
                     Edit
@@ -45,12 +35,12 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
               
             <div className ="my-7">
 
-              <p style={subheaderFont}>Featured Issue</p>
+              <p className={subheaderFont}>Featured Issue</p>
               <FileDrop />
             </div>
             
             <div className = "mt-20"> 
-              <p style={subheaderFont}>Past Issues</p>
+              <p className={subheaderFont}>Past Issues</p>
             </div>
 
             <ul className='pb-10'>
