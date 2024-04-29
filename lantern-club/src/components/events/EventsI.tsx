@@ -74,7 +74,7 @@ export default function EventsI({
               
              </h1>
              {session?.user.isAdmin && (
-                <div className="flex items-center ml:0 md:ml-auto">
+                <div className="flex items-center z-10 ml:0 md:ml-auto">
                   <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl cursor-pointer transition-all duration-500 hover:text-orange-400" />
                 </div>
             )}

@@ -24,9 +24,7 @@ const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => 
         justifyContent: 'center',
         height: '500px',
         width: '350px',
-        borderWidth: '3px',
         borderRadius: "30px",
-        padding: '3rem', 
         gap: '1rem', 
         position: 'relative', 
     };
@@ -59,17 +57,8 @@ const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => 
     return (
         <div>
         <div className={`shadow-xl text-center`} style={cardStyle}>
-            {isEditingView && !isPast &&
-            <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
-                <FontAwesomeIcon
-                icon={faPen}
-                onClick={action} 
-                className="cursor-pointer text-[#000000] relative transition-all duration-500 hover:text-[#FFFFFF]"
-                />
-            </div>
-            }
 
-            <div className="relative flex-grow w-full" style={{ minHeight: '200px' }}>
+            <div className="relative flex-grow z-1 w-full" style={{ minHeight: '200px' }}>
                 <Image
                     src={event.imageURL}
                     alt="Event image"
@@ -103,6 +92,19 @@ const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => 
                 className="cursor-pointer transition-all duration-300 hover:text-orange-400"
               />
               <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={() => event.id && handleDelete(event.id)} />
+              </>
+        )     }
+
+        { isEditingView && !isPast && (
+                <>
+                <FontAwesomeIcon
+                icon={faPen}
+                size="2x"
+                width={100}
+                height={100}
+                onClick={action} 
+                className="cursor-pointer text-[#000000] relative transition-all duration-500 hover:text-sky-600"
+                />
               </>
         )     }
         </div>
