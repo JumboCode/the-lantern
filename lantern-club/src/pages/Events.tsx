@@ -9,14 +9,12 @@ import EventsII from "@/components/events/EventsII";
 import Head from 'next/head';
 
 
+
 // new code w/ useState and useEffect
 
 export default function Events() {
   const [isAdminEdit, setIsAdminEdit] = useState<boolean>(false);
 
-  const handleEditButtonClick = () => {
-    setIsAdminEdit(!isAdminEdit);
-  };
 
   const [events, setEvents] = useState<EventType[]>([]);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
@@ -43,14 +41,10 @@ export default function Events() {
       </Head>
       <Header title="Events"/>
       <EventsI 
-        isAdminEdit={isAdminEdit} 
-        handleEditButtonClick={handleEditButtonClick} 
         events={events} 
         setShowAddModal={setShowAddModal}
       />
       <EventsII 
-        isAdminEdit={isAdminEdit} 
-        handleEditButtonClick={handleEditButtonClick}
         events={events}
       />
       <Footer showAdminLogin={true} />
