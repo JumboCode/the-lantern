@@ -49,7 +49,8 @@ export default async function handler(
             date: Array.isArray(fields.date) ? fields.date[0] : fields.date ?? "",
             location: Array.isArray(fields.location) ? fields.location[0] : fields.location ?? "",
             description: Array.isArray(fields.description) ? fields.description[0] : fields.description ?? "",
-            time: Array.isArray(fields.time) ? fields.time[0] : fields.time ?? "",
+            startTime: Array.isArray(fields.startTime) ? fields.startTime[0] : fields.startTime ?? "",
+            endTime: Array.isArray(fields.endTime) ? fields.endTime[0] : fields.endTime ?? "",
             host: Array.isArray(fields.host) ? fields.host[0] : fields.host ?? "",
             isPast: Array.isArray(fields.isPast) ? fields.isPast[0] === 'true' : !!fields.isPast,
             imageURL: url

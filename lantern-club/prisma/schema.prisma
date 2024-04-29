@@ -62,7 +62,8 @@ model Event {
   name         String
   description  String
   date         String
-  time         String
+  startTime    String
+  endTime      String
   location     String
   host         String 
   imageURL     String

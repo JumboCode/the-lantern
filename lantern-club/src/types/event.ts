@@ -3,7 +3,8 @@ export type EventType = {
   name: string;
   description: string;
   date: string;
-  time: string;
+  startTime: string;
+  endTime: string;
   location: string;
   host: string;
   imageURL: string;
