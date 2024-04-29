@@ -9,7 +9,7 @@ interface CalendarProps {
     event: EventType;
 }
 
-const AddtoCalendar = ({ isVisible, onClose, event }: CalendarProps) => {
+const AddtoCalendar = ({ event, isVisible, onClose }: CalendarProps) => {
     if (!isVisible) return null;
 
     return (
