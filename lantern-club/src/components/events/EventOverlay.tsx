@@ -231,7 +231,7 @@ const EventOverlay = ({
                   type="text"
                   id="endTime"
                   name="endTime"
-                  value={formData.startTime}
+                  value={formData.endTime}
                   onChange={handleChange}
                 ></input>
               </div>
