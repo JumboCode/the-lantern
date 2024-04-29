@@ -33,11 +33,8 @@ export default function EventsI({
   
   const handleCardClick = (cardData: EventType) => {
     setCurrentCardData(cardData);
-    if (session?.user.isAdmin) {
-      setShowEditModal(true);
-    } else {
-      setShowRSVPModal(true);
-    }
+     
+    setShowEditModal(true);
     
   };
 
@@ -100,8 +97,15 @@ export default function EventsI({
               </div>
           ))}
       </Carousel>
-      
-      {showAddModal && (
+      {showEditModal && currentCardData && (
+                    <EventOverlay 
+                        type="Edit Event" 
+                        isVisible={showEditModal} 
+                        onClose={() => {setShowEditModal(false)}} 
+                        event={currentCardData}
+                        />
+                )}
+            {showAddModal && (
         <div style={{ zIndex: 999, position: "relative" }}>
           <EventOverlay
             type="Add Event"
