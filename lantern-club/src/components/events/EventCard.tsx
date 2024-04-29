@@ -52,7 +52,7 @@ const EventCard = ({ action, event, isEditingView }: EventCardProps) => {
             </div>      
         </div>
 
-        <div>
+        <div className='text-center my-10'>
         { !isEditingView && (
                 <>
                 <Buttonv2
