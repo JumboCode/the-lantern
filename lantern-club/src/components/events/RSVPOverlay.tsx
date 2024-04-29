@@ -54,7 +54,7 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
                 color="blue"
                 width="w-60"
               />
-              <AddtoCalendar isVisible={showAddModal} onClose={() => setShowAddModal(false)}></AddtoCalendar>
+              <AddtoCalendar calenderEvent={event} isVisible={showAddModal} onClose={() => setShowAddModal(false)}></AddtoCalendar>
               <a
                 href="#"
                 className="px-7 font-nunito underline text-l mt-3 ml-3"
