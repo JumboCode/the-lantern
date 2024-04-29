@@ -9,7 +9,9 @@ import EventOverlay from "@/components/events/EventOverlay";
 import NoEventsComponent from "./NoEventsIComponent";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import RSVPOverlay from "./RSVPOverlay";
 import EventCard from "./EventCard"
+import Buttonv2 from "../Buttonv2";
 
 interface EventsIProps {
   events: EventType[];
@@ -33,8 +35,12 @@ export default function EventsI({
   
   const handleCardClick = (cardData: EventType) => {
     setCurrentCardData(cardData);
-     
-    setShowEditModal(true);
+
+    if (session?.user.isAdmin) {
+              setShowEditModal(true);
+            } else {
+              setShowRSVPModal(true);
+            }
     
   };
 
@@ -94,6 +100,7 @@ export default function EventsI({
                       isEditingView={session?.user.isAdmin}
                   />
 
+
               </div>
           ))}
       </Carousel>
@@ -105,7 +112,16 @@ export default function EventsI({
                         event={currentCardData}
                         />
                 )}
-            {showAddModal && (
+        {showRSVPModal && currentCardData &&(
+                    <RSVPOverlay
+                    isVisible={showRSVPModal}
+                    onClose={() => {
+                      setShowRSVPModal(false);
+                    }}
+                    event={currentCardData}
+                />
+                )}
+        {showAddModal && (
         <div style={{ zIndex: 999, position: "relative" }}>
           <EventOverlay
             type="Add Event"

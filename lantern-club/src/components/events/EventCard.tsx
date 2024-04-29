@@ -4,6 +4,7 @@ import { EventType } from '@/types/event';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties } from 'react'; // Import CSSProperties
+import Buttonv2 from "../Buttonv2";
 
 interface EventCardProps {
     action: (value: boolean | undefined) => void;
@@ -27,6 +28,7 @@ const EventCard = ({ action, event, isEditingView }: EventCardProps) => {
     };
 
     return (
+        <div>
         <div className={`shadow-xl text-center`} style={cardStyle}>
             {isEditingView &&
             <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
@@ -48,6 +50,20 @@ const EventCard = ({ action, event, isEditingView }: EventCardProps) => {
                    
                 />
             </div>      
+        </div>
+
+        <div>
+        { !isEditingView && (
+                <>
+                <Buttonv2
+                text="RSVP"
+                action={action}
+                color="blue"
+                width="w-40"
+                />
+                </>
+        )     }
+        </div>
         </div>
     );
 };
