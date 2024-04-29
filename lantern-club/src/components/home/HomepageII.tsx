@@ -1,8 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import Buttonv2 from '@/components/Buttonv2';
+import { useEffect, useState } from 'react';
 
 export default function ResourcesI() {
+  const [featuredName, setFeaturedName] = useState('');
   const headerFont = {
     fontFamily: 'coolvetica',
     fontSize: '90px',
@@ -26,6 +28,29 @@ export default function ResourcesI() {
   const handleButtonClick = () => {
         console.log('Button clicked!');
   };
+  useEffect(() => {
+    const fetchFeaturedName  = async () => {
+      const url = `/api/content/magazine/featured`;
+      try {
+        const featuredResponse = await fetch(url, { method: "GET" });
+        const featuredData = await featuredResponse.json();
+        if (featuredData.length > 0) {
+          const featured = featuredData[0].cloudURL;
+          // putting string together from URL
+          const parts = featured.split('_').slice(1).join('_');
+          let split = parts.split('.');
+          split.pop();
+          let finalName = split.join(".").replace(/_/g,' ');
+
+          setFeaturedName(finalName);
+          
+        }
+      } catch (error) {
+        console.error("Failed to fetch name of featured magazine");
+      }
+    }
+    fetchFeaturedName();
+  }, []);
 
 
   return (
@@ -54,7 +79,7 @@ export default function ResourcesI() {
           </svg>
           </div>
           <div className="flex flex-row justify-between pt-8 items-center w-full mt-5">
-            <p className="font-nunito text-xl">Issue No 1 Spring 2023</p>
+            <p className="font-nunito text-xl">{featuredName}</p>
             <a href="/Magazine">
             <div>
                 <Buttonv2 text="Read it here!" action={handleButtonClick} color="blue" width="w-40"/>
