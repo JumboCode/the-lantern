@@ -5,14 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties } from 'react'; // Import CSSProperties
 import Buttonv2 from "../Buttonv2";
+import ConfirmModal from "../ConfirmModal";
+import { useState } from "react";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 interface EventCardProps {
     action: (value: boolean | undefined) => void;
     event: EventType,
     isEditingView: boolean | undefined
+    isPast: boolean | undefined
 }
 
-const EventCard = ({ action, event, isEditingView }: EventCardProps) => {
+const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => {
     const cardStyle: CSSProperties = {
         display: 'flex', 
         flexDirection: 'column',
@@ -27,10 +31,35 @@ const EventCard = ({ action, event, isEditingView }: EventCardProps) => {
         position: 'relative', 
     };
 
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+
+    const handleDelete = async (id: string) => {
+        const url = `/api/content/events/${id}`;
+        try {
+          const response = await fetch(url, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+    
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+          }
+    
+          const deletedEvent = await response.json();
+          console.log("Deleted profile:", deletedEvent);
+          window.location.reload();
+          setShowConfirmModal(false);
+        } catch (error) {
+          console.error("Failed to delete event:", error);
+        }
+      };
+
     return (
         <div>
         <div className={`shadow-xl text-center`} style={cardStyle}>
-            {isEditingView &&
+            {isEditingView && !isPast &&
             <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
                 <FontAwesomeIcon
                 icon={faPen}
@@ -53,7 +82,7 @@ const EventCard = ({ action, event, isEditingView }: EventCardProps) => {
         </div>
 
         <div className='text-center my-10'>
-        { !isEditingView && (
+        { !isEditingView && !isPast && (
                 <>
                 <Buttonv2
                 text="RSVP"
@@ -62,6 +91,19 @@ const EventCard = ({ action, event, isEditingView }: EventCardProps) => {
                 width="w-40"
                 />
                 </>
+        )     }
+        { isEditingView && isPast && (
+                <>
+                <FontAwesomeIcon
+                icon={faTrashCan}
+                width={100}
+                height={100}
+                size="2x"
+                onClick={() => setShowConfirmModal(true)}
+                className="cursor-pointer transition-all duration-300 hover:text-orange-400"
+              />
+              <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={() => event.id && handleDelete(event.id)} />
+              </>
         )     }
         </div>
         </div>

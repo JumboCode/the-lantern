@@ -7,6 +7,10 @@ import ConfirmModal from "../ConfirmModal";
 import { EventBox } from "./EventBox";
 import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+import EventCard from "./EventCard"
 
 type EventsIIProps = {
   events: EventType[];
@@ -20,6 +24,35 @@ export default function EventsII({
   const { data: session } = useSession();
   const isAdminEdit = session?.user.isAdmin
 
+  const responsive = {
+        desktop: {
+          breakpoint: { max: 4000, min: 1100 },
+          items: 3,
+        },
+        tablet: {
+          breakpoint: { max: 1100, min: 768 },
+          items: 2,
+        },
+        mobile: {
+          breakpoint: { max: 768, min: 0 },
+          items: 1,
+        },
+      };
+
+
+  const [currentCardData, setCurrentCardData] = useState<EventType>();
+
+    const handleCardClick = (cardData: EventType) => {
+        setCurrentCardData(cardData);
+    
+        if (session?.user.isAdmin) {
+            
+                } else {
+        
+                }
+        
+      };
+
   // ********* IS ADMIN EDIT BOOLEAN ********
   return (
     <div>
@@ -28,20 +61,33 @@ export default function EventsII({
         {session?.user.isAdmin ? "Delete Past Events" : "Past Events"}
         </h1>
 
-        <div className="flex flex-col gap-10 md:flex-row">
-          {events &&
-            events
-              .filter((oneEvent) => oneEvent.isPast === true)
-              .slice(0, 3)
-              .map((oneEvent: EventType) => {
-                return (
-                  <div key={oneEvent.id} className="w-full md:w-1/3">
-                    <EventBox event={oneEvent} isAdminEdit={true} isPast={true}/>
-                  </div>
-                );
-              })}
+        <Carousel
+          swipeable={true}
+          draggable={true}
+          showDots={false}
+          responsive={responsive}
+          ssr={true}
+          infinite={true}
+          keyBoardControl={true}
+          containerClass="carousel-container pt-12 pb-20 mx-auto md:px-16"
+          itemClass="flex justify-center md:justify-start"
+          arrows={true}
+      >
+          {events.map((eventData, index) => (
+    eventData.isPast && (
+        <div key={index} className="">
+            <EventCard
+                event={eventData} // Use the imageMap to get the correct image
+                action={(isAdminEdit) => handleCardClick(eventData)}
+                isEditingView={session?.user.isAdmin}
+                isPast={true}
+            />
+        </div>
+    )
+        ))}
+
+      </Carousel>
         </div>
       </div>
-    </div>
   );
 }

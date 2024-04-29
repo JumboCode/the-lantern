@@ -11,7 +11,6 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import RSVPOverlay from "./RSVPOverlay";
 import EventCard from "./EventCard"
-import Buttonv2 from "../Buttonv2";
 
 interface EventsIProps {
   events: EventType[];
@@ -93,15 +92,15 @@ export default function EventsI({
           arrows={true}
       >
           {events.map((eventData, index) => (
+                !eventData.isPast && (
               <div key={index} className="">
                   <EventCard
                       event={eventData} // Use the imageMap to get the correct image
                       action={(isAdminEdit) => handleCardClick(eventData)}
-                      isEditingView={session?.user.isAdmin}
+                      isEditingView={session?.user.isAdmin} isPast={false}
                   />
-
-
               </div>
+                )
           ))}
       </Carousel>
       {showEditModal && currentCardData && (
