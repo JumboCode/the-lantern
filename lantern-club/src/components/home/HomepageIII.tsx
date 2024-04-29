@@ -27,10 +27,8 @@ export default function HomepageIII() {
             {/* <div className="-mt-20 h-20 w-full" style={triangleStyle} id="triangle"></div> */}
             <div className="orange-gradient -mt-36 md:-mt-20 pt-40 pb-40 md:pt-20 md:pb-32 w-full flex flex-col md:grid md:grid-cols-2 md:gap-4 md:p-20 justify-center items-center"  id="pentagon-body">
                 {/* text side */}
-                <div className="px-4 flex mt-12 flex-col text-center justify-center items-center md:items-start md:text-left">
-                    <p style={headerFontStyle}>
-                        Submit your work!
-                    </p>
+                <div className="px-10 md:px-4 flex mt-12 flex-col text-center justify-center items-center md:items-start md:text-left md:text-8xl text-6xl font-coolvetica">
+                    <p> Submit your work! </p>
                     <p className="py-5 font-nunito text-xl">
                         Did you write a paper for an STS course that you're passionate about? Or do you have an idea that you're excited to share? Submit your work to The Lantern Magazine and join the conversation! We invite essays, opinion pieces, book reviews, and research.
                     </p>

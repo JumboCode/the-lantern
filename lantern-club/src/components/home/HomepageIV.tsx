@@ -30,9 +30,9 @@ export default function HomepageIV() {
 
       {/* Text Column */}
       <div className="md:px-20 md:mt-32 text-center md:text-left">
-        <div className="mt-5">
-          <p style={headerFontStyle}>Who are we?</p>
-          <div className="pt-5 font-nunito text-xl">
+        <div className="mt-5 md:text-8xl text-6xl font-coolvetica">
+          <p> Who are we? </p>
+          <div className="px-10 md:px-0 pt-5 font-nunito text-xl">
             <p>We are a student-led think tank that investigates the societal impacts of modern technology. We want to break down complex ideas at the intersection of science, technology, and society (STS) through student-led discussions and research.</p>
           </div>
           <div className="mt-5">
