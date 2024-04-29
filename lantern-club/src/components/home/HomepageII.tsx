@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Buttonv2 from '@/components/Buttonv2';
-import ArrowComponent from '@/components/ArrowComponent';
 
 export default function ResourcesI() {
   const headerFont = {
