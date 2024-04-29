@@ -48,6 +48,16 @@ const EventOverlay = ({
     coverPhoto: null,
   });
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); 
+
+    if (type === "Add Event") {
+      handleAdd(formData);
+    } else if (type === "Edit Event") {
+      handleEdit({ ...formData, isPast: formData.isPast ?? false });
+    }
+  };
+
   const [filePreview, setFilePreview] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const handleFileClick = () => {
@@ -179,7 +189,7 @@ const EventOverlay = ({
 
   if (type == "Add Event" || "Edit Event") {
     return (
-        <div className="z-50 flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
+        <form onSubmit={handleSubmit} className="z-50 flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center">
           <div className="w-[700px] h-[600px] flex flex-col orange-border border-4 max-h-screen rounded-3xl bg-white">
             <button
               className="text-gray text-xl place-self-end mr-5 mt-2"
@@ -209,6 +219,10 @@ const EventOverlay = ({
                   type="text"
                   id="date"
                   name="date"
+                  pattern="^\d{4}-\d{2}-\d{2}$"
+                  title="Please enter a valid date in the format YYYY-MM-DD"
+                  required 
+                  placeholder="YYYY-MM-DD"
                   value={formData.date}
                   onChange={handleChange}
                 ></input>
@@ -220,8 +234,12 @@ const EventOverlay = ({
                   type="text"
                   id="startTime"
                   name="startTime"
+                  pattern="^([01]\d|2[0-3]):([0-5]\d)$"
+                  placeholder="HH:MM"
+                  title="Please enter a valid time in the format HH:mm"
                   value={formData.startTime}
                   onChange={handleChange}
+                  required  
                 ></input>
               </div>
               <div>
@@ -231,8 +249,13 @@ const EventOverlay = ({
                   type="text"
                   id="endTime"
                   name="endTime"
-                  value={formData.startTime}
+                  pattern="^([01]\d|2[0-3]):([0-5]\d)$"
+                  placeholder="HH:MM"
+
+                  title="Please enter a valid time in the format HH:mm"
+                  value={formData.endTime}
                   onChange={handleChange}
+                  required  
                 ></input>
               </div>
               <div>
@@ -285,13 +308,12 @@ const EventOverlay = ({
                   <div className="space-x-7">
                     <Buttonv2
                       text="Save"
-                      action={() => handleAdd(formData)}
                       color="blue"
                       width="w-40"
+                      type="submit"
                     />
                     <Buttonv2
                       text="Cancel"
-                      action={() => onClose()}
                       color="red"
                       width="w-40"
                     />
@@ -301,9 +323,9 @@ const EventOverlay = ({
                   <div className="justify-center justify-items-center">
                     <Buttonv2
                       text="Save"
-                      action={() => handleEdit({ ...formData, isPast: event?.isPast ?? false })}
                       color="blue"
                       width="w-40"
+                      type="submit"
                     />
                     <a
                       href="#"
@@ -322,7 +344,7 @@ const EventOverlay = ({
 
             </div>
           </div>
-        </div>
+        </form>
     );
   } else {
     return null;
