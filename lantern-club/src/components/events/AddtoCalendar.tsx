@@ -9,8 +9,10 @@ interface CalendarProps {
     event: EventType;
 }
 
-const AddtoCalendar = ({ event, isVisible, onClose }: CalendarProps) => {
+const AddtoCalendar = ({ isVisible, onClose, event }: CalendarProps) => {
     if (!isVisible) return null;
+
+    console.log("Event Name:", event.name); // Log out the value of event.name
 
     return (
         <div className="flex fixed backdrop-blur-sm inset-0 justify-center items-center" style={{ zIndex: 999}}>
@@ -18,12 +20,12 @@ const AddtoCalendar = ({ event, isVisible, onClose }: CalendarProps) => {
             
             <div className="flex flex-col justify-center mt-6 gap-6">
               <add-to-calendar-button
-                name={event.name}
-                startDate={event.date}
-                startTime={event.startTime}
-                endTime={event.endTime}
+                name={event.name || "Unnamed Event"}
+                startDate={event.date || "0000:00:00"} //YYYY-MM-DD
+                startTime={event.startTime || "00:00"}
+                endTime={event.endTime || "00:00"}
                 timeZone="America/New_York"
-                description={event.description}
+                description="event description"
                 options="'Apple','Google','Outlook.com'"
                 buttonsList
                 buttonStyle="round"
