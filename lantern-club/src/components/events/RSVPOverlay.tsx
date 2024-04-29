@@ -16,10 +16,6 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
 
   const [showAddModal, setShowAddModal] = useState(false);
 
-  const handleClick = () => {
-    console.log("add to calendar clicked!")
-  }
-
   return (
       <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-50">
         <div className="w-[700px] flex flex-col orange-border border-4 rounded-3xl bg-white">
@@ -33,6 +29,9 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
             <h2 className="text-5xl font-coolvetica">{event.name}</h2>
             <h2 className="mt-5 font-nunitobold text-xl">When:</h2>
             <text className="text-lg font-nunito">{event.date.toString()}</text>
+            <text className="text-lg font-nunito">{event.startTime.toString()}</text>
+            <text className="text-lg font-nunito">{event.endTime.toString()}</text>
+
             <h2 className="mt-5 font-nunitobold text-xl">Where:</h2>
             <text className="text-lg font-nunito">{event.location}</text>
             <h2 className="mt-5 font-nunitobold text-xl">
