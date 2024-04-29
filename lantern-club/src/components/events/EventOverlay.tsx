@@ -66,6 +66,7 @@ const EventOverlay = ({
 };
 
   const handleCoverPhotoChange = (event: any) => {
+    
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -292,7 +293,7 @@ const EventOverlay = ({
               </div>
               <div>
                 <h2 className="mt-5 mb-1 font-nunito text-lg">Cover Photo</h2>
-                <button onClick={handleFileClick} className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
+                <button onClick={handleFileClick} type="button" className="bg-slate-200 hover:bg-slate-300 w-24 h-14 rounded-lg mt-2">+</button> 
                 {filePreview && <img src={filePreview} alt="Cover Photo Preview" className="mt-2 mb-2" style={{ maxWidth: '100%', height: 'auto' }} />}
 
                 <input
