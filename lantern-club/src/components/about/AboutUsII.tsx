@@ -23,7 +23,7 @@ export default function AboutUsII() {
 
   return (
     <div>
-      <div className="-mt-20 yellow-gradient py-40 px-4 md:px-20"> 
+      <div id="pentagon-body" className="-mt-56 yellow-gradient pt-60 pb-64 px-4 md:px-20"> 
         <p className="mb-10 md:mb-20 md:text-8xl text-6xl" style={header_font}>Who are we?</p>
 
         {/* First section */}
@@ -71,7 +71,7 @@ export default function AboutUsII() {
     
         
       </div>
-      <div className="h-10 md:h-20 w-full" style={triangle} id="triangle"></div>
+      {/* <div className="h-10 md:h-20 w-full" style={triangle} id="triangle"></div> */}
 
      </div>
   );

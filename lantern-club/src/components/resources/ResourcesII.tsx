@@ -3,9 +3,9 @@ import Image from 'next/image';
 import Buttonv2 from "../Buttonv2";
 
 export default function ResourcesI() {
-  const background: React.CSSProperties = {
-    height: "800px",
-  };
+  // const background: React.CSSProperties = {
+  //   height: "1100px",
+  // };
   
   const headerFontStyle = {
     fontFamily: 'coolvetica',
@@ -27,7 +27,7 @@ export default function ResourcesI() {
 
   return (
     <div>
-      <div className="-mt-20 overflow-scroll py-30 px-4 md:px-10 yellow-gradient" style={background}> 
+      <div id="pentagon-body" className="-mt-32 pt-4 pb-44 px-4 md:px-10 yellow-gradient" > 
         {/* text side */}
         <div className="pt-20 pb-12 px-4 md:px-0 md:ml-10">
             <p className="py-5 mb-10 mt-10 md:text-8xl text-6xl" style={headerFontStyle}>
@@ -56,7 +56,6 @@ export default function ResourcesI() {
         </div>
       </div>
     </div>
-    <div className="h-20 flex w-full" style={triangleStyle} id="triangle"></div>
   </div>
   );
 }

@@ -52,8 +52,8 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
     
 
     return(
-        <div className="z-40">
-            <div className="-mt-20 pt-32 w-full yellow-gradient">
+        <div id="pentagon-body" className="z-40">
+            <div className="-mt-28 pt-36 pb-36 w-full yellow-gradient">
                 <div className="ml-5">
                     <h1 className="font-coolvetica text-6xl md:text-8xl ml-12 flex items-end w-12/12">
                     Meet the E-Board

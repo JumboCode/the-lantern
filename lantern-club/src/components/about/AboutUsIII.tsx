@@ -26,7 +26,7 @@ export default function AboutUsIII() {
 
   return (
     <div>
-      <div className="md:-mt-20 -mt-10 py-40 px-4 md:px-20 orange-gradient" style={background}> 
+      <div id="pentagon-body" className="pb-52 -mt-56 pt-52 py-40 px-4 md:px-20 orange-gradient" style={background}> 
         <p className="md:text-8xl text-6xl" style={header_font}> What is STS?</p>
         <div className="pale-yellow mellow-yellow-border" style={round_box}>
           <div className="flex flex-col md:flex-row items-center">
@@ -47,7 +47,7 @@ export default function AboutUsIII() {
         </div>
       </div>
       
-      <div className="h-10 md:h-20 w-full" style={triangle} id="triangle"></div>
+      {/* <div className="h-10 md:h-20 w-full" style={triangle} id="triangle"></div> */}
     </div>
   );
 }

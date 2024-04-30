@@ -13,7 +13,7 @@ export default function HomepageIII() {
 
     return (
         <div>
-            <div className="-mt-20 py-20 px-4 md:px-10 blue2-gradient">
+            <div id="pentagon2" className="md:-mt-72 md:pt-52 -mt-20 py-20 px-4 md:px-10 blue2-gradient">
                 {/* text side */}
                 <div className="py-10 px-4 md:px-0 pb-14 md:ml-10">
                     <p className="py-5 md:text-8xl text-6xl font-coolvetica">
