@@ -95,8 +95,8 @@ export default function EventsI({
                 !eventData.isPast && (
               <div key={index} className="">
                   <EventCard
-                      event={eventData} // Use the imageMap to get the correct image
-                      action={(isAdminEdit) => handleCardClick(eventData)}
+                      event={eventData} 
+                      action={() => handleCardClick(eventData)}
                       isEditingView={session?.user.isAdmin} isPast={false}
                   />
               </div>
