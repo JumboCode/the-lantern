@@ -78,7 +78,7 @@ export default function EventsII({
         <div key={index} className="">
             <EventCard
                 event={eventData} // Use the imageMap to get the correct image
-                action={(isAdminEdit) => handleCardClick(eventData)}
+                action={() => handleCardClick(eventData)}
                 isEditingView={session?.user.isAdmin}
                 isPast={true}
             />
