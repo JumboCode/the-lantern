@@ -9,7 +9,6 @@ import EventsII from "@/components/events/EventsII";
 import Head from 'next/head';
 
 
-
 // new code w/ useState and useEffect
 
 export default function Events() {
