@@ -67,7 +67,8 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
             )
             
             }
-            <Buttonv2 text="Submit Work" action={handleButtonClick} color="orange" width="w-48" />
+            <a href="http://forms.gle/JP6arAGa9cKE48Pv9" target="_blank" rel="noopener">
+            <Buttonv2 text="Submit Work" action={handleButtonClick} color="orange" width="w-48" /></a>
 
           </div>
 
