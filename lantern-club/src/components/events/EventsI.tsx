@@ -14,12 +14,15 @@ interface EventsIProps {
   events?: EventType[];
   session?: Session | null;
   setShowAddModal: (value: boolean) => void;
+  isLoading: boolean;
+
 }
 
 export default function EventsI({
   events,
   isAdminEdit,
   handleEditButtonClick,
+  isLoading,
 }: EventsIProps) {
   const { data: session } = useSession();
 
@@ -42,7 +45,7 @@ export default function EventsI({
 
   return (
     <>
-      {events && events.filter((oneEvent) => oneEvent.isPast === false).length === 0 ? (
+      {!isLoading && events && events.filter((oneEvent) => oneEvent.isPast === false).length === 0 ? (
         <NoEventsComponent 
           isAdminEdit={isAdminEdit}
           session={session}
@@ -55,6 +58,7 @@ export default function EventsI({
           session={session}
           handleEditButtonClick={handleEditButtonClick}
           setShowAddModal={setShowAddModal}
+          isLoading={isLoading}
         />
       )}
 
@@ -75,7 +79,7 @@ export default function EventsI({
 
 
 // Component for events list
-const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonClick, setShowAddModal }: EventsIProps) => (
+const EventsListComponent = ({ events, isAdminEdit, session, handleEditButtonClick, setShowAddModal, isLoading}: EventsIProps) => (
     <>
         <div className="-mt-20 py-40 px-8 md:px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1">
           <div className="flex flex-col md:flex-row mb-10 md:mb-20">

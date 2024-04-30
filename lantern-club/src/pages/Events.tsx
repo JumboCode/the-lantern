@@ -13,6 +13,7 @@ import Head from 'next/head';
 
 export default function Events() {
   const [isAdminEdit, setIsAdminEdit] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(true);
 
   const handleEditButtonClick = () => {
     setIsAdminEdit(!isAdminEdit);
@@ -22,12 +23,16 @@ export default function Events() {
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
 
   const fetchEvents = async () => {
+    setLoading(true);
+
     try {
       const response = await fetch("/api/content/events", { method: "GET" });
       const data = await response.json();
       setEvents(data);
     } catch (error) {
       console.error("Error fetching events:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -35,6 +40,8 @@ export default function Events() {
     fetchEvents();
   }, []);
 
+
+  
   return (
     <div>
       <NavBar />
@@ -47,6 +54,7 @@ export default function Events() {
         handleEditButtonClick={handleEditButtonClick} 
         events={events} 
         setShowAddModal={setShowAddModal}
+        isLoading={isLoading}
       />
       <EventsII 
         isAdminEdit={isAdminEdit} 
