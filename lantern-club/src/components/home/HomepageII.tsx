@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Buttonv2 from '@/components/Buttonv2';
 import { useEffect, useState } from 'react';
+import extractFileNameFromURL from '../../utils/extractFileNameFromURL'
 
 export default function ResourcesI() {
   const [featuredName, setFeaturedName] = useState('');
@@ -36,15 +37,9 @@ export default function ResourcesI() {
         const featuredData = await featuredResponse.json();
         if (featuredData.length > 0) {
           const featured = featuredData[0].cloudURL;
-          // putting string together from URL
-          const parts = featured.split('_').slice(1).join('_');
-          let split = parts.split('.');
-          split.pop();
-          let finalName = split.join(".").replace(/_/g,' ');
-
-          setFeaturedName(finalName);
-          
+          setFeaturedName(extractFileNameFromURL(featured));
         }
+        
       } catch (error) {
         console.error("Failed to fetch name of featured magazine");
       }
