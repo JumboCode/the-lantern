@@ -3,7 +3,7 @@ import React from 'react';
 
 interface ButtonProps {
   text: string;
-  action?: () => void;
+  action?: (value: boolean | undefined) => void; // Adjusting the type of action
   color: 'orange' | 'blue' | 'red';
   width?: string; // Optional 
   type?: 'button' | 'submit'; // Optional

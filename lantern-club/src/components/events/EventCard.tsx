@@ -75,7 +75,7 @@ const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => 
                 <>
                 <Buttonv2
                 text="RSVP"
-                action={action}
+                action={() => action(true)}
                 color="blue"
                 width="w-40"
                 />
@@ -102,7 +102,7 @@ const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => 
                 size="2x"
                 width={100}
                 height={100}
-                onClick={action} 
+                onClick={() => action(true)}
                 className="cursor-pointer text-[#000000] relative transition-all duration-500 hover:text-sky-600"
                 />
               </>
