@@ -3,10 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
-import { FeaturedMagType } from "@/types/featuredmag"
-// import { handleDeleteFeaturedMag } from '../../../prisma/delete-data';
-// import { handleAddFeaturedMag } from '../../../prisma/insert-data';
-// import { handleFetchFeaturedMag } from '../../../prisma/read-data';
+import extractFileNameFromURL from '@/utils/extractFileNameFromURL';
 
 const FileDrop = () => {
         const [fileList, setFileList] = useState([]);
@@ -26,19 +23,6 @@ const FileDrop = () => {
           }
         };
 
-        // const fetchFeatured = async () => {
-        //   try {
-        //     const response = await fetch("/api/content/magazine/featured", { method: "GET" });
-        //     const data = await response.json();
-            
-        //     if (!response.ok) {
-        //       throw new Error('Network response was not ok');
-        //     }
-        //     return data[0];
-        //   } catch (error) {
-        //     console.log("Error fetching featured mag:", error);
-        //   }
-        // }
         const handleFeatureMag = async (newFeatured) => {
 
           const url = `/api/content/magazine/featuredmag`;
@@ -96,12 +80,12 @@ const FileDrop = () => {
             <select className='w-1/2 flex' style={{ padding: '10px', borderRadius: '5px', border: '2px solid #FFA500', marginRight: '10px', backgroundColor: '#fff' }} onChange={handleImageChange} value={currentImage}>
                 {fileList.map((url, index) => {
                     // Extract file name from the URL
-                    let fileName = url.substring(url.lastIndexOf('/') + 1);
-                    fileName = fileName.substring(fileName.indexOf('_') + 1);
-                    
+                    // let fileName = url.substring(url.lastIndexOf('/') + 1);
+                    // fileName = fileName.substring(fileName.indexOf('_') + 1);
+                    let fileName = extractFileNameFromURL(url);
                     return (
                         <option key={index} value={url}>
-                            {fileName.replace(/\.[^/.]+$/, "")}
+                            {fileName}
                         </option>
                     );
                 })}

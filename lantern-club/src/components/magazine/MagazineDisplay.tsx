@@ -3,6 +3,7 @@ import axios from 'axios';
 import Image from "next/image";
 import Link from "next/link"
 import { useSession } from 'next-auth/react';
+import extractFileNameFromURL from '@/utils/extractFileNameFromURL';
 // import Lantern from "../../images/bluelatern.png";
 
 
@@ -107,10 +108,12 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                         <ul>
                             {magazines.map((url: string, index) => {
                                 // Extract file name from the URL
-                                const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
-                                //const key = url.substring(url.lastIndexOf('/') + 1);
-                                let fileName = keyName.substring(keyName.indexOf('_') + 1);
-                                fileName = fileName.replace(/\.[^/.]+$/, "");
+                                // console.log("url: ", url);
+                                let fileName = extractFileNameFromURL(url);
+                                // const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
+                                // //const key = url.substring(url.lastIndexOf('/') + 1);
+                                // let fileName = keyName.substring(keyName.indexOf('_') + 1);
+                                // fileName = fileName.replace(/\.[^/.]+$/, "");
 
                                 return (
                                     <li key={index}>
