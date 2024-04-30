@@ -10,7 +10,7 @@ import { useState } from "react";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 interface EventCardProps {
-    action: (value: boolean | undefined) => void;
+    action: () => void;
     event: EventType,
     isEditingView: boolean | undefined
     isPast: boolean | undefined
@@ -75,7 +75,7 @@ const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => 
                 <>
                 <Buttonv2
                 text="RSVP"
-                action={() => action(true)}
+                action={action}
                 color="blue"
                 width="w-40"
                 />
@@ -102,7 +102,7 @@ const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => 
                 size="2x"
                 width={100}
                 height={100}
-                onClick={() => action(true)}
+                onClick={() => action()}
                 className="cursor-pointer text-[#000000] relative transition-all duration-500 hover:text-sky-600"
                 />
               </>

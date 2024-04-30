@@ -3,7 +3,7 @@ import React from 'react';
 
 interface ButtonProps {
   text: string;
-  action?: (value: boolean | undefined) => void; // Adjusting the type of action
+  action?: () => void; // Adjusting the type of action to match onClick's signature
   color: 'orange' | 'blue' | 'red';
   width?: string; // Optional 
   type?: 'button' | 'submit'; // Optional
