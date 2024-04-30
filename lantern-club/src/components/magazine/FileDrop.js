@@ -1,19 +1,60 @@
-import { useEffect, useState } from 'react';
+// FileDrop.jsx
+
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import extractFileNameFromURL from '@/utils/extractFileNameFromURL';
 
 const FileDrop = () => {
         const [fileList, setFileList] = useState([]);
         const [currentImage, setCurrentImage] = useState('');
 
+        const handleDeleteFeaturedMag = async () => {
+          
+          const url = `/api/content/magazine/featuredmag`;
+
+          try {
+            const Delresponse = await fetch(url, {
+              method: "DELETE",
+            });
+            const result = await Delresponse.json();
+          } catch (error) {
+            console.error("Failed to switch the featured mag:", error);
+          }
+        };
+
+        const handleFeatureMag = async (newFeatured) => {
+
+          const url = `/api/content/magazine/featuredmag`;
+
+          try {
+            const data = {
+              cloudURL : newFeatured
+            };
+            const response = await fetch(url, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data)
+            });
+          } catch (error) {
+            console.error("Failed to add the event:", error);
+          }
+        };
+
         useEffect(() => {
                 const fetchFileList = async () => {
                 try {
+                  
                         const response = await axios.get('/api/content/magazine/');
+                        // const featuredResponse = await axios.get('/api/content/magazine/');
                         setFileList(response.data.urls);
-                        if (response.data.urls.length > 0) {
-                                // Automatically set the first image as the current image
-                                setCurrentImage(response.data.urls[0]);
+                        const featuredResponse = await fetch("/api/content/magazine/featured", { method: "GET" });
+                        const featuredData = await featuredResponse.json();
+                        if (featuredData.length > 0) {
+                          const featured = featuredData[0].cloudURL;
+                          setCurrentImage(featured);
                         }
                 } catch (error) {
                         console.error('Error fetching file list:', error);
@@ -21,37 +62,43 @@ const FileDrop = () => {
                 };
 
 
-                fetchFileList();
-        }, []);
+        fetchFileList();
+    }, []);
 
         const handleImageChange = (event) => {
+                              
+                handleDeleteFeaturedMag();
+                handleFeatureMag(event.target.value);
+                
                 setCurrentImage(event.target.value);
         };
 
-        return (
-            <div class="dropdown">
-                <select onChange={handleImageChange} value={currentImage}>
-                        {fileList.map((url, index) => {
-                        // Extract file name from the URL
-                        let fileName = url.substring(url.lastIndexOf('/') + 1);
-                        fileName = fileName.substring(fileName.indexOf('_') + 1);
-                        
-                        return (
+        
+
+    return (
+        <div>
+            <select className='w-1/2 flex' style={{ padding: '10px', borderRadius: '5px', border: '2px solid #FFA500', marginRight: '10px', backgroundColor: '#fff' }} onChange={handleImageChange} value={currentImage}>
+                {fileList.map((url, index) => {
+                    // Extract file name from the URL
+                    // let fileName = url.substring(url.lastIndexOf('/') + 1);
+                    // fileName = fileName.substring(fileName.indexOf('_') + 1);
+                    let fileName = extractFileNameFromURL(url);
+                    return (
                         <option key={index} value={url}>
-                                {fileName.replace(/\.[^/.]+$/, "")}
+                            {fileName}
                         </option>
-                        );
-                        })}
-                </select>
-                {currentImage && (
+                    );
+                })}
+            </select>
+            {currentImage && (
                 <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                    <Link href={currentImage}><iframe src={currentImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain' }} /></Link>
+                    <Link href={currentImage}>
+                        <iframe src={currentImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain' }} />
+                    </Link>
                 </div>
-                )}
-          </div> 
-          
-        );
-      };
-      export default FileDrop;
+            )}
+        </div> 
+    );
+};
 
-
+export default FileDrop;

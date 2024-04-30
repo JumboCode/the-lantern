@@ -17,27 +17,13 @@ export default function EventsII({
   events,
   isAdminEdit,
 }: EventsIIProps) {
-  const header_font: React.CSSProperties = {
-    fontFamily: "coolvetica",
-    fontSize: "90px",
-    lineHeight: "1",
-  };
 
-  const background: React.CSSProperties = {
-    height: "auto",
-  };
 
-  const imageStyle: React.CSSProperties = {
-    width: "100%",
-    height: "100%",
-  };
-
-  
   // ********* IS ADMIN EDIT BOOLEAN ********
   return (
     <div>
-      <div className="-mt-20 py-40 px-20 blue2-gradient" style={background}>
-        <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl"}>
+      <div className=" -mt-20 py-40 px-8 md:px-20 blue2-gradient">
+        <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl flex"}>
         {isAdminEdit ? "Delete Past Events" : "Past Events"}
         </h1>
 
@@ -51,8 +37,6 @@ export default function EventsII({
                   <div key={oneEvent.id} className="w-full md:w-1/3">
                     <EventBox event={oneEvent} isAdminEdit={isAdminEdit} isPast={true}/>
                   </div>
-              
-                
                 );
               })}
         </div>

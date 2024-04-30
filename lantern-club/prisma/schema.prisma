@@ -62,7 +62,8 @@ model Event {
   name         String
   description  String
   date         String
-  time         String
+  startTime    String
+  endTime      String
   location     String
   host         String 
   imageURL     String
@@ -75,6 +76,11 @@ model Magazine {
   author       String
   cloudURL     String
   publishdate  DateTime
+}
+
+model FeaturedMag {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  cloudURL     String
 }
 
 model Profile {

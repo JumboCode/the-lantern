@@ -16,10 +16,13 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
 
   const [showAddModal, setShowAddModal] = useState(false);
 
-  const handleClick = () => {
-    console.log("add to calendar clicked!")
+  function formatTime(timeStr: string): string {
+    let [hour, minute] = timeStr.split(':').map(Number); // convert strings => numbers
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    hour = hour % 12 || 12; // convert "00" or "12" hour to "12"
+    return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
   }
-
+  
   return (
       <div className="flex fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm justify-center items-center z-50">
         <div className="w-[700px] flex flex-col orange-border border-4 rounded-3xl bg-white">
@@ -33,6 +36,8 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
             <h2 className="text-5xl font-coolvetica">{event.name}</h2>
             <h2 className="mt-5 font-nunitobold text-xl">When:</h2>
             <text className="text-lg font-nunito">{event.date.toString()}</text>
+            <text className="text-lg font-nunito">{formatTime(event.startTime) + " to " + formatTime(event.endTime)}</text>
+
             <h2 className="mt-5 font-nunitobold text-xl">Where:</h2>
             <text className="text-lg font-nunito">{event.location}</text>
             <h2 className="mt-5 font-nunitobold text-xl">
@@ -55,7 +60,7 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
                 color="blue"
                 width="w-60"
               />
-              <AddtoCalendar isVisible={showAddModal} onClose={() => setShowAddModal(false)}></AddtoCalendar>
+              <AddtoCalendar event={event} isVisible={showAddModal} onClose={() => setShowAddModal(false)}/>
               <a
                 href="#"
                 className="px-7 font-nunito underline text-l mt-3 ml-3"
