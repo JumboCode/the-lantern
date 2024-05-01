@@ -11,6 +11,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import RSVPOverlay from "./RSVPOverlay";
 import EventCard from "./EventCard"
+import ConfirmModal from "../ConfirmModal";
 
 interface EventsIProps {
   events: EventType[];
@@ -32,7 +33,7 @@ export default function EventsI({
   const [showEditModal, setShowEditModal] = useState(false);
   const [showRSVPModal, setShowRSVPModal] = useState(false);
   const [currentCardData, setCurrentCardData] = useState<EventType>();
-  
+
   const handleCardClick = (cardData: EventType) => {
     setCurrentCardData(cardData);
 
@@ -42,6 +43,9 @@ export default function EventsI({
               setShowRSVPModal(true);
             }
   };
+
+  
+
 
   const responsive = {
     desktop: {

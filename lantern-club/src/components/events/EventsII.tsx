@@ -43,18 +43,35 @@ export default function EventsII({
     },
   };
 
-
   const [currentCardData, setCurrentCardData] = useState<EventType>();
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const handleCardClick = (cardData: EventType) => {
-      setCurrentCardData(cardData);
-  
-      if (session?.user.isAdmin) {
-          
-              } else {
-      
-              }
-      
+    setCurrentCardData(cardData);
+    setShowConfirmModal(true);
+  };
+
+  const handleDelete = async (id: string) => {
+    const url = `/api/content/events/${id}`;
+    try {
+      const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const deletedEvent = await response.json();
+      console.log("Deleted profile:", deletedEvent);
+      window.location.reload();
+      setShowConfirmModal(false);
+    } catch (error) {
+      console.error("Failed to delete event:", error);
+    }
   };
 
   // ********* IS ADMIN EDIT BOOLEAN ********
@@ -93,6 +110,9 @@ export default function EventsII({
 
       </Carousel>
         </div>
+
+      {showConfirmModal && (<ConfirmModal isVisible={showConfirmModal} onClose={() => setShowConfirmModal(false)} onDelete={() => currentCardData?.id && handleDelete(currentCardData.id)} />)}
+
       </div>
   );
 }

@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties } from 'react'; // Import CSSProperties
 import Buttonv2 from "../Buttonv2";
-import ConfirmModal from "../ConfirmModal";
-import { useState } from "react";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 interface EventCardProps {
@@ -29,31 +27,6 @@ const EventCard = ({ action, event, isEditingView, isPast, isAdminEdit }: EventC
         gap: '1rem', 
         position: 'relative', 
     };
-
-    const [showConfirmModal, setShowConfirmModal] = useState(false);
-
-    const handleDelete = async (id: string) => {
-        const url = `/api/content/events/${id}`;
-        try {
-          const response = await fetch(url, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-    
-          if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-          }
-    
-          const deletedEvent = await response.json();
-          console.log("Deleted profile:", deletedEvent);
-          window.location.reload();
-          setShowConfirmModal(false);
-        } catch (error) {
-          console.error("Failed to delete event:", error);
-        }
-      };
 
     return (
         <div>
@@ -89,10 +62,9 @@ const EventCard = ({ action, event, isEditingView, isPast, isAdminEdit }: EventC
                 width={100}
                 height={100}
                 size="2x"
-                onClick={() => setShowConfirmModal(true)}
+                onClick={() => action()}
                 className="cursor-pointer transition-all duration-300 hover:text-orange-400"
               />
-              <ConfirmModal isVisible={showConfirmModal} onClose={() => {setShowConfirmModal(false)}} onDelete={() => event.id && handleDelete(event.id)} />
               </>
         )     }
 
