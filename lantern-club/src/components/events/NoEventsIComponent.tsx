@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Session } from "next-auth";
 
 interface EventsIProps {
-    isAdminEdit: boolean;
-    handleEditButtonClick: () => void;
     events?: EventType[];
     session?: Session | null;
     setShowAddModal: (value: boolean) => void;
@@ -13,18 +11,15 @@ interface EventsIProps {
   
   
 // Component for no events scenario
-const NoEventsComponent = ({ isAdminEdit, session, handleEditButtonClick, setShowAddModal }: EventsIProps) => (
+const NoEventsComponent = ({ session, setShowAddModal }: EventsIProps) => (
     <>
       <div className="-mt-20 pb-0 pt-40 md:py-40 px-20 h-auto flex flex-col bg-gradient-to-t from-contact-g2 to-g-yellow1" style={{ minHeight: "700px" }}>
         <div className="flex flex-col md:flex-row mb-10 md:mb-20">
           <h1 className={"font-coolvetica md:text-8xl text-6xl flex items-end"}>
-            {isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
-            {session?.user.isAdmin && (
-              <button className="font-nunito underline text-2xl ml-7 mb-2 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleEditButtonClick}>Edit</button>
-            )}
+            {session?.user.isAdmin ? "Edit Upcoming Events" : "Upcoming Events"}
             
           </h1>
-          {isAdminEdit && (
+          {session?.user.isAdmin && (
               <div className="flex items-center ml:0 md:ml-auto">
                 <FontAwesomeIcon onClick={() => setShowAddModal(true)} icon={faCirclePlus} className="text-7xl cursor-pointer transition-all duration-500 hover:text-orange-400" />
               </div>

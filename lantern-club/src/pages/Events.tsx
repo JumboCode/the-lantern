@@ -7,13 +7,17 @@ import { EventType } from "@/types/event";
 import EventsI from "@/components/events/EventsI";
 import EventsII from "@/components/events/EventsII";
 import Head from 'next/head';
+import { useSession } from "next-auth/react";
+
 
 
 // new code w/ useState and useEffect
 
 export default function Events() {
+  
   const [isAdminEdit, setIsAdminEdit] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(true);
+  const { data: session } = useSession();
 
   const handleEditButtonClick = () => {
     setIsAdminEdit(!isAdminEdit);
@@ -55,11 +59,13 @@ export default function Events() {
         events={events} 
         setShowAddModal={setShowAddModal}
         isLoading={isLoading}
+        session={session}
       />
       <EventsII 
         isAdminEdit={isAdminEdit} 
-        handleEditButtonClick={handleEditButtonClick}
         events={events}
+        isLoading={isLoading}
+        session={session}
       />
       <Footer showAdminLogin={true} />
     </div>

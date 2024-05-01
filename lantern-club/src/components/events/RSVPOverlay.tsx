@@ -33,25 +33,31 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
             x
           </button>
           <div className="px-5 flex flex-col">
-            <h2 className="text-5xl font-coolvetica">{event.name}</h2>
-            <h2 className="mt-5 font-nunitobold text-xl">When:</h2>
-            <text className="text-lg font-nunito">{event.date.toString()}</text>
-            <text className="text-lg font-nunito">{formatTime(event.startTime) + " to " + formatTime(event.endTime)}</text>
+                
+                <div>
+                <h2 className="text-5xl font-coolvetica">{event.name}</h2>
+                <h2 className="mt-5 font-nunitobold text-xl">When:</h2>
+                <text className="text-lg font-nunito">{event.date && event.date.toString()}</text>
+                <text className="text-lg font-nunito">{formatTime(event.startTime) + " to " + formatTime(event.endTime)}</text>
 
-            <h2 className="mt-5 font-nunitobold text-xl">Where:</h2>
-            <text className="text-lg font-nunito">{event.location}</text>
-            <h2 className="mt-5 font-nunitobold text-xl">
-              Event Description:
-            </h2>
-            <text className="text-lg font-nunito">{event.description}</text>
-            <div className="flex mt-7 justify-center">
-              <Image
-                src={"/images/line-RSVP.png"}
-                alt="dotted line"
-                width={500}
-                height={1}
-              />
-            </div>
+                <h2 className="mt-5 font-nunitobold text-xl">Where:</h2>
+                <text className="text-lg font-nunito">{event.location}</text>
+                <h2 className="mt-5 font-nunitobold text-xl">
+                        Event Description:
+                </h2>
+                <text className="text-lg font-nunito">{event.description}</text>
+                <div className="flex mt-7 justify-center">
+                        <Image
+                        src={"/images/line-RSVP.png"}
+                        alt="dotted line"
+                        width={500}
+                        height={1}
+                        />
+                </div>
+                </div>
+
+                </div>
+
             <br></br>
             <div className="flex justify-center text-md py-5">
               <Buttonv2
@@ -71,7 +77,6 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
             </div>
           </div>
         </div>
-      </div>
   );
 };
 
