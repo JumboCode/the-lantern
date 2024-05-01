@@ -7,7 +7,7 @@ const FadeInOutComponent = ({ children }: { children: ReactNode }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({
     triggerOnce: false, // Set to true if you want the animation to occur only the first time the component comes into view
-    threshold: 0.1, // Adjust based on when you want the animation to trigger
+    threshold: 0.01, // Adjust based on when you want the animation to trigger
   });
 
   React.useEffect(() => {

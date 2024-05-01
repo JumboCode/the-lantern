@@ -14,8 +14,7 @@ export default function HomepageIV() {
       };
 
   return (
-        <div>
-    <div className="w-full blue2-gradient flex flex-col md:grid md:grid-cols-2 -mt-20 pb-20 pt-20 md:pt-0" id="pentagon2">
+    <div className="w-full blue2-gradient flex flex-col md:grid md:grid-cols-2 -mt-36 md:-mt-20 pb-20 pt-28 md:pt-0" id="pentagon2">
       {/* Image Column */}
       <div className="flex justify-center px-4 md:px-20 md:pt-32">
         <div className="mt-6">
@@ -29,7 +28,7 @@ export default function HomepageIV() {
       </div>
 
       {/* Text Column */}
-      <div className="px-4 md:px-20 md:mt-32 text-center md:text-left">
+      <div className="md:px-20 md:mt-32 text-center md:text-left">
         <div className="mt-5">
           <p style={headerFontStyle}>Who are we?</p>
           <div className="pt-5 font-nunito text-xl">
@@ -44,7 +43,6 @@ export default function HomepageIV() {
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
