@@ -1,15 +1,18 @@
 import { useState } from "react";
 import React from "react";
-import { SocialIcon } from 'react-social-icons';
 import 'add-to-calendar-button';
+import { EventType } from "@/types/event";
 
 interface CalendarProps {
     isVisible: boolean;
     onClose: () => void;
+    event: EventType;
 }
 
-const AddtoCalendar = ({ isVisible, onClose }: CalendarProps) => {
+const AddtoCalendar = ({ isVisible, onClose, event }: CalendarProps) => {
     if (!isVisible) return null;
+
+    console.log("Event Name:", event.name); // Log out the value of event.name
 
     return (
         <div className="flex fixed backdrop-blur-sm inset-0 justify-center items-center" style={{ zIndex: 999}}>
@@ -17,10 +20,10 @@ const AddtoCalendar = ({ isVisible, onClose }: CalendarProps) => {
             
             <div className="flex flex-col justify-center mt-6 gap-6">
               <add-to-calendar-button
-                name="event name"
-                startDate="2024-04-19"
-                startTime="10:15"
-                endTime="23:30"
+                name={event.name || "Unnamed Event"}
+                startDate={event.date || "0000:00:00"} //YYYY-MM-DD
+                startTime={event.startTime || "00:00"}
+                endTime={event.endTime || "00:00"}
                 timeZone="America/New_York"
                 description="event description"
                 options="'Apple','Google','Outlook.com'"

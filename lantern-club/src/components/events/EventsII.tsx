@@ -14,44 +14,48 @@ import EventCard from "./EventCard"
 
 type EventsIIProps = {
   events: EventType[];
+  session?: Session | null;
+  // setShowAddModal: (value: boolean) => void;
+  isLoading: boolean;
+  isAdminEdit: boolean;
 };
 
 
 export default function EventsII({
-  events
+  events,
+  session,
+  isLoading,
+  isAdminEdit
 }: EventsIIProps) {
 
-  const { data: session } = useSession();
-  const isAdminEdit = session?.user.isAdmin
-
   const responsive = {
-        desktop: {
-          breakpoint: { max: 4000, min: 1100 },
-          items: 3,
-        },
-        tablet: {
-          breakpoint: { max: 1100, min: 768 },
-          items: 2,
-        },
-        mobile: {
-          breakpoint: { max: 768, min: 0 },
-          items: 1,
-        },
-      };
+    desktop: {
+      breakpoint: { max: 4000, min: 1100 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1100, min: 768 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 768, min: 0 },
+      items: 1,
+    },
+  };
 
 
   const [currentCardData, setCurrentCardData] = useState<EventType>();
 
-    const handleCardClick = (cardData: EventType) => {
-        setCurrentCardData(cardData);
-    
-        if (session?.user.isAdmin) {
-            
-                } else {
-        
-                }
-        
-      };
+  const handleCardClick = (cardData: EventType) => {
+      setCurrentCardData(cardData);
+  
+      if (session?.user.isAdmin) {
+          
+              } else {
+      
+              }
+      
+  };
 
   // ********* IS ADMIN EDIT BOOLEAN ********
   return (
@@ -81,6 +85,7 @@ export default function EventsII({
                 action={() => handleCardClick(eventData)}
                 isEditingView={session?.user.isAdmin}
                 isPast={true}
+                isAdminEdit={isAdminEdit}
             />
         </div>
     )

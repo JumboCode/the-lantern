@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import FileDelete from '@/utils/FileDelete';
 import { useSession } from 'next-auth/react';
+import extractFileNameFromURL from '@/utils/extractFileNameFromURL';
 // import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
 
 interface MagazineAdminProps {
@@ -47,8 +48,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                 {magazines.map((url: string, index: number) => {
                 // Extract file name from the URL
                 const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
-                let fileName = keyName.substring(keyName.indexOf('_') + 1);
-                fileName = fileName.replace(/\.[^/.]+$/, "");
+                let fileName = extractFileNameFromURL(url);
 
                 return (
                     <li key={index}>

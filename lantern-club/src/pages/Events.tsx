@@ -7,25 +7,36 @@ import { EventType } from "@/types/event";
 import EventsI from "@/components/events/EventsI";
 import EventsII from "@/components/events/EventsII";
 import Head from 'next/head';
+import { useSession } from "next-auth/react";
 
 
 
 // new code w/ useState and useEffect
 
 export default function Events() {
+  
   const [isAdminEdit, setIsAdminEdit] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const { data: session } = useSession();
 
+  const handleEditButtonClick = () => {
+    setIsAdminEdit(!isAdminEdit);
+  };
 
   const [events, setEvents] = useState<EventType[]>([]);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
 
   const fetchEvents = async () => {
+    setLoading(true);
+
     try {
       const response = await fetch("/api/content/events", { method: "GET" });
       const data = await response.json();
       setEvents(data);
     } catch (error) {
       console.error("Error fetching events:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -33,6 +44,8 @@ export default function Events() {
     fetchEvents();
   }, []);
 
+
+  
   return (
     <div>
       <NavBar />
@@ -41,11 +54,18 @@ export default function Events() {
       </Head>
       <Header title="Events"/>
       <EventsI 
+        isAdminEdit={isAdminEdit} 
+        handleEditButtonClick={handleEditButtonClick} 
         events={events} 
         setShowAddModal={setShowAddModal}
+        isLoading={isLoading}
+        session={session}
       />
       <EventsII 
+        isAdminEdit={isAdminEdit} 
         events={events}
+        isLoading={isLoading}
+        session={session}
       />
       <Footer showAdminLogin={true} />
     </div>

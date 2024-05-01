@@ -14,9 +14,10 @@ interface EventCardProps {
     event: EventType,
     isEditingView: boolean | undefined
     isPast: boolean | undefined
+    isAdminEdit: boolean
 }
 
-const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => {
+const EventCard = ({ action, event, isEditingView, isPast, isAdminEdit }: EventCardProps) => {
     const cardStyle: CSSProperties = {
         display: 'flex', 
         flexDirection: 'column',
@@ -81,7 +82,7 @@ const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => 
                 />
                 </>
         )     }
-        { isEditingView && isPast && (
+        { isEditingView && isPast && isAdminEdit && (
                 <>
                 <FontAwesomeIcon
                 icon={faTrashCan}
@@ -95,7 +96,7 @@ const EventCard = ({ action, event, isEditingView, isPast }: EventCardProps) => 
               </>
         )     }
 
-        { isEditingView && !isPast && (
+        { isEditingView && !isPast && isAdminEdit && (
                 <>
                 <FontAwesomeIcon
                 icon={faPen}
