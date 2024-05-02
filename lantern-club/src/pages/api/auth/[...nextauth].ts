@@ -14,6 +14,16 @@ export default NextAuth({
     })
   ],
   callbacks: {
+    async signIn({ user }) {
+      // Check if the user exists and is an admin
+      if (!user.email) return false; 
+      const existingUser = await prisma.user.findUnique({
+        where: { email: user.email },
+      });
+
+      return Boolean(existingUser?.admin);
+    },
+
     async session({ session }): Promise<Session> {
       const user = await prisma.user.findUnique({
         where: { email: session.user.email ?? undefined },
