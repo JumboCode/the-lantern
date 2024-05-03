@@ -37,7 +37,7 @@ const RSVPOverlay = ({ isVisible, onClose, event }: OverlayProps) => {
                 <div>
                 <h2 className="text-5xl font-coolvetica">{event.name}</h2>
                 <h2 className="mt-5 font-nunitobold text-xl">When:</h2>
-                <text className="text-lg font-nunito">{event.date && event.date.toString()}</text>
+                <text className="text-lg font-nunito">{event.date && event.date.toString()}</text><br/>
                 <text className="text-lg font-nunito">{formatTime(event.startTime) + " to " + formatTime(event.endTime)}</text>
 
                 <h2 className="mt-5 font-nunitobold text-xl">Where:</h2>
