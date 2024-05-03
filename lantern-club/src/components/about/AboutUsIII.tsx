@@ -26,7 +26,7 @@ export default function AboutUsIII() {
 
   return (
       
-      <div className="pb-44 md:-mt-40 -mt-52 pt-40 md:pb-32 px-4 md:px-20 orange-gradient"   id="pentagon-body"> 
+      <div className="pb-44 md:-mt-40 -mt-56 pt-40 md:pb-32 px-4 md:px-20 orange-gradient"   id="pentagon-body"> 
         <p className="md:text-7xl text-6xl" style={header_font}> What is STS?</p>
         <div className="pale-yellow mellow-yellow-border" style={round_box}>
           <div className="flex flex-col md:flex-row items-center">

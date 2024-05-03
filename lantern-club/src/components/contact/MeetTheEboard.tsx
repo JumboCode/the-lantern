@@ -53,13 +53,13 @@ const MeetTheEBoard = ({data}: MeetTheEBoardProps): JSX.Element => {
 
     return(
         <div className="z-40">
-            <div className="flex flex-col -mt-20 pt-32 w-full yellow-gradient">
+            <div className="flex flex-col -mt-40 md:-mt-28 pt-32 pb-32 w-full yellow-gradient px-4 md:px-4" id="pentagon-body"> 
                     <div className="flex md:flex-row flex-col justify-center md:justify-start md:ml-16 md:grid md:grid-cols-2">
                         <div className="flex md:flex-row flex-col">
-                            <h1 className="font-coolvetica text-6xl text-center md:text-8xl w-12/12">
+                            <h1 className="font-coolvetica text-6xl text-center pt-6 md:text-7xl w-12/12">
                             Meet the E-Board
                             </h1>
-                            <div className="mt-14">
+                            <div className="md:mt-14">
                             {session?.user.isAdmin && (
                                 <p className="font-nunito underline text-center md:text-2xl text-lg md:mb-2 md:mt-0 -mt-6 md:ml-10 cursor-pointer transition-all duration-300 hover:text-orange-400" onClick={handleToggleEditView}>
                                 Edit

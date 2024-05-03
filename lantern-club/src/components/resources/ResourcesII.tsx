@@ -26,7 +26,7 @@ export default function ResourcesI() {
   };
 
   return (
-      <div className="-mt-28 overflow-scroll w-full pb-32 md:pb-0 px-4 md:px-10 yellow-gradient" id="pentagon-body"> 
+      <div className="-mt-32 md:-mt-24 overflow-scroll w-full pb-32 md:pb-0 px-4 md:px-10 yellow-gradient" id="pentagon-body"> 
         {/* text side */}
         <div className="pt-20 pb-12 px-4 md:px-0 md:ml-10">
             <p className="py-8 mb-10 mt-10 md:text-7xl text-6xl" style={headerFontStyle}>

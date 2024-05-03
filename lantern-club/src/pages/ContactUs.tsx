@@ -6,6 +6,7 @@ import Contact from "@/components/contact/Contact";
 import MeetTheEBoard from "@/components/contact/MeetTheEboard";
 import Head from 'next/head';
 import { ProfileType } from "@/types/profile";
+import FadeInOutComponent from "@/components/about/FadeInOutComponent";
 
 // import sampleData from "@/components/contact/sampleCardData.json";
 
@@ -17,9 +18,9 @@ export default function ContactUs({ profiles }: { profiles: ProfileType[] }) {
       <Head>
         <title>Contact Us | The Lantern</title>
       </Head>
-      <Header title="Contact Us" />
-      <MeetTheEBoard data={profiles} />
-      <Contact />
+      <FadeInOutComponent><Header title="Contact Us" /></FadeInOutComponent>
+      <FadeInOutComponent><MeetTheEBoard data={profiles} /></FadeInOutComponent>
+      <FadeInOutComponent><Contact /></FadeInOutComponent>
       <Footer showAdminLogin={true} />
     </>
   );

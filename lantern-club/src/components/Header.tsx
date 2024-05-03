@@ -6,7 +6,7 @@ export default function Header({title}:{title:string}){
         backgroundColor: "#FECB66",
       }; 
     return(
-        <div className="flex items-start justify-center bg-center pb-40 md:pb-28 bg-cover bg-no-repeat bg-[url('/images/header-bg.png')]"  id="header2-pent">
+        <div className="flex items-start justify-center bg-center pb-40 md:pb-24 bg-cover bg-no-repeat bg-[url('/images/header-bg.png')]"  id="header2-pent">
                         <div className='flex flex-shrink-0 -mt-2 scale-90 md:scale-100'>
                                 <Image src={"/images/short-lantern.png"} height={77} width={77} alt="lantern logo" />
                         </div>
