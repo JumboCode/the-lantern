@@ -29,7 +29,7 @@ const FadeInOutComponent = ({ children }: { children: ReactNode }) => {
       animate={controls}
       initial="hidden"
       variants={variants}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.38 }}
     >
       {children}
     </motion.div>
