@@ -6,7 +6,6 @@ export default function Header({title}:{title:string}){
         backgroundColor: "#FECB66",
       }; 
     return(
-        <div className="drop-shadow-md">
                 <div className="flex items-start justify-center bg-center pb-20 bg-cover bg-no-repeat bg-[url('/images/header-bg.png')]"  id="header2-pent">
                         <div className='flex flex-shrink-0'>
                                 <Image src={"/images/short-lantern.png"} height={77} width={77} alt="lantern logo" />
@@ -15,8 +14,7 @@ export default function Header({title}:{title:string}){
                         <div className='flex flex-shrink-0'>
                                 <Image src={"/images/short-lantern.png"} height={77} width={77}  alt="lantern logo" />
                         </div>
-                </div>            
-        </div>
+                </div>     
 
 
 

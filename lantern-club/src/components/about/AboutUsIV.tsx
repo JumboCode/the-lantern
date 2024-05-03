@@ -24,7 +24,7 @@ export default function AboutUsIV() {
   return (
     <div>
       <div className="-mt-10 md:-mt-20 py-20 md:py-40 px-4 md:px-20 blue2-gradient" style={background}> 
-        <p style={header_font} className="md:text-8xl text-6xl"> Our Mission</p>
+        <p style={header_font} className="md:text-7xl text-6xl"> Our Mission</p>
 
         {/* Two boxes */}
         <div className="flex flex-col md:flex-row gap-10">

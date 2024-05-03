@@ -26,8 +26,8 @@ export default function AboutUsIII() {
 
   return (
     <div>
-      <div className="md:-mt-20 -mt-10 py-40 px-4 md:px-20 orange-gradient" style={background}> 
-        <p className="md:text-8xl text-6xl" style={header_font}> What is STS?</p>
+      <div className="md:-mt-20 -mt-10 pt-40 pb-20 px-4 md:px-20 orange-gradient" style={background}> 
+        <p className="md:text-7xl text-6xl" style={header_font}> What is STS?</p>
         <div className="pale-yellow mellow-yellow-border" style={round_box}>
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-1/2 py-5 font-nunito text-lg md:text-xl px-4 md:px-0">
