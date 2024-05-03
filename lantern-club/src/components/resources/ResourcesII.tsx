@@ -26,11 +26,10 @@ export default function ResourcesI() {
   };
 
   return (
-    <div>
-      <div className="-mt-20 overflow-scroll py-30 px-4 md:px-10 yellow-gradient" style={background}> 
+      <div className="-mt-28 overflow-scroll w-full pb-32 md:pb-0 px-4 md:px-10 yellow-gradient" id="pentagon-body"> 
         {/* text side */}
         <div className="pt-20 pb-12 px-4 md:px-0 md:ml-10">
-            <p className="py-5 mb-10 mt-10 md:text-8xl text-6xl" style={headerFontStyle}>
+            <p className="py-8 mb-10 mt-10 md:text-7xl text-6xl" style={headerFontStyle}>
                 Our E-List
             </p>
             <div className="flex-col md:flex-row md:grid md:grid-cols-2 orange mellow-yellow-border font-nunito text-xl" style={round_box}>
@@ -45,18 +44,18 @@ export default function ResourcesI() {
             </div>
           
         {/* Arrow */}
-        <div className="flex flex-col justify-around items-center max-w-screen-md mx-auto mt-6">
+        <div className="flex flex-col justify-center align-center text-center items-center max-w-screen-md pb-20 mx-auto mt-6">
           <div className="hidden md:block py-4">
             <div className="m:w-[92px] sm:h-[192px]">
                 <Image src={'/images/arrow_animation.png'} width={175} height={175} alt="arrow animation" />
             </div>
           </div>
           {/* Button */}
+          <div className='-ml-8 pt-36 md:pt-0'>
           <Buttonv2 text="Join our e-list!" action={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScoIJSqdbxqKcswFmnCiFj65L2_P7dqogSpGLegc0EaORK9MA/viewform')} color="blue" width="w-48" />
+          </div>
         </div>
       </div>
     </div>
-    <div className="h-20 flex w-full" style={triangleStyle} id="triangle"></div>
-  </div>
   );
 }
