@@ -71,9 +71,9 @@ export default function EventsI({
           session={session}
           setShowAddModal={setShowAddModal}/>
       ) : (
-        <div className="-mt-20 py-40 px-8 md:px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1">
+        <div className="-mt-36 py-40 px-8 md:px-20 bg-gradient-to-t from-contact-g2 to-g-yellow1" id="pentagon-body">
           <div className="flex flex-col md:flex-row mb-10 md:mb-20">
-             <h1 className={"font-coolvetica md:text-8xl text-6xl flex items-end"}>
+             <h1 className={"font-coolvetica md:text-7xl pt-6 text-6xl flex items-end"}>
                {session?.user.isAdmin && isAdminEdit ? "Edit Upcoming Events" : "Upcoming Events"}
                {session?.user.isAdmin && (
                 <button className="font-nunito underline text-2xl ml-7 mb-2 cursor-pointer relative transition-all duration-300 hover:text-orange-400" onClick={handleEditButtonClick}>Edit</button>
@@ -94,7 +94,7 @@ export default function EventsI({
             ssr={true}
             infinite={true}
             keyBoardControl={true}
-            containerClass="carousel-container pt-12 pb-20 mx-auto md:px-16"
+            containerClass="carousel-container pt-2 pb-6 mx-auto md:px-16"
             itemClass="flex justify-center md:justify-start"
             arrows={true}
           >

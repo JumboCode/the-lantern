@@ -77,8 +77,8 @@ export default function EventsII({
   // ********* IS ADMIN EDIT BOOLEAN ********
   return (
     <div>
-      <div className=" -mt-20 py-40 px-8 md:px-20 blue2-gradient">
-        <h1 className={"mb-20 font-coolvetica md:text-8xl text-6xl flex"}>
+      <div className=" -mt-36 pt-28 px-8 md:px-20 blue2-gradient" id="pentagon2">
+        <h1 className={"mb-8 mt-12 font-coolvetica md:text-7xl text-6xl flex"}>
         {session?.user.isAdmin ? "Delete Past Events" : "Past Events"}
         </h1>
 

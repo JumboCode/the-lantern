@@ -24,7 +24,7 @@ export default function AboutUsII() {
   return (
 //     <div className="">
       <div className="-mt-56 md:-mt-40 yellow-gradient w-full pb-56 pt-48 md:pt-48  md:pt-36 md:pb-60  px-4 md:px-20"  id="pentagon-body"> 
-        <p className="mb-10 md:mb-20 md:text-7xl pt-6 text-6xl" style={header_font}>Who are we?</p>
+        <p className="mb-10 md:mb-20 md:text-7xl pt-1.5 text-6xl" style={header_font}>Who are we?</p>
 
         {/* First section */}
         

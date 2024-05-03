@@ -8,6 +8,7 @@ import EventsI from "@/components/events/EventsI";
 import EventsII from "@/components/events/EventsII";
 import Head from 'next/head';
 import { useSession } from "next-auth/react";
+import FadeInOutComponent from "@/components/about/FadeInOutComponent";
 
 
 
@@ -30,21 +31,21 @@ export default function Events({ events } : { events: EventType[]}) {
       <Head>
         <title>Events | The Lantern</title> 
       </Head>
-      <Header title="Events"/>
-      <EventsI 
+      <FadeInOutComponent><Header title="Events"/></FadeInOutComponent>
+      <FadeInOutComponent><EventsI 
         isAdminEdit={isAdminEdit} 
         handleEditButtonClick={handleEditButtonClick} 
         events={events} 
         setShowAddModal={setShowAddModal}
         isLoading={false}
         session={session}
-      />
-      <EventsII 
+      /></FadeInOutComponent>
+      <FadeInOutComponent><EventsII 
         isAdminEdit={isAdminEdit} 
         events={events}
         isLoading={false}
         session={session}
-      />
+      /></FadeInOutComponent>
       <Footer showAdminLogin={true} />
     </div>
   );
