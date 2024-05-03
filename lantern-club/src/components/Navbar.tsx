@@ -33,17 +33,17 @@ const NavBar = () => {
   ];
 
   return (
-    <div className={nav ? 'fixed flex justify-between bg-white z-50 items-center h-28 w-screen px-4 text-lg font-kiona' : 'flex justify-between z-50 items-center h-28 max-w-screen mx-auto px-4 text-lg font-kiona'}>
+    <div className={nav ? 'fixed flex justify-between bg-white z-50 items-center w-screen px-4 text-base font-kiona' : 'flex justify-between z-50 items-center h-[6.5rem] max-w-screen mx-auto px-4 text-lg font-kiona'}>
       <div className={nav ? 'fixed z-50 pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-0' : 'z-50 pl-10 md:pl-20 pr-10 md:pr-20 flex-shrink-0 py-0'}>
         <Link href="/" className="p-4 hover:underline">
-          <Image src={"/images/lantern-logo-blue.png"} height={82} width={82} alt="lantern logo" layout="intrinsic" />
+          <Image src={"/images/lantern-logo-blue.png"} height={75} width={75} alt="lantern logo" layout="intrinsic" />
         </Link>
       </div>
 
-      <ul className="flex flex-row justify-center z-10 space-x-8 hidden md:flex md:space-x-16 md:pr-20 pt-4 overflow-x-auto pb-4">
+      <ul className="flex flex-row justify-center z-10 space-x-2 hidden md:flex md:space-x-16 md:pr-16 py-2">
           {links.map((link, index) => (
             <li key={index}>
-              <Link href={link.url} className="hover:bg-nav-bg rounded-2xl p-3 relative transition-all duration-500">
+              <Link href={link.url} className="hover:bg-nav-bg text-base rounded-2xl px-4 py-3 relative transition-all duration-500">
                 {link.label}
               </Link>
             </li>
