@@ -19,9 +19,18 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
 
 
   const [showConfirmModal, setShowConfirmModal] = useState<string | null>(null);
+  const [magazineList, setMagazineList] = useState<string[]>(magazines);
+
   const { data: session } = useSession();
   const headerFont = "font-coolvetica text-6xl leading-tight";
   const subheaderFont = "font-nunito text-2xl leading-tight font-bold";
+  
+  const handleDeleteMagazine = async (keyName: string) => {
+    const success = await FileDelete(keyName);
+    if (success) {
+      setMagazineList(prevMagazines => prevMagazines.filter(url => url !== keyName));
+    }
+  };
   
   return (
       <div className="yellow-gradient -mt-20 py-40 px-2 md:px-20 w-full p-20">
@@ -66,17 +75,13 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                       />
                       </div>
                       </button>
-                      <ConfirmModal isVisible={showConfirmModal === keyName} onClose={() => {setShowConfirmModal(null)}} onDelete={() =>  {FileDelete(keyName); setShowConfirmModal(null)}}/>
+                      <ConfirmModal isVisible={showConfirmModal === keyName} onClose={() => {setShowConfirmModal(null)}} onDelete={() =>  handleDeleteMagazine(keyName)}/>
                       </div>
                     </li>);
                 })}
             </ul>
 
                   <FileUpload />
-                  {/* <Buttonv2 text="Save" action={() => saveFeatures()} color="blue" width="w-48" /> */}
-              
-                  {/* <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" /> */}
-              
            </div>   
             
         );
