@@ -5,19 +5,14 @@ import axios from 'axios';
 import Link from 'next/link';
 import extractFileNameFromURL from '@/utils/extractFileNameFromURL';
 
-const FileDrop = () => {
-        const [fileList, setFileList] = useState([]);
+const FileDrop = ({magazines}) => {
         const [currentImage, setCurrentImage] = useState('');
-
         const handleDeleteFeaturedMag = async () => {
           
           const url = `/api/content/magazine/featuredmag`;
 
           try {
-            const Delresponse = await fetch(url, {
-              method: "DELETE",
-            });
-            const result = await Delresponse.json();
+            await fetch(url, { method: "DELETE" });
           } catch (error) {
             console.error("Failed to switch the featured mag:", error);
           }
@@ -44,26 +39,20 @@ const FileDrop = () => {
         };
 
         useEffect(() => {
-                const fetchFileList = async () => {
-                try {
-                  
-                        const response = await axios.get('/api/content/magazine/');
-                        // const featuredResponse = await axios.get('/api/content/magazine/');
-                        setFileList(response.data.urls);
-                        const featuredResponse = await fetch("/api/content/magazine/featured", { method: "GET" });
-                        const featuredData = await featuredResponse.json();
-                        if (featuredData.length > 0) {
-                          const featured = featuredData[0].cloudURL;
-                          setCurrentImage(featured);
-                        }
-                } catch (error) {
-                        console.error('Error fetching file list:', error);
-                }
-                };
-
-
-        fetchFileList();
-    }, []);
+          const fetchFileList = async () => {
+            try {
+                    const featuredResponse = await fetch("/api/content/magazine/featured", { method: "GET" });
+                    const featuredData = await featuredResponse.json();
+                    if (featuredData.length > 0) {
+                      const featured = featuredData[0].cloudURL;
+                      setCurrentImage(featured);
+                    }
+            } catch (error) {
+                    console.error('Error fetching file list:', error);
+            }
+          }
+          fetchFileList();
+        }, []);
 
         const handleImageChange = (event) => {
                               
@@ -78,10 +67,7 @@ const FileDrop = () => {
     return (
         <div>
             <select className='w-1/2 flex' style={{ padding: '10px', borderRadius: '5px', border: '2px solid #FFA500', marginRight: '10px', backgroundColor: '#fff' }} onChange={handleImageChange} value={currentImage}>
-                {fileList.map((url, index) => {
-                    // Extract file name from the URL
-                    // let fileName = url.substring(url.lastIndexOf('/') + 1);
-                    // fileName = fileName.substring(fileName.indexOf('_') + 1);
+                {magazines.map((url, index) => {
                     let fileName = extractFileNameFromURL(url);
                     return (
                         <option key={index} value={url}>

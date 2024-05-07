@@ -25,12 +25,19 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
   const headerFont = "font-coolvetica text-6xl leading-tight";
   const subheaderFont = "font-nunito text-2xl leading-tight font-bold";
   
-  const handleDeleteMagazine = async (keyName: string) => {
+  const handleDeleteMagazine = async (keyName: string, fileUrl: string) => {
+    
     const success = await FileDelete(keyName);
     if (success) {
-      setMagazineList(prevMagazines => prevMagazines.filter(url => url !== keyName));
+      setMagazineList(prevMagazines => prevMagazines.filter(url => url !== fileUrl));
+      setShowConfirmModal(null)
     }
   };
+  
+  const handleUploadSuccess = (fileUrl: string) => {
+    setMagazineList(prevMagazines => [...prevMagazines, fileUrl]);
+  };
+
   
   return (
       <div className="yellow-gradient -mt-20 py-40 px-2 md:px-20 w-full p-20">
@@ -46,7 +53,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
             <div className ="my-7">
 
               <p className={subheaderFont}>Featured Issue</p>
-              <FileDrop />
+              <FileDrop magazines={magazineList} />
             </div>
             
             <div className = "mt-20"> 
@@ -54,7 +61,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
             </div>
 
             <ul className='pb-10'>
-                {magazines.map((url: string, index: number) => {
+                {magazineList.map((url: string, index: number) => {
                 // Extract file name from the URL
                 const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
                 let fileName = extractFileNameFromURL(url);
@@ -75,13 +82,13 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                       />
                       </div>
                       </button>
-                      <ConfirmModal isVisible={showConfirmModal === keyName} onClose={() => {setShowConfirmModal(null)}} onDelete={() =>  handleDeleteMagazine(keyName)}/>
+                      <ConfirmModal isVisible={showConfirmModal === keyName} onClose={() => {setShowConfirmModal(null)}} onDelete={() =>  handleDeleteMagazine(keyName, url)}/>
                       </div>
                     </li>);
                 })}
             </ul>
 
-                  <FileUpload />
+            <FileUpload onUploadSuccess={handleUploadSuccess} />
            </div>   
             
         );

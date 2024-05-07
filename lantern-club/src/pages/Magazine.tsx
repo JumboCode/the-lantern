@@ -34,7 +34,7 @@ export default function Magazine() {
     };
 
     fetchFileList();
-  }, [magazineList]);
+  }, []);
 
   
   return (
