@@ -50,7 +50,7 @@ export default function Events({ events } : { events: EventType[]}) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const response = await fetch("https://the-lantern.vercel.app/api/content/events", { method: "GET" });
     const events = await response.json();
