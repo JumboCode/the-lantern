@@ -22,9 +22,9 @@ export default function AboutUsII() {
   };
 
   return (
-    <div>
-      <div className="-mt-20 yellow-gradient py-40 px-4 md:px-20"> 
-        <p className="mb-10 md:mb-20 md:text-8xl text-6xl" style={header_font}>Who are we?</p>
+//     <div className="">
+      <div className="-mt-52 md:-mt-20 md:-mt-40 yellow-gradient w-full pb-56 pt-48 md:pt-48  md:pt-36 md:pb-60  px-4 md:px-20"  id="pentagon-body"> 
+        <p className="mb-10 md:mb-20 md:text-7xl pt-20 md:pt-1.5 text-6xl" style={header_font}>Who are we?</p>
 
         {/* First section */}
         
@@ -71,8 +71,8 @@ export default function AboutUsII() {
     
         
       </div>
-      <div className="h-10 md:h-20 w-full" style={triangle} id="triangle"></div>
+//       <div className="h-10 md:h-20 w-full" style={triangle} id="triangle"></div>
 
-     </div>
+//      </div>
   );
 }

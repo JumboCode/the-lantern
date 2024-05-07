@@ -55,9 +55,9 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
         
         
         {/* Login/Submit column */}
-        <div className="flex flex-col md:flex-row items-center md:items-end justify-end p-4">
+        <div className="flex flex-col md:flex-row items-center md:items-end justify-end">
           {/* Login and Submit buttons here */}
-          <div className="font-nunitosans flex flex-col pb-5 md:pb-0 pr-0 md:pr-10 space-y-4 items-start justify-start">
+          <div className="font-nunitosans flex flex-col pt-5 md:-mt-8 pr-0 md:pr-10 scale-90 space-y-4 items-start justify-start">
             {!session ? (
               showAdminLogin && (
               <Buttonv2 text="Admin Login" action={() => signIn("google")} color="blue" width="w-48" />
@@ -72,9 +72,9 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
 
           </div>
 
-          <div className="flex">
+          <div className="flex scale-90 pb-2">
             <a href="https://www.linkedin.com/company/the-lantern-at-tufts-university/about/" target="_blank" rel="noopener noreferrer" className="flex mr-2 hover:#faac4b">
-              <div className="w-11 h-10 md:w-12 md:h-12 relative transition-all duration-300 hover:text-orange-400">
+              <div className="w-8 h-10 md:w-12 md:h-12 relative transition-all duration-300 hover:text-orange-400">
                 {/* <Image src={LinkedIn} alt="linkedin icon"/> */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                  <path className="fill-current "
@@ -82,7 +82,7 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
               </div>
             </a>
             <a href="https://www.instagram.com/thelanterntufts/" target="_blank" rel="noopener noreferrer">
-              <div className="w-11 h-10 md:w-12 md:h-12 relative transition-all duration-300 hover:text-orange-400">
+              <div className="w-8 h-10 md:w-12 md:h-12 relative transition-all duration-300 hover:text-orange-400">
                 {/* <Image src={Insta} alt="instagram icon" /> */}
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
