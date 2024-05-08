@@ -8,14 +8,14 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import FileDelete from '@/utils/FileDelete';
 import { useSession } from 'next-auth/react';
 import extractFileNameFromURL from '@/utils/extractFileNameFromURL';
-// import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
 
 interface MagazineAdminProps {
   handleToggleAdminView: () => void
-  magazines: any[]
-  
+  onAddMagazine: (url: string) => void;  
+  onDeleteMagazine: (url: string) => void;
+  magazines: string[]
 }
-export default function MagazineDisplay ({ handleToggleAdminView, magazines }: MagazineAdminProps) {
+export default function MagazineDisplay ({ handleToggleAdminView, onAddMagazine, onDeleteMagazine, magazines }: MagazineAdminProps) {
 
 
   const [showConfirmModal, setShowConfirmModal] = useState<string | null>(null);
@@ -29,12 +29,16 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
     
     const success = await FileDelete(keyName);
     if (success) {
+      onDeleteMagazine(fileUrl);  
       setMagazineList(prevMagazines => prevMagazines.filter(url => url !== fileUrl));
       setShowConfirmModal(null)
     }
   };
+
+  
   
   const handleUploadSuccess = (fileUrl: string) => {
+    onAddMagazine(fileUrl);  // Assuming you want to use the prop function
     setMagazineList(prevMagazines => [...prevMagazines, fileUrl]);
   };
 
