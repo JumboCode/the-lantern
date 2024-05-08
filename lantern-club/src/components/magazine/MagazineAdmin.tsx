@@ -8,20 +8,40 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import FileDelete from '@/utils/FileDelete';
 import { useSession } from 'next-auth/react';
 import extractFileNameFromURL from '@/utils/extractFileNameFromURL';
-// import extractFileKeyFromURL from '@/utils/extractFileKeyFromURL';
 
 interface MagazineAdminProps {
   handleToggleAdminView: () => void
-  magazines: any[]
-  
+  onAddMagazine: (url: string) => void;  
+  onDeleteMagazine: (url: string) => void;
+  magazines: string[]
 }
-export default function MagazineDisplay ({ handleToggleAdminView, magazines }: MagazineAdminProps) {
+export default function MagazineDisplay ({ handleToggleAdminView, onAddMagazine, onDeleteMagazine, magazines }: MagazineAdminProps) {
 
 
   const [showConfirmModal, setShowConfirmModal] = useState<string | null>(null);
+  const [magazineList, setMagazineList] = useState<string[]>(magazines);
+
   const { data: session } = useSession();
   const headerFont = "font-coolvetica text-6xl leading-tight";
   const subheaderFont = "font-nunito text-2xl leading-tight font-bold";
+  
+  const handleDeleteMagazine = async (keyName: string, fileUrl: string) => {
+    
+    const success = await FileDelete(keyName);
+    if (success) {
+      onDeleteMagazine(fileUrl);  
+      setMagazineList(prevMagazines => prevMagazines.filter(url => url !== fileUrl));
+      setShowConfirmModal(null)
+    }
+  };
+
+  
+  
+  const handleUploadSuccess = (fileUrl: string) => {
+    onAddMagazine(fileUrl);  // Assuming you want to use the prop function
+    setMagazineList(prevMagazines => [...prevMagazines, fileUrl]);
+  };
+
   
   return (
       <div className="yellow-gradient -mt-20 py-40 px-2 md:px-20 w-full p-20">
@@ -37,7 +57,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
             <div className ="my-7">
 
               <p className={subheaderFont}>Featured Issue</p>
-              <FileDrop />
+              <FileDrop magazines={magazineList} />
             </div>
             
             <div className = "mt-20"> 
@@ -45,7 +65,7 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
             </div>
 
             <ul className='pb-10'>
-                {magazines.map((url: string, index: number) => {
+                {magazineList.map((url: string, index: number) => {
                 // Extract file name from the URL
                 const keyName = "uploads/" + url.substring(url.lastIndexOf('/') + 1);
                 let fileName = extractFileNameFromURL(url);
@@ -66,17 +86,13 @@ export default function MagazineDisplay ({ handleToggleAdminView, magazines }: M
                       />
                       </div>
                       </button>
-                      <ConfirmModal isVisible={showConfirmModal === keyName} onClose={() => {setShowConfirmModal(null)}} onDelete={() =>  {FileDelete(keyName); setShowConfirmModal(null)}}/>
+                      <ConfirmModal isVisible={showConfirmModal === keyName} onClose={() => {setShowConfirmModal(null)}} onDelete={() =>  handleDeleteMagazine(keyName, url)}/>
                       </div>
                     </li>);
                 })}
             </ul>
 
-                  <FileUpload />
-                  {/* <Buttonv2 text="Save" action={() => saveFeatures()} color="blue" width="w-48" /> */}
-              
-                  {/* <Buttonv2 text="Save" action={() => console.log('okk>>')} color="blue" width="w-48" /> */}
-              
+            <FileUpload onUploadSuccess={handleUploadSuccess} />
            </div>   
             
         );

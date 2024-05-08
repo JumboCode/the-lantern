@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Buttonv2 from '../Buttonv2';
 
-const FileUpload = () => {
+const FileUpload = ({ onUploadSuccess }) => {
   const fileInputRef = useRef(null);
   const [uploading, setUploading] = useState(false);
   const [fileUrl, setFileUrl] = useState('');
@@ -26,8 +26,11 @@ const FileUpload = () => {
         },
       });
       
+      const uploadedFileUrl = response.data.url; // Assuming the response contains the URL of the uploaded file
       setFileUrl('');
       setSelectedFile(null);
+      onUploadSuccess(uploadedFileUrl);
+
     } catch (error) {
       console.error('Error uploading file:', error);
     } finally {
