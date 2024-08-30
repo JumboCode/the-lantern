@@ -73,7 +73,7 @@ export default function Footer({ showAdminLogin }: { showAdminLogin: boolean }) 
           </div>
 
           <div className="flex">
-            <a href="linkedin.com/in/lanternthinktank" target="_blank" rel="noopener noreferrer" className="flex mr-2 hover:#faac4b">
+            <a href="https://linkedin.com/in/lanternthinktank" target="_blank" rel="noopener noreferrer" className="flex mr-2 hover:#faac4b">
               <div className="w-11 h-10 md:w-12 md:h-12 relative transition-all duration-300 hover:text-orange-400">
                 {/* <Image src={LinkedIn} alt="linkedin icon"/> */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
