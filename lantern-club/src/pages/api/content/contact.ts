@@ -20,8 +20,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Email format
     const options = {
-      from: 'lanternthinktank@gmail.com',
-      to: 'lanternthinktank@gmail.com',
+      from: 'ststhinktank@gmail.com',
+      to: 'ststhinktank@gmail.com',
       subject: `Lantern Contact Form Response from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     };
