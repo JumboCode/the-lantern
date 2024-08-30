@@ -66,7 +66,7 @@ export default function HomepageIII() {
                         <div className="md:pl-10 md:w-1/2 text-lg md:text-xl pb-10 pt-10">
                             <p>The 10-course <u>
                                     <a href="https://as.tufts.edu/science-technology-and-society/requirements/babs-science-technology-and-society-co-major" className="text-sky-500">co-major</a>
-                                </u> must be declared in conjunction with another major, and pairs very well with pairs well with science, humanities, social science, or visual and performing arts majors (Tufts University). The 6-course <u>
+                                </u> must be declared in conjunction with another major, and pairs very well with science, humanities, social science, or visual and performing arts majors (Tufts University). The 6-course <u>
                                     <a href="https://as.tufts.edu/science-technology-and-society/requirements/minor-science-technology-and-society" className="text-sky-500">minor</a>
                                 </u> may be of particular interest to students majoring in the natural sciences or enrolled in the School of Engineering as a complement to their major technical fields (Tufts University).
                             </p>
